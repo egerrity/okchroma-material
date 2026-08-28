@@ -13,7 +13,7 @@ export default function Search() {
         sx={{ flexGrow: 1 }}
         startAdornment={
           <InputAdornment position="start" sx={{ color: 'text.primary' }}>
-            <SearchRoundedIcon style={{ fontSize: 16 }} />
+            <SearchRoundedIcon size={16} />
           </InputAdornment>
         }
         inputProps={{

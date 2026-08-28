@@ -29,11 +29,11 @@ export interface Seed {
 
 export const DEFAULT_SEED = '#1D5AF0'
 
-export function resolveSeed(hex: string): Seed {
+export function resolveSeed(hex: string, altHex?: string | null): Seed {
   const theme = resolveTheme({
     primaryHex: hex,
     name: 'poc',
-    deriveSecondary: true,
+    ...(altHex ? { secondaryHex: altHex } : { deriveSecondary: true }),
     contrastProfile: 'wcag',
   })
   const neutral = generateNeutralScale(theme.themed.scale.brandH, 'default', 'wcag')

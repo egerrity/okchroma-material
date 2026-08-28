@@ -31,7 +31,7 @@ function ButtonField(props: ButtonFieldProps) {
       variant="outlined"
       ref={handleRef}
       size="small"
-      startIcon={<CalendarTodayRoundedIcon style={{ fontSize: 16 }} />}
+      startIcon={<CalendarTodayRoundedIcon size={16} />}
       sx={{ minWidth: 'fit-content' }}
       onClick={() => pickerContext.setOpen((prev) => !prev)}
     >

@@ -17,6 +17,7 @@ import {
   treeViewCustomizations,
 } from './theme/customizations';
 import { cleanCustomizations } from '../theme/cleanCustomizations';
+import { useSeed } from '../seedContext';
 
 const xThemeComponents = {
   ...chartsCustomizations,
@@ -29,8 +30,9 @@ const xThemeComponents = {
 };
 
 export default function Dashboard(props: { disableCustomTheme?: boolean }) {
+  const { brandHex, altHex } = useSeed();
   return (
-    <AppTheme {...props} themeComponents={xThemeComponents}>
+    <AppTheme {...props} themeComponents={xThemeComponents} brandHex={brandHex} altHex={altHex}>
       <CssBaseline enableColorScheme />
       <Box sx={{ display: 'flex' }}>
         <SideMenu />

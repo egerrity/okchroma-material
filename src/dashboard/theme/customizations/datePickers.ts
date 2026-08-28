@@ -60,30 +60,27 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           backgroundColor: (theme.vars || theme).palette.action.hover,
         },
         [`&.${yearCalendarClasses.selected}`]: {
-          backgroundColor: gray[700],
+          backgroundColor: (theme.vars || theme).palette.primary.main,
+          color: (theme.vars || theme).palette.primary.contrastText,
           fontWeight: theme.typography.fontWeightMedium,
         },
         '&:focus': {
-          outline: `3px solid ${alpha(brand[500], 0.5)}`,
+          outline: `2px solid ${(theme.vars || theme).palette.okx.focus}`,
           outlineOffset: '2px',
           backgroundColor: 'transparent',
-          [`&.${yearCalendarClasses.selected}`]: { backgroundColor: gray[700] },
+          [`&.${yearCalendarClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
         },
         ...theme.applyStyles('dark', {
           color: (theme.vars || theme).palette.grey[300],
           '&:hover': {
             backgroundColor: (theme.vars || theme).palette.action.hover,
           },
-          [`&.${yearCalendarClasses.selected}`]: {
-            color: (theme.vars || theme).palette.common.black,
-            fontWeight: theme.typography.fontWeightMedium,
-            backgroundColor: gray[300],
-          },
+
           '&:focus': {
-            outline: `3px solid ${alpha(brand[500], 0.5)}`,
+            outline: `2px solid ${(theme.vars || theme).palette.okx.focus}`,
             outlineOffset: '2px',
             backgroundColor: 'transparent',
-            [`&.${yearCalendarClasses.selected}`]: { backgroundColor: gray[300] },
+            [`&.${yearCalendarClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
           },
         }),
       }),
@@ -101,30 +98,27 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           backgroundColor: (theme.vars || theme).palette.action.hover,
         },
         [`&.${yearCalendarClasses.selected}`]: {
-          backgroundColor: gray[700],
+          backgroundColor: (theme.vars || theme).palette.primary.main,
+          color: (theme.vars || theme).palette.primary.contrastText,
           fontWeight: theme.typography.fontWeightMedium,
         },
         '&:focus': {
-          outline: `3px solid ${alpha(brand[500], 0.5)}`,
+          outline: `2px solid ${(theme.vars || theme).palette.okx.focus}`,
           outlineOffset: '2px',
           backgroundColor: 'transparent',
-          [`&.${yearCalendarClasses.selected}`]: { backgroundColor: gray[700] },
+          [`&.${yearCalendarClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
         },
         ...theme.applyStyles('dark', {
           color: (theme.vars || theme).palette.grey[300],
           '&:hover': {
             backgroundColor: (theme.vars || theme).palette.action.hover,
           },
-          [`&.${yearCalendarClasses.selected}`]: {
-            color: (theme.vars || theme).palette.common.black,
-            fontWeight: theme.typography.fontWeightMedium,
-            backgroundColor: gray[300],
-          },
+
           '&:focus': {
-            outline: `3px solid ${alpha(brand[500], 0.5)}`,
+            outline: `2px solid ${(theme.vars || theme).palette.okx.focus}`,
             outlineOffset: '2px',
             backgroundColor: 'transparent',
-            [`&.${yearCalendarClasses.selected}`]: { backgroundColor: gray[300] },
+            [`&.${yearCalendarClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
           },
         }),
       }),
@@ -141,30 +135,27 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           backgroundColor: (theme.vars || theme).palette.action.hover,
         },
         [`&.${pickerDayClasses.selected}`]: {
-          backgroundColor: gray[700],
+          backgroundColor: (theme.vars || theme).palette.primary.main,
+          color: (theme.vars || theme).palette.primary.contrastText,
           fontWeight: theme.typography.fontWeightMedium,
         },
         '&:focus': {
-          outline: `3px solid ${alpha(brand[500], 0.5)}`,
+          outline: `2px solid ${(theme.vars || theme).palette.okx.focus}`,
           outlineOffset: '2px',
           backgroundColor: 'transparent',
-          [`&.${pickerDayClasses.selected}`]: { backgroundColor: gray[700] },
+          [`&.${pickerDayClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
         },
         ...theme.applyStyles('dark', {
           color: (theme.vars || theme).palette.grey[300],
           '&:hover': {
             backgroundColor: (theme.vars || theme).palette.action.hover,
           },
-          [`&.${pickerDayClasses.selected}`]: {
-            color: (theme.vars || theme).palette.common.black,
-            fontWeight: theme.typography.fontWeightMedium,
-            backgroundColor: gray[300],
-          },
+
           '&:focus': {
-            outline: `3px solid ${alpha(brand[500], 0.5)}`,
+            outline: `2px solid ${(theme.vars || theme).palette.okx.focus}`,
             outlineOffset: '2px',
             backgroundColor: 'transparent',
-            [`&.${pickerDayClasses.selected}`]: { backgroundColor: gray[300] },
+            [`&.${pickerDayClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
           },
         }),
       }),

@@ -10,7 +10,7 @@ import { Menu as MenuRoundedIcon } from 'lucide-react';
 import { LayoutDashboard as DashboardRoundedIcon } from 'lucide-react';
 import SideMenuMobile from './SideMenuMobile';
 import MenuButton from './MenuButton';
-import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
+import ColorModeToggle from '../../shared-theme/ColorModeToggle';
 
 const Toolbar = styled(MuiToolbar)({
   width: '100%',
@@ -68,7 +68,7 @@ export default function AppNavbar() {
               Dashboard
             </Typography>
           </Stack>
-          <ColorModeIconDropdown />
+          <ColorModeToggle />
           <MenuButton aria-label="menu" onClick={toggleDrawer(true)}>
             <MenuRoundedIcon />
           </MenuButton>
@@ -99,7 +99,7 @@ export function CustomIcon() {
         boxShadow: 'inset 0 2px 5px rgba(255, 255, 255, 0.3)',
       }}
     >
-      <DashboardRoundedIcon color="inherit" style={{ fontSize: 16 }} />
+      <DashboardRoundedIcon color="inherit" size={16} />
     </Box>
   );
 }

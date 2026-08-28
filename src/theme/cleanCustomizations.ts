@@ -57,6 +57,8 @@ export const cleanCustomizations: Components<Theme> = {
       root: [
         ...prev(inputsCustomizations.MuiButton?.styleOverrides?.root),
         ({ ownerState, theme }: { ownerState: { variant?: string; color?: string }; theme: Theme }) => ({
+          // unify button shape: full pill
+          '&&&': { borderRadius: 999 },
           // '&&' outranks the template's variants entries, which insert after
           // root styles and would otherwise keep the Sitemark gray buttons
           ...(ownerState.variant === 'contained' &&

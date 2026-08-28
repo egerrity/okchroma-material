@@ -152,6 +152,24 @@ export const cleanCustomizations: Components<Theme> = {
       }),
     },
   },
+  // unify nav selection: soft brand wash pill, brand ink text and icon
+  MuiListItemButton: {
+    styleOverrides: {
+      root: ({ theme }: { theme: Theme }) => ({
+        borderRadius: 8,
+        '&&.Mui-selected, &&.Mui-selected:hover': {
+          backgroundColor: L.brand(NAME.paper3),
+          color: L.brand(NAME.inkMid),
+          '& .MuiListItemIcon-root': { color: 'inherit' },
+          '& .MuiListItemText-primary': { color: 'inherit', fontWeight: 600 },
+          ...theme.applyStyles('dark', {
+            backgroundColor: D.brand(NAME.paper3),
+            color: D.brand(NAME.inkMid),
+          }),
+        },
+      }),
+    },
+  },
   // the SYSTEM link trio (a link is not a text-style CTA)
   MuiLink: {
     styleOverrides: {

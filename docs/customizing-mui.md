@@ -91,10 +91,12 @@ code has the matching token.
 
 In this repo the layering is:
 
-- okchroma engine seed resolves to `colorSchemes` palettes
-  ([adapter-mui.ts](../src/theme/adapter-mui.ts)), the token layer.
+- okchroma engine seed resolves to `colorSchemes` palettes and the template
+  ramps ([themePrimitives.ts](../src/shared-theme/themePrimitives.ts)), the
+  token layer.
 - State pinning (hover/pressed to real engine values instead of MUI's
-  `darken()` derivation) lives in `theme.components` overrides, the branded
+  `darken()` derivation) and the demo Clean treatment live in
+  [cleanCustomizations.ts](../src/theme/cleanCustomizations.ts), the branded
   component layer. The Unify restyle extends this same layer.
 
 ## The base to restyle

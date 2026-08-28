@@ -2,11 +2,11 @@ import { createTheme, alpha, PaletteMode, Shadows } from '@mui/material/styles';
 import { resolveSeed, DEFAULT_SEED, type SignalRole } from '../seed';
 import { laneTokens, NAME } from '../theme/tokens';
 
-// okchroma supplies every color below. Static per-module seed: the template is
-// the product surface; the legacy views keep the live seed input.
+// okchroma supplies every color below. Static per-module seed; the template is
+// the only preview surface.
 const okSeed = resolveSeed(DEFAULT_SEED);
-const L = laneTokens(okSeed, 'light');
-const D = laneTokens(okSeed, 'dark');
+export const L = laneTokens(okSeed, 'light');
+export const D = laneTokens(okSeed, 'dark');
 
 declare module '@mui/material/Paper' {
   interface PaperPropsVariantOverrides {

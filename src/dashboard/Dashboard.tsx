@@ -16,12 +16,16 @@ import {
   datePickersCustomizations,
   treeViewCustomizations,
 } from './theme/customizations';
+import { cleanCustomizations } from '../theme/cleanCustomizations';
 
 const xThemeComponents = {
   ...chartsCustomizations,
   ...dataGridCustomizations,
   ...datePickersCustomizations,
   ...treeViewCustomizations,
+  // the okchroma Clean layer lands last; overlapping entries array-merge the
+  // shared-theme styles internally (see cleanCustomizations.ts)
+  ...cleanCustomizations,
 };
 
 export default function Dashboard(props: { disableCustomTheme?: boolean }) {

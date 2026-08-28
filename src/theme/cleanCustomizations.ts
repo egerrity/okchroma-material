@@ -169,13 +169,43 @@ export const cleanCustomizations: Components<Theme> = {
       }),
     },
   },
-  // round-rect chips: the unify chip shape
+  // round-rect chips: the unify chip shape. Colors follow the soft law —
+  // family wash ground + family INK text. Stamps are never for text.
   MuiChip: {
     ...dataDisplayCustomizations.MuiChip,
     styleOverrides: {
       root: [
         ...prev(dataDisplayCustomizations.MuiChip?.styleOverrides?.root),
-        { borderRadius: 8 },
+        ({ ownerState, theme }: { ownerState: { color?: string }; theme: Theme }) => {
+          const family: Record<string, 'critical' | 'warning' | 'positive' | 'info'> = {
+            error: 'critical',
+            warning: 'warning',
+            success: 'positive',
+            info: 'info',
+          }
+          const soft = (t: typeof L, fam?: 'critical' | 'warning' | 'positive' | 'info') =>
+            fam
+              ? {
+                  backgroundColor: t.signalStop(fam, NAME.paper3),
+                  border: `1px solid ${t.signalStop(fam, 'wash-85')}`,
+                  color: t.signalStop(fam, NAME.inkStrong),
+                }
+              : {
+                  backgroundColor: t.neutral(NAME.paper3),
+                  border: `1px solid ${t.neutral('wash-85')}`,
+                  color: t.neutral(NAME.inkStrong),
+                }
+          const fam = family[ownerState.color ?? '']
+          return {
+            borderRadius: 8,
+            '&&': {
+              ...soft(L, fam),
+              '& .MuiChip-label': { color: 'inherit' },
+              '& .MuiChip-icon': { color: 'inherit' },
+              ...theme.applyStyles('dark', soft(D, fam)),
+            },
+          }
+        },
       ] as never,
     },
   },

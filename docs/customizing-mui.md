@@ -99,6 +99,17 @@ In this repo the layering is:
   [cleanCustomizations.ts](../src/theme/cleanCustomizations.ts), the branded
   component layer. The Unify restyle extends this same layer.
 
+## Color rules from the owner
+
+- **The brand family never appears in a graph or chart.** Data visualization
+  rides the info family tiers, the neutral ladder, and the signal families
+  (trend up/down). The goal is to avoid over-saturating the brand; the brand
+  belongs to actions and identity, not to data.
+- Stamps are never for text. Chip and badge labels come from the family ink
+  register on a family wash ground.
+- The PoC consumes okchroma from the npm registry, never a local path. That is
+  the point of the test: the enterprise version will consume the package.
+
 ## The base to restyle
 
 MUI's official Dashboard template (Sitemark-web,

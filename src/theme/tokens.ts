@@ -12,13 +12,23 @@ import {
   stopTokenName,
   SCALE_STOP_COUNT,
   OFFSET_ALPHAS,
-  ctaNeedsBorder,
-  ctaBorderRung,
-  pageStopFor,
-  CSS_FAMILY,
   type GeneratedScale,
+  type ColorStop,
 } from 'okchroma'
+import * as okPkg from 'okchroma'
 import { type Seed, type SignalRole } from '../seed'
+
+// The stamp-edge machinery (in the engine since the cta-border round) joined
+// the package's export surface in 0.1.1. Feature-detect so the SAME code runs
+// the published 0.1.0 (edge resolves transparent, its usual value) and 0.1.1+
+// (edge gated by the engine). No local re-derivation either way.
+type Lane_ = 'light' | 'dark'
+const EDGE = okPkg as Partial<{
+  ctaNeedsBorder: (s: GeneratedScale, mode: Lane_, page: ColorStop | undefined) => boolean
+  ctaBorderRung: (prefix: string) => keyof typeof OFFSET_ALPHAS
+  pageStopFor: (neutral: GeneratedScale, mode: Lane_) => ColorStop | undefined
+  CSS_FAMILY: { neutral: string; brandPrimary: string; brandSecondary: string }
+}>
 
 export type Lane = 'light' | 'dark'
 
@@ -92,7 +102,7 @@ function stampValues(
   scale: GeneratedScale,
   lane: Lane,
   neutral?: GeneratedScale,
-  cssPrefix: string = CSS_FAMILY.brandPrimary,
+  family: 'primary' | 'secondary' | 'other' = 'primary',
 ): StampValues {
   const isDark = lane === 'dark'
   const white = isDark ? scale.onFillTextIsWhiteDark : scale.onFillTextIsWhite
@@ -100,10 +110,12 @@ function stampValues(
   // offset alpha rung only when the fill sits close to the page, else transparent.
   // Consumers render the border ALWAYS so layout never shifts.
   let edge = 'transparent'
-  if (neutral) {
-    const page = pageStopFor(neutral, lane)
-    if (ctaNeedsBorder(scale, lane, page)) {
-      const a = OFFSET_ALPHAS[ctaBorderRung(cssPrefix)]
+  if (neutral && EDGE.ctaNeedsBorder && EDGE.pageStopFor && EDGE.ctaBorderRung && EDGE.CSS_FAMILY) {
+    const page = EDGE.pageStopFor(neutral, lane)
+    if (EDGE.ctaNeedsBorder(scale, lane, page)) {
+      const prefix =
+        family === 'secondary' ? EDGE.CSS_FAMILY.brandSecondary : EDGE.CSS_FAMILY.brandPrimary
+      const a = OFFSET_ALPHAS[EDGE.ctaBorderRung(prefix)]
       edge = isDark ? `rgba(255, 255, 255, ${a})` : `rgba(0, 0, 0, ${a})`
     }
   }
@@ -160,8 +172,8 @@ export function laneTokens(seed: Seed, lane: Lane): LaneTokens {
     brand: name => stopFor(brandScale, lane, name),
     neutral: name => stopFor(n, lane, name),
     secondary: secondaryScale ? name => stopFor(secondaryScale, lane, name) : null,
-    stamp: stampValues(brandScale, lane, n, CSS_FAMILY.brandPrimary),
-    secondaryStamp: secondaryScale ? stampValues(secondaryScale, lane, n, CSS_FAMILY.brandSecondary) : null,
+    stamp: stampValues(brandScale, lane, n, 'primary'),
+    secondaryStamp: secondaryScale ? stampValues(secondaryScale, lane, n, 'secondary') : null,
     signals,
     signalStop: (role, name) => stopFor(seed.signal(role), lane, name),
     signalStamp: role => stampValues(seed.signal(role), lane, n),

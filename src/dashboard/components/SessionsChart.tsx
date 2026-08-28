@@ -37,9 +37,9 @@ export default function SessionsChart() {
   const data = getDaysInMonth(4, 2024);
 
   const colorPalette = [
-    theme.palette.primary.light,
-    theme.palette.primary.main,
-    theme.palette.primary.dark,
+    theme.palette.info.light,
+    theme.palette.info.main,
+    theme.palette.info.dark,
   ];
 
   return (
@@ -137,9 +137,9 @@ export default function SessionsChart() {
           }}
           hideLegend
         >
-          <AreaGradient color={theme.palette.primary.dark} id="organic" />
-          <AreaGradient color={theme.palette.primary.main} id="referral" />
-          <AreaGradient color={theme.palette.primary.light} id="direct" />
+          <AreaGradient color={theme.palette.info.dark} id="organic" />
+          <AreaGradient color={theme.palette.info.main} id="referral" />
+          <AreaGradient color={theme.palette.info.light} id="direct" />
         </LineChart>
       </CardContent>
     </Card>

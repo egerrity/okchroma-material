@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import { gray } from '../../shared-theme/themePrimitives';
 
 import {
   IndiaFlag,
@@ -28,25 +29,25 @@ const countries = [
     name: 'India',
     value: 50,
     flag: <IndiaFlag />,
-    color: 'hsl(220, 25%, 65%)',
+    color: gray[400],
   },
   {
     name: 'USA',
     value: 35,
     flag: <UsaFlag />,
-    color: 'hsl(220, 25%, 45%)',
+    color: gray[500],
   },
   {
     name: 'Brazil',
     value: 10,
     flag: <BrazilFlag />,
-    color: 'hsl(220, 25%, 30%)',
+    color: gray[600],
   },
   {
     name: 'Other',
     value: 5,
     flag: <GlobeFlag />,
-    color: 'hsl(220, 25%, 20%)',
+    color: gray[700],
   },
 ];
 
@@ -115,10 +116,10 @@ function PieCenterLabel({ primaryText, secondaryText }: PieCenterLabelProps) {
 }
 
 const colors = [
-  'hsl(220, 20%, 65%)',
-  'hsl(220, 20%, 42%)',
-  'hsl(220, 20%, 35%)',
-  'hsl(220, 20%, 25%)',
+  gray[400],
+  gray[500],
+  gray[600],
+  gray[700],
 ];
 
 export default function ChartUserByCountry() {

@@ -56,9 +56,14 @@ export const cleanCustomizations: Components<Theme> = {
     styleOverrides: {
       root: [
         ...prev(inputsCustomizations.MuiButton?.styleOverrides?.root),
-        ({ ownerState, theme }: { ownerState: { variant?: string; color?: string }; theme: Theme }) => ({
-          // unify button shape: full pill
-          '&&&': { borderRadius: 999 },
+        ({ ownerState, theme }: { ownerState: { variant?: string; color?: string; size?: string }; theme: Theme }) => ({
+          // unify button shape: full pill, TWO sizes (32 / 48, from the kit set)
+          '&&&': {
+            borderRadius: 999,
+            ...(ownerState.size === 'small'
+              ? { height: 32, padding: '0 16px', fontSize: 14 }
+              : { height: 48, padding: '0 24px', fontSize: 16 }),
+          },
           // '&&' outranks the template's variants entries, which insert after
           // root styles and would otherwise keep the Sitemark gray buttons
           ...(ownerState.variant === 'contained' &&
@@ -130,6 +135,23 @@ export const cleanCustomizations: Components<Theme> = {
       paper: ({ theme }: { theme: Theme }) => ({
         boxShadow: FLOAT.light,
         ...theme.applyStyles('dark', { boxShadow: FLOAT.dark }),
+      }),
+    },
+  },
+  // the SYSTEM link trio (a link is not a text-style CTA)
+  MuiLink: {
+    styleOverrides: {
+      root: ({ theme }: { theme: Theme }) => ({
+        color: L.link.default,
+        textDecorationColor: L.link.default,
+        '&:hover': { color: L.link.hover },
+        '&:active': { color: L.link.pressed },
+        ...theme.applyStyles('dark', {
+          color: D.link.default,
+          textDecorationColor: D.link.default,
+          '&:hover': { color: D.link.hover },
+          '&:active': { color: D.link.pressed },
+        }),
       }),
     },
   },

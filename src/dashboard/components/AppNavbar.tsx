@@ -6,8 +6,8 @@ import Stack from '@mui/material/Stack';
 import MuiToolbar from '@mui/material/Toolbar';
 import { tabsClasses } from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+import { Menu as MenuRoundedIcon } from 'lucide-react';
+import { LayoutDashboard as DashboardRoundedIcon } from 'lucide-react';
 import SideMenuMobile from './SideMenuMobile';
 import MenuButton from './MenuButton';
 import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
@@ -99,7 +99,7 @@ export function CustomIcon() {
         boxShadow: 'inset 0 2px 5px rgba(255, 255, 255, 0.3)',
       }}
     >
-      <DashboardRoundedIcon color="inherit" sx={{ fontSize: '1rem' }} />
+      <DashboardRoundedIcon color="inherit" size={16} />
     </Box>
   );
 }

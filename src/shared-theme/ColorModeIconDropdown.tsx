@@ -1,6 +1,6 @@
 import * as React from 'react';
-import DarkModeIcon from '@mui/icons-material/DarkModeRounded';
-import LightModeIcon from '@mui/icons-material/LightModeRounded';
+import { Moon as DarkModeIcon } from 'lucide-react';
+import { Sun as LightModeIcon } from 'lucide-react';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import type { IconButtonOwnProps } from '@mui/material/IconButton';

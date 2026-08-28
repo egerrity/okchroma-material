@@ -7,6 +7,8 @@ import {
   resolveTheme,
   generateNeutralScale,
   signalScalesFor,
+  resolveLinkTrio,
+  DEFAULT_LINK_HEX,
   SIGNAL_EMIT_NAME,
   type ResolvedTheme,
   type GeneratedScale,
@@ -21,6 +23,8 @@ export interface Seed {
   /** Theme-effective signal scale by ROLE — override-aware (a brand that collides
    *  with a signal ships a per-brand variant; this resolves to it). */
   signal: (role: SignalRole) => GeneratedScale
+  /** The SYSTEM link trio (a link is not a text-style CTA — never the text stops). */
+  link: ReturnType<typeof resolveLinkTrio>
 }
 
 export const DEFAULT_SEED = '#1D5AF0'
@@ -45,6 +49,7 @@ export function resolveSeed(hex: string): Seed {
     hex,
     theme,
     neutral,
+    link: resolveLinkTrio(DEFAULT_LINK_HEX, 'wcag'),
     signal: role => {
       const s = byRole.get(role)
       if (!s) throw new Error(`no signal scale for role ${role}`)

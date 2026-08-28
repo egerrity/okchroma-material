@@ -142,11 +142,19 @@ export function laneTokens(seed: Seed, lane: Lane): LaneTokens {
     signals,
     signalStop: (role, name) => stopFor(seed.signal(role), lane, name),
     signalStamp: role => stampValues(seed.signal(role), lane),
-    link: {
-      default: stopFor(brandScale, lane, NAME.lead),
-      hover: stopFor(brandScale, lane, NAME.inkMid),
-      pressed: stopFor(brandScale, lane, NAME.inkStrong),
-    },
+    // the SYSTEM link trio (agents.md: a link is not a text-style CTA)
+    link:
+      lane === 'dark'
+        ? {
+            default: stopHex(seed.link.linkDark),
+            hover: stopHex(seed.link.linkHoverDark),
+            pressed: stopHex(seed.link.linkPressedDark),
+          }
+        : {
+            default: stopHex(seed.link.link),
+            hover: stopHex(seed.link.linkHover),
+            pressed: stopHex(seed.link.linkPressed),
+          },
     planes,
     alpha: rung =>
       lane === 'dark'

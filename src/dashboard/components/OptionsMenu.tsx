@@ -7,8 +7,8 @@ import { paperClasses } from '@mui/material/Paper';
 import { listClasses } from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon, { listItemIconClasses } from '@mui/material/ListItemIcon';
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
-import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
+import { LogOut as LogoutRoundedIcon } from 'lucide-react';
+import { EllipsisVertical as MoreVertRoundedIcon } from 'lucide-react';
 import MenuButton from './MenuButton';
 
 const MenuItem = styled(MuiMenuItem)({
@@ -70,7 +70,7 @@ export default function OptionsMenu() {
         >
           <ListItemText>Logout</ListItemText>
           <ListItemIcon>
-            <LogoutRoundedIcon fontSize="small" />
+            <LogoutRoundedIcon size={16} />
           </ListItemIcon>
         </MenuItem>
       </Menu>

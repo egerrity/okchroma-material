@@ -21,6 +21,7 @@
     "@mui/x-tree-view": "^9.12.0",
     "@react-spring/web": "^10.1.2",
     "dayjs": "^1.11.23",
+    "lucide-react": "^1.35.0",
     "okchroma": "file:../okchroma",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"

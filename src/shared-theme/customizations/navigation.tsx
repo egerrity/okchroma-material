@@ -7,7 +7,7 @@ import { dividerClasses } from '@mui/material/Divider';
 import { menuItemClasses } from '@mui/material/MenuItem';
 import { selectClasses } from '@mui/material/Select';
 import { tabClasses } from '@mui/material/Tab';
-import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
+import { ChevronsUpDown as UnfoldMoreRoundedIcon } from 'lucide-react';
 import { gray, brand } from '../themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
@@ -60,7 +60,7 @@ export const navigationCustomizations: Components<Theme> = {
   MuiSelect: {
     defaultProps: {
       IconComponent: React.forwardRef<SVGSVGElement, SvgIconProps>((props, ref) => (
-        <UnfoldMoreRoundedIcon fontSize="small" {...props} ref={ref} />
+        <UnfoldMoreRoundedIcon size={16} {...props} ref={ref} />
       )),
     },
     styleOverrides: {

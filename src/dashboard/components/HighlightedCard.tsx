@@ -2,8 +2,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import InsightsRoundedIcon from '@mui/icons-material/InsightsRounded';
+import { ChevronRight as ChevronRightRoundedIcon } from 'lucide-react';
+import { TrendingUp as InsightsRoundedIcon } from 'lucide-react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 

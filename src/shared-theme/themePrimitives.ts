@@ -84,10 +84,11 @@ export const orange = signalRamp('warning');
 export const red = signalRamp('critical');
 
 export const getDesignTokens = (mode: PaletteMode) => {
+  // the engine shadow law (system/alpha/shadow-04): shadows are always dark
   customShadows[1] =
     mode === 'dark'
-      ? 'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px'
-      : 'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px';
+      ? '0 4px 8px rgba(0, 0, 0, 0.32), 0 0 1px rgba(0, 0, 0, 0.32)'
+      : '0 4px 8px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.04)';
 
   return {
     palette: {
@@ -262,7 +263,7 @@ export const colorSchemes = {
       grey: {
         ...gray,
       },
-      divider: alpha(gray[300], 0.4),
+      divider: L.neutral('wash-89'),
       background: {
         default: L.planes.low,
         paper: L.planes.mid,
@@ -273,11 +274,11 @@ export const colorSchemes = {
         warning: orange[400],
       },
       action: {
-        hover: alpha(gray[200], 0.2),
-        selected: `${alpha(gray[200], 0.3)}`,
+        hover: L.alpha(6),
+        selected: L.alpha(8),
+        focus: L.alpha(16),
       },
-      baseShadow:
-        'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px',
+      baseShadow: '0 4px 8px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.04)',
     },
   },
   dark: {
@@ -315,7 +316,7 @@ export const colorSchemes = {
       grey: {
         ...gray,
       },
-      divider: alpha(gray[700], 0.6),
+      divider: D.neutral('wash-89'),
       background: {
         default: D.planes.low,
         paper: D.planes.mid,
@@ -325,11 +326,11 @@ export const colorSchemes = {
         secondary: D.neutral(NAME.lead),
       },
       action: {
-        hover: alpha(gray[600], 0.2),
-        selected: alpha(gray[600], 0.3),
+        hover: D.alpha(6),
+        selected: D.alpha(8),
+        focus: D.alpha(16),
       },
-      baseShadow:
-        'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px',
+      baseShadow: '0 4px 8px rgba(0, 0, 0, 0.32), 0 0 1px rgba(0, 0, 0, 0.32)',
     },
   },
 };

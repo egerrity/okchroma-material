@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack';
-import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
+import { Bell as NotificationsRoundedIcon } from 'lucide-react';
 import CustomDatePicker from './CustomDatePicker';
 import NavbarBreadcrumbs from './NavbarBreadcrumbs';
 import MenuButton from './MenuButton';

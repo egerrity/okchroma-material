@@ -55,6 +55,9 @@ export interface LaneTokens {
   stamp: StampValues
   secondaryStamp: StampValues | null
   signals: Record<SignalRole, SignalValues>
+  /** full ladder + stamp access per signal family (template ramp projection) */
+  signalStop: (role: SignalRole, name: string) => string
+  signalStamp: (role: SignalRole) => StampValues
   /** link trio = the brand ramp's text-register states (stops 9/10/11) */
   link: { default: string; hover: string; pressed: string }
   /** Elevation planes, the owner-shipped per-mode exception (tokens/semantic.css):
@@ -137,6 +140,8 @@ export function laneTokens(seed: Seed, lane: Lane): LaneTokens {
     stamp: stampValues(brandScale, lane),
     secondaryStamp: secondaryScale ? stampValues(secondaryScale, lane) : null,
     signals,
+    signalStop: (role, name) => stopFor(seed.signal(role), lane, name),
+    signalStamp: role => stampValues(seed.signal(role), lane),
     link: {
       default: stopFor(brandScale, lane, NAME.lead),
       hover: stopFor(brandScale, lane, NAME.inkMid),

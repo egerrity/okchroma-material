@@ -54,7 +54,7 @@ export function muiThemeFromTokens(light: LaneTokens, dark: LaneTokens): Theme {
       dark: schemePalette(dark),
     },
     typography: {
-      fontFamily: "'Roboto', 'Helvetica Neue', Arial, sans-serif",
+      fontFamily: "'Noto Sans', 'Helvetica Neue', Arial, sans-serif",
     },
     components: {
       MuiButton: {

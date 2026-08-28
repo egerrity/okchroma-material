@@ -1,0 +1,351 @@
+/* Hand-built Material 3 components for the Own build.
+   Every color is a --md-sys-color-* role or an --okx-* extension — no literals.
+   Filled-action states use the REAL engine state colors (--okx-fill-*); soft
+   surfaces use the offset alpha law (--okx-alpha-*). Shadows are dark, always. */
+
+.md-scope {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--md-sys-color-on-surface);
+  background: var(--md-sys-color-surface);
+}
+
+/* ── App bar ─────────────────────────────────────────────────────────────── */
+.md-appbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 64px;
+  padding: 0 16px;
+  background: var(--md-sys-color-surface);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+.md-appbar__title {
+  font-size: 22px;
+  font-weight: 500;
+  flex: 1;
+}
+.md-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ── Nav rail ────────────────────────────────────────────────────────────── */
+.md-navrail {
+  width: 88px;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--md-sys-color-surface);
+  border-right: 1px solid var(--md-sys-color-outline-variant);
+}
+.md-navrail__item {
+  width: 80px;
+  padding: 6px 0 8px;
+  border: 0;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: var(--md-sys-color-on-surface-variant);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 16px;
+}
+.md-navrail__pill {
+  width: 56px;
+  height: 32px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+}
+.md-navrail__item:hover .md-navrail__pill {
+  background: var(--okx-alpha-8);
+}
+.md-navrail__item.is-active {
+  color: var(--md-sys-color-on-surface);
+}
+.md-navrail__item.is-active .md-navrail__pill {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+.md-navrail__item:focus-visible {
+  outline: 2px solid var(--okx-focus);
+  outline-offset: 2px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.md-card {
+  background: var(--md-sys-color-surface-container-low);
+  border-radius: 12px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  padding: 16px;
+}
+.md-card__label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.md-card__value {
+  font-size: 28px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.md-btn {
+  height: 40px;
+  padding: 0 24px;
+  border-radius: 20px;
+  border: 0;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.md-btn:focus-visible {
+  outline: 2px solid var(--okx-focus);
+  outline-offset: 2px;
+}
+.md-btn--filled {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+.md-btn--filled:hover {
+  background: var(--okx-fill-hover);
+}
+.md-btn--filled:active {
+  background: var(--okx-fill-pressed);
+}
+.md-btn--tonal {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+.md-btn--tonal:hover {
+  box-shadow: inset 0 0 0 999px var(--okx-alpha-6);
+}
+.md-btn--outlined {
+  background: none;
+  color: var(--okx-link);
+  border: 1px solid var(--okx-primary-outline);
+}
+.md-btn--outlined:hover {
+  background: var(--okx-alpha-6);
+}
+.md-btn--text {
+  background: none;
+  color: var(--okx-link);
+  padding: 0 12px;
+}
+.md-btn--text:hover {
+  background: var(--okx-alpha-6);
+}
+
+/* ── FAB (the Transfer cta) ──────────────────────────────────────────────── */
+.md-fab {
+  height: 56px;
+  padding: 0 20px;
+  border-radius: 16px;
+  border: 0;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+}
+.md-fab:hover {
+  background: var(--okx-fill-hover);
+}
+.md-fab:active {
+  background: var(--okx-fill-pressed);
+}
+.md-fab:focus-visible {
+  outline: 2px solid var(--okx-focus);
+  outline-offset: 2px;
+}
+
+/* ── Status chips ← the signal families ──────────────────────────────────── */
+.md-chip {
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.md-chip--positive {
+  background: var(--okx-positive-container);
+  color: var(--okx-on-positive-container);
+}
+.md-chip--warning {
+  background: var(--okx-warning-container);
+  color: var(--okx-on-warning-container);
+}
+.md-chip--critical {
+  background: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+}
+.md-chip__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ── List ────────────────────────────────────────────────────────────────── */
+.md-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.md-list__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 8px;
+  border-radius: 8px;
+}
+.md-list__item:hover {
+  background: var(--okx-alpha-6);
+}
+.md-list__item + .md-list__item {
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+.md-list__primary {
+  font-size: 14px;
+}
+.md-list__secondary {
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* ── Links ← the okx link trio ───────────────────────────────────────────── */
+.md-link {
+  color: var(--okx-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.md-link:hover {
+  color: var(--okx-link-hover);
+}
+.md-link:active {
+  color: var(--okx-link-pressed);
+}
+.md-link:focus-visible {
+  outline: 2px solid var(--okx-focus);
+  outline-offset: 2px;
+}
+
+/* ── Dialog ──────────────────────────────────────────────────────────────── */
+.md-scrim {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, var(--md-sys-color-scrim) 45%, transparent);
+  display: grid;
+  place-items: center;
+  z-index: 40;
+}
+.md-dialog {
+  width: min(420px, calc(100vw - 48px));
+  border-radius: 28px;
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+}
+.md-dialog__title {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+.md-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+/* ── Text field (outlined, simplified) ───────────────────────────────────── */
+.md-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.md-field input {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid var(--md-sys-color-outline);
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  font: inherit;
+  font-size: 14px;
+}
+.md-field input:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: -1px;
+}
+
+/* ── Switch ──────────────────────────────────────────────────────────────── */
+.md-switch {
+  position: relative;
+  width: 52px;
+  height: 32px;
+  border-radius: 16px;
+  border: 2px solid var(--md-sys-color-outline);
+  background: var(--md-sys-color-surface-container-highest);
+  cursor: pointer;
+  padding: 0;
+}
+.md-switch::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--md-sys-color-outline);
+  transition: left 120ms ease, background 120ms ease, width 120ms ease, height 120ms ease;
+}
+.md-switch[aria-checked='true'] {
+  background: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+}
+.md-switch[aria-checked='true']::after {
+  left: 26px;
+  width: 22px;
+  height: 22px;
+  background: var(--md-sys-color-on-primary);
+}
+.md-switch:focus-visible {
+  outline: 2px solid var(--okx-focus);
+  outline-offset: 2px;
+}

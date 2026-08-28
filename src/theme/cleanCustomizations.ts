@@ -63,17 +63,20 @@ export const cleanCustomizations: Components<Theme> = {
           // root styles and would otherwise keep the Sitemark gray buttons
           ...(ownerState.variant === 'contained' &&
             (ownerState.color === 'primary' || ownerState.color === undefined) && {
+              // unify contained: flat pill — no shadow, no border, no gradient
               '&&': {
                 backgroundColor: L.stamp.fill,
                 color: L.stamp.on,
                 backgroundImage: 'none',
-                '&:hover': { backgroundColor: L.stamp.fillHover },
-                '&:active': { backgroundColor: L.stamp.fillPressed },
+                border: 'none',
+                boxShadow: 'none',
+                '&:hover': { backgroundColor: L.stamp.fillHover, boxShadow: 'none' },
+                '&:active': { backgroundColor: L.stamp.fillPressed, boxShadow: 'none' },
                 ...theme.applyStyles('dark', {
                   backgroundColor: D.stamp.fill,
                   color: D.stamp.on,
-                  '&:hover': { backgroundColor: D.stamp.fillHover },
-                  '&:active': { backgroundColor: D.stamp.fillPressed },
+                  '&:hover': { backgroundColor: D.stamp.fillHover, boxShadow: 'none' },
+                  '&:active': { backgroundColor: D.stamp.fillPressed, boxShadow: 'none' },
                 }),
               },
             }),

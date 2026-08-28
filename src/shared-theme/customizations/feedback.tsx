@@ -1,6 +1,5 @@
 import { alpha } from '@mui/material/styles';
 import type { Theme, Components } from '@mui/material/styles';
-import { gray, orange } from '../themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
 export const feedbackCustomizations: Components<Theme> = {
@@ -8,15 +7,15 @@ export const feedbackCustomizations: Components<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         borderRadius: 10,
-        backgroundColor: orange[100],
+        backgroundColor: (theme.vars || theme).palette.warning[100],
         color: (theme.vars || theme).palette.text.primary,
-        border: `1px solid ${alpha(orange[300], 0.5)}`,
+        border: `1px solid color-mix(in srgb, ${(theme.vars || theme).palette.warning[300]} 50%, transparent)`,
         '& .MuiAlert-icon': {
-          color: orange[500],
+          color: (theme.vars || theme).palette.warning[500],
         },
         ...theme.applyStyles('dark', {
-          backgroundColor: `${alpha(orange[900], 0.5)}`,
-          border: `1px solid ${alpha(orange[800], 0.5)}`,
+          backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.warning[900]} 50%, transparent)`,
+          border: `1px solid color-mix(in srgb, ${(theme.vars || theme).palette.warning[800]} 50%, transparent)`,
         }),
       }),
     },
@@ -37,9 +36,9 @@ export const feedbackCustomizations: Components<Theme> = {
       root: ({ theme }) => ({
         height: 8,
         borderRadius: 8,
-        backgroundColor: gray[200],
+        backgroundColor: (theme.vars || theme).palette.grey[200],
         ...theme.applyStyles('dark', {
-          backgroundColor: gray[800],
+          backgroundColor: (theme.vars || theme).palette.grey[800],
         }),
       }),
     },

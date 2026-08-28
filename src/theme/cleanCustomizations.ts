@@ -121,6 +121,24 @@ export const cleanCustomizations: Components<Theme> = {
       }),
     },
   },
+  // alert soft law: family wash ground + family ink text; icon in the family fill
+  MuiAlert: {
+    styleOverrides: {
+      root: ({ ownerState, theme }: { ownerState: { severity?: string; variant?: string }; theme: Theme }) => {
+        if (ownerState.variant !== 'standard' && ownerState.variant !== undefined) return {}
+        const fam = ({ error: 'error', warning: 'warning', success: 'success', info: 'info' } as const)[
+          ownerState.severity ?? 'success'
+        ]
+        if (!fam) return {}
+        const p = v(theme)[fam]
+        return {
+          backgroundColor: p[100],
+          color: p[900],
+          '& .MuiAlert-icon': { color: p.main },
+        }
+      },
+    },
+  },
   // the SYSTEM link trio (a link is not a text-style CTA)
   MuiLink: {
     styleOverrides: {

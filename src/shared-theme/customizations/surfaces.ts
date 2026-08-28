@@ -1,6 +1,5 @@
 import { alpha } from '@mui/material/styles';
 import type { Theme, Components } from '@mui/material/styles';
-import { gray } from '../themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
 export const surfacesCustomizations: Components<Theme> = {
@@ -38,10 +37,10 @@ export const surfacesCustomizations: Components<Theme> = {
       root: ({ theme }) => ({
         border: 'none',
         borderRadius: 8,
-        '&:hover': { backgroundColor: gray[50] },
+        '&:hover': { backgroundColor: (theme.vars || theme).palette.grey[50] },
         '&:focus-visible': { backgroundColor: 'transparent' },
         ...theme.applyStyles('dark', {
-          '&:hover': { backgroundColor: gray[800] },
+          '&:hover': { backgroundColor: (theme.vars || theme).palette.grey[800] },
         }),
       }),
     },
@@ -63,12 +62,12 @@ export const surfacesCustomizations: Components<Theme> = {
           padding: 16,
           gap: 16,
           transition: 'all 100ms ease',
-          backgroundColor: gray[50],
+          backgroundColor: (theme.vars || theme).palette.grey[50],
           borderRadius: (theme.vars || theme).shape.borderRadius,
           border: `1px solid ${(theme.vars || theme).palette.divider}`,
           boxShadow: 'none',
           ...theme.applyStyles('dark', {
-            backgroundColor: gray[800],
+            backgroundColor: (theme.vars || theme).palette.grey[800],
           }),
           variants: [
             {
@@ -78,9 +77,9 @@ export const surfacesCustomizations: Components<Theme> = {
               style: {
                 border: `1px solid ${(theme.vars || theme).palette.divider}`,
                 boxShadow: 'none',
-                background: 'hsl(0, 0%, 100%)',
+                background: (theme.vars || theme).palette.okx.planeHigh,
                 ...theme.applyStyles('dark', {
-                  background: alpha(gray[900], 0.4),
+                  background: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[900]} 40%, transparent)`,
                 }),
               },
             },

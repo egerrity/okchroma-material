@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useTheme } from '@mui/material/styles';
+import type { Theme } from '@mui/material/styles';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
@@ -8,7 +10,6 @@ import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-import { gray } from '../../shared-theme/themePrimitives';
 
 import {
   IndiaFlag,
@@ -24,30 +25,30 @@ const data = [
   { label: 'Other', value: 5000 },
 ];
 
-const countries = [
+const makeCountries = (theme: Theme) => [
   {
     name: 'India',
     value: 50,
     flag: <IndiaFlag />,
-    color: gray[400],
+    color: (theme.vars || theme).palette.grey[400],
   },
   {
     name: 'USA',
     value: 35,
     flag: <UsaFlag />,
-    color: gray[500],
+    color: (theme.vars || theme).palette.grey[500],
   },
   {
     name: 'Brazil',
     value: 10,
     flag: <BrazilFlag />,
-    color: gray[600],
+    color: (theme.vars || theme).palette.grey[600],
   },
   {
     name: 'Other',
     value: 5,
     flag: <GlobeFlag />,
-    color: gray[700],
+    color: (theme.vars || theme).palette.grey[700],
   },
 ];
 
@@ -115,14 +116,17 @@ function PieCenterLabel({ primaryText, secondaryText }: PieCenterLabelProps) {
   );
 }
 
-const colors = [
-  gray[400],
-  gray[500],
-  gray[600],
-  gray[700],
+const makeColors = (theme: Theme) => [
+  (theme.vars || theme).palette.grey[400],
+  (theme.vars || theme).palette.grey[500],
+  (theme.vars || theme).palette.grey[600],
+  (theme.vars || theme).palette.grey[700],
 ];
 
 export default function ChartUserByCountry() {
+  const theme = useTheme();
+  const countries = makeCountries(theme);
+  const colors = makeColors(theme);
   return (
     <Card
       variant="outlined"

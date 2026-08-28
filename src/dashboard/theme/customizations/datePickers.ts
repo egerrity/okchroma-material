@@ -3,7 +3,6 @@ import type { Theme } from '@mui/material/styles';
 import type { PickerComponents } from '@mui/x-date-pickers/themeAugmentation';
 import { menuItemClasses } from '@mui/material/MenuItem';
 import { pickerDayClasses, yearCalendarClasses } from '@mui/x-date-pickers';
-import { gray, brand } from '../../../shared-theme/themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
 export const datePickersCustomizations: PickerComponents<Theme> = {
@@ -14,17 +13,17 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
         borderRadius: theme.shape.borderRadius,
         border: `1px solid ${(theme.vars || theme).palette.divider}`,
         backgroundImage: 'none',
-        background: 'hsl(0, 0%, 100%)',
+        background: (theme.vars || theme).palette.okx.planeHigh,
         boxShadow:
-          'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px',
+          (theme.vars || theme).palette.okx.shadowPop,
         [`& .${menuItemClasses.root}`]: {
           borderRadius: 6,
           margin: '0 6px',
         },
         ...theme.applyStyles('dark', {
-          background: gray[900],
+          background: (theme.vars || theme).palette.grey[900],
           boxShadow:
-            'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px',
+            (theme.vars || theme).palette.okx.shadowPop,
         }),
       }),
     },

@@ -70,7 +70,7 @@ export default function OptionsMenu() {
         >
           <ListItemText>Logout</ListItemText>
           <ListItemIcon>
-            <LogoutRoundedIcon size={16} />
+            <LogoutRoundedIcon style={{ fontSize: 16 }} />
           </ListItemIcon>
         </MenuItem>
       </Menu>

@@ -271,9 +271,10 @@ export const colorSchemes = {
       text: {
         primary: gray[800],
         secondary: gray[600],
-        warning: orange[400],
+        warning: L.signalStop('warning', NAME.lead),
       },
       action: {
+        active: L.neutral(NAME.mark),
         hover: L.alpha(6),
         selected: L.alpha(8),
         focus: L.alpha(16),
@@ -324,8 +325,10 @@ export const colorSchemes = {
       text: {
         primary: D.neutral(NAME.inkStrong),
         secondary: D.neutral(NAME.lead),
+        warning: D.signalStop('warning', NAME.lead),
       },
       action: {
+        active: D.neutral(NAME.mark),
         hover: D.alpha(6),
         selected: D.alpha(8),
         focus: D.alpha(16),

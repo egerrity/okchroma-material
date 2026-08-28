@@ -99,7 +99,7 @@ export function CustomIcon() {
         boxShadow: 'inset 0 2px 5px rgba(255, 255, 255, 0.3)',
       }}
     >
-      <DashboardRoundedIcon color="inherit" size={16} />
+      <DashboardRoundedIcon color="inherit" style={{ fontSize: 16 }} />
     </Box>
   );
 }

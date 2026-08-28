@@ -12,6 +12,10 @@ import {
   stopTokenName,
   SCALE_STOP_COUNT,
   OFFSET_ALPHAS,
+  ctaNeedsBorder,
+  ctaBorderRung,
+  pageStopFor,
+  CSS_FAMILY,
   type GeneratedScale,
 } from 'okchroma'
 import { type Seed, type SignalRole } from '../seed'
@@ -35,6 +39,8 @@ export interface StampValues {
   fillHover: string
   fillPressed: string
   on: string
+  /** the gated outline stroke — ALWAYS rendered, usually transparent */
+  edge: string
 }
 
 export interface SignalValues {
@@ -58,7 +64,7 @@ export interface LaneTokens {
   /** full ladder + stamp access per signal family (template ramp projection) */
   signalStop: (role: SignalRole, name: string) => string
   signalStamp: (role: SignalRole) => StampValues
-  /** link trio = the brand ramp's text-register states (stops 9/10/11) */
+  /** the SYSTEM link trio (resolveLinkTrio — a link is not a text-style CTA) */
   link: { default: string; hover: string; pressed: string }
   /** Elevation planes, the owner-shipped per-mode exception (tokens/semantic.css):
    *  the same paper stops serve in reversed order per mode; high/dim take the pole. */
@@ -82,14 +88,31 @@ const NAME = {
 }
 export { NAME }
 
-function stampValues(scale: GeneratedScale, lane: Lane): StampValues {
+function stampValues(
+  scale: GeneratedScale,
+  lane: Lane,
+  neutral?: GeneratedScale,
+  cssPrefix: string = CSS_FAMILY.brandPrimary,
+): StampValues {
   const isDark = lane === 'dark'
   const white = isDark ? scale.onFillTextIsWhiteDark : scale.onFillTextIsWhite
+  // stamp-edge: the engine's own gate against the neutral page — resolves to an
+  // offset alpha rung only when the fill sits close to the page, else transparent.
+  // Consumers render the border ALWAYS so layout never shifts.
+  let edge = 'transparent'
+  if (neutral) {
+    const page = pageStopFor(neutral, lane)
+    if (ctaNeedsBorder(scale, lane, page)) {
+      const a = OFFSET_ALPHAS[ctaBorderRung(cssPrefix)]
+      edge = isDark ? `rgba(255, 255, 255, ${a})` : `rgba(0, 0, 0, ${a})`
+    }
+  }
   return {
     fill: stopHex(isDark ? scale.ctaDark : scale.cta),
     fillHover: stopHex(isDark ? scale.ctaHoverDark : scale.ctaHover),
     fillPressed: stopHex(isDark ? scale.ctaPressedDark : scale.ctaPressed),
     on: white ? '#ffffff' : '#000000',
+    edge,
   }
 }
 
@@ -137,11 +160,11 @@ export function laneTokens(seed: Seed, lane: Lane): LaneTokens {
     brand: name => stopFor(brandScale, lane, name),
     neutral: name => stopFor(n, lane, name),
     secondary: secondaryScale ? name => stopFor(secondaryScale, lane, name) : null,
-    stamp: stampValues(brandScale, lane),
-    secondaryStamp: secondaryScale ? stampValues(secondaryScale, lane) : null,
+    stamp: stampValues(brandScale, lane, n, CSS_FAMILY.brandPrimary),
+    secondaryStamp: secondaryScale ? stampValues(secondaryScale, lane, n, CSS_FAMILY.brandSecondary) : null,
     signals,
     signalStop: (role, name) => stopFor(seed.signal(role), lane, name),
-    signalStamp: role => stampValues(seed.signal(role), lane),
+    signalStamp: role => stampValues(seed.signal(role), lane, n),
     // the SYSTEM link trio (agents.md: a link is not a text-style CTA)
     link:
       lane === 'dark'

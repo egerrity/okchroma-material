@@ -61,7 +61,7 @@ export default function SelectContent() {
       <MenuItem value="">
         <ListItemAvatar>
           <Avatar alt="Sitemark web">
-            <DevicesRoundedIcon size={16} />
+            <DevicesRoundedIcon style={{ fontSize: 16 }} />
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Sitemark-web" secondary="Web app" />
@@ -69,7 +69,7 @@ export default function SelectContent() {
       <MenuItem value={10}>
         <ListItemAvatar>
           <Avatar alt="Sitemark App">
-            <SmartphoneRoundedIcon size={16} />
+            <SmartphoneRoundedIcon style={{ fontSize: 16 }} />
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Sitemark-app" secondary="Mobile application" />
@@ -77,7 +77,7 @@ export default function SelectContent() {
       <MenuItem value={20}>
         <ListItemAvatar>
           <Avatar alt="Sitemark Store">
-            <DevicesRoundedIcon size={16} />
+            <DevicesRoundedIcon style={{ fontSize: 16 }} />
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Sitemark-Store" secondary="Web app" />
@@ -86,7 +86,7 @@ export default function SelectContent() {
       <MenuItem value={30}>
         <ListItemAvatar>
           <Avatar alt="Sitemark Store">
-            <ConstructionRoundedIcon size={16} />
+            <ConstructionRoundedIcon style={{ fontSize: 16 }} />
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Sitemark-Admin" secondary="Web app" />

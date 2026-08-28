@@ -316,8 +316,8 @@ export const inputsCustomizations: Components<Theme> = {
       icon: (
         <CheckBoxOutlineBlankRoundedIcon style={{ opacity: 0 }} />
       ),
-      checkedIcon: <CheckRoundedIcon size={14} />,
-      indeterminateIcon: <RemoveRoundedIcon size={14} />,
+      checkedIcon: <CheckRoundedIcon style={{ fontSize: 14 }} />,
+      indeterminateIcon: <RemoveRoundedIcon style={{ fontSize: 14 }} />,
     },
     styleOverrides: {
       root: ({ theme }) => ({

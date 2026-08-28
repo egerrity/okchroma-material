@@ -8,7 +8,7 @@ export default function CardAlert() {
   return (
     <Card variant="outlined" sx={{ m: 1.5, flexShrink: 0 }}>
       <CardContent>
-        <AutoAwesomeRoundedIcon size={16} />
+        <AutoAwesomeRoundedIcon style={{ fontSize: 16 }} />
         <Typography gutterBottom sx={{ fontWeight: 600 }}>
           Plan about to expire
         </Typography>

@@ -18,7 +18,7 @@ export default function NavbarBreadcrumbs() {
   return (
     <StyledBreadcrumbs
       aria-label="breadcrumb"
-      separator={<NavigateNextRoundedIcon size={16} />}
+      separator={<NavigateNextRoundedIcon style={{ fontSize: 16 }} />}
     >
       <Typography variant="body1">Dashboard</Typography>
       <Typography variant="body1" sx={{ color: 'text.primary', fontWeight: 600 }}>

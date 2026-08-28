@@ -33,6 +33,18 @@ const FLOAT = {
 const prev = <T,>(v: T | undefined): T[] => (v === undefined ? [] : [v]);
 
 export const cleanCustomizations: Components<Theme> = {
+  // lucide icons size via font-size like MUI's did (their width/height attrs
+  // would otherwise render every icon at 24px); inline style wins where a
+  // component sets an explicit size
+  MuiCssBaseline: {
+    styleOverrides: {
+      'svg.lucide': {
+        width: '1em',
+        height: '1em',
+        fontSize: '1.25rem',
+      },
+    },
+  },
   // focus ring law: 2px mark-74, offset 1
   MuiButtonBase: {
     ...inputsCustomizations.MuiButtonBase,
@@ -68,18 +80,20 @@ export const cleanCustomizations: Components<Theme> = {
           // root styles and would otherwise keep the Sitemark gray buttons
           ...(ownerState.variant === 'contained' &&
             (ownerState.color === 'primary' || ownerState.color === undefined) && {
-              // unify contained: flat pill — no shadow, no border, no gradient
+              // unify contained: flat pill — no shadow, no gradient. stamp-edge is
+              // ALWAYS rendered (usually transparent; the engine resolves it)
               '&&': {
                 backgroundColor: L.stamp.fill,
                 color: L.stamp.on,
                 backgroundImage: 'none',
-                border: 'none',
+                border: `1.5px solid ${L.stamp.edge}`,
                 boxShadow: 'none',
                 '&:hover': { backgroundColor: L.stamp.fillHover, boxShadow: 'none' },
                 '&:active': { backgroundColor: L.stamp.fillPressed, boxShadow: 'none' },
                 ...theme.applyStyles('dark', {
                   backgroundColor: D.stamp.fill,
                   color: D.stamp.on,
+                  border: `1.5px solid ${D.stamp.edge}`,
                   '&:hover': { backgroundColor: D.stamp.fillHover, boxShadow: 'none' },
                   '&:active': { backgroundColor: D.stamp.fillPressed, boxShadow: 'none' },
                 }),

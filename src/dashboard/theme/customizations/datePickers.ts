@@ -20,11 +20,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           borderRadius: 6,
           margin: '0 6px',
         },
-        ...theme.applyStyles('dark', {
-          background: (theme.vars || theme).palette.grey[900],
-          boxShadow:
-            (theme.vars || theme).palette.okx.shadowPop,
-        }),
+
       }),
     },
   },
@@ -34,9 +30,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
       button: ({ theme }) => ({
         backgroundColor: 'transparent',
         color: (theme.vars || theme).palette.grey[500],
-        ...theme.applyStyles('dark', {
-          color: (theme.vars || theme).palette.grey[400],
-        }),
+
       }),
     },
   },
@@ -69,19 +63,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           backgroundColor: 'transparent',
           [`&.${yearCalendarClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
         },
-        ...theme.applyStyles('dark', {
-          color: (theme.vars || theme).palette.grey[300],
-          '&:hover': {
-            backgroundColor: (theme.vars || theme).palette.action.hover,
-          },
 
-          '&:focus': {
-            outline: `2px solid ${(theme.vars || theme).palette.okx.focus}`,
-            outlineOffset: '2px',
-            backgroundColor: 'transparent',
-            [`&.${yearCalendarClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
-          },
-        }),
       }),
     },
   },
@@ -107,19 +89,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           backgroundColor: 'transparent',
           [`&.${yearCalendarClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
         },
-        ...theme.applyStyles('dark', {
-          color: (theme.vars || theme).palette.grey[300],
-          '&:hover': {
-            backgroundColor: (theme.vars || theme).palette.action.hover,
-          },
 
-          '&:focus': {
-            outline: `2px solid ${(theme.vars || theme).palette.okx.focus}`,
-            outlineOffset: '2px',
-            backgroundColor: 'transparent',
-            [`&.${yearCalendarClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
-          },
-        }),
       }),
     },
   },
@@ -144,19 +114,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           backgroundColor: 'transparent',
           [`&.${pickerDayClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
         },
-        ...theme.applyStyles('dark', {
-          color: (theme.vars || theme).palette.grey[300],
-          '&:hover': {
-            backgroundColor: (theme.vars || theme).palette.action.hover,
-          },
 
-          '&:focus': {
-            outline: `2px solid ${(theme.vars || theme).palette.okx.focus}`,
-            outlineOffset: '2px',
-            backgroundColor: 'transparent',
-            [`&.${pickerDayClasses.selected}`]: { backgroundColor: (theme.vars || theme).palette.primary.main, color: (theme.vars || theme).palette.primary.contrastText },
-          },
-        }),
       }),
     },
   },

@@ -48,11 +48,7 @@ export const navigationCustomizations: Components<Theme> = {
             backgroundColor: alpha(theme.palette.action.selected, 0.3),
           },
         },
-        ...theme.applyStyles('dark', {
-          background: (theme.vars || theme).palette.grey[900],
-          boxShadow:
-            (theme.vars || theme).palette.okx.shadowPop,
-        }),
+
       }),
     },
   },
@@ -82,35 +78,12 @@ export const navigationCustomizations: Components<Theme> = {
           display: 'none',
         },
 
-        ...theme.applyStyles('dark', {
-          borderRadius: (theme.vars || theme).shape.borderRadius,
-          borderColor: (theme.vars || theme).palette.grey[700],
-          backgroundColor: (theme.vars || theme).palette.background.paper,
-          boxShadow: `inset 0 1px 0 1px color-mix(in srgb, ${(theme.vars || theme).palette.grey[700]} 15%, transparent), inset 0 -1px 0 1px rgba(0, 0, 0, 0.7)`,
-          '&:hover': {
-            borderColor: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[700]} 70%, transparent)`,
-            backgroundColor: (theme.vars || theme).palette.background.paper,
-            boxShadow: 'none',
-          },
-          [`&.${selectClasses.focused}`]: {
-            outlineOffset: 0,
-            borderColor: (theme.vars || theme).palette.grey[900],
-          },
-          '&:before, &:after': {
-            display: 'none',
-          },
-        }),
+
       }),
       select: ({ theme }) => ({
         display: 'flex',
         alignItems: 'center',
-        ...theme.applyStyles('dark', {
-          display: 'flex',
-          alignItems: 'center',
-          '&:focus-visible': {
-            backgroundColor: (theme.vars || theme).palette.grey[900],
-          },
-        }),
+
       }),
     },
   },
@@ -161,12 +134,7 @@ export const navigationCustomizations: Components<Theme> = {
           color: 'white',
           backgroundColor: (theme.vars || theme).palette.grey[900],
         },
-        ...theme.applyStyles('dark', {
-          '&.Mui-selected': {
-            color: 'black',
-            backgroundColor: (theme.vars || theme).palette.grey[50],
-          },
-        }),
+
       }),
     },
   },
@@ -175,9 +143,7 @@ export const navigationCustomizations: Components<Theme> = {
       root: { minHeight: 'fit-content' },
       indicator: ({ theme }) => ({
         backgroundColor: (theme.vars || theme).palette.grey[800],
-        ...theme.applyStyles('dark', {
-          backgroundColor: (theme.vars || theme).palette.grey[200],
-        }),
+
       }),
     },
   },
@@ -201,16 +167,7 @@ export const navigationCustomizations: Components<Theme> = {
         [`&.${tabClasses.selected}`]: {
           color: (theme.vars || theme).palette.grey[900],
         },
-        ...theme.applyStyles('dark', {
-          ':hover': {
-            color: (theme.vars || theme).palette.text.primary,
-            backgroundColor: (theme.vars || theme).palette.grey[800],
-            borderColor: (theme.vars || theme).palette.grey[700],
-          },
-          [`&.${tabClasses.selected}`]: {
-            color: '#fff',
-          },
-        }),
+
       }),
     },
   },
@@ -243,17 +200,7 @@ export const navigationCustomizations: Components<Theme> = {
           border: 'none',
           color: (theme.vars || theme).palette.success.main,
         },
-        ...theme.applyStyles('dark', {
-          border: `1px solid ${(theme.vars || theme).palette.grey[700]}`,
-          '&.Mui-active': {
-            border: 'none',
-            color: (theme.vars || theme).palette.primary.light,
-          },
-          '&.Mui-completed': {
-            border: 'none',
-            color: (theme.vars || theme).palette.success.light,
-          },
-        }),
+
         variants: [
           {
             props: { completed: true },
@@ -271,7 +218,7 @@ export const navigationCustomizations: Components<Theme> = {
       label: ({ theme }) => ({
         '&.Mui-completed': {
           opacity: 0.6,
-          ...theme.applyStyles('dark', { opacity: 0.5 }),
+
         },
       }),
     },

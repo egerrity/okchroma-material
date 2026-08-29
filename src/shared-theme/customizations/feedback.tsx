@@ -13,10 +13,7 @@ export const feedbackCustomizations: Components<Theme> = {
         '& .MuiAlert-icon': {
           color: (theme.vars || theme).palette.warning[500],
         },
-        ...theme.applyStyles('dark', {
-          backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.warning[900]} 50%, transparent)`,
-          border: `1px solid color-mix(in srgb, ${(theme.vars || theme).palette.warning[800]} 50%, transparent)`,
-        }),
+
       }),
     },
   },
@@ -37,9 +34,7 @@ export const feedbackCustomizations: Components<Theme> = {
         height: 8,
         borderRadius: 8,
         backgroundColor: (theme.vars || theme).palette.grey[200],
-        ...theme.applyStyles('dark', {
-          backgroundColor: (theme.vars || theme).palette.grey[800],
-        }),
+
       }),
     },
   },

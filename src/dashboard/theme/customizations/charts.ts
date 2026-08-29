@@ -15,16 +15,7 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
           fill: (theme.vars || theme).palette.grey[500],
           fontWeight: 500,
         },
-        ...theme.applyStyles('dark', {
-          [`& .${axisClasses.line}`]: {
-            stroke: (theme.vars || theme).palette.grey[700],
-          },
-          [`& .${axisClasses.tick}`]: { stroke: (theme.vars || theme).palette.grey[700] },
-          [`& .${axisClasses.tickLabel}`]: {
-            fill: (theme.vars || theme).palette.grey[300],
-            fontWeight: 500,
-          },
-        }),
+
       }),
     },
   },
@@ -39,9 +30,7 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
         border: `1px solid ${(theme.vars || theme).palette.divider}`,
         borderRadius: theme.shape.borderRadius,
         background: (theme.vars || theme).palette.okx.planeHigh,
-        ...theme.applyStyles('dark', {
-          background: (theme.vars || theme).palette.grey[900],
-        }),
+
       }),
     },
   },
@@ -62,13 +51,7 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
           strokeDasharray: '4 2',
           strokeWidth: 0.8,
         },
-        ...theme.applyStyles('dark', {
-          [`& .${chartsGridClasses.line}`]: {
-            stroke: (theme.vars || theme).palette.grey[700],
-            strokeDasharray: '4 2',
-            strokeWidth: 0.8,
-          },
-        }),
+
       }),
     },
   },

@@ -55,16 +55,16 @@ export default function StatCard({
   const trendColors = {
     up:
       theme.palette.mode === 'light'
-        ? theme.palette.success[600]
-        : theme.palette.success[700],
+        ? (theme.vars || theme).palette.success[600]
+        : (theme.vars || theme).palette.success[700],
     down:
       theme.palette.mode === 'light'
-        ? theme.palette.error[600]
-        : theme.palette.error[700],
+        ? (theme.vars || theme).palette.error[600]
+        : (theme.vars || theme).palette.error[700],
     neutral:
       theme.palette.mode === 'light'
-        ? theme.palette.grey[400]
-        : theme.palette.grey[700],
+        ? (theme.vars || theme).palette.grey[400]
+        : (theme.vars || theme).palette.grey[700],
   };
 
   const labelColors = {

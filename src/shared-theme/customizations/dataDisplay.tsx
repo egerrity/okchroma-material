@@ -111,16 +111,7 @@ export const dataDisplayCustomizations: Components<Theme> = {
               [`& .${chipClasses.icon}`]: {
                 color: (theme.vars || theme).palette.grey[500],
               },
-              ...theme.applyStyles('dark', {
-                borderColor: (theme.vars || theme).palette.grey[700],
-                backgroundColor: (theme.vars || theme).palette.grey[800],
-                [`& .${chipClasses.label}`]: {
-                  color: (theme.vars || theme).palette.grey[300],
-                },
-                [`& .${chipClasses.icon}`]: {
-                  color: (theme.vars || theme).palette.grey[300],
-                },
-              }),
+
             },
           },
           {
@@ -136,16 +127,7 @@ export const dataDisplayCustomizations: Components<Theme> = {
               [`& .${chipClasses.icon}`]: {
                 color: (theme.vars || theme).palette.success[500],
               },
-              ...theme.applyStyles('dark', {
-                borderColor: (theme.vars || theme).palette.success[800],
-                backgroundColor: (theme.vars || theme).palette.success[900],
-                [`& .${chipClasses.label}`]: {
-                  color: (theme.vars || theme).palette.success[300],
-                },
-                [`& .${chipClasses.icon}`]: {
-                  color: (theme.vars || theme).palette.success[300],
-                },
-              }),
+
             },
           },
           {
@@ -161,16 +143,7 @@ export const dataDisplayCustomizations: Components<Theme> = {
               [`& .${chipClasses.icon}`]: {
                 color: (theme.vars || theme).palette.error[500],
               },
-              ...theme.applyStyles('dark', {
-                borderColor: (theme.vars || theme).palette.error[800],
-                backgroundColor: (theme.vars || theme).palette.error[900],
-                [`& .${chipClasses.label}`]: {
-                  color: (theme.vars || theme).palette.error[200],
-                },
-                [`& .${chipClasses.icon}`]: {
-                  color: (theme.vars || theme).palette.error[300],
-                },
-              }),
+
             },
           },
           {

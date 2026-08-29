@@ -40,22 +40,7 @@ export const treeViewCustomizations: TreeViewComponents<Theme> = {
             backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[300]} 60%, transparent)`,
           },
         },
-        ...theme.applyStyles('dark', {
-          '&:hover': {
-            backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[500]} 20%, transparent)`,
-          },
-          '&:focus-visible': {
-            '&:hover': {
-              backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[500]} 20%, transparent)`,
-            },
-          },
-          '&.selected': {
-            backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[500]} 40%, transparent)`,
-            '&:hover': {
-              backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[500]} 60%, transparent)`,
-            },
-          },
-        }),
+
       }),
     },
   },

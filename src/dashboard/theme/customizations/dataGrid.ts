@@ -87,15 +87,7 @@ export const dataGridCustomizations: DataGridComponents<Theme> = {
           '&:active': {
             backgroundColor: (theme.vars || theme).palette.grey[200],
           },
-          ...theme.applyStyles('dark', {
-            color: (theme.vars || theme).palette.grey[50],
-            '&:hover': {
-              backgroundColor: (theme.vars || theme).palette.grey[800],
-            },
-            '&:active': {
-              backgroundColor: (theme.vars || theme).palette.grey[900],
-            },
-          }),
+
         },
       }),
       menuIconButton: ({ theme }) => ({
@@ -107,15 +99,7 @@ export const dataGridCustomizations: DataGridComponents<Theme> = {
         '&:active': {
           backgroundColor: (theme.vars || theme).palette.grey[200],
         },
-        ...theme.applyStyles('dark', {
-          color: (theme.vars || theme).palette.grey[50],
-          '&:hover': {
-            backgroundColor: (theme.vars || theme).palette.grey[800],
-          },
-          '&:active': {
-            backgroundColor: (theme.vars || theme).palette.grey[900],
-          },
-        }),
+
       }),
       filterForm: ({ theme }) => ({
         gap: theme.spacing(1),

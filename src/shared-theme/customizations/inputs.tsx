@@ -69,21 +69,7 @@ export const inputsCustomizations: Components<Theme> = {
               '&:active': {
                 backgroundColor: (theme.vars || theme).palette.grey[800],
               },
-              ...theme.applyStyles('dark', {
-                color: 'black',
-                backgroundColor: (theme.vars || theme).palette.grey[50],
-                backgroundImage: `linear-gradient(to bottom, ${(theme.vars || theme).palette.grey[100]}, ${(theme.vars || theme).palette.grey[50]})`,
-                boxShadow: 'inset 0 -1px 0 ${(theme.vars || theme).palette.grey[300]}',
-                border: `1px solid ${(theme.vars || theme).palette.grey[50]}`,
-                '&:hover': {
-                  backgroundImage: 'none',
-                  backgroundColor: (theme.vars || theme).palette.grey[300],
-                  boxShadow: 'none',
-                },
-                '&:active': {
-                  backgroundColor: (theme.vars || theme).palette.grey[400],
-                },
-              }),
+
             },
           },
           {
@@ -123,18 +109,7 @@ export const inputsCustomizations: Components<Theme> = {
               '&:active': {
                 backgroundColor: (theme.vars || theme).palette.grey[200],
               },
-              ...theme.applyStyles('dark', {
-                backgroundColor: (theme.vars || theme).palette.grey[800],
-                borderColor: (theme.vars || theme).palette.grey[700],
 
-                '&:hover': {
-                  backgroundColor: (theme.vars || theme).palette.grey[900],
-                  borderColor: (theme.vars || theme).palette.grey[600],
-                },
-                '&:active': {
-                  backgroundColor: (theme.vars || theme).palette.grey[900],
-                },
-              }),
             },
           },
           {
@@ -154,19 +129,7 @@ export const inputsCustomizations: Components<Theme> = {
               '&:active': {
                 backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.primary[200]} 70%, transparent)`,
               },
-              ...theme.applyStyles('dark', {
-                color: (theme.vars || theme).palette.primary[50],
-                border: '1px solid',
-                borderColor: (theme.vars || theme).palette.primary[900],
-                backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.primary[900]} 30%, transparent)`,
-                '&:hover': {
-                  borderColor: (theme.vars || theme).palette.primary[700],
-                  backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.primary[900]} 60%, transparent)`,
-                },
-                '&:active': {
-                  backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.primary[900]} 50%, transparent)`,
-                },
-              }),
+
             },
           },
           {
@@ -181,15 +144,7 @@ export const inputsCustomizations: Components<Theme> = {
               '&:active': {
                 backgroundColor: (theme.vars || theme).palette.grey[200],
               },
-              ...theme.applyStyles('dark', {
-                color: (theme.vars || theme).palette.grey[50],
-                '&:hover': {
-                  backgroundColor: (theme.vars || theme).palette.grey[700],
-                },
-                '&:active': {
-                  backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[700]} 70%, transparent)`,
-                },
-              }),
+
             },
           },
           {
@@ -205,15 +160,7 @@ export const inputsCustomizations: Components<Theme> = {
               '&:active': {
                 backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.primary[200]} 70%, transparent)`,
               },
-              ...theme.applyStyles('dark', {
-                color: (theme.vars || theme).palette.primary[100],
-                '&:hover': {
-                  backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.primary[900]} 50%, transparent)`,
-                },
-                '&:active': {
-                  backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.primary[900]} 30%, transparent)`,
-                },
-              }),
+
             },
           },
         ],
@@ -239,17 +186,7 @@ export const inputsCustomizations: Components<Theme> = {
         '&:active': {
           backgroundColor: (theme.vars || theme).palette.grey[200],
         },
-        ...theme.applyStyles('dark', {
-          backgroundColor: (theme.vars || theme).palette.grey[800],
-          borderColor: (theme.vars || theme).palette.grey[700],
-          '&:hover': {
-            backgroundColor: (theme.vars || theme).palette.grey[900],
-            borderColor: (theme.vars || theme).palette.grey[600],
-          },
-          '&:active': {
-            backgroundColor: (theme.vars || theme).palette.grey[900],
-          },
-        }),
+
         variants: [
           {
             props: {
@@ -283,12 +220,7 @@ export const inputsCustomizations: Components<Theme> = {
         [`& .${toggleButtonGroupClasses.selected}`]: {
           color: (theme.vars || theme).palette.primary[500],
         },
-        ...theme.applyStyles('dark', {
-          [`& .${toggleButtonGroupClasses.selected}`]: {
-            color: '#fff',
-          },
-          boxShadow: `0 4px 16px color-mix(in srgb, ${(theme.vars || theme).palette.primary[700]} 50%, transparent)`,
-        }),
+
       }),
     },
   },
@@ -299,13 +231,7 @@ export const inputsCustomizations: Components<Theme> = {
         textTransform: 'none',
         borderRadius: '10px',
         fontWeight: 500,
-        ...theme.applyStyles('dark', {
-          color: (theme.vars || theme).palette.grey[400],
-          boxShadow: '0 4px 16px rgba(0, 0, 0, 0.5)',
-          [`&.${toggleButtonClasses.selected}`]: {
-            color: (theme.vars || theme).palette.primary[300],
-          },
-        }),
+
       }),
     },
   },
@@ -346,19 +272,7 @@ export const inputsCustomizations: Components<Theme> = {
             backgroundColor: (theme.vars || theme).palette.primary[600],
           },
         },
-        ...theme.applyStyles('dark', {
-          borderColor: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[700]} 80%, transparent)`,
-          boxShadow: '0 0 0 1.5px rgba(0, 0, 0, 1) inset',
-          backgroundColor: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[900]} 80%, transparent)`,
-          '&:hover': {
-            borderColor: (theme.vars || theme).palette.primary[300],
-          },
-          '&.Mui-focusVisible': {
-            borderColor: (theme.vars || theme).palette.primary[400],
-            outline: `3px solid color-mix(in srgb, ${(theme.vars || theme).palette.primary[500]} 50%, transparent)`,
-            outlineOffset: '2px',
-          },
-        }),
+
       }),
     },
   },
@@ -394,11 +308,7 @@ export const inputsCustomizations: Components<Theme> = {
           outline: `3px solid color-mix(in srgb, ${(theme.vars || theme).palette.primary[500]} 50%, transparent)`,
           borderColor: (theme.vars || theme).palette.primary[400],
         },
-        ...theme.applyStyles('dark', {
-          '&:hover': {
-            borderColor: (theme.vars || theme).palette.grey[500],
-          },
-        }),
+
         variants: [
           {
             props: {
@@ -427,9 +337,7 @@ export const inputsCustomizations: Components<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         color: (theme.vars || theme).palette.grey[500],
-        ...theme.applyStyles('dark', {
-          color: (theme.vars || theme).palette.grey[400],
-        }),
+
       }),
     },
   },

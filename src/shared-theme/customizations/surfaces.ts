@@ -39,9 +39,7 @@ export const surfacesCustomizations: Components<Theme> = {
         borderRadius: 8,
         '&:hover': { backgroundColor: (theme.vars || theme).palette.grey[50] },
         '&:focus-visible': { backgroundColor: 'transparent' },
-        ...theme.applyStyles('dark', {
-          '&:hover': { backgroundColor: (theme.vars || theme).palette.grey[800] },
-        }),
+
       }),
     },
   },
@@ -66,9 +64,7 @@ export const surfacesCustomizations: Components<Theme> = {
           borderRadius: (theme.vars || theme).shape.borderRadius,
           border: `1px solid ${(theme.vars || theme).palette.divider}`,
           boxShadow: 'none',
-          ...theme.applyStyles('dark', {
-            backgroundColor: (theme.vars || theme).palette.grey[800],
-          }),
+
           variants: [
             {
               props: {
@@ -78,9 +74,7 @@ export const surfacesCustomizations: Components<Theme> = {
                 border: `1px solid ${(theme.vars || theme).palette.divider}`,
                 boxShadow: 'none',
                 background: (theme.vars || theme).palette.okx.planeHigh,
-                ...theme.applyStyles('dark', {
-                  background: `color-mix(in srgb, ${(theme.vars || theme).palette.grey[900]} 40%, transparent)`,
-                }),
+
               },
             },
           ],

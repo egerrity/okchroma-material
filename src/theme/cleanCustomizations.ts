@@ -11,7 +11,7 @@
 // (stamps are never for text); focus rings ride the mark band.
 import type { Theme, Components } from '@mui/material/styles';
 import { inputsCustomizations } from '../shared-theme/customizations/inputs';
-import { buttonModeVars, isButtonMode } from './buttonTokens';
+import { isButtonMode } from './buttonTokens';
 import { surfacesCustomizations } from '../shared-theme/customizations/surfaces';
 import { dataDisplayCustomizations } from '../shared-theme/customizations/dataDisplay';
 
@@ -62,8 +62,8 @@ export const cleanCustomizations: Components<Theme> = {
           const disabled = {
             '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
           }
+          void mode // the var sheet (buttonVarStyles) carries the mode columns
           return {
-            ...buttonModeVars(theme, mode),
             ...geometry,
             '&.Mui-focusVisible': {
               outline: '2px solid var(--buttons-focus-ring)',

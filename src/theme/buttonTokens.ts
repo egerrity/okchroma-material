@@ -63,3 +63,14 @@ export function buttonModeVars(theme: Theme, mode: ButtonMode): Record<string, s
 
 export const isButtonMode = (c: unknown): c is ButtonMode =>
   c === 'primary' || c === 'secondary' || c === 'error' || c === 'inherit';
+
+/** The var sheet: each MUI color class carries its mode's token column —
+ *  the literal CSS mirror of the collection's modes. Mounted once via
+ *  GlobalStyles in AppTheme (MUI's styleOverrides pipeline mangles
+ *  custom-property keys, so the vars cannot live there). */
+export const buttonVarStyles = (theme: Theme) => ({
+  '.MuiButton-colorPrimary': buttonModeVars(theme, 'primary'),
+  '.MuiButton-colorSecondary': buttonModeVars(theme, 'secondary'),
+  '.MuiButton-colorError': buttonModeVars(theme, 'error'),
+  '.MuiButton-colorInherit': buttonModeVars(theme, 'inherit'),
+});

@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import GlobalStyles from '@mui/material/GlobalStyles';
+import { buttonVarStyles } from '../theme/buttonTokens';
 import type { ThemeOptions } from '@mui/material/styles';
 import { inputsCustomizations } from './customizations/inputs';
 import { dataDisplayCustomizations } from './customizations/dataDisplay';
@@ -51,6 +53,7 @@ export default function AppTheme(props: AppThemeProps) {
   }
   return (
     <ThemeProvider theme={theme} disableTransitionOnChange>
+      <GlobalStyles styles={buttonVarStyles} />
       {children}
     </ThemeProvider>
   );

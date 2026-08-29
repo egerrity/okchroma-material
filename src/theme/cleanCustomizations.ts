@@ -11,7 +11,6 @@
 // (stamps are never for text); focus rings ride the mark band.
 import type { Theme, Components } from '@mui/material/styles';
 import { inputsCustomizations } from '../shared-theme/customizations/inputs';
-import { isButtonMode } from './buttonTokens';
 import { surfacesCustomizations } from '../shared-theme/customizations/surfaces';
 import { dataDisplayCustomizations } from '../shared-theme/customizations/dataDisplay';
 
@@ -34,9 +33,10 @@ export const cleanCustomizations: Components<Theme> = {
       ] as never,
     },
   },
-  // buttons consume ONLY the component tokens (--buttons-*), the code mirror
-  // of the Figma component/buttons collection. The alias table lives in
-  // theme/buttonTokens.ts; nothing here names a palette or okx path.
+  // buttons read the palette stamp slots (fill/fillHover/fillPressed/on/edge
+  // — the additive register for stamp-accepting components) and the ladder
+  // for the quiet variants. color="inherit" rides Material's OWN routing
+  // (palette.Button.inheritContained*), filled with the neutral stamp.
   MuiButton: {
     styleOverrides: {
       root: [
@@ -52,49 +52,59 @@ export const cleanCustomizations: Components<Theme> = {
                   : { height: 40, padding: '0 20px', fontSize: 14 }),
             },
           }
-          const mode = isButtonMode(ownerState.color)
-            ? ownerState.color
-            : ownerState.color === undefined
-              ? 'primary'
-              : undefined
-          // colors outside the kit collection's modes are out of contract
-          if (!mode) return geometry
+          const famKey = (['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const).find(
+            k => k === ownerState.color,
+          )
+          const famPalette = famKey ? v(theme)[famKey] : ownerState.color === undefined ? v(theme).primary : undefined
+          const inherit = ownerState.color === 'inherit'
+          const quietFam = famPalette ?? (inherit ? v(theme).grey : undefined)
           const disabled = {
             '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
           }
-          void mode // the var sheet (buttonVarStyles) carries the mode columns
+          const signal =
+            ownerState.color === 'error' || ownerState.color === 'warning' ||
+            ownerState.color === 'info' || ownerState.color === 'success'
           return {
             ...geometry,
-            '&.Mui-focusVisible': {
-              outline: '2px solid var(--buttons-focus-ring)',
-              outlineOffset: 1,
-            },
-            ...(ownerState.variant === 'contained' && {
+            ...(ownerState.variant === 'contained' && famPalette && {
               '&&': {
-                backgroundColor: 'var(--buttons-contained-fill)',
-                color: 'var(--buttons-contained-label)',
+                backgroundColor: famPalette.fill,
+                color: famPalette.on,
                 backgroundImage: 'none',
-                border: '1.5px solid var(--buttons-contained-border)',
+                border: `1.5px solid ${famPalette.edge}`,
                 boxShadow: 'none',
-                '&:hover': { backgroundColor: 'var(--buttons-contained-fillHover)', boxShadow: 'none' },
-                '&:active': { backgroundColor: 'var(--buttons-contained-fillPressed)', boxShadow: 'none' },
+                '&:hover': { backgroundColor: famPalette.fillHover, boxShadow: 'none' },
+                '&:active': { backgroundColor: famPalette.fillPressed, boxShadow: 'none' },
                 ...disabled,
               },
             }),
-            ...((ownerState.variant === 'text' || ownerState.variant === 'outlined') && {
+            ...(ownerState.variant === 'contained' && inherit && {
               '&&': {
-                color: 'var(--buttons-text-label)',
-                backgroundColor: 'var(--buttons-text-fill)',
+                backgroundColor: (theme.vars || theme).palette.Button.inheritContainedBg,
+                backgroundImage: 'none',
+                border: '1.5px solid transparent',
+                boxShadow: 'none',
+                '&:hover': { backgroundColor: (theme.vars || theme).palette.Button.inheritContainedHoverBg, boxShadow: 'none' },
+                '&:active': { backgroundColor: (theme.vars || theme).palette.Button.inheritContainedHoverBg, boxShadow: 'none' },
+                ...disabled,
+              },
+            }),
+            ...((ownerState.variant === 'text' || ownerState.variant === 'outlined') && quietFam && {
+              '&&': {
+                color: quietFam[700],
                 ...(ownerState.variant === 'outlined' && {
-                  border: '1px solid var(--buttons-text-border)',
+                  // brand colors wear the neutral mark border; signals their own mark
+                  border: `1px solid ${signal ? quietFam[600] : v(theme).okx.borderDefault}`,
                 }),
+                // hover/pressed grounds: the owner's mark-tint washes — INTERIM
+                // color-mix until the alpha rows join the engine
                 '&:hover': {
-                  color: 'var(--buttons-text-labelHover)',
-                  backgroundColor: 'var(--buttons-text-fillHover)',
+                  color: quietFam[800],
+                  backgroundColor: `color-mix(in srgb, ${quietFam[600]} 12%, transparent)`,
                 },
                 '&:active': {
-                  color: 'var(--buttons-text-labelPressed)',
-                  backgroundColor: 'var(--buttons-text-fillPressed)',
+                  color: quietFam[900],
+                  backgroundColor: `color-mix(in srgb, ${quietFam[600]} 16%, transparent)`,
                 },
                 ...disabled,
               },

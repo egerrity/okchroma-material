@@ -22,10 +22,20 @@ declare module '@mui/material/styles' {
     900: string;
   }
 
-  interface PaletteColor extends ColorRange {}
+  interface PaletteColor extends ColorRange {
+    fill: string;
+    fillHover: string;
+    fillPressed: string;
+    on: string;
+    edge: string;
+  }
 
   interface Palette {
     baseShadow: string;
+    Button: {
+      inheritContainedBg: string;
+      inheritContainedHoverBg: string;
+    };
   }
 }
 
@@ -108,33 +118,6 @@ const LADDER_SLOTS: Array<[number, number]> = [
 ];
 
 export interface OkxTokens {
-  stampFill: string;
-  stampOn: string;
-  stampHover: string;
-  stampPressed: string;
-  stampEdge: string;
-  secFill: string;
-  secOn: string;
-  secHover: string;
-  secPressed: string;
-  secEdge: string;
-  inheritFill: string;
-  inheritOn: string;
-  inheritHover: string;
-  inheritPressed: string;
-  inheritEdge: string;
-  criticalFill: string;
-  criticalOn: string;
-  criticalHover: string;
-  warningFill: string;
-  warningOn: string;
-  warningHover: string;
-  positiveFill: string;
-  positiveOn: string;
-  positiveHover: string;
-  infoFill: string;
-  infoOn: string;
-  infoHover: string;
   link: string;
   linkHover: string;
   linkPressed: string;
@@ -167,8 +150,16 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
     const t = laneTokens(seed, lane);
     const ladder = (f: (n: string) => string) =>
       Object.fromEntries(LADDER_SLOTS.map(([slot, stop]) => [slot, f(stopTokenName(stop))]));
+    const stampSlots = (st: { fill: string; fillHover: string; fillPressed: string; on: string; edge: string }) => ({
+      fill: st.fill,
+      fillHover: st.fillHover,
+      fillPressed: st.fillPressed,
+      on: st.on,
+      edge: st.edge,
+    });
     const sig = (role: 'critical' | 'warning' | 'positive' | 'info') => ({
       ...ladder(n => t.signalStop(role, n)),
+      ...stampSlots(t.signalStamp(role)),
       light: t.signalStop(role, NAME.wash4),
       main: t.signalStop(role, NAME.lead),
       dark: t.signalStop(role, NAME.inkMid),
@@ -181,6 +172,7 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
     return {
       primary: {
         ...ladder(t.brand),
+        ...stampSlots(t.stamp),
         light: t.brand(NAME.wash4),
         main: t.brand(NAME.lead),
         dark: t.brand(NAME.inkMid),
@@ -188,6 +180,7 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
       },
       secondary: {
         ...ladder(t.secondary ?? t.brand),
+        ...stampSlots(t.secondaryStamp ?? t.stamp),
         light: (t.secondary ?? t.brand)(NAME.wash4),
         main: (t.secondary ?? t.brand)(NAME.lead),
         dark: (t.secondary ?? t.brand)(NAME.inkMid),
@@ -211,35 +204,12 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
         selected: t.alpha(8),
         focus: t.alpha(16),
       },
+      Button: {
+        inheritContainedBg: t.neutralStamp.fill,
+        inheritContainedHoverBg: t.neutralStamp.fillHover,
+      },
       baseShadow: `0 4px 8px ${shadow.s04}, 0 0 1px ${shadow.s04}`,
       okx: {
-        stampFill: t.stamp.fill,
-        stampOn: t.stamp.on,
-        stampHover: t.stamp.fillHover,
-        stampPressed: t.stamp.fillPressed,
-        stampEdge: t.stamp.edge,
-        secFill: (t.secondaryStamp ?? t.stamp).fill,
-        secOn: (t.secondaryStamp ?? t.stamp).on,
-        secHover: (t.secondaryStamp ?? t.stamp).fillHover,
-        secPressed: (t.secondaryStamp ?? t.stamp).fillPressed,
-        secEdge: (t.secondaryStamp ?? t.stamp).edge,
-        inheritFill: t.neutralStamp.fill,
-        inheritOn: t.neutralStamp.on,
-        inheritHover: t.neutralStamp.fillHover,
-        inheritPressed: t.neutralStamp.fillPressed,
-        inheritEdge: t.neutralStamp.edge,
-        criticalFill: t.signals.critical.fill,
-        criticalOn: t.signals.critical.on,
-        criticalHover: t.signalStamp('critical').fillHover,
-        warningFill: t.signals.warning.fill,
-        warningOn: t.signals.warning.on,
-        warningHover: t.signalStamp('warning').fillHover,
-        positiveFill: t.signals.positive.fill,
-        positiveOn: t.signals.positive.on,
-        positiveHover: t.signalStamp('positive').fillHover,
-        infoFill: t.signals.info.fill,
-        infoOn: t.signals.info.on,
-        infoHover: t.signalStamp('info').fillHover,
         link: t.link.default,
         linkHover: t.link.hover,
         linkPressed: t.link.pressed,

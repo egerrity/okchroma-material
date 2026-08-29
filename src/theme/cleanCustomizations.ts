@@ -39,13 +39,42 @@ export const cleanCustomizations: Components<Theme> = {
     styleOverrides: {
       root: [
         ...prev(inputsCustomizations.MuiButton?.styleOverrides?.root),
-        ({ ownerState, theme }: { ownerState: { variant?: string; color?: string; size?: string }; theme: Theme }) => ({
+        ({ ownerState, theme }: { ownerState: { variant?: string; color?: string; size?: string }; theme: Theme }) => {
+          // the quiet register (text + outlined = text plus border, per the kit):
+          // label rides the text-CTA trio (700/800/900 = lead/ink-42/ink-30),
+          // hover/pressed grounds are the owner's mark-tint washes (12%/16%),
+          // border is the SOLID family mark stop
+          const famKey = (['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const).find(
+            k => k === ownerState.color,
+          )
+          const fam = famKey ? v(theme)[famKey] : undefined
+          const quiet =
+            fam &&
+            (ownerState.variant === 'text' || ownerState.variant === 'outlined') && {
+              '&&': {
+                color: fam[700],
+                ...(ownerState.variant === 'outlined' && { border: `1px solid ${fam[600]}` }),
+                '&:hover': {
+                  color: fam[800],
+                  backgroundColor: `color-mix(in srgb, ${fam[600]} 12%, transparent)`,
+                },
+                '&:active': {
+                  color: fam[900],
+                  backgroundColor: `color-mix(in srgb, ${fam[600]} 16%, transparent)`,
+                },
+                '&.Mui-disabled': { color: v(theme).action.disabled, backgroundColor: 'transparent' },
+              },
+            }
+          return {
           '&&&': {
             borderRadius: 999,
             ...(ownerState.size === 'small'
-              ? { height: 32, padding: '0 16px', fontSize: 14 }
-              : { height: 48, padding: '0 24px', fontSize: 16 }),
+              ? { height: 32, padding: '0 16px', fontSize: 12 }
+              : ownerState.size === 'large'
+                ? { height: 48, padding: '0 24px', fontSize: 16 }
+                : { height: 40, padding: '0 20px', fontSize: 14 }),
           },
+          ...quiet,
           ...(ownerState.variant === 'contained' &&
             (ownerState.color === 'primary' || ownerState.color === undefined) && {
               '&&': {
@@ -56,6 +85,11 @@ export const cleanCustomizations: Components<Theme> = {
                 boxShadow: 'none',
                 '&:hover': { backgroundColor: v(theme).okx.stampHover, boxShadow: 'none' },
                 '&:active': { backgroundColor: v(theme).okx.stampPressed, boxShadow: 'none' },
+                '&.Mui-disabled': {
+                  backgroundColor: v(theme).action.disabledBackground,
+                  color: v(theme).action.disabled,
+                  border: 'none',
+                },
               },
             }),
           ...(ownerState.variant === 'contained' &&
@@ -68,13 +102,15 @@ export const cleanCustomizations: Components<Theme> = {
                 boxShadow: 'none',
                 '&:hover': { backgroundColor: v(theme).okx.secHover, boxShadow: 'none' },
                 '&:active': { backgroundColor: v(theme).okx.secPressed, boxShadow: 'none' },
+                '&.Mui-disabled': {
+                  backgroundColor: v(theme).action.disabledBackground,
+                  color: v(theme).action.disabled,
+                  border: 'none',
+                },
               },
             }),
-          ...(ownerState.variant === 'outlined' &&
-            ownerState.color === 'primary' && {
-              '&&': { borderColor: v(theme).primary[600] },
-            }),
-        }),
+        }
+        },
       ] as never,
     },
   },

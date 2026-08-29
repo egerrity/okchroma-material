@@ -20,6 +20,7 @@ const mainListItems = [
 ];
 
 const secondaryListItems = [
+  { text: 'Docs', icon: <InfoRoundedIcon />, href: '#/docs' },
   { text: 'Settings', icon: <SettingsRoundedIcon /> },
   { text: 'About', icon: <InfoRoundedIcon /> },
   { text: 'Feedback', icon: <HelpRoundedIcon /> },
@@ -41,7 +42,7 @@ export default function MenuContent() {
       <List dense>
         {secondaryListItems.map((item, index) => (
           <ListItem key={index} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => { if ('href' in item && item.href) window.location.hash = item.href; }}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>

@@ -1,9 +1,10 @@
-// The design-owned contrast guarantee: walks the pairs BOTH adapters actually
-// ship — every on-X on its X, text on the planes it sits on, outline against
-// the surface the engine's law gates it on — and asserts the WCAG bars
-// (4.5:1 text, 3.0:1 non-text). Fails loud with the failing pair.
+// WIRING CHECK — verifies the adapter wiring, never the engine. The engine
+// owns the contrast guarantee; this walks the pairings the ADAPTER creates
+// when it maps tokens into MUI slots (which on lands on which fill, which
+// text on which plane) and asserts they hold the engine's bars (4.5:1 text,
+// 3.0:1 mark). A failure means a mis-wired mapping, not an engine problem.
 //
-// Run: npm run guarantee
+// Run: npm run check:wiring
 // Hexes come from the same LaneTokens the app renders — a failure here is a
 // failure the user would see.
 import { resolveSeed } from '../src/seed'
@@ -81,9 +82,9 @@ for (const hex of SEEDS) {
 }
 
 if (failures.length) {
-  console.error(`guarantee FAILED — ${failures.length} of ${checked} pairs under the bar:`)
+  console.error(`wiring check FAILED — ${failures.length} of ${checked} adapter pairings under the bar:`)
   for (const f of failures)
     console.error(`  ${f.seed} ${f.lane}  ${f.pair}  ${f.got.toFixed(2)} < ${f.bar}`)
   process.exit(1)
 }
-console.log(`guarantee OK — ${checked} pairs across ${SEEDS.length} seeds × 2 lanes, bars ${TEXT_BAR}/${MARK_BAR}`)
+console.log(`wiring OK — ${checked} adapter pairings across ${SEEDS.length} seeds × 2 lanes hold the engine bars (${TEXT_BAR}/${MARK_BAR})`)

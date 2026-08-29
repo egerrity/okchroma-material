@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "guarantee": "esbuild scripts/guarantee.ts --bundle --platform=node --outfile=node_modules/.cache/guarantee.js && node node_modules/.cache/guarantee.js"
+    "check:wiring": "esbuild scripts/check-wiring.ts --bundle --platform=node --outfile=node_modules/.cache/check-wiring.js && node node_modules/.cache/check-wiring.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

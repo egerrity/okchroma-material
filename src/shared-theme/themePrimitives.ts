@@ -108,6 +108,8 @@ const LADDER_SLOTS: Array<[number, number]> = [
 ];
 
 export interface OkxTokens {
+  stampFill: string;
+  stampOn: string;
   stampHover: string;
   stampPressed: string;
   stampEdge: string;
@@ -121,6 +123,18 @@ export interface OkxTokens {
   inheritHover: string;
   inheritPressed: string;
   inheritEdge: string;
+  criticalFill: string;
+  criticalOn: string;
+  criticalHover: string;
+  warningFill: string;
+  warningOn: string;
+  warningHover: string;
+  positiveFill: string;
+  positiveOn: string;
+  positiveHover: string;
+  infoFill: string;
+  infoOn: string;
+  infoHover: string;
   link: string;
   linkHover: string;
   linkPressed: string;
@@ -156,9 +170,9 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
     const sig = (role: 'critical' | 'warning' | 'positive' | 'info') => ({
       ...ladder(n => t.signalStop(role, n)),
       light: t.signalStop(role, NAME.wash4),
-      main: t.signals[role].fill,
-      dark: t.signalStamp(role).fillHover,
-      contrastText: t.signals[role].on,
+      main: t.signalStop(role, NAME.lead),
+      dark: t.signalStop(role, NAME.inkMid),
+      contrastText: t.signalStop(role, NAME.paperTop),
     });
     const isDark = lane === 'dark';
     const shadow = isDark
@@ -168,16 +182,16 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
       primary: {
         ...ladder(t.brand),
         light: t.brand(NAME.wash4),
-        main: t.stamp.fill,
-        dark: t.stamp.fillHover,
-        contrastText: t.stamp.on,
+        main: t.brand(NAME.lead),
+        dark: t.brand(NAME.inkMid),
+        contrastText: t.brand(NAME.paperTop),
       },
       secondary: {
         ...ladder(t.secondary ?? t.brand),
         light: (t.secondary ?? t.brand)(NAME.wash4),
-        main: (t.secondaryStamp ?? t.stamp).fill,
-        dark: (t.secondaryStamp ?? t.stamp).fillHover,
-        contrastText: (t.secondaryStamp ?? t.stamp).on,
+        main: (t.secondary ?? t.brand)(NAME.lead),
+        dark: (t.secondary ?? t.brand)(NAME.inkMid),
+        contrastText: (t.secondary ?? t.brand)(NAME.paperTop),
       },
       info: sig('info'),
       warning: sig('warning'),
@@ -199,6 +213,8 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
       },
       baseShadow: `0 4px 8px ${shadow.s04}, 0 0 1px ${shadow.s04}`,
       okx: {
+        stampFill: t.stamp.fill,
+        stampOn: t.stamp.on,
         stampHover: t.stamp.fillHover,
         stampPressed: t.stamp.fillPressed,
         stampEdge: t.stamp.edge,
@@ -212,6 +228,18 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
         inheritHover: t.neutralStamp.fillHover,
         inheritPressed: t.neutralStamp.fillPressed,
         inheritEdge: t.neutralStamp.edge,
+        criticalFill: t.signals.critical.fill,
+        criticalOn: t.signals.critical.on,
+        criticalHover: t.signalStamp('critical').fillHover,
+        warningFill: t.signals.warning.fill,
+        warningOn: t.signals.warning.on,
+        warningHover: t.signalStamp('warning').fillHover,
+        positiveFill: t.signals.positive.fill,
+        positiveOn: t.signals.positive.on,
+        positiveHover: t.signalStamp('positive').fillHover,
+        infoFill: t.signals.info.fill,
+        infoOn: t.signals.info.on,
+        infoHover: t.signalStamp('info').fillHover,
         link: t.link.default,
         linkHover: t.link.hover,
         linkPressed: t.link.pressed,

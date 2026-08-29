@@ -89,8 +89,8 @@ export const cleanCustomizations: Components<Theme> = {
           ...(ownerState.variant === 'contained' &&
             (ownerState.color === 'primary' || ownerState.color === undefined) && {
               '&&': {
-                backgroundColor: v(theme).primary.main,
-                color: v(theme).primary.contrastText,
+                backgroundColor: v(theme).okx.stampFill,
+                color: v(theme).okx.stampOn,
                 backgroundImage: 'none',
                 border: `1.5px solid ${v(theme).okx.stampEdge}`,
                 boxShadow: 'none',
@@ -103,20 +103,23 @@ export const cleanCustomizations: Components<Theme> = {
           // hover slot (= fill-hover); pressed approximates via the same slot
           // until per-family stamps join okx
           ...(ownerState.variant === 'contained' &&
-            famPalette &&
-            ownerState.color !== 'primary' &&
-            ownerState.color !== 'secondary' && {
+            (ownerState.color === 'error' || ownerState.color === 'warning' ||
+             ownerState.color === 'info' || ownerState.color === 'success') && (() => {
+              const role = ({ error: 'critical', warning: 'warning', success: 'positive', info: 'info' } as const)[
+                ownerState.color
+              ]
+              return {
               '&&': {
-                backgroundColor: famPalette.main,
-                color: famPalette.contrastText,
+                backgroundColor: v(theme).okx[`${role}Fill`],
+                color: v(theme).okx[`${role}On`],
                 backgroundImage: 'none',
                 border: '1.5px solid transparent',
                 boxShadow: 'none',
-                '&:hover': { backgroundColor: famPalette.dark, boxShadow: 'none' },
-                '&:active': { backgroundColor: famPalette.dark, boxShadow: 'none' },
+                '&:hover': { backgroundColor: v(theme).okx[`${role}Hover`], boxShadow: 'none' },
+                '&:active': { backgroundColor: v(theme).okx[`${role}Hover`], boxShadow: 'none' },
                 '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
               },
-            }),
+            }})()),
           ...(ownerState.variant === 'contained' &&
             ownerState.color === 'inherit' && {
               '&&': {

@@ -12,8 +12,10 @@ const USAGE = `import Button from '@mui/material/Button';
 <Button variant="text" size="small">Label</Button>`;
 
 const MAPPING = `Figma (component/buttons)      code (per color mode)
-contained/fill              →  palette[color].main             (family stamp/fill)
-contained/label             →  palette[color].contrastText     (family stamp/on)
+contained/fill              →  okx stamp/sec/inherit/signal FILL (component tokens)
+contained/label             →  the paired okx ON
+   (palette[color].main is the family's TEXT-SAFE anchor — lead-53 —
+    never the stamp: main leaks into text across the library)
 contained/fillHover         →  okx stamp/sec/inherit hover; signals: palette[color].dark
 contained/fillPressed       →  okx stamp/sec/inherit pressed; signals approximate hover
 contained/border            →  okx stamp/sec/inherit edge (always rendered, usually transparent)

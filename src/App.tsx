@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react'
 import Dashboard from './dashboard/Dashboard'
 import DocsSite from './docs/DocsSite'
+import { SeedProvider } from './theme/SeedContext'
 
 export default function App() {
   const [route, setRoute] = useState(window.location.hash)
@@ -12,5 +13,9 @@ export default function App() {
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
-  return route.startsWith('#/docs') ? <DocsSite route={route} /> : <Dashboard />
+  return (
+    <SeedProvider>
+      {route.startsWith('#/docs') ? <DocsSite route={route} /> : <Dashboard />}
+    </SeedProvider>
+  )
 }

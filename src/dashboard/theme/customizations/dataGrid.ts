@@ -1,7 +1,8 @@
+// DataGrid — MAP addresses only: grounds are planes, state grounds are the
+// wash law (action rows), dark blocks gone.
 import { paperClasses } from '@mui/material/Paper';
 import type { Theme } from '@mui/material/styles';
 import type { DataGridComponents } from '@mui/x-data-grid/themeAugmentation';
-import { alpha } from '@mui/material/styles';
 
 import { menuItemClasses } from '@mui/material/MenuItem';
 import { listItemIconClasses } from '@mui/material/ListItemIcon';
@@ -10,7 +11,6 @@ import { checkboxClasses } from '@mui/material/Checkbox';
 import { listClasses } from '@mui/material/List';
 import { gridClasses } from '@mui/x-data-grid';
 import { tablePaginationClasses } from '@mui/material/TablePagination';
-import { gray } from '../../../shared-theme/themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
 export const dataGridCustomizations: DataGridComponents<Theme> = {
@@ -19,13 +19,13 @@ export const dataGridCustomizations: DataGridComponents<Theme> = {
       root: ({ theme }) => ({
         '--DataGrid-overlayHeight': '300px',
         overflow: 'clip',
-        borderColor: (theme.vars || theme).palette.divider,
-        backgroundColor: (theme.vars || theme).palette.background.default,
+        borderColor: theme.vars!.palette.divider,
+        backgroundColor: theme.vars!.palette.background.default,
         [`& .${gridClasses.columnHeader}`]: {
-          backgroundColor: (theme.vars || theme).palette.background.paper,
+          backgroundColor: theme.vars!.palette.background.paper,
         },
         [`& .${gridClasses.footerContainer}`]: {
-          backgroundColor: (theme.vars || theme).palette.background.paper,
+          backgroundColor: theme.vars!.palette.background.paper,
         },
         [`& .${checkboxClasses.root}`]: {
           padding: theme.spacing(0.5),
@@ -45,13 +45,13 @@ export const dataGridCustomizations: DataGridComponents<Theme> = {
         },
       }),
       cell: ({ theme }) => ({
-        borderTopColor: (theme.vars || theme).palette.divider,
+        borderTopColor: theme.vars!.palette.divider,
       }),
       menu: ({ theme }) => ({
         borderRadius: theme.shape.borderRadius,
         backgroundImage: 'none',
         [`& .${paperClasses.root}`]: {
-          border: `1px solid ${(theme.vars || theme).palette.divider}`,
+          border: `1px solid ${theme.vars!.palette.divider}`,
         },
         [`& .${menuItemClasses.root}`]: {
           margin: '0 4px',
@@ -66,15 +66,16 @@ export const dataGridCustomizations: DataGridComponents<Theme> = {
       }),
       row: ({ theme }) => ({
         '&:last-of-type': {
-          borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`,
+          borderBottom: `1px solid ${theme.vars!.palette.divider}`,
         },
         '&:hover': {
-          backgroundColor: (theme.vars || theme).palette.action.hover,
+          backgroundColor: theme.vars!.palette.action.hover,
         },
         '&.Mui-selected': {
-          background: (theme.vars || theme).palette.action.selected,
+          background: theme.vars!.palette.action.selected,
           '&:hover': {
-            backgroundColor: (theme.vars || theme).palette.action.hover,
+            // selected + hover, per the wash law
+            backgroundColor: theme.vars!.palette.neutral['wash-85'],
           },
         },
       }),
@@ -83,40 +84,22 @@ export const dataGridCustomizations: DataGridComponents<Theme> = {
           border: 'none',
           backgroundColor: 'transparent',
           '&:hover': {
-            backgroundColor: alpha(theme.palette.action.selected, 0.3),
+            backgroundColor: theme.vars!.palette.action.hover,
           },
           '&:active': {
-            backgroundColor: gray[200],
+            backgroundColor: theme.vars!.palette.neutral['wash-85'],
           },
-          ...theme.applyStyles('dark', {
-            color: gray[50],
-            '&:hover': {
-              backgroundColor: gray[800],
-            },
-            '&:active': {
-              backgroundColor: gray[900],
-            },
-          }),
         },
       }),
       menuIconButton: ({ theme }) => ({
         border: 'none',
         backgroundColor: 'transparent',
         '&:hover': {
-          backgroundColor: gray[100],
+          backgroundColor: theme.vars!.palette.action.hover,
         },
         '&:active': {
-          backgroundColor: gray[200],
+          backgroundColor: theme.vars!.palette.neutral['wash-85'],
         },
-        ...theme.applyStyles('dark', {
-          color: gray[50],
-          '&:hover': {
-            backgroundColor: gray[800],
-          },
-          '&:active': {
-            backgroundColor: gray[900],
-          },
-        }),
       }),
       filterForm: ({ theme }) => ({
         gap: theme.spacing(1),

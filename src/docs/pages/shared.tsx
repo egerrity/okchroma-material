@@ -64,7 +64,7 @@ export const Snippet = ({ code }: { code: string }) => (
       mb: 3,
       p: 2,
       borderRadius: 2,
-      bgcolor: 'grey.100',
+      bgcolor: 'surface.low', // engine vocabulary — numeric grey is for MUI internals only
       color: 'text.primary',
       fontSize: 13,
       fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',

@@ -36,10 +36,11 @@ export default function SessionsChart() {
   const theme = useTheme();
   const data = getDaysInMonth(4, 2024);
 
+  // Data viz doctrine: brand never in a chart — series ride the info tiers.
   const colorPalette = [
-    theme.palette.primary.light,
-    theme.palette.primary.main,
-    theme.palette.primary.dark,
+    theme.vars!.palette.info['mark-74'],
+    theme.vars!.palette.info['lead-53'],
+    theme.vars!.palette.info['ink-30'],
   ];
 
   return (
@@ -137,9 +138,9 @@ export default function SessionsChart() {
           }}
           hideLegend
         >
-          <AreaGradient color={theme.palette.primary.dark} id="organic" />
-          <AreaGradient color={theme.palette.primary.main} id="referral" />
-          <AreaGradient color={theme.palette.primary.light} id="direct" />
+          <AreaGradient color={theme.vars!.palette.info['ink-30']} id="organic" />
+          <AreaGradient color={theme.vars!.palette.info['lead-53']} id="referral" />
+          <AreaGradient color={theme.vars!.palette.info['mark-74']} id="direct" />
         </LineChart>
       </CardContent>
     </Card>

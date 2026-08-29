@@ -8,10 +8,11 @@ import { useTheme } from '@mui/material/styles';
 
 export default function PageViewsBarChart() {
   const theme = useTheme();
+  // Data viz doctrine: brand never in a chart — series ride the info tiers.
   const colorPalette = [
-    (theme.vars || theme).palette.primary.dark,
-    (theme.vars || theme).palette.primary.main,
-    (theme.vars || theme).palette.primary.light,
+    theme.vars!.palette.info['ink-30'],
+    theme.vars!.palette.info['lead-53'],
+    theme.vars!.palette.info['mark-74'],
   ];
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>

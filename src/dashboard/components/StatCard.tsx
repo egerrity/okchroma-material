@@ -12,7 +12,7 @@ export type StatCardProps = {
   title: string;
   value: string;
   interval: string;
-  trend: 'up' | 'down' | 'neutral';
+  trend: 'up' | 'down' | 'neutral' | 'warning';
   data: number[];
 };
 
@@ -52,30 +52,25 @@ export default function StatCard({
   const theme = useTheme();
   const daysInWeek = getDaysInMonth(4, 2024);
 
+  // Stoplight-colored data viz is an accepted STAMP use (owner, 2026-08-29):
+  // trend sparklines ride the signal stamps; neutral stays on the ladder.
   const trendColors = {
-    up:
-      theme.palette.mode === 'light'
-        ? theme.palette.success.main
-        : theme.palette.success.dark,
-    down:
-      theme.palette.mode === 'light'
-        ? theme.palette.error.main
-        : theme.palette.error.dark,
-    neutral:
-      theme.palette.mode === 'light'
-        ? theme.palette.grey[400]
-        : theme.palette.grey[700],
+    up: theme.vars!.palette.success.stampFill,
+    down: theme.vars!.palette.error.stampFill,
+    warning: theme.vars!.palette.warning.stampFill,
+    neutral: theme.vars!.palette.neutral['mark-74'],
   };
 
   const labelColors = {
     up: 'success' as const,
     down: 'error' as const,
+    warning: 'warning' as const,
     neutral: 'default' as const,
   };
 
   const color = labelColors[trend];
   const chartColor = trendColors[trend];
-  const trendValues = { up: '+25%', down: '-25%', neutral: '+5%' };
+  const trendValues = { up: '+25%', down: '-25%', warning: '+5%', neutral: '+5%' };
 
   return (
     <Card variant="outlined" sx={{ height: '100%', flexGrow: 1 }}>

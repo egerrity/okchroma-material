@@ -1,7 +1,10 @@
+// Charts chrome — MAP addresses only, dark blocks gone. Data viz doctrine
+// (brand never in a chart; series ride the info tiers, the neutral ladder,
+// and the signal families) lives where the series are declared, in the chart
+// components. This file is only the chrome: axes, grid, tooltip, legend.
 import type { Theme } from '@mui/material/styles';
 import { axisClasses, legendClasses, chartsGridClasses } from '@mui/x-charts';
 import type { ChartsComponents } from '@mui/x-charts/themeAugmentation';
-import { gray } from '../../../shared-theme/themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
 export const chartsCustomizations: ChartsComponents<Theme> = {
@@ -9,23 +12,13 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         [`& .${axisClasses.line}`]: {
-          stroke: gray[300],
+          stroke: theme.vars!.palette.neutral['wash-89'],
         },
-        [`& .${axisClasses.tick}`]: { stroke: gray[300] },
+        [`& .${axisClasses.tick}`]: { stroke: theme.vars!.palette.neutral['wash-89'] },
         [`& .${axisClasses.tickLabel}`]: {
-          fill: gray[500],
+          fill: theme.vars!.palette.text.secondary,
           fontWeight: 500,
         },
-        ...theme.applyStyles('dark', {
-          [`& .${axisClasses.line}`]: {
-            stroke: gray[700],
-          },
-          [`& .${axisClasses.tick}`]: { stroke: gray[700] },
-          [`& .${axisClasses.tickLabel}`]: {
-            fill: gray[300],
-            fontWeight: 500,
-          },
-        }),
       }),
     },
   },
@@ -34,15 +27,13 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
       mark: ({ theme }) => ({
         ry: 6,
         boxShadow: 'none',
-        border: `1px solid ${(theme.vars || theme).palette.divider}`,
+        border: `1px solid ${theme.vars!.palette.divider}`,
       }),
       table: ({ theme }) => ({
-        border: `1px solid ${(theme.vars || theme).palette.divider}`,
+        border: `1px solid ${theme.vars!.palette.divider}`,
         borderRadius: theme.shape.borderRadius,
-        background: 'hsl(0, 0%, 100%)',
-        ...theme.applyStyles('dark', {
-          background: gray[900],
-        }),
+        // the topmost plane — tooltips float above everything
+        background: theme.vars!.palette.surface.high,
       }),
     },
   },
@@ -59,17 +50,10 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         [`& .${chartsGridClasses.line}`]: {
-          stroke: gray[200],
+          stroke: theme.vars!.palette.neutral['wash-92'],
           strokeDasharray: '4 2',
           strokeWidth: 0.8,
         },
-        ...theme.applyStyles('dark', {
-          [`& .${chartsGridClasses.line}`]: {
-            stroke: gray[700],
-            strokeDasharray: '4 2',
-            strokeWidth: 0.8,
-          },
-        }),
       }),
     },
   },

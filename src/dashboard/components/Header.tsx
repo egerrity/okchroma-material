@@ -6,6 +6,7 @@ import MenuButton from './MenuButton';
 import ColorModeToggle from '../../shared-theme/ColorModeToggle';
 
 import Search from './Search';
+import SeedSelect from './SeedSelect';
 
 export default function Header() {
   return (
@@ -24,6 +25,7 @@ export default function Header() {
       <NavbarBreadcrumbs />
       <Stack direction="row" sx={{ gap: 1 }}>
         <Search />
+        <SeedSelect />
         <CustomDatePicker />
         <MenuButton showBadge aria-label="Open notifications">
           <NotificationsRoundedIcon />

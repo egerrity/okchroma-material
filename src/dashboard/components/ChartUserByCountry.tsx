@@ -28,25 +28,25 @@ const countries = [
     name: 'India',
     value: 50,
     flag: <IndiaFlag />,
-    color: 'hsl(220, 25%, 65%)',
+    color: 'var(--template-palette-neutral-mark-74)',
   },
   {
     name: 'USA',
     value: 35,
     flag: <UsaFlag />,
-    color: 'hsl(220, 25%, 45%)',
+    color: 'var(--template-palette-neutral-lead-53)',
   },
   {
     name: 'Brazil',
     value: 10,
     flag: <BrazilFlag />,
-    color: 'hsl(220, 25%, 30%)',
+    color: 'var(--template-palette-neutral-ink-42)',
   },
   {
     name: 'Other',
     value: 5,
     flag: <GlobeFlag />,
-    color: 'hsl(220, 25%, 20%)',
+    color: 'var(--template-palette-neutral-ink-30)',
   },
 ];
 
@@ -114,11 +114,13 @@ function PieCenterLabel({ primaryText, secondaryText }: PieCenterLabelProps) {
   );
 }
 
+// Data viz doctrine: the neutral ladder, descending prominence with share —
+// engine tokens via the generated vars, self-reversing in dark. Never brand.
 const colors = [
-  'hsl(220, 20%, 65%)',
-  'hsl(220, 20%, 42%)',
-  'hsl(220, 20%, 35%)',
-  'hsl(220, 20%, 25%)',
+  'var(--template-palette-neutral-mark-74)',
+  'var(--template-palette-neutral-lead-53)',
+  'var(--template-palette-neutral-ink-42)',
+  'var(--template-palette-neutral-ink-30)',
 ];
 
 export default function ChartUserByCountry() {

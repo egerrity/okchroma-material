@@ -37,7 +37,7 @@ const data: StatCardProps[] = [
     title: 'Event count',
     value: '200k',
     interval: 'Last 30 days',
-    trend: 'neutral',
+    trend: 'warning',
     data: [
       500, 400, 510, 530, 520, 600, 530, 520, 510, 730, 520, 510, 530, 620, 510, 530,
       520, 410, 530, 520, 610, 530, 520, 610, 530, 420, 510, 430, 520, 510,

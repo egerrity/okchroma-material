@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "check:wiring": "esbuild scripts/check-wiring.ts --bundle --platform=node --outfile=node_modules/.cache/check-wiring.js && node node_modules/.cache/check-wiring.js"
+    "check:wiring": "esbuild scripts/check-wiring.ts --bundle --platform=node --outfile=node_modules/.cache/check-wiring.js && node node_modules/.cache/check-wiring.js",
+    "check:map": "esbuild scripts/check-map.ts --bundle --platform=node --outfile=node_modules/.cache/check-map.js --log-level=error && node node_modules/.cache/check-map.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

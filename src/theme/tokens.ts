@@ -70,6 +70,8 @@ export interface LaneTokens {
   secondary: ((name: string) => string) | null
   stamp: StampValues
   secondaryStamp: StampValues | null
+  /** the neutral register — code's color="inherit" */
+  neutralStamp: StampValues
   signals: Record<SignalRole, SignalValues>
   /** full ladder + stamp access per signal family (template ramp projection) */
   signalStop: (role: SignalRole, name: string) => string
@@ -173,6 +175,7 @@ export function laneTokens(seed: Seed, lane: Lane): LaneTokens {
     neutral: name => stopFor(n, lane, name),
     secondary: secondaryScale ? name => stopFor(secondaryScale, lane, name) : null,
     stamp: stampValues(brandScale, lane, n, 'primary'),
+    neutralStamp: stampValues(n, lane, n, 'other'),
     secondaryStamp: secondaryScale ? stampValues(secondaryScale, lane, n, 'secondary') : null,
     signals,
     signalStop: (role, name) => stopFor(seed.signal(role), lane, name),

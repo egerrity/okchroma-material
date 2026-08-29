@@ -11,18 +11,18 @@ const USAGE = `import Button from '@mui/material/Button';
 <Button variant="outlined" color="error">Label</Button>
 <Button variant="text" size="small">Label</Button>`;
 
-const MAPPING = `Figma (component/buttons)      code
-contained/fill              →  palette.primary.main            (stamp/fill)
-contained/label             →  palette.primary.contrastText    (stamp/on)
-contained/fillHover         →  palette.okx.stampHover          (stamp/fill-hover)
-contained/fillPressed       →  palette.okx.stampPressed        (stamp/fill-pressed)
-contained/border            →  palette.okx.stampEdge           (always rendered, usually transparent)
+const MAPPING = `Figma (component/buttons)      code (per color mode)
+contained/fill              →  palette[color].main             (family stamp/fill)
+contained/label             →  palette[color].contrastText     (family stamp/on)
+contained/fillHover         →  okx stamp/sec/inherit hover; signals: palette[color].dark
+contained/fillPressed       →  okx stamp/sec/inherit pressed; signals approximate hover
+contained/border            →  okx stamp/sec/inherit edge (always rendered, usually transparent)
 text/label                  →  palette[color][700]             (lead-53)
 text/labelHover             →  palette[color][800]             (ink-42)
 text/labelPressed           →  palette[color][900]             (ink-30)
-text/fillHover              →  color-mix(mark-74 12%)          (owner's mark-tint wash)
-text/fillPressed            →  color-mix(mark-74 16%)
-text/border  (outlined)     →  okx.borderDefault (neutral mark) for brand colors;
+text/fillHover              →  color-mix(family mark 12%)      (owner's mark-tint wash)
+text/fillPressed            →  color-mix(family mark 16%)
+text/border  (outlined)     →  okx.borderDefault (neutral mark) for primary/secondary/inherit;
                                palette[color][600] (family mark) for signals
 focus/ring                  →  palette.okx.focus               (2px, 1px offset, one stroke)
 borderRadiusAction          →  999 (pill)`;
@@ -63,6 +63,11 @@ export default function ButtonDoc() {
         <Button variant="outlined" color="error">Error</Button>
         <Button variant="text" color="error">Error</Button>
       </Demo>
+      <Demo>
+        <Button variant="contained" color="inherit">Inherit</Button>
+        <Button variant="outlined" color="inherit">Inherit</Button>
+        <Button variant="text" color="inherit">Inherit</Button>
+      </Demo>
 
       <SectionTitle>Sizes</SectionTitle>
       <Demo>
@@ -96,7 +101,8 @@ export default function ButtonDoc() {
 
       <Box sx={{ mt: 2, fontSize: 13, color: 'text.secondary' }}>
         Kit-only: the inherit-white color mode (media surfaces) has no code counterpart yet.
-        Disabled states keep library defaults — the engine has no disabled tier.
+        Disabled is a component-level opacity (the theme's disabledOpacity) — colors stay the
+        enabled ones, per Unify.
       </Box>
     </>
   );

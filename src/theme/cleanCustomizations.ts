@@ -47,7 +47,9 @@ export const cleanCustomizations: Components<Theme> = {
           const famKey = (['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const).find(
             k => k === ownerState.color,
           )
-          const fam = famKey ? v(theme)[famKey] : undefined
+          const famPalette = famKey ? v(theme)[famKey] : undefined
+          // inherit = the neutral register: grey ladder for the quiet variants
+          const fam = famPalette ?? (ownerState.color === 'inherit' ? v(theme).grey : undefined)
           const quiet =
             fam &&
             (ownerState.variant === 'text' || ownerState.variant === 'outlined') && {
@@ -57,9 +59,10 @@ export const cleanCustomizations: Components<Theme> = {
                 // border; signal families wear their own mark
                 ...(ownerState.variant === 'outlined' && {
                   border: `1px solid ${
-                    ownerState.color === 'primary' || ownerState.color === 'secondary'
-                      ? v(theme).okx.borderDefault
-                      : fam[600]
+                    ownerState.color === 'error' || ownerState.color === 'warning' ||
+                    ownerState.color === 'info' || ownerState.color === 'success'
+                      ? fam[600]
+                      : v(theme).okx.borderDefault
                   }`,
                 }),
                 '&:hover': {
@@ -70,7 +73,7 @@ export const cleanCustomizations: Components<Theme> = {
                   color: fam[900],
                   backgroundColor: `color-mix(in srgb, ${fam[600]} 16%, transparent)`,
                 },
-                '&.Mui-disabled': { color: v(theme).action.disabled, backgroundColor: 'transparent' },
+                '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
               },
             }
           return {
@@ -93,33 +96,38 @@ export const cleanCustomizations: Components<Theme> = {
                 boxShadow: 'none',
                 '&:hover': { backgroundColor: v(theme).okx.stampHover, boxShadow: 'none' },
                 '&:active': { backgroundColor: v(theme).okx.stampPressed, boxShadow: 'none' },
-                '&.Mui-disabled': {
-                  backgroundColor: v(theme).action.disabledBackground,
-                  color: v(theme).action.disabled,
-                  border: 'none',
-                },
+                '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
               },
             }),
           // signal families: contained rides the family stamp (fill/on) with the
           // hover slot (= fill-hover); pressed approximates via the same slot
           // until per-family stamps join okx
           ...(ownerState.variant === 'contained' &&
-            fam &&
+            famPalette &&
             ownerState.color !== 'primary' &&
             ownerState.color !== 'secondary' && {
               '&&': {
-                backgroundColor: fam.main,
-                color: fam.contrastText,
+                backgroundColor: famPalette.main,
+                color: famPalette.contrastText,
                 backgroundImage: 'none',
                 border: '1.5px solid transparent',
                 boxShadow: 'none',
-                '&:hover': { backgroundColor: fam.dark, boxShadow: 'none' },
-                '&:active': { backgroundColor: fam.dark, boxShadow: 'none' },
-                '&.Mui-disabled': {
-                  backgroundColor: v(theme).action.disabledBackground,
-                  color: v(theme).action.disabled,
-                  border: 'none',
-                },
+                '&:hover': { backgroundColor: famPalette.dark, boxShadow: 'none' },
+                '&:active': { backgroundColor: famPalette.dark, boxShadow: 'none' },
+                '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
+              },
+            }),
+          ...(ownerState.variant === 'contained' &&
+            ownerState.color === 'inherit' && {
+              '&&': {
+                backgroundColor: v(theme).okx.inheritFill,
+                color: v(theme).okx.inheritOn,
+                backgroundImage: 'none',
+                border: `1.5px solid ${v(theme).okx.inheritEdge}`,
+                boxShadow: 'none',
+                '&:hover': { backgroundColor: v(theme).okx.inheritHover, boxShadow: 'none' },
+                '&:active': { backgroundColor: v(theme).okx.inheritPressed, boxShadow: 'none' },
+                '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
               },
             }),
           ...(ownerState.variant === 'contained' &&
@@ -132,11 +140,7 @@ export const cleanCustomizations: Components<Theme> = {
                 boxShadow: 'none',
                 '&:hover': { backgroundColor: v(theme).okx.secHover, boxShadow: 'none' },
                 '&:active': { backgroundColor: v(theme).okx.secPressed, boxShadow: 'none' },
-                '&.Mui-disabled': {
-                  backgroundColor: v(theme).action.disabledBackground,
-                  color: v(theme).action.disabled,
-                  border: 'none',
-                },
+                '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
               },
             }),
         }

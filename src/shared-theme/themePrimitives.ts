@@ -116,6 +116,11 @@ export interface OkxTokens {
   secHover: string;
   secPressed: string;
   secEdge: string;
+  inheritFill: string;
+  inheritOn: string;
+  inheritHover: string;
+  inheritPressed: string;
+  inheritEdge: string;
   link: string;
   linkHover: string;
   linkPressed: string;
@@ -202,6 +207,11 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
         secHover: (t.secondaryStamp ?? t.stamp).fillHover,
         secPressed: (t.secondaryStamp ?? t.stamp).fillPressed,
         secEdge: (t.secondaryStamp ?? t.stamp).edge,
+        inheritFill: t.neutralStamp.fill,
+        inheritOn: t.neutralStamp.on,
+        inheritHover: t.neutralStamp.fillHover,
+        inheritPressed: t.neutralStamp.fillPressed,
+        inheritEdge: t.neutralStamp.edge,
         link: t.link.default,
         linkHover: t.link.hover,
         linkPressed: t.link.pressed,

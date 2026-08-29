@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import type { Theme } from '@mui/material/styles';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
@@ -25,30 +23,30 @@ const data = [
   { label: 'Other', value: 5000 },
 ];
 
-const makeCountries = (theme: Theme) => [
+const countries = [
   {
     name: 'India',
     value: 50,
     flag: <IndiaFlag />,
-    color: (theme.vars || theme).palette.grey['wash-89'],
+    color: 'hsl(220, 25%, 65%)',
   },
   {
     name: 'USA',
     value: 35,
     flag: <UsaFlag />,
-    color: (theme.vars || theme).palette.grey['wash-80'],
+    color: 'hsl(220, 25%, 45%)',
   },
   {
     name: 'Brazil',
     value: 10,
     flag: <BrazilFlag />,
-    color: (theme.vars || theme).palette.grey['mark-74'],
+    color: 'hsl(220, 25%, 30%)',
   },
   {
     name: 'Other',
     value: 5,
     flag: <GlobeFlag />,
-    color: (theme.vars || theme).palette.grey['lead-53'],
+    color: 'hsl(220, 25%, 20%)',
   },
 ];
 
@@ -116,17 +114,14 @@ function PieCenterLabel({ primaryText, secondaryText }: PieCenterLabelProps) {
   );
 }
 
-const makeColors = (theme: Theme) => [
-  (theme.vars || theme).palette.grey['wash-89'],
-  (theme.vars || theme).palette.grey['wash-80'],
-  (theme.vars || theme).palette.grey['mark-74'],
-  (theme.vars || theme).palette.grey['lead-53'],
+const colors = [
+  'hsl(220, 20%, 65%)',
+  'hsl(220, 20%, 42%)',
+  'hsl(220, 20%, 35%)',
+  'hsl(220, 20%, 25%)',
 ];
 
 export default function ChartUserByCountry() {
-  const theme = useTheme();
-  const countries = makeCountries(theme);
-  const colors = makeColors(theme);
   return (
     <Card
       variant="outlined"

@@ -37,7 +37,7 @@ function renderSparklineCell(params: GridCellParams<SparkLineData, any>) {
         plotType="bar"
         showHighlight
         showTooltip
-        color="var(--template-palette-info-wash-80)"
+        color="hsl(210, 98%, 42%)"
         xAxis={{
           scaleType: 'band',
           data,

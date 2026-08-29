@@ -1,6 +1,7 @@
 import type { Theme } from '@mui/material/styles';
 import { axisClasses, legendClasses, chartsGridClasses } from '@mui/x-charts';
 import type { ChartsComponents } from '@mui/x-charts/themeAugmentation';
+import { gray } from '../../../shared-theme/themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
 export const chartsCustomizations: ChartsComponents<Theme> = {
@@ -8,14 +9,23 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         [`& .${axisClasses.line}`]: {
-          stroke: (theme.vars || theme).palette.grey[300],
+          stroke: gray[300],
         },
-        [`& .${axisClasses.tick}`]: { stroke: (theme.vars || theme).palette.grey[300] },
+        [`& .${axisClasses.tick}`]: { stroke: gray[300] },
         [`& .${axisClasses.tickLabel}`]: {
-          fill: (theme.vars || theme).palette.grey[500],
+          fill: gray[500],
           fontWeight: 500,
         },
-
+        ...theme.applyStyles('dark', {
+          [`& .${axisClasses.line}`]: {
+            stroke: gray[700],
+          },
+          [`& .${axisClasses.tick}`]: { stroke: gray[700] },
+          [`& .${axisClasses.tickLabel}`]: {
+            fill: gray[300],
+            fontWeight: 500,
+          },
+        }),
       }),
     },
   },
@@ -29,8 +39,10 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
       table: ({ theme }) => ({
         border: `1px solid ${(theme.vars || theme).palette.divider}`,
         borderRadius: theme.shape.borderRadius,
-        background: (theme.vars || theme).palette.okx.planeHigh,
-
+        background: 'hsl(0, 0%, 100%)',
+        ...theme.applyStyles('dark', {
+          background: gray[900],
+        }),
       }),
     },
   },
@@ -47,11 +59,17 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         [`& .${chartsGridClasses.line}`]: {
-          stroke: (theme.vars || theme).palette.grey[200],
+          stroke: gray[200],
           strokeDasharray: '4 2',
           strokeWidth: 0.8,
         },
-
+        ...theme.applyStyles('dark', {
+          [`& .${chartsGridClasses.line}`]: {
+            stroke: gray[700],
+            strokeDasharray: '4 2',
+            strokeWidth: 0.8,
+          },
+        }),
       }),
     },
   },

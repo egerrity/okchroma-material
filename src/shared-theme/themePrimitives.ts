@@ -1,7 +1,4 @@
-import { createTheme, Shadows } from '@mui/material/styles';
-import { stopTokenName } from 'okchroma';
-import { resolveSeed } from '../seed';
-import { laneTokens, NAME } from '../theme/tokens';
+import { createTheme, alpha, PaletteMode, Shadows } from '@mui/material/styles';
 
 declare module '@mui/material/Paper' {
   interface PaperPropsVariantOverrides {
@@ -22,42 +19,326 @@ declare module '@mui/material/styles' {
     900: string;
   }
 
-  interface EngineLadder {
-    'paper-99': string;
-    'paper-97': string;
-    'paper-95': string;
-    'wash-92': string;
-    'wash-89': string;
-    'wash-85': string;
-    'wash-80': string;
-    'mark-74': string;
-    'lead-53': string;
-    'ink-42': string;
-    'ink-30': string;
-  }
-
-  interface PaletteColor extends ColorRange, EngineLadder {
-    fill: string;
-    fillHover: string;
-    fillPressed: string;
-    on: string;
-    edge: string;
-  }
-
-  interface Color extends EngineLadder {}
+  interface PaletteColor extends ColorRange {}
 
   interface Palette {
     baseShadow: string;
-    Button: {
-      inheritContainedBg: string;
-      inheritContainedHoverBg: string;
-    };
   }
 }
 
 const defaultTheme = createTheme();
 
 const customShadows: Shadows = [...defaultTheme.shadows];
+
+export const brand = {
+  50: 'hsl(210, 100%, 95%)',
+  100: 'hsl(210, 100%, 92%)',
+  200: 'hsl(210, 100%, 80%)',
+  300: 'hsl(210, 100%, 65%)',
+  400: 'hsl(210, 98%, 48%)',
+  500: 'hsl(210, 98%, 42%)',
+  600: 'hsl(210, 98%, 55%)',
+  700: 'hsl(210, 100%, 35%)',
+  800: 'hsl(210, 100%, 16%)',
+  900: 'hsl(210, 100%, 21%)',
+};
+
+export const gray = {
+  50: 'hsl(220, 35%, 97%)',
+  100: 'hsl(220, 30%, 94%)',
+  200: 'hsl(220, 20%, 88%)',
+  300: 'hsl(220, 20%, 80%)',
+  400: 'hsl(220, 20%, 65%)',
+  500: 'hsl(220, 20%, 42%)',
+  600: 'hsl(220, 20%, 35%)',
+  700: 'hsl(220, 20%, 25%)',
+  800: 'hsl(220, 30%, 6%)',
+  900: 'hsl(220, 35%, 3%)',
+};
+
+export const green = {
+  50: 'hsl(120, 80%, 98%)',
+  100: 'hsl(120, 75%, 94%)',
+  200: 'hsl(120, 75%, 87%)',
+  300: 'hsl(120, 61%, 77%)',
+  400: 'hsl(120, 44%, 53%)',
+  500: 'hsl(120, 59%, 30%)',
+  600: 'hsl(120, 70%, 25%)',
+  700: 'hsl(120, 75%, 16%)',
+  800: 'hsl(120, 84%, 10%)',
+  900: 'hsl(120, 87%, 6%)',
+};
+
+export const orange = {
+  50: 'hsl(45, 100%, 97%)',
+  100: 'hsl(45, 92%, 90%)',
+  200: 'hsl(45, 94%, 80%)',
+  300: 'hsl(45, 90%, 65%)',
+  400: 'hsl(45, 90%, 40%)',
+  500: 'hsl(45, 90%, 35%)',
+  600: 'hsl(45, 91%, 25%)',
+  700: 'hsl(45, 94%, 20%)',
+  800: 'hsl(45, 95%, 16%)',
+  900: 'hsl(45, 93%, 12%)',
+};
+
+export const red = {
+  50: 'hsl(0, 100%, 97%)',
+  100: 'hsl(0, 92%, 90%)',
+  200: 'hsl(0, 94%, 80%)',
+  300: 'hsl(0, 90%, 65%)',
+  400: 'hsl(0, 90%, 40%)',
+  500: 'hsl(0, 90%, 30%)',
+  600: 'hsl(0, 91%, 25%)',
+  700: 'hsl(0, 94%, 18%)',
+  800: 'hsl(0, 95%, 12%)',
+  900: 'hsl(0, 93%, 6%)',
+};
+
+export const getDesignTokens = (mode: PaletteMode) => {
+  customShadows[1] =
+    mode === 'dark'
+      ? 'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px'
+      : 'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px';
+
+  return {
+    palette: {
+      mode,
+      primary: {
+        light: brand[200],
+        main: brand[400],
+        dark: brand[700],
+        contrastText: brand[50],
+        ...(mode === 'dark' && {
+          contrastText: brand[50],
+          light: brand[300],
+          main: brand[400],
+          dark: brand[700],
+        }),
+      },
+      info: {
+        light: brand[100],
+        main: brand[300],
+        dark: brand[600],
+        contrastText: gray[50],
+        ...(mode === 'dark' && {
+          contrastText: brand[300],
+          light: brand[500],
+          main: brand[700],
+          dark: brand[900],
+        }),
+      },
+      warning: {
+        light: orange[300],
+        main: orange[400],
+        dark: orange[800],
+        ...(mode === 'dark' && {
+          light: orange[400],
+          main: orange[500],
+          dark: orange[700],
+        }),
+      },
+      error: {
+        light: red[300],
+        main: red[400],
+        dark: red[800],
+        ...(mode === 'dark' && {
+          light: red[400],
+          main: red[500],
+          dark: red[700],
+        }),
+      },
+      success: {
+        light: green[300],
+        main: green[400],
+        dark: green[800],
+        ...(mode === 'dark' && {
+          light: green[400],
+          main: green[500],
+          dark: green[700],
+        }),
+      },
+      grey: {
+        ...gray,
+      },
+      divider: mode === 'dark' ? alpha(gray[700], 0.6) : alpha(gray[300], 0.4),
+      background: {
+        default: 'hsl(0, 0%, 99%)',
+        paper: 'hsl(220, 35%, 97%)',
+        ...(mode === 'dark' && { default: gray[900], paper: 'hsl(220, 30%, 7%)' }),
+      },
+      text: {
+        primary: gray[800],
+        secondary: gray[600],
+        warning: orange[400],
+        ...(mode === 'dark' && { primary: 'hsl(0, 0%, 100%)', secondary: gray[400] }),
+      },
+      action: {
+        hover: alpha(gray[200], 0.2),
+        selected: `${alpha(gray[200], 0.3)}`,
+        ...(mode === 'dark' && {
+          hover: alpha(gray[600], 0.2),
+          selected: alpha(gray[600], 0.3),
+        }),
+      },
+    },
+    typography: {
+      fontFamily: "'Noto Sans', sans-serif",
+      h1: {
+        fontSize: defaultTheme.typography.pxToRem(48),
+        fontWeight: 600,
+        lineHeight: 1.2,
+        letterSpacing: -0.5,
+      },
+      h2: {
+        fontSize: defaultTheme.typography.pxToRem(36),
+        fontWeight: 600,
+        lineHeight: 1.2,
+      },
+      h3: {
+        fontSize: defaultTheme.typography.pxToRem(30),
+        lineHeight: 1.2,
+      },
+      h4: {
+        fontSize: defaultTheme.typography.pxToRem(24),
+        fontWeight: 600,
+        lineHeight: 1.5,
+      },
+      h5: {
+        fontSize: defaultTheme.typography.pxToRem(20),
+        fontWeight: 600,
+      },
+      h6: {
+        fontSize: defaultTheme.typography.pxToRem(18),
+        fontWeight: 600,
+      },
+      subtitle1: {
+        fontSize: defaultTheme.typography.pxToRem(18),
+      },
+      subtitle2: {
+        fontSize: defaultTheme.typography.pxToRem(14),
+        fontWeight: 500,
+      },
+      body1: {
+        fontSize: defaultTheme.typography.pxToRem(14),
+      },
+      body2: {
+        fontSize: defaultTheme.typography.pxToRem(14),
+        fontWeight: 400,
+      },
+      caption: {
+        fontSize: defaultTheme.typography.pxToRem(12),
+        fontWeight: 400,
+      },
+    },
+    shape: {
+      borderRadius: 8,
+    },
+    shadows: customShadows,
+  };
+};
+
+export const colorSchemes = {
+  light: {
+    palette: {
+      primary: {
+        light: brand[200],
+        main: brand[400],
+        dark: brand[700],
+        contrastText: brand[50],
+      },
+      info: {
+        light: brand[100],
+        main: brand[300],
+        dark: brand[600],
+        contrastText: gray[50],
+      },
+      warning: {
+        light: orange[300],
+        main: orange[400],
+        dark: orange[800],
+      },
+      error: {
+        light: red[300],
+        main: red[400],
+        dark: red[800],
+      },
+      success: {
+        light: green[300],
+        main: green[400],
+        dark: green[800],
+      },
+      grey: {
+        ...gray,
+      },
+      divider: alpha(gray[300], 0.4),
+      background: {
+        default: 'hsl(0, 0%, 99%)',
+        paper: 'hsl(220, 35%, 97%)',
+      },
+      text: {
+        primary: gray[800],
+        secondary: gray[600],
+        warning: orange[400],
+      },
+      action: {
+        hover: alpha(gray[200], 0.2),
+        selected: `${alpha(gray[200], 0.3)}`,
+      },
+      baseShadow:
+        'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px',
+    },
+  },
+  dark: {
+    palette: {
+      primary: {
+        contrastText: brand[50],
+        light: brand[300],
+        main: brand[400],
+        dark: brand[700],
+      },
+      info: {
+        contrastText: brand[300],
+        light: brand[500],
+        main: brand[700],
+        dark: brand[900],
+      },
+      warning: {
+        light: orange[400],
+        main: orange[500],
+        dark: orange[700],
+      },
+      error: {
+        light: red[400],
+        main: red[500],
+        dark: red[700],
+      },
+      success: {
+        light: green[400],
+        main: green[500],
+        dark: green[700],
+      },
+      grey: {
+        ...gray,
+      },
+      divider: alpha(gray[700], 0.6),
+      background: {
+        default: gray[900],
+        paper: 'hsl(220, 30%, 7%)',
+      },
+      text: {
+        primary: 'hsl(0, 0%, 100%)',
+        secondary: gray[400],
+      },
+      action: {
+        hover: alpha(gray[600], 0.2),
+        selected: alpha(gray[600], 0.3),
+      },
+      baseShadow:
+        'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px',
+    },
+  },
+};
 
 export const typography = {
   fontFamily: "'Noto Sans', sans-serif",
@@ -120,139 +401,3 @@ const defaultShadows: Shadows = [
   ...defaultTheme.shadows.slice(2),
 ];
 export const shadows = defaultShadows;
-
-// ── Per-lane scheme factory (the dynamic path) ───────────────────────────────
-// Owner rulings encoded here:
-//   · each scheme carries ITS OWN lane's ladder end to end — okchroma's dark is
-//     the only dark; Material never re-derives
-//   · the numeric ranges are PURE LADDER (data-safe; stamps never in a ramp)
-//   · stamp states live only in okx (consumed by buttons alone); brand/alt
-//     stamp fill is for avatars, buttons, chips, badges only
-//   · signal ladders carry data-viz polarity
-const LADDER_SLOTS: Array<[number, number]> = [
-  [50, 1], [100, 2], [200, 3], [300, 4], [400, 5], [500, 7], [600, 8], [700, 9], [800, 10], [900, 11],
-];
-
-export interface OkxTokens {
-  link: string;
-  linkHover: string;
-  linkPressed: string;
-  focus: string;
-  alpha6: string;
-  alpha8: string;
-  alpha16: string;
-  planeDim: string;
-  planeHigh: string;
-  borderSubtle: string;
-  borderDefault: string;
-  shadowLift: string;
-  shadowPop: string;
-  shadowFloat: string;
-}
-
-declare module '@mui/material/styles' {
-  interface Palette {
-    okx: OkxTokens;
-  }
-  interface PaletteOptions {
-    okx?: OkxTokens;
-    baseShadow?: string;
-  }
-}
-
-export function buildColorSchemes(brandHex: string, altHex?: string | null) {
-  const seed = resolveSeed(brandHex, altHex);
-  const lanePalette = (lane: 'light' | 'dark') => {
-    const t = laneTokens(seed, lane);
-    const ladder = (f: (n: string) => string) => ({
-      // the okchroma ladder, by engine name — the grammar OUR code speaks
-      ...Object.fromEntries(
-        Array.from({ length: 11 }, (_, i) => stopTokenName(i + 1)).map(n => [n, f(n)]),
-      ),
-      // Material-compat numeric routing for library internals; never authored against
-      ...Object.fromEntries(LADDER_SLOTS.map(([slot, stop]) => [slot, f(stopTokenName(stop))])),
-    });
-    const stampSlots = (st: { fill: string; fillHover: string; fillPressed: string; on: string; edge: string }) => ({
-      fill: st.fill,
-      fillHover: st.fillHover,
-      fillPressed: st.fillPressed,
-      on: st.on,
-      edge: st.edge,
-    });
-    const sig = (role: 'critical' | 'warning' | 'positive' | 'info') => ({
-      ...ladder(n => t.signalStop(role, n)),
-      ...stampSlots(t.signalStamp(role)),
-      light: t.signalStop(role, NAME.wash4),
-      main: t.signalStop(role, NAME.lead),
-      dark: t.signalStop(role, NAME.inkMid),
-      contrastText: t.signalStop(role, NAME.paperTop),
-    });
-    const isDark = lane === 'dark';
-    const shadow = isDark
-      ? { s04: 'rgba(0, 0, 0, 0.32)', s08: 'rgba(0, 0, 0, 0.48)' }
-      : { s04: 'rgba(0, 0, 0, 0.04)', s08: 'rgba(0, 0, 0, 0.08)' };
-    return {
-      primary: {
-        ...ladder(t.brand),
-        ...stampSlots(t.stamp),
-        light: t.brand(NAME.wash4),
-        main: t.brand(NAME.lead),
-        dark: t.brand(NAME.inkMid),
-        contrastText: t.brand(NAME.paperTop),
-      },
-      secondary: {
-        ...ladder(t.secondary ?? t.brand),
-        ...stampSlots(t.secondaryStamp ?? t.stamp),
-        light: (t.secondary ?? t.brand)(NAME.wash4),
-        main: (t.secondary ?? t.brand)(NAME.lead),
-        dark: (t.secondary ?? t.brand)(NAME.inkMid),
-        contrastText: (t.secondary ?? t.brand)(NAME.paperTop),
-      },
-      info: sig('info'),
-      warning: sig('warning'),
-      error: sig('critical'),
-      success: sig('positive'),
-      grey: ladder(t.neutral),
-      divider: t.neutral('wash-89'),
-      background: { default: t.planes.low, paper: t.planes.mid },
-      text: {
-        primary: t.neutral(NAME.inkStrong),
-        secondary: t.neutral(NAME.lead),
-        warning: t.signalStop('warning', NAME.lead),
-      },
-      action: {
-        active: t.neutral(NAME.mark),
-        hover: t.alpha(6),
-        selected: t.alpha(8),
-        focus: t.alpha(16),
-      },
-      Button: {
-        inheritContainedBg: t.neutralStamp.fill,
-        inheritContainedHoverBg: t.neutralStamp.fillHover,
-      },
-      baseShadow: `0 4px 8px ${shadow.s04}, 0 0 1px ${shadow.s04}`,
-      okx: {
-        link: t.link.default,
-        linkHover: t.link.hover,
-        linkPressed: t.link.pressed,
-        focus: t.neutral(NAME.mark),
-        alpha6: t.alpha(6),
-        alpha8: t.alpha(8),
-        alpha16: t.alpha(16),
-        planeDim: t.planes.dim,
-        planeHigh: t.planes.high,
-        borderSubtle: t.neutral('wash-89'),
-        borderDefault: t.neutral(NAME.mark),
-        shadowLift: `0 4px 8px ${shadow.s04}, 0 0 1px ${shadow.s04}`,
-        shadowPop: `0 4px 10px -2px ${shadow.s08}, 0 20px 25px -2px ${shadow.s04}`,
-        shadowFloat: isDark
-          ? '0 6px 16px -5px rgba(0,0,0,0.48), 0 16px 44px -8px rgba(0,0,0,0.58)'
-          : '0 6px 16px -5px rgba(17,18,22,0.10), 0 16px 44px -8px rgba(17,18,22,0.16)',
-      } satisfies OkxTokens,
-    };
-  };
-  return {
-    light: { palette: lanePalette('light') },
-    dark: { palette: lanePalette('dark') },
-  };
-}

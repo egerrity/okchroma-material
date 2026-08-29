@@ -5,6 +5,7 @@ import { typographyClasses } from '@mui/material/Typography';
 import { buttonBaseClasses } from '@mui/material/ButtonBase';
 import { chipClasses } from '@mui/material/Chip';
 import { iconButtonClasses } from '@mui/material/IconButton';
+import { gray, red, green } from '../themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
 export const dataDisplayCustomizations: Components<Theme> = {
@@ -103,15 +104,24 @@ export const dataDisplayCustomizations: Components<Theme> = {
               color: 'default',
             },
             style: {
-              borderColor: (theme.vars || theme).palette.grey[200],
-              backgroundColor: (theme.vars || theme).palette.grey[100],
+              borderColor: gray[200],
+              backgroundColor: gray[100],
               [`& .${chipClasses.label}`]: {
-                color: (theme.vars || theme).palette.grey[500],
+                color: gray[500],
               },
               [`& .${chipClasses.icon}`]: {
-                color: (theme.vars || theme).palette.grey[500],
+                color: gray[500],
               },
-
+              ...theme.applyStyles('dark', {
+                borderColor: gray[700],
+                backgroundColor: gray[800],
+                [`& .${chipClasses.label}`]: {
+                  color: gray[300],
+                },
+                [`& .${chipClasses.icon}`]: {
+                  color: gray[300],
+                },
+              }),
             },
           },
           {
@@ -119,15 +129,24 @@ export const dataDisplayCustomizations: Components<Theme> = {
               color: 'success',
             },
             style: {
-              borderColor: (theme.vars || theme).palette.success[200],
-              backgroundColor: (theme.vars || theme).palette.success[50],
+              borderColor: green[200],
+              backgroundColor: green[50],
               [`& .${chipClasses.label}`]: {
-                color: (theme.vars || theme).palette.success[500],
+                color: green[500],
               },
               [`& .${chipClasses.icon}`]: {
-                color: (theme.vars || theme).palette.success[500],
+                color: green[500],
               },
-
+              ...theme.applyStyles('dark', {
+                borderColor: green[800],
+                backgroundColor: green[900],
+                [`& .${chipClasses.label}`]: {
+                  color: green[300],
+                },
+                [`& .${chipClasses.icon}`]: {
+                  color: green[300],
+                },
+              }),
             },
           },
           {
@@ -135,15 +154,24 @@ export const dataDisplayCustomizations: Components<Theme> = {
               color: 'error',
             },
             style: {
-              borderColor: (theme.vars || theme).palette.error[100],
-              backgroundColor: (theme.vars || theme).palette.error[50],
+              borderColor: red[100],
+              backgroundColor: red[50],
               [`& .${chipClasses.label}`]: {
-                color: (theme.vars || theme).palette.error[500],
+                color: red[500],
               },
               [`& .${chipClasses.icon}`]: {
-                color: (theme.vars || theme).palette.error[500],
+                color: red[500],
               },
-
+              ...theme.applyStyles('dark', {
+                borderColor: red[800],
+                backgroundColor: red[900],
+                [`& .${chipClasses.label}`]: {
+                  color: red[200],
+                },
+                [`& .${chipClasses.icon}`]: {
+                  color: red[300],
+                },
+              }),
             },
           },
           {

@@ -4,7 +4,6 @@ import CustomDatePicker from './CustomDatePicker';
 import NavbarBreadcrumbs from './NavbarBreadcrumbs';
 import MenuButton from './MenuButton';
 import ColorModeToggle from '../../shared-theme/ColorModeToggle';
-import SeedPickers from './SeedPickers';
 
 import Search from './Search';
 
@@ -23,8 +22,7 @@ export default function Header() {
       spacing={2}
     >
       <NavbarBreadcrumbs />
-      <Stack direction="row" sx={{ gap: 1, alignItems: 'center' }}>
-        <SeedPickers />
+      <Stack direction="row" sx={{ gap: 1 }}>
         <Search />
         <CustomDatePicker />
         <MenuButton showBadge aria-label="Open notifications">

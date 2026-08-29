@@ -10,13 +10,23 @@ import Header from './components/Header';
 import MainGrid from './components/MainGrid';
 import SideMenu from './components/SideMenu';
 import AppTheme from '../shared-theme/AppTheme';
-import { appThemeComponents } from '../theme/appThemeComponents';
-import { useSeed } from '../seedContext';
+import {
+  chartsCustomizations,
+  dataGridCustomizations,
+  datePickersCustomizations,
+  treeViewCustomizations,
+} from './theme/customizations';
+
+const xThemeComponents = {
+  ...chartsCustomizations,
+  ...dataGridCustomizations,
+  ...datePickersCustomizations,
+  ...treeViewCustomizations,
+};
 
 export default function Dashboard(props: { disableCustomTheme?: boolean }) {
-  const { brandHex, altHex } = useSeed();
   return (
-    <AppTheme {...props} themeComponents={appThemeComponents} brandHex={brandHex} altHex={altHex}>
+    <AppTheme {...props} themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
       <Box sx={{ display: 'flex' }}>
         <SideMenu />

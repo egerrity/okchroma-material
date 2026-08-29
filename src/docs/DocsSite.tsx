@@ -10,9 +10,7 @@ import Divider from '@mui/material/Divider';
 import Link from '@mui/material/Link';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppTheme from '../shared-theme/AppTheme';
-import { appThemeComponents } from '../theme/appThemeComponents';
 import ColorModeToggle from '../shared-theme/ColorModeToggle';
-import { useSeed } from '../seedContext';
 import ButtonDoc from './pages/ButtonDoc';
 import GettingStarted from './pages/GettingStarted';
 
@@ -28,10 +26,9 @@ const NAV = [
 ];
 
 export default function DocsSite({ route }: { route: string }) {
-  const { brandHex, altHex } = useSeed();
   const page = route === '#/docs/button' ? <ButtonDoc /> : <GettingStarted />;
   return (
-    <AppTheme brandHex={brandHex} altHex={altHex} themeComponents={appThemeComponents}>
+    <AppTheme>
       <CssBaseline enableColorScheme />
       <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'background.default' }}>
         <Box

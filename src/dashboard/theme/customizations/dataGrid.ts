@@ -10,6 +10,7 @@ import { checkboxClasses } from '@mui/material/Checkbox';
 import { listClasses } from '@mui/material/List';
 import { gridClasses } from '@mui/x-data-grid';
 import { tablePaginationClasses } from '@mui/material/TablePagination';
+import { gray } from '../../../shared-theme/themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
 export const dataGridCustomizations: DataGridComponents<Theme> = {
@@ -85,21 +86,37 @@ export const dataGridCustomizations: DataGridComponents<Theme> = {
             backgroundColor: alpha(theme.palette.action.selected, 0.3),
           },
           '&:active': {
-            backgroundColor: (theme.vars || theme).palette.grey[200],
+            backgroundColor: gray[200],
           },
-
+          ...theme.applyStyles('dark', {
+            color: gray[50],
+            '&:hover': {
+              backgroundColor: gray[800],
+            },
+            '&:active': {
+              backgroundColor: gray[900],
+            },
+          }),
         },
       }),
       menuIconButton: ({ theme }) => ({
         border: 'none',
         backgroundColor: 'transparent',
         '&:hover': {
-          backgroundColor: (theme.vars || theme).palette.grey[100],
+          backgroundColor: gray[100],
         },
         '&:active': {
-          backgroundColor: (theme.vars || theme).palette.grey[200],
+          backgroundColor: gray[200],
         },
-
+        ...theme.applyStyles('dark', {
+          color: gray[50],
+          '&:hover': {
+            backgroundColor: gray[800],
+          },
+          '&:active': {
+            backgroundColor: gray[900],
+          },
+        }),
       }),
       filterForm: ({ theme }) => ({
         gap: theme.spacing(1),

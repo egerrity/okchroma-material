@@ -29,7 +29,7 @@ export default function HighlightedCard() {
         <Button
           variant="contained"
           size="small"
-          color="secondary"
+          color="primary"
           endIcon={<ChevronRightRoundedIcon />}
           fullWidth={isSmallScreen}
         >

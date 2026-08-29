@@ -6,30 +6,21 @@ export default function GettingStarted() {
     <>
       <PageTitle>Overview</PageTitle>
       <Lede>
-        One brand hex in, a complete themed product out. The okchroma engine resolves every
-        color for both modes; Material components supply the scaffolding; the design team owns
-        the output.
+        Proof of concept: a design-owned system on Material scaffolding, colored entirely
+        by the okchroma engine. Currently reset to stock values for the round-2 restart.
       </Lede>
 
-      <SectionTitle>How this system works</SectionTitle>
+      <SectionTitle>Where things stand</SectionTitle>
       <Typography component="div" sx={{ fontSize: 14, lineHeight: 2 }}>
-        Tokens come from the okchroma package (<FileRef path="npm: okchroma" />) and resolve per
-        theme through <FileRef path="src/shared-theme/themePrimitives.ts" />.
+        Round 1 is recorded, failures and rulings, in{' '}
+        <FileRef path="docs/round-1-failures.md" />.
         <br />
-        Component styling lives in <FileRef path="src/theme/cleanCustomizations.ts" /> and is
-        documented per component in this site.
+        Round 2 starts with SOLUTIONING: one concrete top-down mapping of okchroma onto
+        Material's semantics — including the additive register separating main/light/dark
+        from the stamp — agreed before any implementation.
         <br />
-        Components are designed in the Figma kit against the same variable names this code
-        consumes; the wiring check (<FileRef path="npm run check:wiring" />) verifies every
-        mapped pairing holds the engine bars.
-        <br />
-        Reference: <FileRef path="docs/customizing-mui.md" /> in the repo.
-      </Typography>
-
-      <SectionTitle>Components</SectionTitle>
-      <Typography sx={{ fontSize: 14 }}>
-        Each component the PoC adopts gets a page here: design guidelines (placeholder until the
-        owner fills them) and a working code page with live examples.
+        Dormant reference machinery from round 1: <FileRef path="src/seed.ts" />,{' '}
+        <FileRef path="src/theme/tokens.ts" />, <FileRef path="scripts/check-wiring.ts" />.
       </Typography>
     </>
   );

@@ -11,6 +11,7 @@
 // (stamps are never for text); focus rings ride the mark band.
 import type { Theme, Components } from '@mui/material/styles';
 import { inputsCustomizations } from '../shared-theme/customizations/inputs';
+import { buttonModeVars, isButtonMode } from './buttonTokens';
 import { surfacesCustomizations } from '../shared-theme/customizations/surfaces';
 import { dataDisplayCustomizations } from '../shared-theme/customizations/dataDisplay';
 
@@ -33,120 +34,72 @@ export const cleanCustomizations: Components<Theme> = {
       ] as never,
     },
   },
-  // buttons: the ONLY consumer of the stamp states. Flat unify pill, two
-  // sizes, stamp-edge always rendered (usually transparent)
+  // buttons consume ONLY the component tokens (--buttons-*), the code mirror
+  // of the Figma component/buttons collection. The alias table lives in
+  // theme/buttonTokens.ts; nothing here names a palette or okx path.
   MuiButton: {
     styleOverrides: {
       root: [
         ...prev(inputsCustomizations.MuiButton?.styleOverrides?.root),
         ({ ownerState, theme }: { ownerState: { variant?: string; color?: string; size?: string }; theme: Theme }) => {
-          // the quiet register (text + outlined = text plus border, per the kit):
-          // label rides the text-CTA trio (700/800/900 = lead/ink-42/ink-30),
-          // hover/pressed grounds are the owner's mark-tint washes (12%/16%),
-          // border is the SOLID family mark stop
-          const famKey = (['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const).find(
-            k => k === ownerState.color,
-          )
-          const famPalette = famKey ? v(theme)[famKey] : undefined
-          // inherit = the neutral register: grey ladder for the quiet variants
-          const fam = famPalette ?? (ownerState.color === 'inherit' ? v(theme).grey : undefined)
-          const quiet =
-            fam &&
-            (ownerState.variant === 'text' || ownerState.variant === 'outlined') && {
+          const geometry = {
+            '&&&': {
+              borderRadius: 999,
+              ...(ownerState.size === 'small'
+                ? { height: 32, padding: '0 16px', fontSize: 12 }
+                : ownerState.size === 'large'
+                  ? { height: 48, padding: '0 24px', fontSize: 16 }
+                  : { height: 40, padding: '0 20px', fontSize: 14 }),
+            },
+          }
+          const mode = isButtonMode(ownerState.color)
+            ? ownerState.color
+            : ownerState.color === undefined
+              ? 'primary'
+              : undefined
+          // colors outside the kit collection's modes are out of contract
+          if (!mode) return geometry
+          const disabled = {
+            '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
+          }
+          return {
+            ...buttonModeVars(theme, mode),
+            ...geometry,
+            '&.Mui-focusVisible': {
+              outline: '2px solid var(--buttons-focus-ring)',
+              outlineOffset: 1,
+            },
+            ...(ownerState.variant === 'contained' && {
               '&&': {
-                color: fam[700],
-                // per the kit tokens: brand families wear the NEUTRAL mark
-                // border; signal families wear their own mark
+                backgroundColor: 'var(--buttons-contained-fill)',
+                color: 'var(--buttons-contained-label)',
+                backgroundImage: 'none',
+                border: '1.5px solid var(--buttons-contained-border)',
+                boxShadow: 'none',
+                '&:hover': { backgroundColor: 'var(--buttons-contained-fillHover)', boxShadow: 'none' },
+                '&:active': { backgroundColor: 'var(--buttons-contained-fillPressed)', boxShadow: 'none' },
+                ...disabled,
+              },
+            }),
+            ...((ownerState.variant === 'text' || ownerState.variant === 'outlined') && {
+              '&&': {
+                color: 'var(--buttons-text-label)',
+                backgroundColor: 'var(--buttons-text-fill)',
                 ...(ownerState.variant === 'outlined' && {
-                  border: `1px solid ${
-                    ownerState.color === 'error' || ownerState.color === 'warning' ||
-                    ownerState.color === 'info' || ownerState.color === 'success'
-                      ? fam[600]
-                      : v(theme).okx.borderDefault
-                  }`,
+                  border: '1px solid var(--buttons-text-border)',
                 }),
                 '&:hover': {
-                  color: fam[800],
-                  backgroundColor: `color-mix(in srgb, ${fam[600]} 12%, transparent)`,
+                  color: 'var(--buttons-text-labelHover)',
+                  backgroundColor: 'var(--buttons-text-fillHover)',
                 },
                 '&:active': {
-                  color: fam[900],
-                  backgroundColor: `color-mix(in srgb, ${fam[600]} 16%, transparent)`,
+                  color: 'var(--buttons-text-labelPressed)',
+                  backgroundColor: 'var(--buttons-text-fillPressed)',
                 },
-                '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
-              },
-            }
-          return {
-          '&&&': {
-            borderRadius: 999,
-            ...(ownerState.size === 'small'
-              ? { height: 32, padding: '0 16px', fontSize: 12 }
-              : ownerState.size === 'large'
-                ? { height: 48, padding: '0 24px', fontSize: 16 }
-                : { height: 40, padding: '0 20px', fontSize: 14 }),
-          },
-          ...quiet,
-          ...(ownerState.variant === 'contained' &&
-            (ownerState.color === 'primary' || ownerState.color === undefined) && {
-              '&&': {
-                backgroundColor: v(theme).okx.stampFill,
-                color: v(theme).okx.stampOn,
-                backgroundImage: 'none',
-                border: `1.5px solid ${v(theme).okx.stampEdge}`,
-                boxShadow: 'none',
-                '&:hover': { backgroundColor: v(theme).okx.stampHover, boxShadow: 'none' },
-                '&:active': { backgroundColor: v(theme).okx.stampPressed, boxShadow: 'none' },
-                '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
+                ...disabled,
               },
             }),
-          // signal families: contained rides the family stamp (fill/on) with the
-          // hover slot (= fill-hover); pressed approximates via the same slot
-          // until per-family stamps join okx
-          ...(ownerState.variant === 'contained' &&
-            (ownerState.color === 'error' || ownerState.color === 'warning' ||
-             ownerState.color === 'info' || ownerState.color === 'success') && (() => {
-              const role = ({ error: 'critical', warning: 'warning', success: 'positive', info: 'info' } as const)[
-                ownerState.color
-              ]
-              return {
-              '&&': {
-                backgroundColor: v(theme).okx[`${role}Fill`],
-                color: v(theme).okx[`${role}On`],
-                backgroundImage: 'none',
-                border: '1.5px solid transparent',
-                boxShadow: 'none',
-                '&:hover': { backgroundColor: v(theme).okx[`${role}Hover`], boxShadow: 'none' },
-                '&:active': { backgroundColor: v(theme).okx[`${role}Hover`], boxShadow: 'none' },
-                '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
-              },
-            }})()),
-          ...(ownerState.variant === 'contained' &&
-            ownerState.color === 'inherit' && {
-              '&&': {
-                backgroundColor: v(theme).okx.inheritFill,
-                color: v(theme).okx.inheritOn,
-                backgroundImage: 'none',
-                border: `1.5px solid ${v(theme).okx.inheritEdge}`,
-                boxShadow: 'none',
-                '&:hover': { backgroundColor: v(theme).okx.inheritHover, boxShadow: 'none' },
-                '&:active': { backgroundColor: v(theme).okx.inheritPressed, boxShadow: 'none' },
-                '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
-              },
-            }),
-          ...(ownerState.variant === 'contained' &&
-            ownerState.color === 'secondary' && {
-              '&&': {
-                backgroundColor: v(theme).okx.secFill,
-                color: v(theme).okx.secOn,
-                backgroundImage: 'none',
-                border: `1.5px solid ${v(theme).okx.secEdge}`,
-                boxShadow: 'none',
-                '&:hover': { backgroundColor: v(theme).okx.secHover, boxShadow: 'none' },
-                '&:active': { backgroundColor: v(theme).okx.secPressed, boxShadow: 'none' },
-                '&.Mui-disabled': { opacity: (theme.vars || theme).palette.action.disabledOpacity },
-              },
-            }),
-        }
+          }
         },
       ] as never,
     },

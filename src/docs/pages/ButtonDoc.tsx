@@ -11,23 +11,26 @@ const USAGE = `import Button from '@mui/material/Button';
 <Button variant="outlined" color="error">Label</Button>
 <Button variant="text" size="small">Label</Button>`;
 
-const MAPPING = `Figma (component/buttons)      code (per color mode)
-contained/fill              →  okx stamp/sec/inherit/signal FILL (component tokens)
-contained/label             →  the paired okx ON
-   (palette[color].main is the family's TEXT-SAFE anchor — lead-53 —
-    never the stamp: main leaks into text across the library)
-contained/fillHover         →  okx stamp/sec/inherit hover; signals: palette[color].dark
-contained/fillPressed       →  okx stamp/sec/inherit pressed; signals approximate hover
-contained/border            →  okx stamp/sec/inherit edge (always rendered, usually transparent)
-text/label                  →  palette[color][700]             (lead-53)
-text/labelHover             →  palette[color][800]             (ink-42)
-text/labelPressed           →  palette[color][900]             (ink-30)
-text/fillHover              →  color-mix(family mark 12%)      (owner's mark-tint wash)
-text/fillPressed            →  color-mix(family mark 16%)
-text/border  (outlined)     →  okx.borderDefault (neutral mark) for primary/secondary/inherit;
-                               palette[color][600] (family mark) for signals
-focus/ring                  →  palette.okx.focus               (2px, 1px offset, one stroke)
-borderRadiusAction          →  999 (pill)`;
+const MAPPING = `Figma (component/buttons)      code (component tokens, 1:1)
+contained/fill              →  --buttons-contained-fill
+contained/label             →  --buttons-contained-label
+contained/fillHover         →  --buttons-contained-fillHover
+contained/fillPressed       →  --buttons-contained-fillPressed
+contained/border            →  --buttons-contained-border
+text/label                  →  --buttons-text-label
+text/labelHover             →  --buttons-text-labelHover
+text/labelPressed           →  --buttons-text-labelPressed
+text/fill                   →  --buttons-text-fill
+text/fillHover              →  --buttons-text-fillHover
+text/fillPressed            →  --buttons-text-fillPressed
+text/border  (outlined)     →  --buttons-text-border
+focus/ring                  →  --buttons-focus-ring
+borderRadiusAction          →  999 (pill)
+
+The color prop is the collection MODE. The per-mode aliases (which theme
+token each row points to) live in src/theme/buttonTokens.ts — the code
+mirror of the collection's mode columns. The button's styles reference
+only these variables.`;
 
 export default function ButtonDoc() {
   return (

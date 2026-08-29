@@ -9,9 +9,9 @@ import { useTheme } from '@mui/material/styles';
 export default function PageViewsBarChart() {
   const theme = useTheme();
   const colorPalette = [
-    (theme.vars || theme).palette.info[700],
-    (theme.vars || theme).palette.info[500],
-    (theme.vars || theme).palette.info[300],
+    (theme.vars || theme).palette.info['lead-53'],
+    (theme.vars || theme).palette.info['wash-80'],
+    (theme.vars || theme).palette.info['wash-92'],
   ];
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>

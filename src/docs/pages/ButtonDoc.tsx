@@ -17,20 +17,23 @@ contained/label             →  palette[color].on
 contained/fillHover         →  palette[color].fillHover
 contained/fillPressed       →  palette[color].fillPressed
 contained/border            →  palette[color].edge (always rendered, usually transparent)
-text/label                  →  palette[color][700]
-text/labelHover             →  palette[color][800]
-text/labelPressed           →  palette[color][900]
-text/fillHover              →  mark-tint wash 12% (INTERIM color-mix until the
-text/fillPressed               alpha rows join the engine; 16% pressed)
-text/border  (outlined)     →  neutral mark for brand colors; palette[color][600] for signals
+text/label                  →  palette[color]['lead-53']
+text/labelHover             →  palette[color]['ink-42']
+text/labelPressed           →  palette[color]['ink-30']
+text/fillHover              →  mark-74 tint wash 12% (INTERIM color-mix until
+text/fillPressed               the alpha rows join the engine; 16% pressed)
+text/border  (outlined)     →  neutral mark-74 for brand colors; the family's
+                               own mark-74 for signals
 focus/ring                  →  the mark ring (global focus law)
 borderRadiusAction          →  999 (pill)
 
 Material's semantic routing is kept and filled by okchroma. The stamp slots
-(fill/fillHover/fillPressed/on/edge) are the additive register on every
-palette family for stamp-accepting components. color="inherit" rides
-Material's own routing: palette.Button.inheritContained*, filled with the
-neutral stamp.`;
+(fill/fillHover/fillPressed/on/edge) and the engine-named ladder
+(paper-99 … ink-30) are the additive register on every palette family; our
+code speaks ONLY engine names. Material's numeric ranges remain solely as
+filled compat routing for library internals — never authored against.
+color="inherit" rides Material's own routing (palette.Button.
+inheritContained*), filled with the neutral stamp.`;
 
 export default function ButtonDoc() {
   return (

@@ -30,25 +30,25 @@ const makeCountries = (theme: Theme) => [
     name: 'India',
     value: 50,
     flag: <IndiaFlag />,
-    color: (theme.vars || theme).palette.grey[400],
+    color: (theme.vars || theme).palette.grey['wash-89'],
   },
   {
     name: 'USA',
     value: 35,
     flag: <UsaFlag />,
-    color: (theme.vars || theme).palette.grey[500],
+    color: (theme.vars || theme).palette.grey['wash-80'],
   },
   {
     name: 'Brazil',
     value: 10,
     flag: <BrazilFlag />,
-    color: (theme.vars || theme).palette.grey[600],
+    color: (theme.vars || theme).palette.grey['mark-74'],
   },
   {
     name: 'Other',
     value: 5,
     flag: <GlobeFlag />,
-    color: (theme.vars || theme).palette.grey[700],
+    color: (theme.vars || theme).palette.grey['lead-53'],
   },
 ];
 
@@ -117,10 +117,10 @@ function PieCenterLabel({ primaryText, secondaryText }: PieCenterLabelProps) {
 }
 
 const makeColors = (theme: Theme) => [
-  (theme.vars || theme).palette.grey[400],
-  (theme.vars || theme).palette.grey[500],
-  (theme.vars || theme).palette.grey[600],
-  (theme.vars || theme).palette.grey[700],
+  (theme.vars || theme).palette.grey['wash-89'],
+  (theme.vars || theme).palette.grey['wash-80'],
+  (theme.vars || theme).palette.grey['mark-74'],
+  (theme.vars || theme).palette.grey['lead-53'],
 ];
 
 export default function ChartUserByCountry() {

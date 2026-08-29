@@ -22,13 +22,29 @@ declare module '@mui/material/styles' {
     900: string;
   }
 
-  interface PaletteColor extends ColorRange {
+  interface EngineLadder {
+    'paper-99': string;
+    'paper-97': string;
+    'paper-95': string;
+    'wash-92': string;
+    'wash-89': string;
+    'wash-85': string;
+    'wash-80': string;
+    'mark-74': string;
+    'lead-53': string;
+    'ink-42': string;
+    'ink-30': string;
+  }
+
+  interface PaletteColor extends ColorRange, EngineLadder {
     fill: string;
     fillHover: string;
     fillPressed: string;
     on: string;
     edge: string;
   }
+
+  interface Color extends EngineLadder {}
 
   interface Palette {
     baseShadow: string;
@@ -148,8 +164,14 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
   const seed = resolveSeed(brandHex, altHex);
   const lanePalette = (lane: 'light' | 'dark') => {
     const t = laneTokens(seed, lane);
-    const ladder = (f: (n: string) => string) =>
-      Object.fromEntries(LADDER_SLOTS.map(([slot, stop]) => [slot, f(stopTokenName(stop))]));
+    const ladder = (f: (n: string) => string) => ({
+      // the okchroma ladder, by engine name — the grammar OUR code speaks
+      ...Object.fromEntries(
+        Array.from({ length: 11 }, (_, i) => stopTokenName(i + 1)).map(n => [n, f(n)]),
+      ),
+      // Material-compat numeric routing for library internals; never authored against
+      ...Object.fromEntries(LADDER_SLOTS.map(([slot, stop]) => [slot, f(stopTokenName(stop))])),
+    });
     const stampSlots = (st: { fill: string; fillHover: string; fillPressed: string; on: string; edge: string }) => ({
       fill: st.fill,
       fillHover: st.fillHover,

@@ -55,12 +55,12 @@ export default function StatCard({
   const trendColors = {
     up:
       theme.palette.mode === 'light'
-        ? (theme.vars || theme).palette.success[600]
-        : (theme.vars || theme).palette.success[700],
+        ? (theme.vars || theme).palette.success['mark-74']
+        : (theme.vars || theme).palette.success['lead-53'],
     down:
       theme.palette.mode === 'light'
-        ? (theme.vars || theme).palette.error[600]
-        : (theme.vars || theme).palette.error[700],
+        ? (theme.vars || theme).palette.error['mark-74']
+        : (theme.vars || theme).palette.error['lead-53'],
     neutral:
       theme.palette.mode === 'light'
         ? (theme.vars || theme).palette.grey[400]

@@ -91,20 +91,20 @@ export const cleanCustomizations: Components<Theme> = {
             }),
             ...((ownerState.variant === 'text' || ownerState.variant === 'outlined') && quietFam && {
               '&&': {
-                color: quietFam[700],
+                color: quietFam['lead-53'],
                 ...(ownerState.variant === 'outlined' && {
                   // brand colors wear the neutral mark border; signals their own mark
-                  border: `1px solid ${signal ? quietFam[600] : v(theme).okx.borderDefault}`,
+                  border: `1px solid ${signal ? quietFam['mark-74'] : v(theme).okx.borderDefault}`,
                 }),
                 // hover/pressed grounds: the owner's mark-tint washes — INTERIM
                 // color-mix until the alpha rows join the engine
                 '&:hover': {
-                  color: quietFam[800],
-                  backgroundColor: `color-mix(in srgb, ${quietFam[600]} 12%, transparent)`,
+                  color: quietFam['ink-42'],
+                  backgroundColor: `color-mix(in srgb, ${quietFam['mark-74']} 12%, transparent)`,
                 },
                 '&:active': {
-                  color: quietFam[900],
-                  backgroundColor: `color-mix(in srgb, ${quietFam[600]} 16%, transparent)`,
+                  color: quietFam['ink-30'],
+                  backgroundColor: `color-mix(in srgb, ${quietFam['mark-74']} 16%, transparent)`,
                 },
                 ...disabled,
               },
@@ -149,8 +149,8 @@ export const cleanCustomizations: Components<Theme> = {
       root: ({ theme }: { theme: Theme }) => ({
         borderRadius: 8,
         '&&.Mui-selected, &&.Mui-selected:hover': {
-          backgroundColor: v(theme).primary[200],
-          color: v(theme).primary[800],
+          backgroundColor: v(theme).primary['paper-95'],
+          color: v(theme).primary['ink-42'],
           '& .MuiListItemIcon-root': { color: 'inherit' },
           '& .MuiListItemText-primary': { color: 'inherit', fontWeight: 600 },
         },
@@ -168,8 +168,8 @@ export const cleanCustomizations: Components<Theme> = {
         if (!fam) return {}
         const p = v(theme)[fam]
         return {
-          backgroundColor: p[100],
-          color: p[900],
+          backgroundColor: p['paper-97'],
+          color: p['ink-30'],
           '& .MuiAlert-icon': { color: p.main },
         }
       },
@@ -201,9 +201,9 @@ export const cleanCustomizations: Components<Theme> = {
           return {
             borderRadius: 8,
             '&&': {
-              backgroundColor: p[200],
-              border: `1px solid ${p[400]}`,
-              color: p[900],
+              backgroundColor: p['paper-95'],
+              border: `1px solid ${p['wash-85']}`,
+              color: p['ink-30'],
               '& .MuiChip-label': { color: 'inherit' },
               '& .MuiChip-icon': { color: 'inherit' },
             },

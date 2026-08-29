@@ -152,7 +152,7 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
       ...ladder(n => t.signalStop(role, n)),
       light: t.signalStop(role, NAME.wash4),
       main: t.signals[role].fill,
-      dark: t.signalStamp(role).fillPressed,
+      dark: t.signalStamp(role).fillHover,
       contrastText: t.signals[role].on,
     });
     const isDark = lane === 'dark';
@@ -164,7 +164,7 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
         ...ladder(t.brand),
         light: t.brand(NAME.wash4),
         main: t.stamp.fill,
-        dark: t.stamp.fillPressed,
+        dark: t.stamp.fillHover,
         contrastText: t.stamp.on,
       },
       info: sig('info'),

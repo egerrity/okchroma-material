@@ -53,7 +53,15 @@ export const cleanCustomizations: Components<Theme> = {
             (ownerState.variant === 'text' || ownerState.variant === 'outlined') && {
               '&&': {
                 color: fam[700],
-                ...(ownerState.variant === 'outlined' && { border: `1px solid ${fam[600]}` }),
+                // per the kit tokens: brand families wear the NEUTRAL mark
+                // border; signal families wear their own mark
+                ...(ownerState.variant === 'outlined' && {
+                  border: `1px solid ${
+                    ownerState.color === 'primary' || ownerState.color === 'secondary'
+                      ? v(theme).okx.borderDefault
+                      : fam[600]
+                  }`,
+                }),
                 '&:hover': {
                   color: fam[800],
                   backgroundColor: `color-mix(in srgb, ${fam[600]} 12%, transparent)`,

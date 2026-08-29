@@ -167,6 +167,13 @@ export function buildColorSchemes(brandHex: string, altHex?: string | null) {
         dark: t.stamp.fillHover,
         contrastText: t.stamp.on,
       },
+      secondary: {
+        ...ladder(t.secondary ?? t.brand),
+        light: (t.secondary ?? t.brand)(NAME.wash4),
+        main: (t.secondaryStamp ?? t.stamp).fill,
+        dark: (t.secondaryStamp ?? t.stamp).fillHover,
+        contrastText: (t.secondaryStamp ?? t.stamp).on,
+      },
       info: sig('info'),
       warning: sig('warning'),
       error: sig('critical'),

@@ -22,7 +22,8 @@ text/labelHover             →  palette[color][800]             (ink-42)
 text/labelPressed           →  palette[color][900]             (ink-30)
 text/fillHover              →  color-mix(mark-74 12%)          (owner's mark-tint wash)
 text/fillPressed            →  color-mix(mark-74 16%)
-text/border  (outlined)     →  palette[color][600]             (mark-74, solid)
+text/border  (outlined)     →  okx.borderDefault (neutral mark) for brand colors;
+                               palette[color][600] (family mark) for signals
 focus/ring                  →  palette.okx.focus               (2px, 1px offset, one stroke)
 borderRadiusAction          →  999 (pill)`;
 

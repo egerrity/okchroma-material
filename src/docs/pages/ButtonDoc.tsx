@@ -49,7 +49,15 @@ export default function ButtonDoc() {
       <SectionTitle>Colors</SectionTitle>
       <Demo>
         <Button variant="contained" color="primary">Primary</Button>
+        <Button variant="outlined" color="primary">Primary</Button>
+        <Button variant="text" color="primary">Primary</Button>
+      </Demo>
+      <Demo>
         <Button variant="contained" color="secondary">Secondary</Button>
+        <Button variant="outlined" color="secondary">Secondary</Button>
+        <Button variant="text" color="secondary">Secondary</Button>
+      </Demo>
+      <Demo>
         <Button variant="contained" color="error">Error</Button>
         <Button variant="outlined" color="error">Error</Button>
         <Button variant="text" color="error">Error</Button>

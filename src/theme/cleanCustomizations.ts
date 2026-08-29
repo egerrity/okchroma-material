@@ -92,6 +92,28 @@ export const cleanCustomizations: Components<Theme> = {
                 },
               },
             }),
+          // signal families: contained rides the family stamp (fill/on) with the
+          // hover slot (= fill-hover); pressed approximates via the same slot
+          // until per-family stamps join okx
+          ...(ownerState.variant === 'contained' &&
+            fam &&
+            ownerState.color !== 'primary' &&
+            ownerState.color !== 'secondary' && {
+              '&&': {
+                backgroundColor: fam.main,
+                color: fam.contrastText,
+                backgroundImage: 'none',
+                border: '1.5px solid transparent',
+                boxShadow: 'none',
+                '&:hover': { backgroundColor: fam.dark, boxShadow: 'none' },
+                '&:active': { backgroundColor: fam.dark, boxShadow: 'none' },
+                '&.Mui-disabled': {
+                  backgroundColor: v(theme).action.disabledBackground,
+                  color: v(theme).action.disabled,
+                  border: 'none',
+                },
+              },
+            }),
           ...(ownerState.variant === 'contained' &&
             ownerState.color === 'secondary' && {
               '&&': {

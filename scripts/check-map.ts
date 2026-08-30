@@ -198,6 +198,14 @@ console.log('6. seed sweep (wired pairings vs engine bars)')
       }
       pair(p.link.default, p.background.default, TEXT_BAR, 'link on page')
       pair(p.SnackbarContent.color, p.SnackbarContent.bg, TEXT_BAR, 'snackbar inverse text')
+      // the pole register's text side (mapped 2026-08-29): constant paper text
+      // on the inverse ground — states are the inverse offset grounds, so only
+      // the resting pairings exist to sweep. The stamp pairing is
+      // adapter-created (abs poles), so unlike the families' it IS swept here.
+      pair(p.poleWhite.main, p.SnackbarContent.bg, TEXT_BAR, 'pole text on inverse ground')
+      pair(p.poleWhite.light, p.SnackbarContent.bg, TEXT_BAR, 'pole soft text on inverse ground')
+      pair(p.poleWhite.stampOn, p.poleWhite.stampFill, TEXT_BAR, 'pole stamp text on its fill')
+      pair(p.poleWhite.contrastText, p.poleWhite.main, TEXT_BAR, 'pole contrastText on main')
     }
   }
   console.log(`  ${checked} pairings checked across ${SEEDS.length} seeds × 2 modes`)

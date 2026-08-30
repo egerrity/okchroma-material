@@ -113,12 +113,14 @@ export default function GapsGrid() {
       </Typography>
 
       <Typography component="h3" variant="subtitle1" sx={{ mb: 1 }}>
-        The pole register — C10, shown in its real contexts
+        The pole register — mapped 2026-08-29, one loud remnant
       </Typography>
       <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1.5 }}>
-        Every magenta element below is a pole-register consumer rendering its
-        declared gap. Each card names the rows it reads — rule on them per
-        context.
+        The column resolves from existing rows now: constant paper text on
+        inverted grounds (states are the inverse offset layers), and a
+        deliberate no-feedback white button (Unify has no white button — no
+        invention). The one magenta left is stampEdge: the white-button
+        separation guarantee the engine does not account for.
       </Typography>
       <Grid container spacing={2} columns={12} sx={{ mb: 3 }}>
         <Grid size={{ xs: 12, md: 6, lg: 5 }}>
@@ -179,8 +181,10 @@ export default function GapsGrid() {
                 </Button>
               </Box>
               <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
-                reads: stampFill / stampOn / stampFillHover / stampFillPressed /
-                stampEdge (the button) · main + contrastText (the badge)
+                LANDED: abs-white button, abs-black text, states deliberately
+                identical (no feedback over invention) · the badge rides main +
+                contrastText. REMNANT: the magenta stampEdge — separation vs a
+                pale dark stamp is unaccounted.
               </Typography>
             </CardContent>
           </Card>
@@ -260,10 +264,10 @@ export default function GapsGrid() {
                 </Stack>
               </Box>
               <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
-                gap reads: main / light (the button text). LANDED: the hover and
-                pressed grounds + the &quot;queued&quot; chip ride the inverse
-                offset ladder (engine ships the pole flip) — hover the buttons to
-                see it.
+                LANDED, whole card: text = the paper tiers (main / the soft
+                light), constant across states; hover/pressed grounds + the
+                &quot;queued&quot; chip ride the inverse offset ladder — hover
+                the buttons to see it. Both text pairings are swept vs ink-30.
               </Typography>
             </CardContent>
           </Card>
@@ -280,8 +284,9 @@ export default function GapsGrid() {
                 action={<Button size="small">Undo</Button>}
               />
               <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
-                reads: main — routed by the MuiSnackbarContent law, the one
-                consumer wired today.
+                LANDED: the action rides poleWhite.main (paper on the inverse
+                ground) with inverse offset state grounds — the
+                MuiSnackbarContent law.
               </Typography>
             </CardContent>
           </Card>

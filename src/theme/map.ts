@@ -158,23 +158,38 @@ export const FAMILY_SOURCE = {
 } as const
 
 /**
- * inherit-white — the pole register. DROPPED THIS ROUND (owner, 2026-08-29):
- * the whole column is one engine work item, not a set of cells to draft. Every
- * row is the same GAP so any inverted-ground consumer (Snackbar action, a
- * white button on a dark surface) renders the sentinel, keeping the register
- * visible in the render instead of silently absent.
+ * inherit-white — the pole register. MAPPED (owner ruling 2026-08-29,
+ * superseding the round-start drop — the state-layer landing dissolved the
+ * old blocker). Two halves:
+ *
+ * THE TEXT SIDE rides the paper register on the inverted ground: constant
+ * text (rest = the soft paper-95 tier, hover/pressed = paper-100 — text does
+ * not step; state feedback is the INVERSE_OFFSET grounds). Both pairings are
+ * swept against the ink-30 ground.
+ *
+ * THE BUTTON SIDE is a DELIBERATE NO-FEEDBACK INTERIM (owner: Unify has no
+ * white button and the engine does not account for one — any real answer
+ * would be invented): fill, hover, and pressed are all abs-white, so states
+ * render NO feedback rather than an invented color (the multiplier law's own
+ * posture), with abs-black text (the poles' 21:1). stampEdge stays the ONE
+ * loud remnant — the separation guarantee against a pale dark-mode stamp is
+ * the unaccounted part, kept magenta until a white button is real.
  */
-const POLE_GAP = GAP('pole register (inherit-white) dropped this round — one engine work item')
 export const POLE_WHITE_ROWS = {
-  light: POLE_GAP,
-  main: POLE_GAP,
-  dark: POLE_GAP,
-  contrastText: POLE_GAP,
-  stampFill: POLE_GAP,
-  stampOn: POLE_GAP,
-  stampFillHover: POLE_GAP,
-  stampFillPressed: POLE_GAP,
-  stampEdge: POLE_GAP,
+  light: 'neutral/paper-95',
+  main: 'neutral/paper-100',
+  dark: 'neutral/paper-100',
+  // main is the FLIPPING paper pole, so its contrast partner flips opposite —
+  // the ink pole, never a constant (abs-black went black-on-black in dark;
+  // caught on the gallery's badge, 2026-08-29)
+  contrastText: 'neutral/ink-0',
+  stampFill: 'system/abs-white',
+  stampOn: 'system/abs-black',
+  stampFillHover: 'system/abs-white',
+  stampFillPressed: 'system/abs-white',
+  stampEdge: GAP(
+    'white-button separation vs a pale dark stamp — unaccounted in the engine; Unify has no white button',
+  ),
 } as const satisfies Record<string, Row>
 
 // ---------------------------------------------------------------------------

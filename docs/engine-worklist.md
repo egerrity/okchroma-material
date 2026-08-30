@@ -69,10 +69,14 @@ fixture decides backdrop/profile vs blending-basis before any re-emission).
    fine for AA-large. Either nudge the dark soft-on alpha to clear 4.5, or declare
    AA-large in the token description. The checker deliberately does not police this
    (engine-owned pairing); it should hold whichever guarantee gets declared.
-10. **The pole register (inherit-white)** — the full column, one work item: the
-    inverted-text trio, `stamp/fill` + `on` at the pole, hover/pressed states, and
-    the edge gate. ⤵ un-gaps all 9 `poleWhite` rows; Snackbar actions and
-    white-on-dark buttons come alive.
+10. **The pole register (inherit-white)** — RESOLVED WITHOUT ENGINE WORK
+    (owner ruling 2026-08-29): the state-layer landing dissolved the column.
+    Text side = constant paper tiers on the inverted ground (states are the
+    inverse offset layers); button side = a deliberate no-feedback abs-white
+    interim (Unify has no white button; the engine does not account for one —
+    nothing invented). 8 of 9 rows mapped from existing tokens, all pairings
+    swept. The remnant: `stampEdge` stays a loud GAP — the white-button
+    separation guarantee vs a pale dark stamp — until a white button is real.
 11. **Disabled opacity** — the one value specified nowhere. Either an engine row or
     a blessed constant; the PoC ships 0.38 as a named project constant meanwhile.
 12. **Alpha rows for the mark-tint state washes** (pre-existing item, round-1

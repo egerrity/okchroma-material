@@ -294,14 +294,12 @@ export const lawCustomizations: Components<Theme> = {
   },
 
   // ── inverted surfaces read the map's component rows; their action buttons
-  //    are the pole register — dropped this round, so they inherit the
-  //    sentinel through palette.poleWhite when routed ───────────────────────
+  //    are the pole register — text side MAPPED 2026-08-29: constant paper
+  //    text on the inverse ground, state feedback = the inverse offset
+  //    grounds (the state-layer ruling) ────────────────────────────────────
   MuiSnackbarContent: {
     styleOverrides: {
       action: ({ theme }) => ({
-        // pole register consumer — dropped this round: render the gap loud.
-        // The state GROUNDS ride the inverse offset ladder (engine 0.1.3) — the
-        // ground law is independent of the text gap and lands first.
         '& .MuiButton-root': {
           color: theme.vars!.palette.poleWhite.main,
           '&:hover': { backgroundColor: theme.vars!.palette.inverseOffset.hover },

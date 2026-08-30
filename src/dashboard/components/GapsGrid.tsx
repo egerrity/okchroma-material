@@ -113,31 +113,166 @@ export default function GapsGrid() {
       </Typography>
 
       <Typography component="h3" variant="subtitle1" sx={{ mb: 1 }}>
-        The pole register — C10, one engine work item
+        The pole register — C10, shown in its real contexts
+      </Typography>
+      <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1.5 }}>
+        Every magenta element below is a pole-register consumer rendering its
+        declared gap. Each card names the rows it reads — rule on them per
+        context.
       </Typography>
       <Grid container spacing={2} columns={12} sx={{ mb: 3 }}>
-        <Grid size={{ xs: 12, lg: 8 }}>
-          <Card variant="outlined" sx={{ height: '100%' }}>
-            <CardContent>
-              <SwatchGrid entries={poleGaps} />
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid size={{ xs: 12, lg: 4 }}>
+        <Grid size={{ xs: 12, md: 6, lg: 5 }}>
           <Card variant="outlined" sx={{ height: '100%' }}>
             <CardContent>
               <Typography variant="subtitle2" sx={{ mb: 1 }}>
-                Live consumer: Snackbar action
+                Promo banner — white CTA on the brand stamp
+              </Typography>
+              <Box
+                sx={(theme) => ({
+                  p: 2.5,
+                  borderRadius: 2,
+                  backgroundColor: theme.vars!.palette.primary.stampFill,
+                })}
+              >
+                <Stack direction="row" spacing={1} sx={{ alignItems: 'center', mb: 0.5 }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={(theme) => ({ color: theme.vars!.palette.primary.stampOn, fontWeight: 600 })}
+                  >
+                    Go further with Pro
+                  </Typography>
+                  <Box
+                    component="span"
+                    sx={(theme) => ({
+                      px: 1,
+                      py: 0.25,
+                      borderRadius: 999,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      backgroundColor: theme.vars!.palette.poleWhite.main,
+                      color: theme.vars!.palette.poleWhite.contrastText,
+                    })}
+                  >
+                    NEW
+                  </Box>
+                </Stack>
+                <Typography
+                  variant="body2"
+                  sx={(theme) => ({ color: theme.vars!.palette.primary.stampOn, mb: 1.5 })}
+                >
+                  Advanced reporting, unlimited seats, priority support.
+                </Typography>
+                <Button
+                  size="small"
+                  sx={(theme) => {
+                    const p = theme.vars!.palette.poleWhite;
+                    return {
+                      backgroundColor: p.stampFill,
+                      color: p.stampOn,
+                      border: `1.5px solid ${p.stampEdge}`,
+                      '&:hover': { backgroundColor: p.stampFillHover },
+                      '&:active': { backgroundColor: p.stampFillPressed },
+                    };
+                  }}
+                >
+                  Get started
+                </Button>
+              </Box>
+              <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
+                reads: stampFill / stampOn / stampFillHover / stampFillPressed /
+                stampEdge (the button) · main + contrastText (the badge)
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+          <Card variant="outlined" sx={{ height: '100%' }}>
+            <CardContent>
+              <Typography variant="subtitle2" sx={{ mb: 1 }}>
+                Inverted panel — buttons on the ink-30 ground
+              </Typography>
+              <Box
+                sx={(theme) => ({
+                  p: 2.5,
+                  borderRadius: 2,
+                  backgroundColor: theme.vars!.palette.neutral['ink-30'],
+                })}
+              >
+                <Typography
+                  variant="subtitle2"
+                  sx={(theme) => ({ color: theme.vars!.palette.neutral['paper-100'] })}
+                >
+                  You&apos;re offline
+                </Typography>
+                <Typography
+                  variant="caption"
+                  sx={(theme) => ({
+                    color: theme.vars!.palette.neutral['paper-95'],
+                    display: 'block',
+                    mb: 1.5,
+                  })}
+                >
+                  Changes will sync when you reconnect.
+                </Typography>
+                <Stack direction="row" spacing={1}>
+                  <Button
+                    size="small"
+                    sx={(theme) => {
+                      const p = theme.vars!.palette.poleWhite;
+                      return {
+                        color: p.main,
+                        border: `1px solid ${p.main}`,
+                        '&:hover': { color: p.dark },
+                      };
+                    }}
+                  >
+                    Retry now
+                  </Button>
+                  <Button
+                    size="small"
+                    sx={(theme) => {
+                      const p = theme.vars!.palette.poleWhite;
+                      return {
+                        color: p.light,
+                        '&:hover': { color: p.main },
+                        '&:active': { color: p.dark },
+                      };
+                    }}
+                  >
+                    Dismiss
+                  </Button>
+                </Stack>
+              </Box>
+              <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
+                reads: main (outlined) · light / main / dark (the text-CTA
+                trio). The headline/body ride mapped rows (paper-100/95) —
+                only the buttons gap.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid size={{ xs: 12, md: 6, lg: 3 }}>
+          <Card variant="outlined" sx={{ height: '100%' }}>
+            <CardContent>
+              <Typography variant="subtitle2" sx={{ mb: 1 }}>
+                Snackbar action
               </Typography>
               <SnackbarContent
-                message="Inverted ground; its action rides poleWhite.main"
+                sx={{ minWidth: 'auto' }}
+                message="Report archived"
                 action={<Button size="small">Undo</Button>}
               />
               <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
-                The magenta action text is the declared render: the whole
-                inherit-white column is one engine item, kept loud until it
-                lands.
+                reads: main — routed by the MuiSnackbarContent law, the one
+                consumer wired today.
               </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid size={{ xs: 12 }}>
+          <Card variant="outlined">
+            <CardContent>
+              <SwatchGrid entries={poleGaps} />
             </CardContent>
           </Card>
         </Grid>

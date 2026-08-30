@@ -319,7 +319,13 @@ export const inputsCustomizations: Components<Theme> = {
   },
   MuiSelect: {
     styleOverrides: {
-      icon: ({ theme }) => ({ color: theme.vars!.palette.text.secondary }),
+      icon: ({ theme }) => ({
+        color: theme.vars!.palette.text.secondary,
+        // the disabled law: MUI swaps the disabled chevron to action.disabled
+        // (tripwire caught on the Select docs page, 2026-08-30) — color stays,
+        // the control's opacity carries it
+        '&.Mui-disabled': { color: theme.vars!.palette.text.secondary },
+      }),
     },
   },
   // the field notice (Unify's alert row): flush left, 12px medium, 8px off the

@@ -96,45 +96,34 @@ export const lawCustomizations: Components<Theme> = {
   },
 
   // ── selection controls: never stamp (owner F1) — checked = main (ink-42),
-  //    glyph = contrastText, hover ground = the wash law. (Checkbox's custom
-  //    visual lives in the template's inputs customization, same law.) ─────
-  MuiRadio: {
-    styleOverrides: {
-      root: ({ ownerState, theme }) => {
-        const vars = theme.vars!
-        const fam = vars.palette[ownerState.color === 'default' ? 'neutral' : (ownerState.color ?? 'primary')]
-        return {
-          color: vars.palette.neutral['mark-74'],
-          '&:hover': { backgroundColor: vars.palette.neutral['wash-92'] },
-          '&.Mui-checked': {
-            color: fam.main,
-            '&:hover': { backgroundColor: fam['wash-92'] },
-          },
-          '&.Mui-disabled': { ...disabledLaw, color: vars.palette.neutral['mark-74'] },
-        }
-      },
-    },
-  },
+  //    glyph = contrastText, borders = mark-74, hover ground = the wash law.
+  //    The Checkbox AND Radio visuals live in the template's inputs
+  //    customization (the Unify anatomy, same law); the Switch's colors stay
+  //    here with its geometry in inputs — mergeComponents arrays compose. ──
   MuiSwitch: {
     styleOverrides: {
       root: ({ ownerState, theme }) => {
         const vars = theme.vars!
         const fam = vars.palette[ownerState.color === 'default' ? 'neutral' : (ownerState.color ?? 'primary')]
         return {
+          // Unify anatomy (2026-08-29): the track IS the control — unchecked
+          // it rides the input-border stop (mark-74, the same stroke register
+          // Unify uses), checked it is the family MAIN; the thumb is the
+          // contrastText glyph on it (F1's checked-fill pairing, swept).
           '& .MuiSwitch-switchBase': {
             '& .MuiSwitch-thumb': { backgroundColor: vars.palette.neutral['paper-100'] },
             '& + .MuiSwitch-track': {
-              backgroundColor: vars.palette.neutral['wash-80'],
+              backgroundColor: vars.palette.neutral['mark-74'],
               opacity: 1,
             },
             '&.Mui-checked': {
-              '& .MuiSwitch-thumb': { backgroundColor: fam.main },
-              '& + .MuiSwitch-track': { backgroundColor: fam['mark-74'], opacity: 1 },
+              '& .MuiSwitch-thumb': { backgroundColor: fam.contrastText },
+              '& + .MuiSwitch-track': { backgroundColor: fam.main, opacity: 1 },
             },
             '&.Mui-disabled': {
               ...disabledLaw,
               '& .MuiSwitch-thumb': { backgroundColor: vars.palette.neutral['paper-100'] },
-              '& + .MuiSwitch-track': { backgroundColor: vars.palette.neutral['wash-80'], opacity: DISABLED_OPACITY },
+              '& + .MuiSwitch-track': { opacity: DISABLED_OPACITY },
             },
           },
         }

@@ -19,6 +19,7 @@ import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import Chip from '@mui/material/Chip';
 import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
@@ -391,6 +392,47 @@ export default function GapsGrid() {
                 enabled, the component dims); the state-tint alpha item is
                 cancelled by ruling — the opaque wash stops are the permanent
                 state-tint answer.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+      <Typography component="h3" variant="subtitle1" sx={{ mb: 1 }}>
+        The Unify selection controls — live, for the interaction pass
+      </Typography>
+      <Grid container spacing={2} columns={12} sx={{ mb: 3 }}>
+        <Grid size={{ xs: 12, md: 8, lg: 6 }}>
+          <Card variant="outlined">
+            <CardContent>
+              <Stack spacing={1}>
+                <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center', flexWrap: 'wrap' }}>
+                  <Checkbox />
+                  <Checkbox defaultChecked />
+                  <Checkbox indeterminate />
+                  <RadioGroup row defaultValue="b" name="unify-radio-demo">
+                    <Radio value="a" />
+                    <Radio value="b" />
+                  </RadioGroup>
+                  <Switch />
+                  <Switch defaultChecked />
+                  <Switch defaultChecked color="success" />
+                </Stack>
+                <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center', flexWrap: 'wrap' }}>
+                  <Checkbox size="small" />
+                  <Checkbox size="small" defaultChecked />
+                  <RadioGroup row defaultValue="b" name="unify-radio-demo-sm">
+                    <Radio size="small" value="a" />
+                    <Radio size="small" value="b" />
+                  </RadioGroup>
+                  <Switch size="small" />
+                  <Switch size="small" defaultChecked />
+                </Stack>
+              </Stack>
+              <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
+                The Unify anatomy (md + sm): contained-pill switch, soft-square
+                checkbox, ring-glyph radio. Colors ride F1 — checked = main +
+                contrastText, borders/track = mark-74, never stamp. Hover,
+                click, and tab through in both modes.
               </Typography>
             </CardContent>
           </Card>

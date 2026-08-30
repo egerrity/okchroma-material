@@ -96,15 +96,20 @@ export const inputsCustomizations: Components<Theme> = {
       }),
     },
   },
-  // The template's custom checkbox visual, under the F1 law: selection
-  // controls never take stamp — checked fill is main (ink-42), the glyph is
-  // contrastText (the ratio-symmetry pairing), box border is the 3:1 mark.
+  // The Unify selection-control anatomy (Figma "Unify re-alias" § Selection
+  // controls, pulled 2026-08-29), under the F1 law: selection controls never
+  // take stamp — checked fill is main (ink-42), the glyph is contrastText
+  // (the ratio-symmetry pairing), the unselected border is the 3:1 mark stop
+  // (Unify's stroke-secondary register, same job). Geometry: md control 20px
+  // (sm 16px), 2px border, checkbox radius 4, radio full-round with a 2px
+  // contrastText ring glyph when checked. The 24px row height Unify keeps is
+  // preserved by the root margin (hit area stays generous).
   MuiCheckbox: {
     defaultProps: {
       disableRipple: true,
       icon: <CheckBoxOutlineBlankRoundedIcon style={{ opacity: 0 }} />,
-      checkedIcon: <CheckRoundedIcon size={14} />,
-      indeterminateIcon: <RemoveRoundedIcon size={14} />,
+      checkedIcon: <CheckRoundedIcon size={14} strokeWidth={3} />,
+      indeterminateIcon: <RemoveRoundedIcon size={14} strokeWidth={3} />,
     },
     styleOverrides: {
       root: ({ ownerState, theme }) => {
@@ -114,25 +119,152 @@ export const inputsCustomizations: Components<Theme> = {
             !ownerState.color || ownerState.color === 'default' ? 'neutral' : ownerState.color
           ];
         return {
-          margin: 10,
-          height: 16,
-          width: 16,
-          borderRadius: 5,
-          border: '1px solid ',
+          margin: 8,
+          // padding 0 is LOAD-BEARING: MUI's default 9px padding + 2px borders
+          // leaves a NEGATIVE content box at 20px, and the flexed glyph svg
+          // collapses to width 0 (latent since the template's 16px box — the
+          // gallery's live strip caught it, 2026-08-29)
+          padding: 0,
+          height: 20,
+          width: 20,
+          borderRadius: 4,
+          border: '2px solid ',
           borderColor: vars.palette.neutral['mark-74'],
+          backgroundColor: vars.palette.neutral['paper-100'],
           transition: 'border-color, background-color, 120ms ease-in',
           '&:hover': {
             backgroundColor: vars.palette.neutral['wash-92'],
           },
-          '&.Mui-checked': {
+          // indeterminate is its OWN class, not .Mui-checked — Unify fills
+          // both identically (white dash on the main fill)
+          '&.Mui-checked, &.MuiCheckbox-indeterminate': {
             color: fam.contrastText,
             backgroundColor: fam.main,
             borderColor: fam.main,
             '&:hover': {
               backgroundColor: fam.dark,
+              borderColor: fam.dark,
             },
           },
+          // the disabled law: colors stay enabled (opacity from the ButtonBase
+          // law); neutralizes MUI's swap of the glyph to action.disabled
+          '&.Mui-disabled': {
+            borderColor: vars.palette.neutral['mark-74'],
+            backgroundColor: vars.palette.neutral['paper-100'],
+            '&.Mui-checked, &.MuiCheckbox-indeterminate': {
+              color: fam.contrastText,
+              backgroundColor: fam.main,
+              borderColor: fam.main,
+            },
+          },
+          variants: [
+            {
+              props: { size: 'small' },
+              style: { height: 16, width: 16, margin: 10, '& svg': { width: 12, height: 12 } },
+            },
+          ],
         };
+      },
+    },
+  },
+  // Radio — same law, the Unify ring anatomy: unselected = 2px mark circle on
+  // the paper ground; checked = a main-filled disc with a 2px contrastText
+  // ring glyph (the donut). The stock SVG pair is hidden; the root IS the
+  // control (the checkbox pattern).
+  MuiRadio: {
+    styleOverrides: {
+      root: ({ ownerState, theme }) => {
+        const vars = theme.vars!;
+        const fam =
+          vars.palette[
+            !ownerState.color || ownerState.color === 'default' ? 'neutral' : ownerState.color
+          ];
+        return {
+          margin: 8,
+          padding: 0, // same load-bearing zero as the checkbox
+          height: 20,
+          width: 20,
+          borderRadius: 999,
+          border: '2px solid ',
+          borderColor: vars.palette.neutral['mark-74'],
+          backgroundColor: vars.palette.neutral['paper-100'],
+          transition: 'border-color, background-color, 120ms ease-in',
+          '& svg': { display: 'none' },
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 12,
+            height: 12,
+            borderRadius: 999,
+            border: '2px solid transparent',
+          },
+          '&:hover': {
+            backgroundColor: vars.palette.neutral['wash-92'],
+          },
+          '&.Mui-checked': {
+            backgroundColor: fam.main,
+            borderColor: fam.main,
+            '&::after': { borderColor: fam.contrastText },
+            '&:hover': {
+              backgroundColor: fam.dark,
+              borderColor: fam.dark,
+            },
+          },
+          '&.Mui-disabled': {
+            borderColor: vars.palette.neutral['mark-74'],
+            backgroundColor: vars.palette.neutral['paper-100'],
+            '&.Mui-checked': {
+              backgroundColor: fam.main,
+              borderColor: fam.main,
+              '&::after': { borderColor: fam.contrastText },
+            },
+          },
+          variants: [
+            {
+              props: { size: 'small' },
+              style: {
+                height: 16,
+                width: 16,
+                margin: 10,
+                '&::after': { width: 10, height: 10 },
+              },
+            },
+          ],
+        };
+      },
+    },
+  },
+  // Switch — the Unify contained pill: the track IS the control and the thumb
+  // never overhangs (stock MUI's 58×38 overhang silhouette is the giveaway).
+  // md 32×20 / sm 28×16; thumb 16/12 at a 2px inset; 12px travel both sizes.
+  // COLORS live in the laws (F1: unchecked track mark-74, checked track main,
+  // thumb contrastText) — mergeComponents arrays compose the two layers.
+  MuiSwitch: {
+    styleOverrides: {
+      root: {
+        padding: 0,
+        width: 32,
+        height: 20,
+        display: 'inline-flex',
+        '& .MuiSwitch-switchBase': {
+          padding: 2,
+          '&.Mui-checked': { transform: 'translateX(12px)' },
+        },
+        '& .MuiSwitch-thumb': { width: 16, height: 16, boxShadow: 'none' },
+        '& .MuiSwitch-track': { borderRadius: 999 },
+        variants: [
+          {
+            props: { size: 'small' },
+            style: {
+              width: 28,
+              height: 16,
+              '& .MuiSwitch-thumb': { width: 12, height: 12 },
+            },
+          },
+        ],
       },
     },
   },

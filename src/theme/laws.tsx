@@ -62,11 +62,15 @@ export const lawCustomizations: Components<Theme> = {
             '&.Mui-disabled': { ...disabledLaw, backgroundColor: fam.stampFill, color: fam.stampOn },
           }),
           ...(ownerState.variant === 'outlined' && {
-            // border law (audit cluster C): colored outlines are the 3:1 mark stop
+            // border law (audit cluster C): colored outlines are the 3:1 mark stop.
+            // The LABEL steps the trio with the wash (owner 2026-08-30): the text
+            // stops are contrast-PAIRED to the state grounds — a constant label on
+            // a stepping wash exits the guarantee, so any variant that washes its
+            // ground steps its text.
             color: fam.main,
             borderColor: fam['mark-74'],
-            '&:hover': { backgroundColor: fam['wash-92'] },
-            '&:active': { backgroundColor: fam['wash-85'] },
+            '&:hover': { color: fam.dark, backgroundColor: fam['wash-92'] },
+            '&:active': { color: fam['ink-30'], backgroundColor: fam['wash-85'] },
             '&.Mui-disabled': { ...disabledLaw, color: fam.main, borderColor: fam['mark-74'] },
           }),
           ...(ownerState.variant === 'text' && {

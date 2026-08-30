@@ -219,7 +219,7 @@ export default function GapsGrid() {
                     size="small"
                     sx={(theme) => {
                       const p = theme.vars!.palette.poleWhite;
-                      const w = theme.vars!.palette.inverseWash;
+                      const w = theme.vars!.palette.inverseOffset;
                       return {
                         color: p.main,
                         border: `1px solid ${p.main}`,
@@ -234,7 +234,7 @@ export default function GapsGrid() {
                     size="small"
                     sx={(theme) => {
                       const p = theme.vars!.palette.poleWhite;
-                      const w = theme.vars!.palette.inverseWash;
+                      const w = theme.vars!.palette.inverseOffset;
                       return {
                         color: p.light,
                         '&:hover': { backgroundColor: w.hover },
@@ -251,7 +251,7 @@ export default function GapsGrid() {
                       py: 0.25,
                       borderRadius: 1,
                       fontSize: 12,
-                      backgroundColor: theme.vars!.palette.inverseWash.lift,
+                      backgroundColor: theme.vars!.palette.inverseOffset.ground,
                       color: theme.vars!.palette.neutral['paper-100'],
                     })}
                   >
@@ -262,7 +262,7 @@ export default function GapsGrid() {
               <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
                 gap reads: main / light (the button text). LANDED: the hover and
                 pressed grounds + the &quot;queued&quot; chip ride the inverse
-                wash ladder (engine ships the pole flip) — hover the buttons to
+                offset ladder (engine ships the pole flip) — hover the buttons to
                 see it.
               </Typography>
             </CardContent>

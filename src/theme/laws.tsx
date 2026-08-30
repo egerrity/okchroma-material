@@ -300,12 +300,12 @@ export const lawCustomizations: Components<Theme> = {
     styleOverrides: {
       action: ({ theme }) => ({
         // pole register consumer — dropped this round: render the gap loud.
-        // The state GROUNDS ride the inverse wash ladder (engine 0.1.3) — the
+        // The state GROUNDS ride the inverse offset ladder (engine 0.1.3) — the
         // ground law is independent of the text gap and lands first.
         '& .MuiButton-root': {
           color: theme.vars!.palette.poleWhite.main,
-          '&:hover': { backgroundColor: theme.vars!.palette.inverseWash.hover },
-          '&:active': { backgroundColor: theme.vars!.palette.inverseWash.pressed },
+          '&:hover': { backgroundColor: theme.vars!.palette.inverseOffset.hover },
+          '&:active': { backgroundColor: theme.vars!.palette.inverseOffset.pressed },
         },
       }),
     },

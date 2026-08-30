@@ -122,7 +122,8 @@ console.log('3-5. static scans (literals, primitives, derivations)')
     'src/theme/interpret.ts', // rgba() FORMATTER over engine-emitted components — no color values
     'src/seed.ts', // DEFAULT_SEED input hex
     'src/theme/SeedContext.tsx', // the edge-case seed roster — engine INPUTS, same class as DEFAULT_SEED
-    'src/shared-theme/themePrimitives.ts', // baseShadows: the logged shadow gap
+    // (themePrimitives.ts exception RETIRED with the shadow gap: baseShadow is
+    // interpreter-built from engine rows now — the module is color-free and scanned)
     'src/dashboard/internals/components/CustomIcons.tsx', // logo assets
   ])
   const files: string[] = []

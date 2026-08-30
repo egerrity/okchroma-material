@@ -255,6 +255,18 @@ export const lawCustomizations: Components<Theme> = {
     },
   },
 
+  // ── the modal veil: the engine's one scrim row (map SCRIM, B3 landed
+  //    0.1.2). Stock's derived rgba(0,0,0,0.5) dies; the invisible variant
+  //    (Menu/Popover backdrops) stays transparent ────────────────────────────
+  MuiBackdrop: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        backgroundColor: theme.vars!.palette.scrim,
+      }),
+      invisible: { backgroundColor: 'transparent' },
+    },
+  },
+
   // ── inverted surfaces read the map's component rows; their action buttons
   //    are the pole register — dropped this round, so they inherit the
   //    sentinel through palette.poleWhite when routed ───────────────────────

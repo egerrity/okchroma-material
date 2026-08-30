@@ -6,11 +6,10 @@
 // rename-resilience discipline, now enforced at the lookup instead of by
 // spelling constants). GAP rows resolve to the sentinel.
 //
-// The ONE law this file carries: the surface-plane aliasing (SURFACE_LAW
-// below), transcribed from the engine's own token layer because the published
-// npm package does not include tokens/semantic.css in its files array —
-// gap #1, a packaging hole. It is keyed by the engine's system/surface/*
-// names and dies the day the package ships the token layer.
+// NO law lives here anymore: SURFACE_LAW (the transcribed surface-plane
+// aliasing, gap #1) died with okchroma 0.1.2 — themeToFigma emits the system
+// group (system/surface/*, system/alpha/*, the abs poles), so the map's system
+// paths resolve against the emit like every other row.
 
 import { themeToFigma, type FigmaGroup, type FigmaColorToken } from 'okchroma'
 import type { Seed, SignalRole } from '../seed'
@@ -26,6 +25,8 @@ import {
   COMPONENTS,
   LINK,
   SURFACE,
+  SCRIM,
+  BASE_SHADOW,
   OPACITY_ZEROS,
   DISABLED_OPACITY,
   type Row,
@@ -91,12 +92,15 @@ declare module '@mui/material/styles' {
       inversePressed: string
     }
     surface: { dim: string; low: string; mid: string; high: string }
+    scrim: string
+    baseShadow: string
   }
   interface PaletteOptions {
     neutral?: PaletteOptions['primary']
     poleWhite?: PaletteOptions['primary']
     link?: Partial<Palette['link']>
     surface?: Partial<Palette['surface']>
+    scrim?: string
     baseShadow?: string
   }
 }
@@ -144,50 +148,36 @@ export function leafTables(seed: Seed): Record<Mode, LeafTable> {
 }
 
 // ---------------------------------------------------------------------------
-// Gap #1 shim: the engine's surface-plane law (tokens/semantic.css), keyed by
-// the engine's own system/surface/* names. light-high and dark-dim are both
-// paper-100 — the pole that flips with the mode.
+// Row resolution. (The gap-#1 SURFACE_LAW shim died with okchroma 0.1.2 —
+// system/surface/* rows are in the emit now, per-mode reversal included.)
 // ---------------------------------------------------------------------------
 
-const SURFACE_LAW: Record<string, Record<Mode, string>> = {
-  [SURFACE.dim]: { light: 'neutral/paper-95', dark: 'neutral/paper-100' },
-  [SURFACE.low]: { light: 'neutral/paper-97', dark: 'neutral/paper-99' },
-  [SURFACE.mid]: { light: 'neutral/paper-99', dark: 'neutral/paper-97' },
-  [SURFACE.high]: { light: 'neutral/paper-100', dark: 'neutral/paper-95' },
-}
-
-// ---------------------------------------------------------------------------
-// Row resolution.
-// ---------------------------------------------------------------------------
-
-function resolveRow(row: Row, mode: Mode, leaves: LeafTable): string {
+function resolveRow(row: Row, leaves: LeafTable): string {
   if (isGap(row)) return SENTINEL
-  const path = SURFACE_LAW[row]?.[mode] ?? row
-  const value = leaves.get(path)
+  const value = leaves.get(row)
   if (value === undefined) {
-    throw new Error(`map path does not resolve against the engine emit: "${path}"`)
+    throw new Error(`map path does not resolve against the engine emit: "${row}"`)
   }
   return value
 }
 
 /** Family-relative spellings resolve absolute-first, then family-prefixed. */
-function resolveFamilyRow(row: Row, family: string, mode: Mode, leaves: LeafTable): string {
+function resolveFamilyRow(row: Row, family: string, leaves: LeafTable): string {
   if (isGap(row)) return SENTINEL
-  if (leaves.has(row) || row in SURFACE_LAW) return resolveRow(row, mode, leaves)
-  return resolveRow(`${family}/${row}`, mode, leaves)
+  if (leaves.has(row)) return resolveRow(row, leaves)
+  return resolveRow(`${family}/${row}`, leaves)
 }
 
 function resolveTree<T extends Record<string, Row | Record<string, Row>>>(
   tree: T,
-  mode: Mode,
   leaves: LeafTable,
 ): Record<string, unknown> {
   const out: Record<string, unknown> = {}
   for (const [key, node] of Object.entries(tree)) {
     out[key] =
       typeof node === 'string' || isGap(node as Row)
-        ? resolveRow(node as Row, mode, leaves)
-        : resolveTree(node as Record<string, Row>, mode, leaves)
+        ? resolveRow(node as Row, leaves)
+        : resolveTree(node as Record<string, Row>, leaves)
   }
   return out
 }
@@ -196,12 +186,12 @@ function resolveTree<T extends Record<string, Row | Record<string, Row>>>(
 // The palette per mode — a walk of the map, nothing else.
 // ---------------------------------------------------------------------------
 
-function buildPalette(mode: Mode, leaves: LeafTable) {
+function buildPalette(leaves: LeafTable) {
   const family = (source: string) =>
     Object.fromEntries(
       Object.entries(FAMILY_ROWS).map(([slot, row]) => [
         slot,
-        resolveFamilyRow(row, source, mode, leaves),
+        resolveFamilyRow(row, source, leaves),
       ]),
     )
 
@@ -214,7 +204,7 @@ function buildPalette(mode: Mode, leaves: LeafTable) {
             ...Object.fromEntries(
               Object.entries(NEUTRAL_EXTRA_ROWS).map(([slot, row]) => [
                 slot,
-                resolveRow(row, mode, leaves),
+                resolveRow(row, leaves),
               ]),
             ),
           }
@@ -222,12 +212,12 @@ function buildPalette(mode: Mode, leaves: LeafTable) {
     ]),
   )
 
-  const core = resolveTree(CORE, mode, leaves)
+  const core = resolveTree(CORE, leaves)
 
   return {
     ...families,
     poleWhite: Object.fromEntries(
-      Object.entries(POLE_WHITE_ROWS).map(([slot, row]) => [slot, resolveRow(row, mode, leaves)]),
+      Object.entries(POLE_WHITE_ROWS).map(([slot, row]) => [slot, resolveRow(row, leaves)]),
     ),
     ...core,
     action: {
@@ -239,22 +229,27 @@ function buildPalette(mode: Mode, leaves: LeafTable) {
       disabledOpacity: DISABLED_OPACITY,
     },
     grey: Object.fromEntries(
-      Object.entries(GREY).map(([rung, row]) => [rung, resolveRow(row, mode, leaves)]),
+      Object.entries(GREY).map(([rung, row]) => [rung, resolveRow(row, leaves)]),
     ),
     ...Object.fromEntries(
       Object.entries(COMPONENTS).map(([name, rows]) => [
         name,
         Object.fromEntries(
-          Object.entries(rows).map(([slot, row]) => [slot, resolveRow(row, mode, leaves)]),
+          Object.entries(rows).map(([slot, row]) => [slot, resolveRow(row, leaves)]),
         ),
       ]),
     ),
     link: Object.fromEntries(
-      Object.entries(LINK).map(([slot, row]) => [slot, resolveRow(row, mode, leaves)]),
+      Object.entries(LINK).map(([slot, row]) => [slot, resolveRow(row, leaves)]),
     ),
     surface: Object.fromEntries(
-      Object.entries(SURFACE).map(([plane, row]) => [plane, resolveRow(row, mode, leaves)]),
+      Object.entries(SURFACE).map(([plane, row]) => [plane, resolveRow(row, leaves)]),
     ),
+    scrim: resolveRow(SCRIM, leaves),
+    // the base shadow: engine color rows composed with the map's non-color
+    // geometry — MUI renders it as --…-palette-baseShadow (themePrimitives'
+    // shadows array points there)
+    baseShadow: BASE_SHADOW.map(l => `${resolveRow(l.color, leaves)} ${l.geometry}`).join(', '),
   }
 }
 
@@ -262,8 +257,8 @@ function buildPalette(mode: Mode, leaves: LeafTable) {
 export function buildColorSchemes(seed: Seed) {
   const tables = leafTables(seed)
   return {
-    light: { palette: buildPalette('light', tables.light), opacity: MODE_OPACITY },
-    dark: { palette: buildPalette('dark', tables.dark), opacity: MODE_OPACITY },
+    light: { palette: buildPalette(tables.light), opacity: MODE_OPACITY },
+    dark: { palette: buildPalette(tables.dark), opacity: MODE_OPACITY },
   }
 }
 

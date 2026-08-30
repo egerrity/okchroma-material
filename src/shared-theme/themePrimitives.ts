@@ -6,27 +6,13 @@
 // now comes from the map (src/theme/map.ts) via the interpreter
 // (src/theme/interpret.ts).
 //
-// baseShadow is the logged SHADOW GAP: the engine's token layer emits
-// --shadow-04/-08/-12 per mode, but the published npm package does not carry
-// it (docs/derivation-audit.md, residue). Template shadow values ride along
-// until the package ships the token layer; they are the only color-adjacent
-// literals sanctioned in this module.
+// The SHADOW GAP is CLOSED (okchroma 0.1.2, worklist B4): palette.baseShadow
+// is built by the interpreter from the map's BASE_SHADOW recipe — engine
+// shadow rows composed with non-color geometry. This module is color-free;
+// the shadows array below only points at the palette's CSS variable.
 import { createTheme, Shadows } from '@mui/material/styles';
 
-declare module '@mui/material/styles' {
-  interface Palette {
-    baseShadow: string;
-  }
-}
-
 const defaultTheme = createTheme();
-
-/** The shadow-gap values (see module header). */
-export const baseShadows = {
-  light:
-    'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px',
-  dark: 'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px',
-} as const;
 
 export const typography = {
   fontFamily: "'Noto Sans', sans-serif",

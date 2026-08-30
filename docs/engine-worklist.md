@@ -9,6 +9,11 @@ The PoC is the test bed for every item: bump the dependency, `npm run check:map`
 (totality, resolvability, 9-seed contrast sweep), then eyeball the seed roster in the
 running app. Items marked ⤵ delete PoC code when they land.
 
+**Status:** A1 + C8 + C9 landed in okchroma **0.1.1** (2026-08-29, site-verified).
+B2–B7 landed in okchroma **0.1.2** (2026-08-29) as one emitter pass — `themeToFigma`
+emits the `system` group; every ⤵ deletion below is done (SURFACE_LAW, the template
+baseShadow strings, the common/scrim GAP rows). Remaining: C10–C12.
+
 ## A. Packaging — minutes of work, closes two gaps
 
 1. **Ship the token layer**: `files: ["dist-lib", "tokens"]` in package.json.

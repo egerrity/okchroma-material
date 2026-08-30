@@ -1,5 +1,19 @@
 # Gap report — okchroma 0.1.0 vs Material's color demands
 
+> **Status ledger (kept current; the findings below are the round-2 record against
+> 0.1.0 as published and are not rewritten):**
+> - **CLOSED by okchroma 0.1.1** (A1): both packaging holes — `tokens/` ships in the
+>   `files` array.
+> - **CLOSED by okchroma 0.1.2** (B2–B7): every emitter hole — `themeToFigma` emits
+>   the `system` group (surfaces, abs poles, scrim, shadow alphas, offset alphas,
+>   quiet ink). The interpreter's `SURFACE_LAW` shim, the template `baseShadows`
+>   literals, and the `common.*`/scrim GAPs are deleted; the map's `SCRIM` +
+>   `BASE_SHADOW` rows ride the emit.
+> - **RESOLVED in 0.1.1** (C9): the quiet-CTA observation below — the soft on-text
+>   is gated per mode (dark ships the solid pole where the composite would miss AA).
+> - **OPEN**: the pole register (C10), disabled opacity (C11), state-tint alpha
+>   rows (C12) — see `engine-worklist.md`.
+
 Round 2 deliverable, 2026-08-29. Produced by the construction, not by judgment: every
 row in [the map](../src/theme/map.ts) either names an engine token or declares a
 `GAP(reason)`, and every `GAP` renders the magenta sentinel on screen. `npm run

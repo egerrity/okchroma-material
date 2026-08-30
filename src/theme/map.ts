@@ -79,15 +79,13 @@ export const STATE_WASH = {
 
 // ---------------------------------------------------------------------------
 // The four surface planes — ENGINE tokens, referenced once like every other
-// token. The reversal lives in the engine: tokens/semantic.css aliases each
-// plane onto the neutral papers per mode (owner spec 2026-07-24; light-high
-// and dark-dim are both --paper-100, the pole that flips with the mode).
+// token. The reversal lives in the engine: SURFACE_PLANE_LAW (its one
+// machine-readable home, okchroma tokenNames) resolves each plane onto the
+// neutral papers per mode inside themeToFigma's system group (worklist B2,
+// landed 0.1.2; light-high and dark-dim are both paper-100, the pole that
+// flips with the mode). GAP #1 is CLOSED — the interpreter's transcribed
+// law is deleted; these paths resolve against the emit like any other row.
 // Elevation decisions reference a plane, never a paper stop.
-//
-// GAP #1 (packaging, not design): the published npm package's files array
-// carries dist-lib only, so tokens/semantic.css does not ride the registry
-// install. Until it does, the INTERPRETER resolves these four names per the
-// engine's published law — keyed by these engine names, in one place, logged.
 // ---------------------------------------------------------------------------
 
 export const SURFACE = {
@@ -196,8 +194,8 @@ export const CORE = {
   },
   divider: 'neutral/wash-89', // border-subtle
   common: {
-    black: GAP('system/abs-black specified in 0.1.0, unemitted'),
-    white: GAP('system/abs-white specified in 0.1.0, unemitted'),
+    black: 'system/abs-black', // B5, landed 0.1.2 — the emitted pole rows
+    white: 'system/abs-white',
     background: SURFACE.mid,
     onBackground: 'neutral/ink-0', // max-emphasis anchor; feeds channel derivations until cluster C lands
   },
@@ -346,6 +344,29 @@ export const COMPONENTS = {
 } as const
 
 // ---------------------------------------------------------------------------
+// The modal veil + the base shadow — the system alpha rows (B3/B4, landed
+// 0.1.2).
+// ---------------------------------------------------------------------------
+
+/** The scrim behind modals. One engine row, mode-invariant (black@0.60 in both
+ *  schemes — the engine spells it by its composition). The MuiBackdrop law in
+ *  laws.tsx reads palette.scrim; stock's derived rgba(0,0,0,0.5) dies there. */
+export const SCRIM = 'system/alpha/abs-black-060' satisfies LeafPath
+
+/**
+ * The base shadow recipe. Geometry (offsets/blur/spread) is a non-color
+ * primitive and stays the template's two-layer shape; the LAYER COLORS are the
+ * engine's shadow ladder — the soft ambient layer rides shadow-04, the offset
+ * key layer shadow-08. Per-mode weight (4/8% light, 32/48% dark) reverses
+ * inside the ENGINE like every other row; the map names each color once.
+ * Retires themePrimitives' hsla literals (the logged shadow gap, closed).
+ */
+export const BASE_SHADOW = [
+  { geometry: '0px 4px 16px 0px', color: 'system/alpha/shadow-04' },
+  { geometry: '0px 8px 16px -5px', color: 'system/alpha/shadow-08' },
+] as const satisfies ReadonlyArray<{ geometry: string; color: LeafPath }>
+
+// ---------------------------------------------------------------------------
 // System links — a link is not a text-style CTA; never the text stops.
 // ---------------------------------------------------------------------------
 
@@ -363,14 +384,10 @@ export const LINK = {
 // report is total.
 // ---------------------------------------------------------------------------
 
+// (surfacePlanes, shadows, scrim CLOSED by okchroma 0.1.2 — the B2–B7 emitter
+// pass ships system/* through the JS emit; their rows live above as SURFACE,
+// BASE_SHADOW, SCRIM.)
 export const NON_PALETTE_GAPS = {
-  surfacePlanes: GAP(
-    'packaging: tokens/semantic.css emits system/surface/* but is not in the npm files array — interpreter carries the law meanwhile',
-  ),
-  shadows: GAP(
-    'packaging: tokens/semantic.css emits --shadow-04/-08/-12 (per-mode) but is not in the npm files array — template shadow values kept this round',
-  ),
-  scrim: GAP('emitter: system/alpha/abs-black-060 specified, no emitter — Backdrop/Modal veil'),
   disabledOpacityValue: GAP('value: DISABLED_OPACITY has no engine token — a value gap, not a slot gap'),
   stateTintAlphas: GAP('emitter: cluster B rides opaque wash stops until the alpha-rows engine item ships'),
 } as const

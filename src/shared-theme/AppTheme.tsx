@@ -6,7 +6,7 @@ import { dataDisplayCustomizations } from './customizations/dataDisplay';
 import { feedbackCustomizations } from './customizations/feedback';
 import { navigationCustomizations } from './customizations/navigation';
 import { surfacesCustomizations } from './customizations/surfaces';
-import { baseShadows, typography, shadows, shape } from './themePrimitives';
+import { typography, shadows, shape } from './themePrimitives';
 import { buildColorSchemes } from '../theme/interpret';
 import { lawCustomizations } from '../theme/laws';
 import { mergeComponents } from '../theme/mergeComponents';
@@ -28,9 +28,9 @@ export default function AppTheme(props: AppThemeProps) {
   const theme = React.useMemo(() => {
     if (disableCustomTheme) return {};
     // The color system is the MAP, interpreted — one engine resolve per seed
-    // (src/theme/map.ts → src/theme/interpret.ts). baseShadow is the logged
-    // shadow gap: template values ride along until the engine's token layer
-    // ships in the npm package.
+    // (src/theme/map.ts → src/theme/interpret.ts). baseShadow rides the
+    // palette now too (BASE_SHADOW — the shadow gap closed with okchroma
+    // 0.1.2), so the schemes pass through untouched.
     const mapSchemes = buildColorSchemes(resolveSeed(hex));
     return createTheme({
           // For more details about CSS variables configuration, see https://mui.com/material-ui/customization/css-theme-variables/configuration/
@@ -38,16 +38,7 @@ export default function AppTheme(props: AppThemeProps) {
             colorSchemeSelector: 'data-mui-color-scheme',
             cssVarPrefix: 'template',
           },
-          colorSchemes: {
-            light: {
-              ...mapSchemes.light,
-              palette: { ...mapSchemes.light.palette, baseShadow: baseShadows.light },
-            },
-            dark: {
-              ...mapSchemes.dark,
-              palette: { ...mapSchemes.dark.palette, baseShadow: baseShadows.dark },
-            },
-          },
+          colorSchemes: mapSchemes,
           typography,
           shadows,
           shape,

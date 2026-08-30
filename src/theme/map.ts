@@ -44,12 +44,11 @@ export const FOCUS_RING = {
   offset: '1px',
 } as const
 
-/**
- * Disabled is a component-level opacity; colors stay the enabled ones (the
- * inverse of MUI's grey-swap default). The VALUE has no engine token behind it
- * — a logged value gap (docs/derivation-audit.md, residue #1).
- */
-export const DISABLED_OPACITY = 0.38
+// (DISABLED_OPACITY moved to the ENGINE — okchroma 0.1.4, C11 landed: disabled
+// is a component-level opacity, colors stay the enabled ones. The map carries
+// no constant for it: it is not a color row, and the map imports nothing —
+// laws/interpret read okchroma's DISABLED_OPACITY directly. Residue #1 of the
+// derivation audit is closed.)
 
 /**
  * The multiplier law (audit, header): every derivation multiplier is zeroed so a
@@ -413,14 +412,12 @@ export const LINK = {
 } as const satisfies Record<string, LeafPath>
 
 // ---------------------------------------------------------------------------
-// Non-palette gaps — no MUI palette slot to hold them, logged here so the gap
-// report is total.
+// Non-palette gaps — CLOSED, the table is retired (2026-08-29).
+// surfacePlanes/shadows/scrim closed by okchroma 0.1.2 (the B2–B7 emitter
+// pass; their rows live above as SURFACE, BASE_SHADOW, SCRIM).
+// disabledOpacityValue closed by okchroma 0.1.4 (C11 — the engine's
+// DISABLED_OPACITY constant + --disabled-opacity token-layer row).
+// stateTintAlphas CANCELLED by owner ruling: the opaque wash stops are the
+// PERMANENT state-tint answer, not an interim — the alpha-paper twins stay
+// parked and C12 is off the books.
 // ---------------------------------------------------------------------------
-
-// (surfacePlanes, shadows, scrim CLOSED by okchroma 0.1.2 — the B2–B7 emitter
-// pass ships system/* through the JS emit; their rows live above as SURFACE,
-// BASE_SHADOW, SCRIM.)
-export const NON_PALETTE_GAPS = {
-  disabledOpacityValue: GAP('value: DISABLED_OPACITY has no engine token — a value gap, not a slot gap'),
-  stateTintAlphas: GAP('emitter: cluster B rides opaque wash stops until the alpha-rows engine item ships'),
-} as const

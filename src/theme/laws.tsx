@@ -8,7 +8,8 @@
 // map's addresses — never theme.palette, never a literal, never a derivation.
 
 import type { Theme, Components } from '@mui/material/styles'
-import { FOCUS_RING, DISABLED_OPACITY } from './map'
+import { DISABLED_OPACITY } from 'okchroma'
+import { FOCUS_RING } from './map'
 
 type Vars = Theme['vars']
 

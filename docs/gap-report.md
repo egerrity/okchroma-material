@@ -11,8 +11,14 @@
 >   `BASE_SHADOW` rows ride the emit.
 > - **RESOLVED in 0.1.1** (C9): the quiet-CTA observation below — the soft on-text
 >   is gated per mode (dark ships the solid pole where the composite would miss AA).
-> - **OPEN**: the pole register (C10), disabled opacity (C11), state-tint alpha
->   rows (C12) — see `engine-worklist.md`.
+> - **C10 resolved without engine work** (2026-08-29): 8 of 9 pole rows mapped
+>   from existing tokens (constant paper text on inverted grounds + a
+>   deliberate no-feedback abs-white button interim); `stampEdge` parked until
+>   a white button exists in Unify.
+> - **C11 CLOSED by okchroma 0.1.4**: `DISABLED_OPACITY` + `--disabled-opacity`
+>   — the one genuine value gap, now engine-blessed.
+> - **C12 CANCELLED by ruling**: opaque wash stops are the permanent state-tint
+>   answer. **The worklist is complete** — see `engine-worklist.md`.
 
 Round 2 deliverable, 2026-08-29. Produced by the construction, not by judgment: every
 row in [the map](../src/theme/map.ts) either names an engine token or declares a

@@ -77,11 +77,20 @@ fixture decides backdrop/profile vs blending-basis before any re-emission).
     nothing invented). 8 of 9 rows mapped from existing tokens, all pairings
     swept. The remnant: `stampEdge` stays a loud GAP — the white-button
     separation guarantee vs a pale dark stamp — until a white button is real.
-11. **Disabled opacity** — the one value specified nowhere. Either an engine row or
-    a blessed constant; the PoC ships 0.38 as a named project constant meanwhile.
-12. **Alpha rows for the mark-tint state washes** (pre-existing item, round-1
-    record): the translucent replacement for the opaque-wash interim in audit
-    cluster B. Depends on the Figma-opacity-beta timeline per the owner.
+11. **Disabled opacity** — LANDED in okchroma **0.1.4** (2026-08-29): the engine's
+    `DISABLED_OPACITY` constant + the token layer's `--disabled-opacity` row —
+    an opacity, not a color, so a blessed constant, never an emitted color
+    token. ⤵ done: the PoC's project constant is deleted; laws/interpret read
+    the engine's.
+12. **Alpha rows for the mark-tint state washes** — CANCELLED (owner ruling
+    2026-08-29): the opaque wash stops are the PERMANENT state-tint answer, not
+    an interim; the parked alpha-paper twins stay parked. Off the books.
+
+**THE WORKLIST IS COMPLETE** (2026-08-29): A1 + B2–B7 + C8 + C9 + C11 landed
+across okchroma 0.1.1–0.1.4; C10 resolved without engine work (one parked
+remnant: `poleWhite.stampEdge`, waiting on a white button existing in Unify);
+C12 cancelled. The color part of the PoC is done — next lanes are the Unify
+component styling (Switch, inputs) and round 3 packaging.
 
 ## Suggested order
 

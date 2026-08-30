@@ -224,7 +224,7 @@ console.log('\ngap report (rows resolving to the sentinel):')
     }
   })(schemes.light.palette as unknown as Record<string, unknown>, '')
   for (const g of gaps) console.log(`  GAP ${g}`)
-  console.log(`  ${gaps.length} palette gaps (+ the non-palette gaps listed in src/theme/map.ts NON_PALETTE_GAPS)`)
+  console.log(`  ${gaps.length} palette gaps (the non-palette table is retired — closed by 0.1.2/0.1.4, C12 cancelled)`)
 }
 
 if (failures > 0) {

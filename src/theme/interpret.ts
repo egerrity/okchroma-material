@@ -11,7 +11,7 @@
 // group (system/surface/*, system/alpha/*, the abs poles), so the map's system
 // paths resolve against the emit like every other row.
 
-import { themeToFigma, type FigmaGroup, type FigmaColorToken } from 'okchroma'
+import { themeToFigma, DISABLED_OPACITY, type FigmaGroup, type FigmaColorToken } from 'okchroma'
 import type { Seed, SignalRole } from '../seed'
 import {
   SENTINEL,
@@ -29,7 +29,6 @@ import {
   BASE_SHADOW,
   INVERSE_OFFSET,
   OPACITY_ZEROS,
-  DISABLED_OPACITY,
   type Row,
 } from './map'
 

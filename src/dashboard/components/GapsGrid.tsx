@@ -23,12 +23,11 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import Copyright from '../internals/components/Copyright';
+import { DISABLED_OPACITY } from 'okchroma';
 import {
   POLE_WHITE_ROWS,
   CORE,
   COMPONENTS,
-  NON_PALETTE_GAPS,
-  DISABLED_OPACITY,
   isGap,
   type Row,
 } from '../../theme/map';
@@ -108,8 +107,8 @@ export default function GapsGrid() {
       </Typography>
       <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
         Every row below is read from the map — {paletteGapCount} palette gap rows
-        resolving to the sentinel, plus the non-palette gaps. When an engine item
-        lands and its rows un-gap, they disappear from this page on their own.
+        resolving to the sentinel. When an engine item lands and its rows
+        un-gap, they disappear from this page on their own.
       </Typography>
 
       <Typography component="h3" variant="subtitle1" sx={{ mb: 1 }}>
@@ -365,7 +364,7 @@ export default function GapsGrid() {
       </Grid>
 
       <Typography component="h3" variant="subtitle1" sx={{ mb: 1 }}>
-        Focus tripwire + non-palette gaps
+        Focus tripwire
       </Typography>
       <Grid container spacing={2} columns={12} sx={{ mb: 3 }}>
         <Grid size={{ xs: 12, lg: 5 }}>
@@ -382,23 +381,17 @@ export default function GapsGrid() {
         <Grid size={{ xs: 12, lg: 7 }}>
           <Card variant="outlined" sx={{ height: '100%' }}>
             <CardContent>
-              <Stack spacing={1}>
-                {Object.entries(NON_PALETTE_GAPS).map(([key, gap]) => (
-                  <Stack key={key} sx={{ minWidth: 0 }}>
-                    <Typography variant="subtitle2">{key}</Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                      {gap.gap}
-                    </Typography>
-                  </Stack>
-                ))}
-                <Stack sx={{ minWidth: 0 }}>
-                  <Typography variant="subtitle2">DISABLED_OPACITY = {DISABLED_OPACITY}</Typography>
-                  <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    the interim project constant the disabled law applies (C11
-                    replaces it with an engine row or a blessed constant)
-                  </Typography>
-                </Stack>
-              </Stack>
+              <Typography variant="subtitle2" sx={{ mb: 0.5 }}>
+                Non-palette gaps: none
+              </Typography>
+              <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                The table is retired. Surfaces, shadows, and the scrim landed
+                with okchroma 0.1.2; the disabled opacity is the engine&apos;s
+                DISABLED_OPACITY = {DISABLED_OPACITY} since 0.1.4 (colors stay
+                enabled, the component dims); the state-tint alpha item is
+                cancelled by ruling — the opaque wash stops are the permanent
+                state-tint answer.
+              </Typography>
             </CardContent>
           </Card>
         </Grid>

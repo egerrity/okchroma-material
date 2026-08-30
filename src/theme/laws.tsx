@@ -299,8 +299,14 @@ export const lawCustomizations: Components<Theme> = {
   MuiSnackbarContent: {
     styleOverrides: {
       action: ({ theme }) => ({
-        // pole register consumer — dropped this round: render the gap loud
-        '& .MuiButton-root': { color: theme.vars!.palette.poleWhite.main },
+        // pole register consumer — dropped this round: render the gap loud.
+        // The state GROUNDS ride the inverse wash ladder (engine 0.1.3) — the
+        // ground law is independent of the text gap and lands first.
+        '& .MuiButton-root': {
+          color: theme.vars!.palette.poleWhite.main,
+          '&:hover': { backgroundColor: theme.vars!.palette.inverseWash.hover },
+          '&:active': { backgroundColor: theme.vars!.palette.inverseWash.pressed },
+        },
       }),
     },
   },

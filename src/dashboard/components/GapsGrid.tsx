@@ -214,15 +214,17 @@ export default function GapsGrid() {
                 >
                   Changes will sync when you reconnect.
                 </Typography>
-                <Stack direction="row" spacing={1}>
+                <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
                   <Button
                     size="small"
                     sx={(theme) => {
                       const p = theme.vars!.palette.poleWhite;
+                      const w = theme.vars!.palette.inverseWash;
                       return {
                         color: p.main,
                         border: `1px solid ${p.main}`,
-                        '&:hover': { color: p.dark },
+                        '&:hover': { backgroundColor: w.hover },
+                        '&:active': { backgroundColor: w.pressed },
                       };
                     }}
                   >
@@ -232,21 +234,36 @@ export default function GapsGrid() {
                     size="small"
                     sx={(theme) => {
                       const p = theme.vars!.palette.poleWhite;
+                      const w = theme.vars!.palette.inverseWash;
                       return {
                         color: p.light,
-                        '&:hover': { color: p.main },
-                        '&:active': { color: p.dark },
+                        '&:hover': { backgroundColor: w.hover },
+                        '&:active': { backgroundColor: w.pressed },
                       };
                     }}
                   >
                     Dismiss
                   </Button>
+                  <Box
+                    component="span"
+                    sx={(theme) => ({
+                      px: 1,
+                      py: 0.25,
+                      borderRadius: 1,
+                      fontSize: 12,
+                      backgroundColor: theme.vars!.palette.inverseWash.lift,
+                      color: theme.vars!.palette.neutral['paper-100'],
+                    })}
+                  >
+                    3 queued
+                  </Box>
                 </Stack>
               </Box>
               <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
-                reads: main (outlined) · light / main / dark (the text-CTA
-                trio). The headline/body ride mapped rows (paper-100/95) —
-                only the buttons gap.
+                gap reads: main / light (the button text). LANDED: the hover and
+                pressed grounds + the &quot;queued&quot; chip ride the inverse
+                wash ladder (engine ships the pole flip) — hover the buttons to
+                see it.
               </Typography>
             </CardContent>
           </Card>

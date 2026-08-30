@@ -27,6 +27,7 @@ import {
   SURFACE,
   SCRIM,
   BASE_SHADOW,
+  INVERSE_WASH,
   OPACITY_ZEROS,
   DISABLED_OPACITY,
   type Row,
@@ -94,6 +95,7 @@ declare module '@mui/material/styles' {
     surface: { dim: string; low: string; mid: string; high: string }
     scrim: string
     baseShadow: string
+    inverseWash: { lift: string; hover: string; pressed: string }
   }
   interface PaletteOptions {
     neutral?: PaletteOptions['primary']
@@ -102,6 +104,7 @@ declare module '@mui/material/styles' {
     surface?: Partial<Palette['surface']>
     scrim?: string
     baseShadow?: string
+    inverseWash?: Partial<Palette['inverseWash']>
   }
 }
 
@@ -246,6 +249,9 @@ function buildPalette(leaves: LeafTable) {
       Object.entries(SURFACE).map(([plane, row]) => [plane, resolveRow(row, leaves)]),
     ),
     scrim: resolveRow(SCRIM, leaves),
+    inverseWash: Object.fromEntries(
+      Object.entries(INVERSE_WASH).map(([slot, row]) => [slot, resolveRow(row, leaves)]),
+    ),
     // the base shadow: engine color rows composed with the map's non-color
     // geometry — MUI renders it as --…-palette-baseShadow (themePrimitives'
     // shadows array points there)

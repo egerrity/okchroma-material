@@ -354,6 +354,22 @@ export const COMPONENTS = {
 export const SCRIM = 'system/alpha/abs-black-060' satisfies LeafPath
 
 /**
+ * Interaction washes for INVERTED grounds (the inverse offset ladder, engine
+ * 0.1.3 — owner ruling 2026-08-29): the offset rungs with the pole flipped per
+ * mode, white over the dark panel in light scheme, black over the light panel
+ * in dark. The reversal lives in the ENGINE (the system/surface posture); the
+ * map names each rung once. COLORED FILLS NEVER RIDE THESE — a pole at alpha
+ * greys a hue — their states stay the engine-solved stamp/wash stops. Scope:
+ * neutral inverted territory only (ink-30 panels, the pole register's
+ * neighborhood, lift-grounds like a chip on an inverted card).
+ */
+export const INVERSE_WASH = {
+  lift: 'system/alpha/inverse-006',
+  hover: 'system/alpha/inverse-008',
+  pressed: 'system/alpha/inverse-016',
+} as const satisfies Record<string, LeafPath>
+
+/**
  * The base shadow recipe. Geometry (offsets/blur/spread) is a non-color
  * primitive and stays the template's two-layer shape; the LAYER COLORS are the
  * engine's shadow ladder — the soft ambient layer rides shadow-04, the offset

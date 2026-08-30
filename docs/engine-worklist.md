@@ -12,7 +12,22 @@ running app. Items marked ⤵ delete PoC code when they land.
 **Status:** A1 + C8 + C9 landed in okchroma **0.1.1** (2026-08-29, site-verified).
 B2–B7 landed in okchroma **0.1.2** (2026-08-29) as one emitter pass — `themeToFigma`
 emits the `system` group; every ⤵ deletion below is done (SURFACE_LAW, the template
-baseShadow strings, the common/scrim GAP rows). Remaining: C10–C12.
+baseShadow strings, the common/scrim GAP rows). The **inverse offset ladder** landed
+in **0.1.3** (2026-08-29, owner-ruled): `system/alpha/inverse-006|008|016` — the
+offset rungs with the pole flipped per mode, the wash/edge register for inverted
+grounds (PoC: map `INVERSE_WASH`, palette `inverseWash`, wired on the Snackbar action
+grounds + the gap gallery's inverted panel). Remaining: C10–C12, as re-scoped below.
+
+**The interaction ruling (owner, 2026-08-29):** interactions on NEUTRAL/inverted
+territory derive as pole-at-alpha washes (the offset + inverse ladders — a pole over
+a pole stays neutral); COLORED fills never do (a pole at alpha greys a hue) — their
+states stay the engine-solved stamp/wash stops. This re-scopes C10: its state
+machinery rides the ladders, so the column shrinks to the rest fills + the text trio
++ the existing edge gate. The parked alpha-paper twins keep their original scope —
+similar reading across the dim↔high planes, never inverted cards — and their
+re-entry gate is a Figma parity fixture (flattened composite hex beside each rgba,
+compared on the same field in an sRGB doc: the twins imported "neon" once, and the
+fixture decides backdrop/profile vs blending-basis before any re-emission).
 
 ## A. Packaging — minutes of work, closes two gaps
 

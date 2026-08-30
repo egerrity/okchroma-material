@@ -15,6 +15,7 @@ import ButtonDoc from './pages/ButtonDoc';
 import CheckboxDoc from './pages/CheckboxDoc';
 import RadioDoc from './pages/RadioDoc';
 import SwitchDoc from './pages/SwitchDoc';
+import TextFieldDoc from './pages/TextFieldDoc';
 import GettingStarted from './pages/GettingStarted';
 
 const NAV = [
@@ -29,6 +30,7 @@ const NAV = [
       { label: 'Checkbox', hash: '#/docs/checkbox' },
       { label: 'Radio', hash: '#/docs/radio' },
       { label: 'Switch', hash: '#/docs/switch' },
+      { label: 'Text field', hash: '#/docs/text-field' },
     ],
   },
 ];
@@ -38,6 +40,7 @@ const PAGES: Record<string, () => React.JSX.Element> = {
   '#/docs/checkbox': CheckboxDoc,
   '#/docs/radio': RadioDoc,
   '#/docs/switch': SwitchDoc,
+  '#/docs/text-field': TextFieldDoc,
 };
 
 export default function DocsSite({ route }: { route: string }) {

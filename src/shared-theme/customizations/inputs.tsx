@@ -283,26 +283,55 @@ export const inputsCustomizations: Components<Theme> = {
       },
     },
   },
+  // The Unify field chrome (Figma "Unify re-alias" § Inputs, pulled
+  // 2026-08-30): radius 8, 12px side padding, md 48 / sm 40 (the kit's xs 32
+  // is unmapped — MUI has two sizes), 8px adornment gap. Unify's own state
+  // taxonomy is not mirrored (owner: "fit the visual styling into MUI's
+  // states") — rest border here, focus/error/disabled borders in the laws.
   MuiOutlinedInput: {
     styleOverrides: {
       input: {
         padding: 0,
       },
       root: ({ theme }) => ({
-        padding: '8px 12px',
+        padding: '0 12px',
+        gap: 8,
         color: theme.vars!.palette.text.primary,
         borderRadius: (theme.vars || theme).shape.borderRadius,
-        // the border law (owner C1): input borders are mark-74, all states
+        // the border law (owner C1): resting input borders are mark-74
         border: `1px solid ${theme.vars!.palette.neutral['mark-74']}`,
         backgroundColor: theme.vars!.palette.background.default,
         transition: 'border 120ms ease-in',
         variants: [
-          { props: { size: 'small' }, style: { height: '2.25rem' } },
-          { props: { size: 'medium' }, style: { height: '2.5rem' } },
+          { props: { size: 'small' }, style: { height: '2.5rem' } },
+          { props: { size: 'medium' }, style: { height: '3rem' } },
         ],
+        // textarea: height belongs to the content; Unify pads the box evenly
+        '&.MuiInputBase-multiline': {
+          height: 'auto',
+          padding: '12px',
+        },
       }),
       notchedOutline: {
         border: 'none',
+      },
+    },
+  },
+  MuiSelect: {
+    styleOverrides: {
+      icon: ({ theme }) => ({ color: theme.vars!.palette.text.secondary }),
+    },
+  },
+  // the field notice (Unify's alert row): flush left, 12px medium, 8px off the
+  // field. (Unify pairs it with a 16px triangle icon — MUI's helper text has
+  // no icon slot; logged as a docs-page convention instead.)
+  MuiFormHelperText: {
+    styleOverrides: {
+      root: {
+        marginLeft: 0,
+        marginTop: 8,
+        fontSize: 12,
+        fontWeight: 500,
       },
     },
   },

@@ -190,28 +190,33 @@ export const lawCustomizations: Components<Theme> = {
 
   // ── inputs: border law (mark-74, owner C1), placeholder = fg-subtle,
   //    focus = the ring (the 2px primary underline/border animation dies) ──
+  // FIELD borders + states (reworked to the Unify chrome, owner 2026-08-30 —
+  // "fit the visual styling into MUI's states"): rest/hover = 1px mark-74 (the
+  // C1 border law unchanged), FOCUS = a 2px primary.main border (Unify's
+  // brand-primary focus, the same brand-primary→main mapping the selection
+  // controls locked) — the neutral FOCUS_RING stays the law for buttons and
+  // controls, but fields signal focus with the border itself. Error = 1px
+  // error.main, 2px when focused. The visible border is the ROOT border
+  // (inputs.tsx owns the geometry; the notched outline is display-none there),
+  // so the pins land on the root.
   MuiOutlinedInput: {
     styleOverrides: {
       root: ({ theme }) => ({
-        '& .MuiOutlinedInput-notchedOutline': {
-          borderColor: theme.vars!.palette.neutral['mark-74'],
+        '&.Mui-focused': {
+          borderColor: theme.vars!.palette.primary.main,
+          borderWidth: '2px',
+          // keep text steady when the border thickens
+          padding: '0 11px',
         },
-        '&:hover .MuiOutlinedInput-notchedOutline': {
-          borderColor: theme.vars!.palette.neutral['mark-74'],
+        '&.MuiInputBase-multiline.Mui-focused': {
+          padding: '11px', // the textarea's even padding, compensated
         },
-        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-          borderColor: theme.vars!.palette.neutral['mark-74'],
-          borderWidth: '1px',
-        },
-        '&.Mui-focused': focusRing(theme.vars),
-        '&.Mui-error .MuiOutlinedInput-notchedOutline': {
-          borderColor: theme.vars!.palette.error['mark-74'],
+        '&.Mui-error': {
+          borderColor: theme.vars!.palette.error.main,
         },
         '&.Mui-disabled': {
           ...disabledLaw,
-          '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: theme.vars!.palette.neutral['mark-74'],
-          },
+          borderColor: theme.vars!.palette.neutral['mark-74'],
         },
       }),
     },
@@ -243,6 +248,10 @@ export const lawCustomizations: Components<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         '&.Mui-disabled': { ...disabledLaw, color: theme.vars!.palette.text.secondary },
+        // Unify labels do not state-shift — the FIELD carries focus and error
+        // (MUI swaps the label to primary/error.main; that doubles the signal)
+        '&.Mui-focused': { color: theme.vars!.palette.text.secondary },
+        '&.Mui-error': { color: theme.vars!.palette.text.secondary },
       }),
     },
   },

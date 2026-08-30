@@ -5,7 +5,6 @@
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,8 +12,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Plus as AddIcon, ChevronRight as ChevronRightIcon } from 'lucide-react';
 import { PageTitle, Lede, SectionTitle, Demo, Snippet } from './shared';
-
-const FAMILIES = ['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const;
 
 const Caption = ({ children }: { children: React.ReactNode }) => (
   <Typography sx={{ fontSize: 14, mb: 1, mt: 2 }} color="text.secondary">
@@ -50,30 +47,10 @@ export default function ButtonDoc() {
 <Button variant="text">Text</Button>`}
       />
 
-      <SectionTitle>Color</SectionTitle>
-      <Caption>
-        primary is the default. The theme resolves the values for the active brand
-        and mode.
-      </Caption>
-      {(['contained', 'outlined', 'text'] as const).map(variant => (
-        <Box key={variant} sx={{ mb: 2 }}>
-          <Caption>{variant}</Caption>
-          <Demo>
-            {FAMILIES.map(family => (
-              <Button key={family} variant={variant} color={family}>
-                {family}
-              </Button>
-            ))}
-            <Button variant={variant} color="inherit">
-              inherit
-            </Button>
-          </Demo>
-        </Box>
-      ))}
-      <Snippet
-        code={`<Button variant="contained" color="error">error</Button>
-<Button variant="outlined" color="inherit">inherit</Button>`}
-      />
+      {/* The Color section is HIDDEN (owner 2026-08-30): Unify does not offer
+          color-forked buttons, so the docs must not advertise them. The palette
+          still resolves every family (signals need it for Alerts etc.) — this
+          is a docs decision, not a theme one. */}
 
       <SectionTitle>Disabled</SectionTitle>
       <Caption>
@@ -88,9 +65,6 @@ export default function ButtonDoc() {
         </Button>
         <Button variant="text" disabled>
           Text
-        </Button>
-        <Button variant="contained" color="error" disabled>
-          error
         </Button>
       </Demo>
       <Snippet code={`<Button variant="contained" disabled={isSaving}>Contained</Button>`} />
@@ -141,9 +115,9 @@ export default function ButtonDoc() {
           </TableRow>
           <TableRow>
             <TableCell>color</TableCell>
-            <TableCell>primary · secondary · error · warning · info · success · inherit</TableCell>
             <TableCell>primary</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>primary</TableCell>
+            <TableCell>buttons do not color-fork — leave it unset</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>size</TableCell>

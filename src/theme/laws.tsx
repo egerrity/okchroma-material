@@ -68,10 +68,12 @@ export const lawCustomizations: Components<Theme> = {
             // a stepping wash exits the guarantee, so any variant that washes its
             // ground steps its text.
             color: fam.main,
-            borderColor: fam['mark-74'],
+            // Unify: EVERY outlined button wears the neutral outline (owner
+            // 2026-08-30) — the label carries the family, the border never does
+            borderColor: vars.palette.neutral['mark-74'],
             '&:hover': { color: fam.dark, backgroundColor: fam['wash-92'] },
             '&:active': { color: fam['ink-30'], backgroundColor: fam['wash-85'] },
-            '&.Mui-disabled': { ...disabledLaw, color: fam.main, borderColor: fam['mark-74'] },
+            '&.Mui-disabled': { ...disabledLaw, color: fam.main, borderColor: vars.palette.neutral['mark-74'] },
           }),
           ...(ownerState.variant === 'text' && {
             // the text-style CTA: rest/hover/pressed = main/dark/ink-30

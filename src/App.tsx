@@ -15,7 +15,11 @@ export default function App() {
   }, [])
   return (
     <SeedProvider>
-      {route.startsWith('#/docs') ? <DocsSite route={route} /> : <Dashboard />}
+      {route.startsWith('#/docs') ? (
+        <DocsSite route={route} />
+      ) : (
+        <Dashboard main={route.startsWith('#/gaps') ? 'gaps' : 'home'} />
+      )}
     </SeedProvider>
   )
 }

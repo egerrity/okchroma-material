@@ -228,11 +228,31 @@ export const lawCustomizations: Components<Theme> = {
   },
   MuiInputBase: {
     styleOverrides: {
+      root: {
+        '&.Mui-disabled': disabledLaw,
+      },
       input: ({ theme }) => ({
         '&::placeholder': {
           color: theme.vars!.palette.text.secondary,
           opacity: 1, // the honest color at full strength — no multiplier
         },
+        // the disabled law: MUI's own .Mui-disabled swaps the input ink to
+        // text.disabled via -webkit-text-fill-color (tripwire caught on the
+        // gap-gallery roster, 2026-08-29) — pin the enabled ink; the root's
+        // opacity carries the disabled read
+        '&.Mui-disabled': {
+          color: theme.vars!.palette.text.primary,
+          WebkitTextFillColor: theme.vars!.palette.text.primary,
+        },
+      }),
+    },
+  },
+  // labels ride the same law: MUI swaps .Mui-disabled labels to text.disabled
+  // (same tripwire catch) — keep the enabled label color, opacity carries it
+  MuiFormLabel: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        '&.Mui-disabled': { ...disabledLaw, color: theme.vars!.palette.text.secondary },
       }),
     },
   },
@@ -242,6 +262,12 @@ export const lawCustomizations: Components<Theme> = {
         '&::before': { borderBottomColor: theme.vars!.palette.neutral['mark-74'] },
         '&::after': { display: 'none' }, // the 2px primary underline animation — dead (H1)
         '&.Mui-focused': focusRing(theme.vars),
+        // MUI reads palette.FilledInput.disabledBg (a GAP tripwire — caught on
+        // the gap-gallery roster): the law keeps the ENABLED ground
+        '&.Mui-disabled': {
+          ...disabledLaw,
+          backgroundColor: theme.vars!.palette.neutral['wash-92'],
+        },
       }),
     },
   },

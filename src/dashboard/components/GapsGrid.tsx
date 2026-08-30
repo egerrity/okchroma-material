@@ -227,8 +227,10 @@ export default function GapsGrid() {
                       return {
                         color: p.main,
                         border: `1px solid ${p.main}`,
-                        '&:hover': { backgroundColor: w.hover },
-                        '&:active': { backgroundColor: w.pressed },
+                        // hover/active COLOR pinned — the MuiButton law's family
+                        // hover (primary.main) bleeds through otherwise
+                        '&:hover': { color: p.main, backgroundColor: w.hover },
+                        '&:active': { color: p.dark, backgroundColor: w.pressed },
                       };
                     }}
                   >
@@ -241,8 +243,8 @@ export default function GapsGrid() {
                       const w = theme.vars!.palette.inverseOffset;
                       return {
                         color: p.light,
-                        '&:hover': { backgroundColor: w.hover },
-                        '&:active': { backgroundColor: w.pressed },
+                        '&:hover': { color: p.main, backgroundColor: w.hover },
+                        '&:active': { color: p.dark, backgroundColor: w.pressed },
                       };
                     }}
                   >

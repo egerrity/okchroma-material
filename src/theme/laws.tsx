@@ -300,10 +300,20 @@ export const lawCustomizations: Components<Theme> = {
   MuiSnackbarContent: {
     styleOverrides: {
       action: ({ theme }) => ({
+        // the FULL text-CTA idiom in pole tiers — hover/active COLOR pinned
+        // too, or the MuiButton law's family hover (primary.main, blue) bleeds
+        // through at equal specificity (owner-caught on the gallery panel,
+        // 2026-08-29)
         '& .MuiButton-root': {
-          color: theme.vars!.palette.poleWhite.main,
-          '&:hover': { backgroundColor: theme.vars!.palette.inverseOffset.hover },
-          '&:active': { backgroundColor: theme.vars!.palette.inverseOffset.pressed },
+          color: theme.vars!.palette.poleWhite.light,
+          '&:hover': {
+            color: theme.vars!.palette.poleWhite.main,
+            backgroundColor: theme.vars!.palette.inverseOffset.hover,
+          },
+          '&:active': {
+            color: theme.vars!.palette.poleWhite.dark,
+            backgroundColor: theme.vars!.palette.inverseOffset.pressed,
+          },
         },
       }),
     },

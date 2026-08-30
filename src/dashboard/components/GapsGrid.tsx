@@ -430,7 +430,7 @@ export default function GapsGrid() {
               </Stack>
               <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
                 The Unify anatomy (md + sm): contained-pill switch, soft-square
-                checkbox, ring-glyph radio. Colors ride F1 — checked = main +
+                checkbox, white-core radio. Colors ride F1 — checked = main +
                 contrastText, borders/track = mark-74, never stamp. Hover,
                 click, and tab through in both modes.
               </Typography>

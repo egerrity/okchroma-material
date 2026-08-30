@@ -190,16 +190,20 @@ export const inputsCustomizations: Components<Theme> = {
           backgroundColor: vars.palette.neutral['paper-100'],
           transition: 'border-color, background-color, 120ms ease-in',
           '& svg': { display: 'none' },
+          // the glyph is a SOLID contrastText disc (the Unify asset is a white
+          // circle r=5 in the 12px inset box — a 10px disc on the 20px main
+          // fill; the main reads as a thick outer ring). NOT a ring — the
+          // ring-glyph first draft read bullseye-backwards (owner-caught).
           '&::after': {
             content: '""',
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 12,
-            height: 12,
+            width: 10,
+            height: 10,
             borderRadius: 999,
-            border: '2px solid transparent',
+            backgroundColor: 'transparent',
           },
           '&:hover': {
             backgroundColor: vars.palette.neutral['wash-92'],
@@ -207,7 +211,7 @@ export const inputsCustomizations: Components<Theme> = {
           '&.Mui-checked': {
             backgroundColor: fam.main,
             borderColor: fam.main,
-            '&::after': { borderColor: fam.contrastText },
+            '&::after': { backgroundColor: fam.contrastText },
             '&:hover': {
               backgroundColor: fam.dark,
               borderColor: fam.dark,
@@ -219,7 +223,7 @@ export const inputsCustomizations: Components<Theme> = {
             '&.Mui-checked': {
               backgroundColor: fam.main,
               borderColor: fam.main,
-              '&::after': { borderColor: fam.contrastText },
+              '&::after': { backgroundColor: fam.contrastText },
             },
           },
           variants: [
@@ -229,7 +233,7 @@ export const inputsCustomizations: Components<Theme> = {
                 height: 16,
                 width: 16,
                 margin: 10,
-                '&::after': { width: 10, height: 10 },
+                '&::after': { width: 8, height: 8 },
               },
             },
           ],

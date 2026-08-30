@@ -246,6 +246,15 @@ export const lawCustomizations: Components<Theme> = {
       }),
     },
   },
+  // FormControlLabel's label is a DIFFERENT component with the same swap
+  // (tripwire caught on the Checkbox docs page's disabled row, 2026-08-30)
+  MuiFormControlLabel: {
+    styleOverrides: {
+      label: ({ theme }) => ({
+        '&.Mui-disabled': { ...disabledLaw, color: theme.vars!.palette.text.primary },
+      }),
+    },
+  },
   MuiFilledInput: {
     styleOverrides: {
       root: ({ theme }) => ({

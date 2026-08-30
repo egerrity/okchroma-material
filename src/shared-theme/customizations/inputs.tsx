@@ -250,6 +250,10 @@ export const inputsCustomizations: Components<Theme> = {
     styleOverrides: {
       root: {
         padding: 0,
+        // the 8px margin the other controls carry: hit-area parity, and the
+        // FormControlLabel gap (MUI spaces labels off the control's padding,
+        // which the pill zeroes)
+        margin: 8,
         width: 32,
         height: 20,
         display: 'inline-flex',

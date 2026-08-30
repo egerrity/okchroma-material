@@ -70,11 +70,13 @@ export const lawCustomizations: Components<Theme> = {
             '&.Mui-disabled': { ...disabledLaw, color: fam.main, borderColor: fam['mark-74'] },
           }),
           ...(ownerState.variant === 'text' && {
-            // the text-style CTA: rest/hover/pressed ARE light/main/dark (lead-53/ink-42/ink-30)
-            color: fam.light,
-            '&:hover': { color: fam.main, backgroundColor: fam['wash-92'] },
-            '&:active': { color: fam.dark, backgroundColor: fam['wash-85'] },
-            '&.Mui-disabled': { ...disabledLaw, color: fam.light },
+            // the text-style CTA: rest/hover/pressed = main/dark/ink-30
+            // (lead-53/ink-42/ink-30 — same values as ever; the trio swap of
+            // 2026-08-30 relabeled the slots, main is the rest stop now)
+            color: fam.main,
+            '&:hover': { color: fam.dark, backgroundColor: fam['wash-92'] },
+            '&:active': { color: fam['ink-30'], backgroundColor: fam['wash-85'] },
+            '&.Mui-disabled': { ...disabledLaw, color: fam.main },
           }),
         }
       },

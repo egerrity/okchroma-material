@@ -100,18 +100,27 @@ export const SURFACE = {
 // ---------------------------------------------------------------------------
 
 /**
- * One column, all families. light/main/dark are AA body-text stops — verbatim
- * the engine's text-CTA rest/hover/pressed sequence. contrastText rides the
- * ladder's self-reversal (paper-100 sits beyond paper-95, the text stops'
- * solved worst case, in both modes — warranted by ratio symmetry). The stamp
- * rows are the additive register: stamp-accepting components (buttons, chips,
- * badges, avatars, filled banners) read them; nothing else does; stamps are
- * never text.
+ * One column, all families. REVISED (owner ruling 2026-08-30, superseding the
+ * round-2 positional mapping): MUI's slots are semantic, not sequential —
+ * `main` is THE color, `dark` is the darken-toward source. The engine agrees:
+ * lead-53 is the rest/emphasis-fill stop (C49: "this stop carries both
+ * jobs"), ink-42 the hover stop. The old mapping put the SEQUENCE in
+ * positionally, so the hover stop became everything's key color and the UI
+ * ran dark. Now: main = lead-53 (rest), dark = ink-42 (hover); pressed is the
+ * ladder row ink-30 read by the laws (MUI has no pressed slot); `light`
+ * ALIASES main — no AA text stop sits lighter than lead-53, so the trio's
+ * floor fills the slot (the GREY table's deliberate-collision precedent).
+ * All three remain AA body text; contrastText rides the ladder's
+ * self-reversal (paper-100 sits beyond paper-95, lead-53's solved worst
+ * case, both modes — the ratio-symmetry warrant, now swept against main=53).
+ * The stamp rows are the additive register: stamp-accepting components
+ * (buttons, chips, badges, avatars, filled banners) read them; nothing else
+ * does; stamps are never text.
  */
 export const FAMILY_ROWS = {
   light: 'lead-53',
-  main: 'ink-42',
-  dark: 'ink-30',
+  main: 'lead-53',
+  dark: 'ink-42',
   contrastText: 'neutral/paper-100',
   stampFill: 'stamp/fill',
   stampFillHover: 'stamp/fill-hover',

@@ -14,6 +14,7 @@ import ColorModeToggle from '../shared-theme/ColorModeToggle';
 import ButtonDoc from './pages/ButtonDoc';
 import CheckboxDoc from './pages/CheckboxDoc';
 import RadioDoc from './pages/RadioDoc';
+import SelectDoc from './pages/SelectDoc';
 import SwitchDoc from './pages/SwitchDoc';
 import TextFieldDoc from './pages/TextFieldDoc';
 import GettingStarted from './pages/GettingStarted';
@@ -29,6 +30,7 @@ const NAV = [
       { label: 'Button', hash: '#/docs/button' },
       { label: 'Checkbox', hash: '#/docs/checkbox' },
       { label: 'Radio', hash: '#/docs/radio' },
+      { label: 'Select', hash: '#/docs/select' },
       { label: 'Switch', hash: '#/docs/switch' },
       { label: 'Text field', hash: '#/docs/text-field' },
     ],
@@ -39,6 +41,7 @@ const PAGES: Record<string, () => React.JSX.Element> = {
   '#/docs/button': ButtonDoc,
   '#/docs/checkbox': CheckboxDoc,
   '#/docs/radio': RadioDoc,
+  '#/docs/select': SelectDoc,
   '#/docs/switch': SwitchDoc,
   '#/docs/text-field': TextFieldDoc,
 };

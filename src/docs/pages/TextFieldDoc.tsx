@@ -6,10 +6,8 @@
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import MenuItem from '@mui/material/MenuItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
-import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
@@ -96,26 +94,6 @@ import OutlinedInput from '@mui/material/OutlinedInput';
         </Field>
       </Demo>
       <Caption>Disabled keeps the enabled colors and dims the control — the law, everywhere.</Caption>
-
-      <SectionTitle>Select</SectionTitle>
-      <Demo>
-        <Field label="Role" id="tf-select">
-          <Select id="tf-select" defaultValue="editor" size="small">
-            <MenuItem value="viewer">Viewer</MenuItem>
-            <MenuItem value="editor">Editor</MenuItem>
-            <MenuItem value="admin">Admin</MenuItem>
-          </Select>
-        </Field>
-      </Demo>
-      <Snippet
-        code={`<FormControl>
-  <FormLabel htmlFor="role">Role</FormLabel>
-  <Select id="role" value={role} onChange={handleChange}>
-    <MenuItem value="viewer">Viewer</MenuItem>
-    <MenuItem value="editor">Editor</MenuItem>
-  </Select>
-</FormControl>`}
-      />
 
       <SectionTitle>Textarea</SectionTitle>
       <Demo>

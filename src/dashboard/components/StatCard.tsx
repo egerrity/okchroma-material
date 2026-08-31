@@ -58,7 +58,7 @@ export default function StatCard({
     up: theme.vars!.palette.success.stampFill,
     down: theme.vars!.palette.error.stampFill,
     warning: theme.vars!.palette.warning.stampFill,
-    neutral: theme.vars!.palette.neutral['mark-74'],
+    neutral: theme.vars!.palette.neutral['wax-74'],
   };
 
   const labelColors = {

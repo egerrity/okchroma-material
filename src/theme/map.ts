@@ -40,7 +40,7 @@ export const SENTINEL = '#ff00ff'
 /** Focus is ONE ring. Never a wash ground, never a halo, no ripple. */
 export const FOCUS_RING = {
   width: '2px',
-  color: 'neutral/mark-74' satisfies LeafPath,
+  color: 'neutral/wax-74' satisfies LeafPath,
   offset: '1px',
 } as const
 
@@ -138,7 +138,7 @@ export const FAMILY_ROWS = {
   'wash-89': 'wash-89',
   'wash-85': 'wash-85',
   'wash-80': 'wash-80',
-  'mark-74': 'mark-74',
+  'wax-74': 'wax-74',
   'lead-53': 'lead-53',
   'ink-42': 'ink-42',
   'ink-30': 'ink-30',
@@ -209,7 +209,7 @@ export const CORE = {
     primary: 'neutral/ink-30', // fg-default
     secondary: 'neutral/lead-53', // fg-subtle
     disabled: GAP('disabled is a component-level opacity, never a color swap'),
-    icon: 'neutral/mark-74', // the mark band's stated job (dark scheme slot)
+    icon: 'neutral/wax-74', // the wax band's stated job (dark scheme slot)
   },
   background: {
     default: SURFACE.mid,
@@ -223,7 +223,7 @@ export const CORE = {
     onBackground: 'neutral/ink-0', // max-emphasis anchor; feeds channel derivations until cluster C lands
   },
   action: {
-    active: 'neutral/mark-74', // icons
+    active: 'neutral/wax-74', // icons
     hover: 'neutral/wash-92', // the wash law
     selected: 'neutral/wash-89',
     focus: GAP('focus is the ring (FOCUS_RING), never a ground'),
@@ -244,7 +244,7 @@ export const GREY = {
   200: 'neutral/paper-95',
   300: 'neutral/wash-92',
   400: 'neutral/wash-80',
-  500: 'neutral/mark-74',
+  500: 'neutral/wax-74',
   600: 'neutral/lead-53',
   700: 'neutral/ink-42',
   800: 'neutral/ink-30',
@@ -261,7 +261,7 @@ export const GREY = {
 // ---------------------------------------------------------------------------
 
 /** Alert: standard = ink on wash (chip/badge doctrine); filled = a sanctioned
- *  stamp use (filled banners); icons = the mark band. */
+ *  stamp use (filled banners); icons = the wax band. */
 export const ALERT = {
   errorColor: 'critical/ink-30',
   infoColor: 'info/ink-30',
@@ -279,10 +279,10 @@ export const ALERT = {
   infoFilledColor: 'info/stamp/on',
   successFilledColor: 'positive/stamp/on',
   warningFilledColor: 'warning/stamp/on',
-  errorIconColor: 'critical/mark-74',
-  infoIconColor: 'info/mark-74',
-  successIconColor: 'positive/mark-74',
-  warningIconColor: 'warning/mark-74',
+  errorIconColor: 'critical/wax-74',
+  infoIconColor: 'info/wax-74',
+  successIconColor: 'positive/wax-74',
+  warningIconColor: 'warning/wax-74',
 } as const satisfies Record<string, Row>
 
 export const COMPONENTS = {

@@ -1,6 +1,6 @@
 // Feedback — template structure only. Alert severity colors come from the
 // map's palette.Alert.* rows (standard = family wash ground + ink text, icon
-// on the mark band; filled = the stamp register — a sanctioned use). The
+// on the wax band; filled = the stamp register — a sanctioned use). The
 // template's all-alerts-are-orange treatment is gone: severity is the family.
 import type { Theme, Components } from '@mui/material/styles';
 

@@ -93,7 +93,7 @@ const NAME = {
   paper3: stopTokenName(3),
   wash4: stopTokenName(4), // container tier
   washBorder: stopTokenName(7), // quiet border (wash-80)
-  mark: stopTokenName(8), // the 3:1-clamped ring/border stop (mark-74)
+  wax: stopTokenName(8), // the 3:1-clamped ring/border stop (wax-74)
   lead: stopTokenName(9), // first text stop (lead-53)
   inkMid: stopTokenName(10), // between state (ink-42)
   inkStrong: stopTokenName(11), // strong text (ink-30)

@@ -53,14 +53,14 @@ is not used at all. Only okchroma.
 - The brand family never appears in a graph or chart. Data viz rides the
   signal families and the neutral ladder.
 - Disabled is a component-level opacity; colors stay the enabled ones.
-- Focus is ONE ring: 2px neutral mark-74, 1px offset. No ripple.
+- Focus is ONE ring: 2px neutral wax-74, 1px offset. No ripple.
 - Our vocabulary is engine token names (paper-99 .. ink-30, stamp rows),
   never numeric ranges.
 - The Figma contract: component/buttons collection — one mode per color,
   variants as groups, property-honest row names (label, fill, border used
   consistently by bound property).
 - Engine work item (owner to spec): alpha rows join the engine until the
-  Figma opacity feature leaves beta; the mark-tint state washes depend on it.
+  Figma opacity feature leaves beta; the wax-tint state washes depend on it.
 
 ## Round 2 mandate
 

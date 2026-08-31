@@ -12,7 +12,7 @@ export default function PageViewsBarChart() {
   const colorPalette = [
     theme.vars!.palette.info['ink-30'],
     theme.vars!.palette.info['lead-53'],
-    theme.vars!.palette.info['mark-74'],
+    theme.vars!.palette.info['wax-74'],
   ];
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>

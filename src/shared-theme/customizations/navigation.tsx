@@ -68,14 +68,14 @@ export const navigationCustomizations: Components<Theme> = {
       root: ({ theme }) => ({
         borderRadius: (theme.vars || theme).shape.borderRadius,
         border: '1px solid',
-        // the border law (owner C1): input borders are mark-74, all states
-        borderColor: theme.vars!.palette.neutral['mark-74'],
+        // the border law (owner C1): input borders are wax-74, all states
+        borderColor: theme.vars!.palette.neutral['wax-74'],
         backgroundColor: theme.vars!.palette.background.paper,
         '&:hover': {
           backgroundColor: theme.vars!.palette.background.paper,
         },
         [`&.${selectClasses.focused}`]: {
-          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['mark-74']}`,
+          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
           outlineOffset: FOCUS_RING.offset,
         },
         '&:before, &:after': {

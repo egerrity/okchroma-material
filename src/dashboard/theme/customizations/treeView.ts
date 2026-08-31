@@ -19,11 +19,11 @@ export const treeViewCustomizations: TreeViewComponents<Theme> = {
           borderColor: theme.vars!.palette.divider,
         },
         '&:focus-visible .focused': {
-          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['mark-74']}`,
+          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
           outlineOffset: FOCUS_RING.offset,
           '&:hover': {
             backgroundColor: theme.vars!.palette.action.hover,
-            outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['mark-74']}`,
+            outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
             outlineOffset: FOCUS_RING.offset,
           },
         },

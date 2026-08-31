@@ -61,7 +61,7 @@ family, `neutral` where the stock input was `text.primary`/`action.*`):
 | selected | `{F}/wash-89` |
 | selected + hover | `{F}/wash-85` |
 | pressed / activated | `{F}/wash-85` |
-| focus ground | **dies** — focus is the ring (2px `neutral/mark-74`, 1px offset), never a wash |
+| focus ground | **dies** — focus is the ring (2px `neutral/wax-74`, 1px offset), never a wash |
 
 This is the wash band's documented job ("subtle interactive states") applied
 mechanically. Overrides land per component; the zeroed multipliers are the backstop.
@@ -78,11 +78,11 @@ PaginationItem 189/242 · OutlinedInput 60/131.
 **The border law:**
 
 - Colored outlined variants (Button, Chip, Pagination, ButtonGroup by family):
-  `{F}/mark-74` — the 3:1-guaranteed UI stop, solid.
+  `{F}/wax-74` — the 3:1-guaranteed UI stop, solid.
 - Neutral enclosure/separator borders (default Pagination outline, ButtonGroup
   separators): `neutral/wash-80` — quiet decorative border.
-- Input borders (OutlinedInput enabled): `neutral/mark-74`.
-  **C1 — RESOLVED (owner, 2026-08-29): input borders are mark-74.**
+- Input borders (OutlinedInput enabled): `neutral/wax-74`.
+  **C1 — RESOLVED (owner, 2026-08-29): input borders are wax-74.**
 - Chip.js:314 (`alpha(main, 0.7)` as outlined-chip icon/avatar color): `{F}/ink-42` —
   chip doctrine, ink register on wash ground.
 
@@ -99,7 +99,7 @@ link color, no 40% mix.
 ## Cluster E — LIVE: Slider halo (3 sites)
 
 `alpha(main, 0.16)` 8px/14px box-shadow halos on hover/focus/active — Slider
-333/340/347. **Dies under the focus law**: one ring, 2px `neutral/mark-74`, 1px
+333/340/347. **Dies under the focus law**: one ring, 2px `neutral/wax-74`, 1px
 offset; no hover halo (same doctrine that kills the ripple). Thumb hover feedback, if
 any, comes from the wash law.
 
@@ -110,7 +110,7 @@ Switch 149/152/199/202/205/229 — track fills from `alpha(onBackground | main, 
 | part | token |
 |---|---|
 | unchecked track | `neutral/wash-80` |
-| checked track | `{F}/mark-74` (3:1 UI element against the papers) |
+| checked track | `{F}/wax-74` (3:1 UI element against the papers) |
 | unchecked thumb | `neutral/paper-100` (map row `Switch.defaultColor`) |
 | checked thumb | `{F}/main` (= `ink-42`) |
 | disabled (152/202/205) | the disabled law: colors stay, component opacity |
@@ -134,7 +134,7 @@ label, so the delete icon is `{F}/ink-42`, hover `{F}/ink-30`. Solid, no 0.7.
 ## Cluster H — LIVE: input underlines (2 sites)
 
 FilledInput 117, Input 58 — `alpha(common.onBackground, opacity.inputUnderline)`.
-Rest underline `neutral/mark-74` (input borders are mark-74, per C1); hover unchanged
+Rest underline `neutral/wax-74` (input borders are wax-74, per C1); hover unchanged
 (the wash law covers the field ground instead); focus = the ring law, with MUI's 2px
 `primary.main` underline animation removed.
 **H1 — RESOLVED (owner, 2026-08-29): implement as above and flag for visual

@@ -13,10 +13,10 @@ import { FOCUS_RING } from './map'
 
 type Vars = Theme['vars']
 
-// The one focus treatment: 2px neutral mark-74 ring, 1px offset. No ripple
+// The one focus treatment: 2px neutral wax-74 ring, 1px offset. No ripple
 // anywhere (the same ruling), so focusVisible is the ring alone.
 const focusRing = (vars: Vars) => ({
-  outline: `${FOCUS_RING.width} solid ${vars!.palette.neutral['mark-74']}`,
+  outline: `${FOCUS_RING.width} solid ${vars!.palette.neutral['wax-74']}`,
   outlineOffset: FOCUS_RING.offset,
 })
 
@@ -62,7 +62,7 @@ export const lawCustomizations: Components<Theme> = {
             '&.Mui-disabled': { ...disabledLaw, backgroundColor: fam.stampFill, color: fam.stampOn },
           }),
           ...(ownerState.variant === 'outlined' && {
-            // border law (audit cluster C): colored outlines are the 3:1 mark stop.
+            // border law (audit cluster C): colored outlines are the 3:1 wax stop.
             // The LABEL steps the trio with the wash (owner 2026-08-30): the text
             // stops are contrast-PAIRED to the state grounds — a constant label on
             // a stepping wash exits the guarantee, so any variant that washes its
@@ -70,10 +70,10 @@ export const lawCustomizations: Components<Theme> = {
             color: fam.main,
             // Unify: EVERY outlined button wears the neutral outline (owner
             // 2026-08-30) — the label carries the family, the border never does
-            borderColor: vars.palette.neutral['mark-74'],
+            borderColor: vars.palette.neutral['wax-74'],
             '&:hover': { color: fam.dark, backgroundColor: fam['wash-92'] },
             '&:active': { color: fam['ink-30'], backgroundColor: fam['wash-85'] },
-            '&.Mui-disabled': { ...disabledLaw, color: fam.main, borderColor: vars.palette.neutral['mark-74'] },
+            '&.Mui-disabled': { ...disabledLaw, color: fam.main, borderColor: vars.palette.neutral['wax-74'] },
           }),
           ...(ownerState.variant === 'text' && {
             // the text-style CTA: rest/hover/pressed = main/dark/ink-30
@@ -104,7 +104,7 @@ export const lawCustomizations: Components<Theme> = {
   },
 
   // ── selection controls: never stamp (owner F1) — checked = main (ink-42),
-  //    glyph = contrastText, borders = mark-74, hover ground = the wash law.
+  //    glyph = contrastText, borders = wax-74, hover ground = the wash law.
   //    The Checkbox AND Radio visuals live in the template's inputs
   //    customization (the Unify anatomy, same law); the Switch's colors stay
   //    here with its geometry in inputs — mergeComponents arrays compose. ──
@@ -115,13 +115,13 @@ export const lawCustomizations: Components<Theme> = {
         const fam = vars.palette[ownerState.color === 'default' ? 'neutral' : (ownerState.color ?? 'primary')]
         return {
           // Unify anatomy (2026-08-29): the track IS the control — unchecked
-          // it rides the input-border stop (mark-74, the same stroke register
+          // it rides the input-border stop (wax-74, the same stroke register
           // Unify uses), checked it is the family MAIN; the thumb is the
           // contrastText glyph on it (F1's checked-fill pairing, swept).
           '& .MuiSwitch-switchBase': {
             '& .MuiSwitch-thumb': { backgroundColor: vars.palette.neutral['paper-100'] },
             '& + .MuiSwitch-track': {
-              backgroundColor: vars.palette.neutral['mark-74'],
+              backgroundColor: vars.palette.neutral['wax-74'],
               opacity: 1,
             },
             '&.Mui-checked': {
@@ -157,7 +157,7 @@ export const lawCustomizations: Components<Theme> = {
           }),
           ...(ownerState.variant === 'outlined' && {
             color: fam['ink-30'],
-            borderColor: fam['mark-74'],
+            borderColor: fam['wax-74'],
             '&:hover': { backgroundColor: fam['wash-92'] },
             '& .MuiChip-deleteIcon': {
               color: fam['ink-42'],
@@ -196,10 +196,10 @@ export const lawCustomizations: Components<Theme> = {
     },
   },
 
-  // ── inputs: border law (mark-74, owner C1), placeholder = fg-subtle,
+  // ── inputs: border law (wax-74, owner C1), placeholder = fg-subtle,
   //    focus = the ring (the 2px primary underline/border animation dies) ──
   // FIELD borders + states (reworked to the Unify chrome, owner 2026-08-30 —
-  // "fit the visual styling into MUI's states"): rest/hover = 1px mark-74 (the
+  // "fit the visual styling into MUI's states"): rest/hover = 1px wax-74 (the
   // C1 border law unchanged), FOCUS = a 2px primary.main border (Unify's
   // brand-primary focus, the same brand-primary→main mapping the selection
   // controls locked) — the neutral FOCUS_RING stays the law for buttons and
@@ -224,7 +224,7 @@ export const lawCustomizations: Components<Theme> = {
         },
         '&.Mui-disabled': {
           ...disabledLaw,
-          borderColor: theme.vars!.palette.neutral['mark-74'],
+          borderColor: theme.vars!.palette.neutral['wax-74'],
         },
       }),
     },
@@ -275,7 +275,7 @@ export const lawCustomizations: Components<Theme> = {
   MuiFilledInput: {
     styleOverrides: {
       root: ({ theme }) => ({
-        '&::before': { borderBottomColor: theme.vars!.palette.neutral['mark-74'] },
+        '&::before': { borderBottomColor: theme.vars!.palette.neutral['wax-74'] },
         '&::after': { display: 'none' }, // the 2px primary underline animation — dead (H1)
         '&.Mui-focused': focusRing(theme.vars),
         // MUI reads palette.FilledInput.disabledBg (a GAP tripwire — caught on
@@ -290,7 +290,7 @@ export const lawCustomizations: Components<Theme> = {
   MuiInput: {
     styleOverrides: {
       root: ({ theme }) => ({
-        '&::before': { borderBottomColor: theme.vars!.palette.neutral['mark-74'] },
+        '&::before': { borderBottomColor: theme.vars!.palette.neutral['wax-74'] },
         '&::after': { display: 'none' },
         '&.Mui-focused': focusRing(theme.vars),
       }),

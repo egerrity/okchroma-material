@@ -28,7 +28,7 @@ const countries = [
     name: 'India',
     value: 50,
     flag: <IndiaFlag />,
-    color: 'var(--template-palette-neutral-mark-74)',
+    color: 'var(--template-palette-neutral-wax-74)',
   },
   {
     name: 'USA',
@@ -117,7 +117,7 @@ function PieCenterLabel({ primaryText, secondaryText }: PieCenterLabelProps) {
 // Data viz doctrine: the neutral ladder, descending prominence with share —
 // engine tokens via the generated vars, self-reversing in dark. Never brand.
 const colors = [
-  'var(--template-palette-neutral-mark-74)',
+  'var(--template-palette-neutral-wax-74)',
   'var(--template-palette-neutral-lead-53)',
   'var(--template-palette-neutral-ink-42)',
   'var(--template-palette-neutral-ink-30)',

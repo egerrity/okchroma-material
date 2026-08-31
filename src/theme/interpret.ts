@@ -53,7 +53,7 @@ declare module '@mui/material/styles' {
     'wash-89': string
     'wash-85': string
     'wash-80': string
-    'mark-74': string
+    'wax-74': string
     'lead-53': string
     'ink-42': string
     'ink-30': string
@@ -73,7 +73,7 @@ declare module '@mui/material/styles' {
     'wash-89'?: string
     'wash-85'?: string
     'wash-80'?: string
-    'mark-74'?: string
+    'wax-74'?: string
     'lead-53'?: string
     'ink-42'?: string
     'ink-30'?: string

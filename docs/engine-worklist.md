@@ -82,7 +82,7 @@ fixture decides backdrop/profile vs blending-basis before any re-emission).
     an opacity, not a color, so a blessed constant, never an emitted color
     token. ⤵ done: the PoC's project constant is deleted; laws/interpret read
     the engine's.
-12. **Alpha rows for the mark-tint state washes** — CANCELLED (owner ruling
+12. **Alpha rows for the wax-tint state washes** — CANCELLED (owner ruling
     2026-08-29): the opaque wash stops are the PERMANENT state-tint answer, not
     an interim; the parked alpha-paper twins stay parked. Off the books.
 

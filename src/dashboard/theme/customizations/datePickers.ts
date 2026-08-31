@@ -65,7 +65,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           },
         },
         '&:focus': {
-          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['mark-74']}`,
+          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
           outlineOffset: FOCUS_RING.offset,
           backgroundColor: 'transparent',
           [`&.${yearCalendarClasses.selected}`]: {
@@ -99,7 +99,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           },
         },
         '&:focus': {
-          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['mark-74']}`,
+          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
           outlineOffset: FOCUS_RING.offset,
           backgroundColor: 'transparent',
           [`&.${yearCalendarClasses.selected}`]: {
@@ -132,7 +132,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           },
         },
         '&:focus': {
-          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['mark-74']}`,
+          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
           outlineOffset: FOCUS_RING.offset,
           backgroundColor: 'transparent',
           [`&.${pickerDayClasses.selected}`]: {

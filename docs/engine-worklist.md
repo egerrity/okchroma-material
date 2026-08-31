@@ -13,7 +13,7 @@ running app. Items marked ⤵ delete PoC code when they land.
 B2–B7 landed in okchroma **0.1.2** (2026-08-29) as one emitter pass — `themeToFigma`
 emits the `system` group; every ⤵ deletion below is done (SURFACE_LAW, the template
 baseShadow strings, the common/scrim GAP rows). The **inverse offset ladder** landed
-in **0.1.3** (2026-08-29, owner-ruled): `system/alpha/inverse-006|008|016` — the
+in **0.1.3** (2026-08-29, owner-ruled): `system/alpha/inverse-006|008|016` (renamed `toward-bg/06|08|16` in 0.1.6) — the
 offset rungs with the pole flipped per mode, the wash/edge register for inverted
 grounds (PoC: map `INVERSE_OFFSET`, palette `inverseOffset`, wired on the Snackbar
 action grounds + the gap gallery's inverted panel). Remaining: C10–C12, as re-scoped below.
@@ -45,7 +45,7 @@ fixture decides backdrop/profile vs blending-basis before any re-emission).
 4. **`system/alpha/shadow-04/-08/-12` through the JS API** (values already exist in
    semantic.css). ⤵ retires the template baseShadow strings.
 5. **`system/abs-black` / `system/abs-white`**. ⤵ un-gaps `common.black/white`.
-6. **`system/alpha/006/008/016` as tokens** — today only the bare numbers
+6. **`system/alpha/away-from-bg/06|08|16` as tokens** — today only the bare numbers
    (`OFFSET_ALPHAS`) reach the API.
 7. **`system/alpha/ink`** — the quiet on-color (see C9, same register).
 

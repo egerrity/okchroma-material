@@ -175,7 +175,7 @@ per-mode where the law requires), but the published npm `files` array carries
    (owner, 2026-08-29): every row is one GAP, inverted-ground consumers render the
    sentinel, and the register is a single engine work item.
 6. **State-tint alphas** — cluster B's eventual translucent replacement
-   (`system/alpha/006/008/016` reach the API as bare numbers only).
+   (`system/alpha/away-from-bg/06|08|16` reach the API as bare numbers only).
 
 **Value gaps** — specified nowhere:
 

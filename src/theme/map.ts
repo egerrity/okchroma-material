@@ -389,9 +389,9 @@ export const SCRIM = 'system/alpha/abs-black-060' satisfies LeafPath
  * neighborhood, a chip's resting ground on an inverted card).
  */
 export const INVERSE_OFFSET = {
-  ground: 'system/alpha/inverse-006',
-  hover: 'system/alpha/inverse-008',
-  pressed: 'system/alpha/inverse-016',
+  ground: 'system/alpha/toward-bg/06',
+  hover: 'system/alpha/toward-bg/08',
+  pressed: 'system/alpha/toward-bg/16',
 } as const satisfies Record<string, LeafPath>
 
 /**

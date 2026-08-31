@@ -50,7 +50,7 @@ keyed by the engine's own names, and dies the day the package ships the layer.
 |---|---|---|
 | `common.black` / `common.white` | `system/abs-black`, `system/abs-white` | the literal poles; MUI's `common.*` slots |
 | scrim | `system/alpha/abs-black-060` | Backdrop/Modal veil |
-| state-tint alphas | `system/alpha/006/008/016` (numbers ship, tokens don't) | translucent state tints; cluster B rides opaque washes meanwhile |
+| state-tint alphas | `system/alpha/away-from-bg/06|08|16` (numbers ship, tokens don't) | translucent state tints; cluster B rides opaque washes meanwhile |
 | quiet on-color | `system/alpha/ink` | soft on-color for quiet CTAs (see observation below) |
 
 ### Deferred by ruling (owner, 2026-08-29)

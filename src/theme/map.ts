@@ -9,8 +9,8 @@
 //
 // Value grammar — a row holds exactly one of TWO shapes:
 //   1. an engine token path, one reference correct in BOTH modes
-//      ('neutral/paper-99', 'critical/stamp/fill', 'system/surface/mid').
-//      Family-relative spellings ('lead-53', 'stamp/fill') appear only inside
+//      ('neutral/paper-1', 'critical/stamp/fill', 'system/surface/mid').
+//      Family-relative spellings ('pencil-47', 'stamp/fill') appear only inside
 //      FAMILY_ROWS and are prefixed by the interpreter with the family's
 //      source; absolute spellings start with a family or 'system'.
 //   2. GAP('reason') — no honest okchroma answer reachable from the registry
@@ -37,10 +37,10 @@ export const SENTINEL = '#ff00ff'
 // Rulings as data (owner-set; see docs/round-1-failures.md "Rulings that SURVIVE")
 // ---------------------------------------------------------------------------
 
-/** Focus is ONE ring. Never a wash ground, never a halo, no ripple. */
+/** Focus is ONE ring. Never a highlighter ground, never a halo, no ripple. */
 export const FOCUS_RING = {
   width: '2px',
-  color: 'neutral/wax-74' satisfies LeafPath,
+  color: 'neutral/crayon-26' satisfies LeafPath,
   offset: '1px',
 } as const
 
@@ -53,7 +53,7 @@ export const FOCUS_RING = {
 /**
  * The multiplier law (audit, header): every derivation multiplier is zeroed so a
  * missed alpha() site renders NO feedback, never an invented color. State
- * grounds come from the wash law's explicit overrides instead.
+ * grounds come from the highlighter law's explicit overrides instead.
  */
 export const OPACITY_ZEROS = {
   hoverOpacity: 0,
@@ -66,14 +66,14 @@ export const OPACITY_ZEROS = {
 } as const
 
 /**
- * The wash law (audit, cluster B): state grounds are real wash stops in the
+ * The highlighter law (audit, cluster B): state grounds are real highlighter stops in the
  * component's own family. Focus has no ground — it is the ring.
  */
 export const STATE_WASH = {
-  hover: 'wash-92',
-  selected: 'wash-89',
-  selectedHover: 'wash-85',
-  pressed: 'wash-85',
+  hover: 'highlighter-8',
+  selected: 'highlighter-11',
+  selectedHover: 'highlighter-15',
+  pressed: 'highlighter-15',
 } as const
 
 // ---------------------------------------------------------------------------
@@ -81,7 +81,7 @@ export const STATE_WASH = {
 // token. The reversal lives in the engine: SURFACE_PLANE_LAW (its one
 // machine-readable home, okchroma tokenNames) resolves each plane onto the
 // neutral papers per mode inside themeToFigma's system group (worklist B2,
-// landed 0.1.2; light-high and dark-dim are both paper-100, the pole that
+// landed 0.1.2; light-high and dark-dim are both paper-0, the pole that
 // flips with the mode). GAP #1 is CLOSED — the interpreter's transcribed
 // law is deleted; these paths resolve against the emit like any other row.
 // Elevation decisions reference a plane, never a paper stop.
@@ -103,25 +103,25 @@ export const SURFACE = {
  * One column, all families. REVISED (owner ruling 2026-08-30, superseding the
  * round-2 positional mapping): MUI's slots are semantic, not sequential —
  * `main` is THE color, `dark` is the darken-toward source. The engine agrees:
- * lead-53 is the rest/emphasis-fill stop (C49: "this stop carries both
- * jobs"), ink-42 the hover stop. The old mapping put the SEQUENCE in
+ * pencil-47 is the rest/emphasis-fill stop (C49: "this stop carries both
+ * jobs"), pen-58 the hover stop. The old mapping put the SEQUENCE in
  * positionally, so the hover stop became everything's key color and the UI
- * ran dark. Now: main = lead-53 (rest), dark = ink-42 (hover); pressed is the
- * ladder row ink-30 read by the laws (MUI has no pressed slot); `light`
- * ALIASES main — no AA text stop sits lighter than lead-53, so the trio's
+ * ran dark. Now: main = pencil-47 (rest), dark = pen-58 (hover); pressed is the
+ * ladder row pen-70 read by the laws (MUI has no pressed slot); `light`
+ * ALIASES main — no AA text stop sits lighter than pencil-47, so the trio's
  * floor fills the slot (the GREY table's deliberate-collision precedent).
  * All three remain AA body text; contrastText rides the ladder's
- * self-reversal (paper-100 sits beyond paper-95, lead-53's solved worst
+ * self-reversal (paper-0 sits beyond paper-5, pencil-47's solved worst
  * case, both modes — the ratio-symmetry warrant, now swept against main=53).
  * The stamp rows are the additive register: stamp-accepting components
  * (buttons, chips, badges, avatars, filled banners) read them; nothing else
  * does; stamps are never text.
  */
 export const FAMILY_ROWS = {
-  light: 'lead-53',
-  main: 'lead-53',
-  dark: 'ink-42',
-  contrastText: 'neutral/paper-100',
+  light: 'pencil-47',
+  main: 'pencil-47',
+  dark: 'pen-58',
+  contrastText: 'neutral/paper-0',
   stampFill: 'stamp/fill',
   stampFillHover: 'stamp/fill-hover',
   stampFillPressed: 'stamp/fill-pressed',
@@ -130,24 +130,24 @@ export const FAMILY_ROWS = {
   // The full ladder, identical per family, under ENGINE spellings — the
   // vocabulary OUR overrides speak (owner ruling: engine token names, never
   // numeric ranges; the numeric grey rows exist only because MUI internals
-  // read them). CSS var comes out as e.g. --…-palette-primary-wash-89.
-  'paper-99': 'paper-99',
-  'paper-97': 'paper-97',
-  'paper-95': 'paper-95',
-  'wash-92': 'wash-92',
-  'wash-89': 'wash-89',
-  'wash-85': 'wash-85',
-  'wash-80': 'wash-80',
-  'wax-74': 'wax-74',
-  'lead-53': 'lead-53',
-  'ink-42': 'ink-42',
-  'ink-30': 'ink-30',
+  // read them). CSS var comes out as e.g. --…-palette-primary-highlighter-11.
+  'paper-1': 'paper-1',
+  'paper-3': 'paper-3',
+  'paper-5': 'paper-5',
+  'highlighter-8': 'highlighter-8',
+  'highlighter-11': 'highlighter-11',
+  'highlighter-15': 'highlighter-15',
+  'highlighter-20': 'highlighter-20',
+  'crayon-26': 'crayon-26',
+  'pencil-47': 'pencil-47',
+  'pen-58': 'pen-58',
+  'pen-70': 'pen-70',
 } as const
 
 /** The neutral column's two extended endpoints (neutral-only, engine-emitted). */
 export const NEUTRAL_EXTRA_ROWS = {
-  'paper-100': 'neutral/paper-100',
-  'ink-0': 'neutral/ink-0',
+  'paper-0': 'neutral/paper-0',
+  'pen-100': 'neutral/pen-100',
 } as const
 
 /**
@@ -171,9 +171,9 @@ export const FAMILY_SOURCE = {
  * old blocker). Two halves:
  *
  * THE TEXT SIDE rides the paper register on the inverted ground: constant
- * text (rest = the soft paper-95 tier, hover/pressed = paper-100 — text does
+ * text (rest = the soft paper-5 tier, hover/pressed = paper-0 — text does
  * not step; state feedback is the INVERSE_OFFSET grounds). Both pairings are
- * swept against the ink-30 ground.
+ * swept against the pen-70 ground.
  *
  * THE BUTTON SIDE is a DELIBERATE NO-FEEDBACK INTERIM (owner: Unify has no
  * white button and the engine does not account for one — any real answer
@@ -184,13 +184,13 @@ export const FAMILY_SOURCE = {
  * the unaccounted part, kept magenta until a white button is real.
  */
 export const POLE_WHITE_ROWS = {
-  light: 'neutral/paper-95',
-  main: 'neutral/paper-100',
-  dark: 'neutral/paper-100',
+  light: 'neutral/paper-5',
+  main: 'neutral/paper-0',
+  dark: 'neutral/paper-0',
   // main is the FLIPPING paper pole, so its contrast partner flips opposite —
-  // the ink pole, never a constant (abs-black went black-on-black in dark;
+  // the pen pole, never a constant (abs-black went black-on-black in dark;
   // caught on the gallery's badge, 2026-08-29)
-  contrastText: 'neutral/ink-0',
+  contrastText: 'neutral/pen-100',
   stampFill: 'system/abs-white',
   stampOn: 'system/abs-black',
   stampFillHover: 'system/abs-white',
@@ -206,26 +206,26 @@ export const POLE_WHITE_ROWS = {
 
 export const CORE = {
   text: {
-    primary: 'neutral/ink-30', // fg-default
-    secondary: 'neutral/lead-53', // fg-subtle
+    primary: 'neutral/pen-70', // fg-default
+    secondary: 'neutral/pencil-47', // fg-subtle
     disabled: GAP('disabled is a component-level opacity, never a color swap'),
-    icon: 'neutral/wax-74', // the wax band's stated job (dark scheme slot)
+    icon: 'neutral/crayon-26', // the crayon band's stated job (dark scheme slot)
   },
   background: {
     default: SURFACE.mid,
     paper: SURFACE.high,
   },
-  divider: 'neutral/wash-89', // border-subtle
+  divider: 'neutral/highlighter-11', // border-subtle
   common: {
     black: 'system/abs-black', // B5, landed 0.1.2 — the emitted pole rows
     white: 'system/abs-white',
     background: SURFACE.mid,
-    onBackground: 'neutral/ink-0', // max-emphasis anchor; feeds channel derivations until cluster C lands
+    onBackground: 'neutral/pen-100', // max-emphasis anchor; feeds channel derivations until cluster C lands
   },
   action: {
-    active: 'neutral/wax-74', // icons
-    hover: 'neutral/wash-92', // the wash law
-    selected: 'neutral/wash-89',
+    active: 'neutral/crayon-26', // icons
+    hover: 'neutral/highlighter-8', // the highlighter law
+    selected: 'neutral/highlighter-11',
     focus: GAP('focus is the ring (FOCUS_RING), never a ground'),
     disabled: GAP('disabled law: component opacity, colors stay enabled'),
     disabledBackground: GAP('disabled law: component opacity, colors stay enabled'),
@@ -239,20 +239,20 @@ export const CORE = {
  * read only 100–900 + A100; the rest exist for totality.
  */
 export const GREY = {
-  50: 'neutral/paper-99',
-  100: 'neutral/paper-97',
-  200: 'neutral/paper-95',
-  300: 'neutral/wash-92',
-  400: 'neutral/wash-80',
-  500: 'neutral/wax-74',
-  600: 'neutral/lead-53',
-  700: 'neutral/ink-42',
-  800: 'neutral/ink-30',
-  900: 'neutral/ink-0',
-  A100: 'neutral/wash-89', // live: Button.inheritContainedHoverBg default
-  A200: 'neutral/wash-80',
-  A400: 'neutral/lead-53',
-  A700: 'neutral/ink-30',
+  50: 'neutral/paper-1',
+  100: 'neutral/paper-3',
+  200: 'neutral/paper-5',
+  300: 'neutral/highlighter-8',
+  400: 'neutral/highlighter-20',
+  500: 'neutral/crayon-26',
+  600: 'neutral/pencil-47',
+  700: 'neutral/pen-58',
+  800: 'neutral/pen-70',
+  900: 'neutral/pen-100',
+  A100: 'neutral/highlighter-11', // live: Button.inheritContainedHoverBg default
+  A200: 'neutral/highlighter-20',
+  A400: 'neutral/pencil-47',
+  A700: 'neutral/pen-70',
 } as const satisfies Record<string, LeafPath>
 
 // ---------------------------------------------------------------------------
@@ -260,17 +260,17 @@ export const GREY = {
 // reads under cssVariables (this is what makes audit cluster A dead).
 // ---------------------------------------------------------------------------
 
-/** Alert: standard = ink on wash (chip/badge doctrine); filled = a sanctioned
- *  stamp use (filled banners); icons = the wax band. */
+/** Alert: standard = pen on highlighter (chip/badge doctrine); filled = a sanctioned
+ *  stamp use (filled banners); icons = the crayon band. */
 export const ALERT = {
-  errorColor: 'critical/ink-30',
-  infoColor: 'info/ink-30',
-  successColor: 'positive/ink-30',
-  warningColor: 'warning/ink-30',
-  errorStandardBg: 'critical/wash-92',
-  infoStandardBg: 'info/wash-92',
-  successStandardBg: 'positive/wash-92',
-  warningStandardBg: 'warning/wash-92',
+  errorColor: 'critical/pen-70',
+  infoColor: 'info/pen-70',
+  successColor: 'positive/pen-70',
+  warningColor: 'warning/pen-70',
+  errorStandardBg: 'critical/highlighter-8',
+  infoStandardBg: 'info/highlighter-8',
+  successStandardBg: 'positive/highlighter-8',
+  warningStandardBg: 'warning/highlighter-8',
   errorFilledBg: 'critical/stamp/fill',
   infoFilledBg: 'info/stamp/fill',
   successFilledBg: 'positive/stamp/fill',
@@ -279,10 +279,10 @@ export const ALERT = {
   infoFilledColor: 'info/stamp/on',
   successFilledColor: 'positive/stamp/on',
   warningFilledColor: 'warning/stamp/on',
-  errorIconColor: 'critical/wax-74',
-  infoIconColor: 'info/wax-74',
-  successIconColor: 'positive/wax-74',
-  warningIconColor: 'warning/wax-74',
+  errorIconColor: 'critical/crayon-26',
+  infoIconColor: 'info/crayon-26',
+  successIconColor: 'positive/crayon-26',
+  warningIconColor: 'warning/crayon-26',
 } as const satisfies Record<string, Row>
 
 export const COMPONENTS = {
@@ -290,7 +290,7 @@ export const COMPONENTS = {
   AppBar: {
     defaultBg: SURFACE.mid,
     darkBg: SURFACE.mid,
-    darkColor: 'neutral/ink-30',
+    darkColor: 'neutral/pen-70',
   },
   Avatar: {
     // avatars are a sanctioned stamp consumer (owner): the fill/on/edge trio.
@@ -304,52 +304,52 @@ export const COMPONENTS = {
     inheritContainedHoverBg: 'neutral/stamp/fill-hover',
   },
   Chip: {
-    defaultBorder: 'neutral/wash-80',
-    defaultAvatarColor: 'neutral/ink-42', // chip doctrine: ink register on wash ground
-    defaultIconColor: 'neutral/ink-42',
+    defaultBorder: 'neutral/highlighter-20',
+    defaultAvatarColor: 'neutral/pen-58', // chip doctrine: pen register on highlighter ground
+    defaultIconColor: 'neutral/pen-58',
   },
   FilledInput: {
-    bg: 'neutral/wash-92',
-    hoverBg: 'neutral/wash-89',
+    bg: 'neutral/highlighter-8',
+    hoverBg: 'neutral/highlighter-11',
     disabledBg: GAP('disabled law: component opacity, colors stay enabled'),
   },
   LinearProgress: {
-    // the track behind the bar — wash tier of the SAME family as the bar
-    primaryBg: 'brand/wash-85',
-    secondaryBg: 'secondary/wash-85',
-    errorBg: 'critical/wash-85',
-    infoBg: 'info/wash-85',
-    successBg: 'positive/wash-85',
-    warningBg: 'warning/wash-85',
+    // the track behind the bar — highlighter tier of the SAME family as the bar
+    primaryBg: 'brand/highlighter-15',
+    secondaryBg: 'secondary/highlighter-15',
+    errorBg: 'critical/highlighter-15',
+    infoBg: 'info/highlighter-15',
+    successBg: 'positive/highlighter-15',
+    warningBg: 'warning/highlighter-15',
   },
   Skeleton: {
-    bg: 'neutral/wash-92',
+    bg: 'neutral/highlighter-8',
   },
   Slider: {
     // the 'inverted' track
-    primaryTrack: 'brand/wash-80',
-    secondaryTrack: 'secondary/wash-80',
-    errorTrack: 'critical/wash-80',
-    infoTrack: 'info/wash-80',
-    successTrack: 'positive/wash-80',
-    warningTrack: 'warning/wash-80',
+    primaryTrack: 'brand/highlighter-20',
+    secondaryTrack: 'secondary/highlighter-20',
+    errorTrack: 'critical/highlighter-20',
+    infoTrack: 'info/highlighter-20',
+    successTrack: 'positive/highlighter-20',
+    warningTrack: 'warning/highlighter-20',
   },
   SnackbarContent: {
-    // inverted surface: ink-30-filled ground, paper-band text (okchroma doctrine)
-    bg: 'neutral/ink-30',
-    color: 'neutral/paper-100',
+    // inverted surface: pen-70-filled ground, paper-band text (okchroma doctrine)
+    bg: 'neutral/pen-70',
+    color: 'neutral/paper-0',
   },
   SpeedDialAction: {
-    fabHoverBg: 'neutral/wash-89',
+    fabHoverBg: 'neutral/highlighter-11',
   },
   StepConnector: {
-    border: 'neutral/wash-80',
+    border: 'neutral/highlighter-20',
   },
   StepContent: {
-    border: 'neutral/wash-80',
+    border: 'neutral/highlighter-20',
   },
   Switch: {
-    defaultColor: 'neutral/paper-100', // unchecked thumb
+    defaultColor: 'neutral/paper-0', // unchecked thumb
     defaultDisabledColor: GAP('disabled law: component opacity, colors stay enabled'),
     primaryDisabledColor: GAP('disabled law'),
     secondaryDisabledColor: GAP('disabled law'),
@@ -359,10 +359,10 @@ export const COMPONENTS = {
     warningDisabledColor: GAP('disabled law'),
   },
   TableCell: {
-    border: 'neutral/wash-89', // the divider law
+    border: 'neutral/highlighter-11', // the divider law
   },
   Tooltip: {
-    bg: 'neutral/ink-30', // inverted surface, SOLID (rule 5 bars stock's 0.92 alpha)
+    bg: 'neutral/pen-70', // inverted surface, SOLID (rule 5 bars stock's 0.92 alpha)
   },
 } as const
 
@@ -382,10 +382,10 @@ export const SCRIM = 'system/alpha/abs-black-060' satisfies LeafPath
  * white over the dark panel in light scheme, black over the light panel in
  * dark. The reversal lives in the ENGINE (the system/surface posture); the map
  * names each rung once. NAMED FOR ITS SPECIES like STATE_WASH is — and never
- * called a wash: "wash" is the tinted band (wash-92…80, real solved stops);
+ * called a highlighter: "highlighter" is the tinted band (highlighter-8…80, real solved stops);
  * these are colorless pole-at-alpha layers. COLORED FILLS NEVER RIDE THESE —
  * a pole at alpha greys a hue — their states stay the engine-solved stops.
- * Scope: neutral inverted territory only (ink-30 panels, the pole register's
+ * Scope: neutral inverted territory only (pen-70 panels, the pole register's
  * neighborhood, a chip's resting ground on an inverted card).
  */
 export const INVERSE_OFFSET = {
@@ -426,7 +426,7 @@ export const LINK = {
 // pass; their rows live above as SURFACE, BASE_SHADOW, SCRIM).
 // disabledOpacityValue closed by okchroma 0.1.4 (C11 — the engine's
 // DISABLED_OPACITY constant + --disabled-opacity token-layer row).
-// stateTintAlphas CANCELLED by owner ruling: the opaque wash stops are the
+// stateTintAlphas CANCELLED by owner ruling: the opaque highlighter stops are the
 // PERMANENT state-tint answer, not an interim — the alpha-paper twins stay
 // parked and C12 is off the books.
 // ---------------------------------------------------------------------------

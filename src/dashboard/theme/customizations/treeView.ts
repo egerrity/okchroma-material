@@ -1,4 +1,4 @@
-// Tree view — MAP addresses only: the wash law for hover/selected states,
+// Tree view — MAP addresses only: the highlighter law for hover/selected states,
 // the ring law for focus. Dark block gone.
 import type { Theme } from '@mui/material/styles';
 import type { TreeViewComponents } from '@mui/x-tree-view/themeAugmentation';
@@ -19,11 +19,11 @@ export const treeViewCustomizations: TreeViewComponents<Theme> = {
           borderColor: theme.vars!.palette.divider,
         },
         '&:focus-visible .focused': {
-          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
+          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['crayon-26']}`,
           outlineOffset: FOCUS_RING.offset,
           '&:hover': {
             backgroundColor: theme.vars!.palette.action.hover,
-            outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
+            outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['crayon-26']}`,
             outlineOffset: FOCUS_RING.offset,
           },
         },
@@ -38,8 +38,8 @@ export const treeViewCustomizations: TreeViewComponents<Theme> = {
         '&.selected': {
           backgroundColor: theme.vars!.palette.action.selected,
           '&:hover': {
-            // selected + hover, per the wash law
-            backgroundColor: theme.vars!.palette.neutral['wash-85'],
+            // selected + hover, per the highlighter law
+            backgroundColor: theme.vars!.palette.neutral['highlighter-15'],
           },
         },
       }),

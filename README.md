@@ -1,32 +1,55 @@
-# React + TypeScript + Vite
+# okchroma-material
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+The Material-track PoC: a design-owned system on [Material UI](https://mui.com)
+scaffolding, colored entirely by the [okchroma](https://github.com/egerrity/okchroma)
+engine. One brand hex in, a complete WCAG-conformant light and dark system out —
+mapped onto Material's semantics slot by slot, with every unanswerable slot declared
+rather than invented.
 
-Currently, two official plugins are available:
+Live: https://egerrity.github.io/okchroma-material/ ·
+the Base-track PoC is at https://egerrity.github.io/okchroma-base/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## The chain
 
-## React Compiler
+1. `src/seed.ts` — the only module that calls the okchroma resolver
+   (`resolveTheme` + the neutral, signal, and link scales; WCAG lane).
+2. `src/theme/map.ts` — **pure data**: every MUI palette slot names one engine
+   token leaf path, or declares `GAP(reason)`. No logic, no conditionals, no
+   engine import, and no per-mode shape — reversals live in the engine.
+3. `src/theme/interpret.ts` — transcribes the map into MUI `colorSchemes` by
+   resolving each path against the `themeToFigma()` emit. An unresolvable path
+   throws; a `GAP` renders the magenta sentinel and self-reports at `#/gaps`.
+4. `src/shared-theme/AppTheme.tsx` — `createTheme` with `cssVariables`,
+   `colorSchemes`, and component overrides composed slot-wise by
+   `src/theme/mergeComponents.ts` so the laws survive the area files.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+All three MUI integration points are public API: `createTheme`, `styleOverrides`,
+and module augmentation on `PaletteColor`. No fork, no patched internals.
 
-## Expanding the Oxlint configuration
+## The demo
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- `#/` — the banking dashboard (the product surface).
+- `#/docs/how-it-works` — the engineering explainer: data flow, integration
+  points, and what CI proves.
+- `#/docs` — the component docs, rendered under the same theme as the app.
+- `#/gaps` — every remaining sentinel row, derived from the map. Magenta on a
+  *declared* gap row is the expected render, not a bug.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## Scripts
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+- `npm run dev` — the demo.
+- `npm run check:map` — totality against a stock `createTheme()` walk,
+  resolvability of every leaf path, no color literals, no template ramps, no
+  MUI derivation helpers, swept over nine seeds including adversarial ones.
+- `npm run check:wiring` — the pairings the mapping creates, measured against
+  the engine's bars (4.5:1 text, 3.0:1 non-text).
+- `npm run build` — `tsc -b && vite build`.
+
+Both checks gate the Pages deploy (`.github/workflows/pages.yml`).
+
+## Rounds
+
+The construction record is in `docs/`: `round-1-failures.md` (what the first
+attempt got wrong and the rulings that survived), `gap-report.md` (every gap
+against the engine, with its status), `derivation-audit.md`,
+`engine-worklist.md`, and `customizing-mui.md`.

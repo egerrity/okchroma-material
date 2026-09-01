@@ -13,10 +13,10 @@ import { FOCUS_RING } from './map'
 
 type Vars = Theme['vars']
 
-// The one focus treatment: 2px neutral wax-74 ring, 1px offset. No ripple
+// The one focus treatment: 2px neutral crayon-26 ring, 1px offset. No ripple
 // anywhere (the same ruling), so focusVisible is the ring alone.
 const focusRing = (vars: Vars) => ({
-  outline: `${FOCUS_RING.width} solid ${vars!.palette.neutral['wax-74']}`,
+  outline: `${FOCUS_RING.width} solid ${vars!.palette.neutral['crayon-26']}`,
   outlineOffset: FOCUS_RING.offset,
 })
 
@@ -62,26 +62,26 @@ export const lawCustomizations: Components<Theme> = {
             '&.Mui-disabled': { ...disabledLaw, backgroundColor: fam.stampFill, color: fam.stampOn },
           }),
           ...(ownerState.variant === 'outlined' && {
-            // border law (audit cluster C): colored outlines are the 3:1 wax stop.
-            // The LABEL steps the trio with the wash (owner 2026-08-30): the text
+            // border law (audit cluster C): colored outlines are the 3:1 crayon stop.
+            // The LABEL steps the trio with the highlighter (owner 2026-08-30): the text
             // stops are contrast-PAIRED to the state grounds — a constant label on
-            // a stepping wash exits the guarantee, so any variant that washes its
+            // a stepping highlighter exits the guarantee, so any variant that highlighters its
             // ground steps its text.
             color: fam.main,
             // Unify: EVERY outlined button wears the neutral outline (owner
             // 2026-08-30) — the label carries the family, the border never does
-            borderColor: vars.palette.neutral['wax-74'],
-            '&:hover': { color: fam.dark, backgroundColor: fam['wash-92'] },
-            '&:active': { color: fam['ink-30'], backgroundColor: fam['wash-85'] },
-            '&.Mui-disabled': { ...disabledLaw, color: fam.main, borderColor: vars.palette.neutral['wax-74'] },
+            borderColor: vars.palette.neutral['crayon-26'],
+            '&:hover': { color: fam.dark, backgroundColor: fam['highlighter-8'] },
+            '&:active': { color: fam['pen-70'], backgroundColor: fam['highlighter-15'] },
+            '&.Mui-disabled': { ...disabledLaw, color: fam.main, borderColor: vars.palette.neutral['crayon-26'] },
           }),
           ...(ownerState.variant === 'text' && {
-            // the text-style CTA: rest/hover/pressed = main/dark/ink-30
-            // (lead-53/ink-42/ink-30 — same values as ever; the trio swap of
+            // the text-style CTA: rest/hover/pressed = main/dark/pen-70
+            // (pencil-47/pen-58/pen-70 — same values as ever; the trio swap of
             // 2026-08-30 relabeled the slots, main is the rest stop now)
             color: fam.main,
-            '&:hover': { color: fam.dark, backgroundColor: fam['wash-92'] },
-            '&:active': { color: fam['ink-30'], backgroundColor: fam['wash-85'] },
+            '&:hover': { color: fam.dark, backgroundColor: fam['highlighter-8'] },
+            '&:active': { color: fam['pen-70'], backgroundColor: fam['highlighter-15'] },
             '&.Mui-disabled': { ...disabledLaw, color: fam.main },
           }),
         }
@@ -103,8 +103,8 @@ export const lawCustomizations: Components<Theme> = {
     },
   },
 
-  // ── selection controls: never stamp (owner F1) — checked = main (ink-42),
-  //    glyph = contrastText, borders = wax-74, hover ground = the wash law.
+  // ── selection controls: never stamp (owner F1) — checked = main (pen-58),
+  //    glyph = contrastText, borders = crayon-26, hover ground = the highlighter law.
   //    The Checkbox AND Radio visuals live in the template's inputs
   //    customization (the Unify anatomy, same law); the Switch's colors stay
   //    here with its geometry in inputs — mergeComponents arrays compose. ──
@@ -115,13 +115,13 @@ export const lawCustomizations: Components<Theme> = {
         const fam = vars.palette[ownerState.color === 'default' ? 'neutral' : (ownerState.color ?? 'primary')]
         return {
           // Unify anatomy (2026-08-29): the track IS the control — unchecked
-          // it rides the input-border stop (wax-74, the same stroke register
+          // it rides the input-border stop (crayon-26, the same stroke register
           // Unify uses), checked it is the family MAIN; the thumb is the
           // contrastText glyph on it (F1's checked-fill pairing, swept).
           '& .MuiSwitch-switchBase': {
-            '& .MuiSwitch-thumb': { backgroundColor: vars.palette.neutral['paper-100'] },
+            '& .MuiSwitch-thumb': { backgroundColor: vars.palette.neutral['paper-0'] },
             '& + .MuiSwitch-track': {
-              backgroundColor: vars.palette.neutral['wax-74'],
+              backgroundColor: vars.palette.neutral['crayon-26'],
               opacity: 1,
             },
             '&.Mui-checked': {
@@ -130,7 +130,7 @@ export const lawCustomizations: Components<Theme> = {
             },
             '&.Mui-disabled': {
               ...disabledLaw,
-              '& .MuiSwitch-thumb': { backgroundColor: vars.palette.neutral['paper-100'] },
+              '& .MuiSwitch-thumb': { backgroundColor: vars.palette.neutral['paper-0'] },
               '& + .MuiSwitch-track': { opacity: DISABLED_OPACITY },
             },
           },
@@ -139,7 +139,7 @@ export const lawCustomizations: Components<Theme> = {
     },
   },
 
-  // ── chips: ink register on wash ground; never stamp (owner doctrine) ─────
+  // ── chips: pen register on highlighter ground; never stamp (owner doctrine) ─────
   MuiChip: {
     styleOverrides: {
       root: ({ ownerState, theme }) => {
@@ -147,23 +147,23 @@ export const lawCustomizations: Components<Theme> = {
         const fam = vars.palette[ownerState.color === 'default' ? 'neutral' : (ownerState.color ?? 'neutral')]
         return {
           ...(ownerState.variant === 'filled' && {
-            backgroundColor: fam['wash-92'],
-            color: fam['ink-30'],
+            backgroundColor: fam['highlighter-8'],
+            color: fam['pen-70'],
             '& .MuiChip-deleteIcon': {
-              color: fam['ink-42'],
-              '&:hover': { color: fam['ink-30'] },
+              color: fam['pen-58'],
+              '&:hover': { color: fam['pen-70'] },
             },
-            '& .MuiChip-icon': { color: fam['ink-42'] },
+            '& .MuiChip-icon': { color: fam['pen-58'] },
           }),
           ...(ownerState.variant === 'outlined' && {
-            color: fam['ink-30'],
-            borderColor: fam['wax-74'],
-            '&:hover': { backgroundColor: fam['wash-92'] },
+            color: fam['pen-70'],
+            borderColor: fam['crayon-26'],
+            '&:hover': { backgroundColor: fam['highlighter-8'] },
             '& .MuiChip-deleteIcon': {
-              color: fam['ink-42'],
-              '&:hover': { color: fam['ink-30'] },
+              color: fam['pen-58'],
+              '&:hover': { color: fam['pen-70'] },
             },
-            '& .MuiChip-icon': { color: fam['ink-42'] },
+            '& .MuiChip-icon': { color: fam['pen-58'] },
           }),
           '&.Mui-disabled': disabledLaw,
         }
@@ -196,10 +196,10 @@ export const lawCustomizations: Components<Theme> = {
     },
   },
 
-  // ── inputs: border law (wax-74, owner C1), placeholder = fg-subtle,
+  // ── inputs: border law (crayon-26, owner C1), placeholder = fg-subtle,
   //    focus = the ring (the 2px primary underline/border animation dies) ──
   // FIELD borders + states (reworked to the Unify chrome, owner 2026-08-30 —
-  // "fit the visual styling into MUI's states"): rest/hover = 1px wax-74 (the
+  // "fit the visual styling into MUI's states"): rest/hover = 1px crayon-26 (the
   // C1 border law unchanged), FOCUS = a 2px primary.main border (Unify's
   // brand-primary focus, the same brand-primary→main mapping the selection
   // controls locked) — the neutral FOCUS_RING stays the law for buttons and
@@ -224,7 +224,7 @@ export const lawCustomizations: Components<Theme> = {
         },
         '&.Mui-disabled': {
           ...disabledLaw,
-          borderColor: theme.vars!.palette.neutral['wax-74'],
+          borderColor: theme.vars!.palette.neutral['crayon-26'],
         },
       }),
     },
@@ -239,9 +239,9 @@ export const lawCustomizations: Components<Theme> = {
           color: theme.vars!.palette.text.secondary,
           opacity: 1, // the honest color at full strength — no multiplier
         },
-        // the disabled law: MUI's own .Mui-disabled swaps the input ink to
+        // the disabled law: MUI's own .Mui-disabled swaps the input pen to
         // text.disabled via -webkit-text-fill-color (tripwire caught on the
-        // gap-gallery roster, 2026-08-29) — pin the enabled ink; the root's
+        // gap-gallery roster, 2026-08-29) — pin the enabled pen; the root's
         // opacity carries the disabled read
         '&.Mui-disabled': {
           color: theme.vars!.palette.text.primary,
@@ -275,14 +275,14 @@ export const lawCustomizations: Components<Theme> = {
   MuiFilledInput: {
     styleOverrides: {
       root: ({ theme }) => ({
-        '&::before': { borderBottomColor: theme.vars!.palette.neutral['wax-74'] },
+        '&::before': { borderBottomColor: theme.vars!.palette.neutral['crayon-26'] },
         '&::after': { display: 'none' }, // the 2px primary underline animation — dead (H1)
         '&.Mui-focused': focusRing(theme.vars),
         // MUI reads palette.FilledInput.disabledBg (a GAP tripwire — caught on
         // the gap-gallery roster): the law keeps the ENABLED ground
         '&.Mui-disabled': {
           ...disabledLaw,
-          backgroundColor: theme.vars!.palette.neutral['wash-92'],
+          backgroundColor: theme.vars!.palette.neutral['highlighter-8'],
         },
       }),
     },
@@ -290,7 +290,7 @@ export const lawCustomizations: Components<Theme> = {
   MuiInput: {
     styleOverrides: {
       root: ({ theme }) => ({
-        '&::before': { borderBottomColor: theme.vars!.palette.neutral['wax-74'] },
+        '&::before': { borderBottomColor: theme.vars!.palette.neutral['crayon-26'] },
         '&::after': { display: 'none' },
         '&.Mui-focused': focusRing(theme.vars),
       }),

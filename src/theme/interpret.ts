@@ -46,19 +46,19 @@ declare module '@mui/material/styles' {
     stampOn: string
     stampEdge: string
     // the ladder under engine spellings — the vocabulary our overrides speak
-    'paper-99': string
-    'paper-97': string
-    'paper-95': string
-    'wash-92': string
-    'wash-89': string
-    'wash-85': string
-    'wash-80': string
-    'wax-74': string
-    'lead-53': string
-    'ink-42': string
-    'ink-30': string
-    'paper-100'?: string // neutral column only
-    'ink-0'?: string // neutral column only
+    'paper-1': string
+    'paper-3': string
+    'paper-5': string
+    'highlighter-8': string
+    'highlighter-11': string
+    'highlighter-15': string
+    'highlighter-20': string
+    'crayon-26': string
+    'pencil-47': string
+    'pen-58': string
+    'pen-70': string
+    'paper-0'?: string // neutral column only
+    'pen-100'?: string // neutral column only
   }
   interface SimplePaletteColorOptions {
     stampFill?: string
@@ -66,19 +66,19 @@ declare module '@mui/material/styles' {
     stampFillPressed?: string
     stampOn?: string
     stampEdge?: string
-    'paper-99'?: string
-    'paper-97'?: string
-    'paper-95'?: string
-    'wash-92'?: string
-    'wash-89'?: string
-    'wash-85'?: string
-    'wash-80'?: string
-    'wax-74'?: string
-    'lead-53'?: string
-    'ink-42'?: string
-    'ink-30'?: string
-    'paper-100'?: string
-    'ink-0'?: string
+    'paper-1'?: string
+    'paper-3'?: string
+    'paper-5'?: string
+    'highlighter-8'?: string
+    'highlighter-11'?: string
+    'highlighter-15'?: string
+    'highlighter-20'?: string
+    'crayon-26'?: string
+    'pencil-47'?: string
+    'pen-58'?: string
+    'pen-70'?: string
+    'paper-0'?: string
+    'pen-100'?: string
   }
   interface Palette {
     neutral: Palette['primary']
@@ -269,8 +269,8 @@ export function buildColorSchemes(seed: Seed) {
 
 /** The zeroed derivation multipliers MUI reads from theme.vars.opacity.
  *  inputPlaceholder is 1 (not zeroed): the placeholder's honest color is
- *  text.secondary (lead-53) at full strength, pinned by the InputBase override
- *  — a multiplier over the input's ink is the same invented-intermediate shape
+ *  text.secondary (pencil-47) at full strength, pinned by the InputBase override
+ *  — a multiplier over the input's pen is the same invented-intermediate shape
  *  as the disabled value (audit, cluster H addendum). */
 const MODE_OPACITY = {
   inputPlaceholder: 1,

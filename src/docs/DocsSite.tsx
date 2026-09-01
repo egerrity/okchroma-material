@@ -18,11 +18,15 @@ import SelectDoc from './pages/SelectDoc';
 import SwitchDoc from './pages/SwitchDoc';
 import TextFieldDoc from './pages/TextFieldDoc';
 import GettingStarted from './pages/GettingStarted';
+import HowItWorks from './pages/HowItWorks';
 
 const NAV = [
   {
     section: 'Getting started',
-    items: [{ label: 'Overview', hash: '#/docs' }],
+    items: [
+      { label: 'Overview', hash: '#/docs' },
+      { label: 'How this works', hash: '#/docs/how-it-works' },
+    ],
   },
   {
     section: 'Components',
@@ -38,6 +42,7 @@ const NAV = [
 ];
 
 const PAGES: Record<string, () => React.JSX.Element> = {
+  '#/docs/how-it-works': HowItWorks,
   '#/docs/button': ButtonDoc,
   '#/docs/checkbox': CheckboxDoc,
   '#/docs/radio': RadioDoc,

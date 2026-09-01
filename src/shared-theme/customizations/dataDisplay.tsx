@@ -1,5 +1,5 @@
 // Data display — template structure; every color a MAP address. Chip color
-// doctrine (ink register on family wash ground, never stamp) lives in
+// doctrine (pen register on family highlighter ground, never stamp) lives in
 // src/theme/laws.tsx; this file adds the template's structure (pill radius,
 // sizes, the quiet border) with the same family construction.
 import type { Theme, Components } from '@mui/material/styles';
@@ -57,7 +57,7 @@ export const dataDisplayCustomizations: Components<Theme> = {
               backgroundColor: theme.vars!.palette.action.selected,
             },
             '&:hover': {
-              backgroundColor: theme.vars!.palette.neutral['wash-85'],
+              backgroundColor: theme.vars!.palette.neutral['highlighter-15'],
             },
           },
           '&:focus-visible': {
@@ -113,7 +113,7 @@ export const dataDisplayCustomizations: Components<Theme> = {
           border: '1px solid',
           // Unify: buttons are round, LABELS are soft — chips are labels (6px)
           borderRadius: 6,
-          borderColor: fam['wash-80'],
+          borderColor: fam['highlighter-20'],
           [`& .${chipClasses.label}`]: {
             fontWeight: 600,
           },

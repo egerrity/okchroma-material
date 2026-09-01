@@ -2,7 +2,7 @@
 // owns the contrast guarantee; this walks the pairings the ADAPTER creates
 // when it maps tokens into MUI slots (which on lands on which fill, which
 // text on which plane) and asserts they hold the engine's bars (4.5:1 text,
-// 3.0:1 wax). A failure means a mis-wired mapping, not an engine problem.
+// 3.0:1 crayon). A failure means a mis-wired mapping, not an engine problem.
 //
 // Run: npm run check:wiring
 // Hexes come from the same LaneTokens the app renders — a failure here is a
@@ -56,23 +56,23 @@ function checkLane(seed: string, t: LaneTokens) {
   for (const role of ['critical', 'warning', 'positive', 'info'] as const) {
     const s = t.signals[role]
     assertPair(seed, lane, `${role} on / fill`, s.on, s.fill, TEXT_BAR)
-    // alert soft pair: signal ink on signal wash
-    assertPair(seed, lane, `${role} ink / wash`, s.ink, s.wash, TEXT_BAR)
+    // alert soft pair: signal pen on signal highlighter
+    assertPair(seed, lane, `${role} pen / highlighter`, s.pen, s.highlighter, TEXT_BAR)
   }
 
   // text stops on every plane they sit on (cards use low/mid/high; dialogs high)
   for (const [plane, bg] of Object.entries(t.planes)) {
-    assertPair(seed, lane, `on-surface / plane-${plane}`, t.neutral(NAME.inkStrong), bg, TEXT_BAR)
-    assertPair(seed, lane, `on-surface-variant / plane-${plane}`, t.neutral(NAME.lead), bg, TEXT_BAR)
+    assertPair(seed, lane, `on-surface / plane-${plane}`, t.neutral(NAME.textStrong), bg, TEXT_BAR)
+    assertPair(seed, lane, `on-surface-variant / plane-${plane}`, t.neutral(NAME.pencil), bg, TEXT_BAR)
     // the link trio renders on the same planes
     assertPair(seed, lane, `link / plane-${plane}`, t.link.default, bg, TEXT_BAR)
   }
 
-  // outline vs the surface the engine's law gates it on (wax-74 is clamped vs
-  // the paper-95 tier — plane-dim in light, plane-high in dark; asserting it
+  // outline vs the surface the engine's law gates it on (crayon-26 is clamped vs
+  // the paper-5 tier — plane-dim in light, plane-high in dark; asserting it
   // against the poles would over-assert a guarantee the engine never made)
   const waxGround = lane === 'light' ? t.planes.dim : t.planes.high
-  assertPair(seed, lane, 'outline / its gated plane', t.neutral(NAME.wax), waxGround, WAX_BAR)
+  assertPair(seed, lane, 'outline / its gated plane', t.neutral(NAME.crayon), waxGround, WAX_BAR)
 }
 
 for (const hex of SEEDS) {

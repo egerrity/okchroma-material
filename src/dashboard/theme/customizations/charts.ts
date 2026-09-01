@@ -12,9 +12,9 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         [`& .${axisClasses.line}`]: {
-          stroke: theme.vars!.palette.neutral['wash-89'],
+          stroke: theme.vars!.palette.neutral['highlighter-11'],
         },
-        [`& .${axisClasses.tick}`]: { stroke: theme.vars!.palette.neutral['wash-89'] },
+        [`& .${axisClasses.tick}`]: { stroke: theme.vars!.palette.neutral['highlighter-11'] },
         [`& .${axisClasses.tickLabel}`]: {
           fill: theme.vars!.palette.text.secondary,
           fontWeight: 500,
@@ -50,7 +50,7 @@ export const chartsCustomizations: ChartsComponents<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         [`& .${chartsGridClasses.line}`]: {
-          stroke: theme.vars!.palette.neutral['wash-92'],
+          stroke: theme.vars!.palette.neutral['highlighter-8'],
           strokeDasharray: '4 2',
           strokeWidth: 0.8,
         },

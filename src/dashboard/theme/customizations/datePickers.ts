@@ -1,5 +1,5 @@
 // Date pickers — MAP addresses only: text registers for calendar cells, the
-// wash law for states, the ring law for focus. Selected cells are BUTTONS →
+// highlighter law for states, the ring law for focus. Selected cells are BUTTONS →
 // the secondary stamp trio (owner, 2026-08-29). Dark blocks gone.
 import type { Theme } from '@mui/material/styles';
 import type { PickerComponents } from '@mui/x-date-pickers/themeAugmentation';
@@ -65,7 +65,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           },
         },
         '&:focus': {
-          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
+          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['crayon-26']}`,
           outlineOffset: FOCUS_RING.offset,
           backgroundColor: 'transparent',
           [`&.${yearCalendarClasses.selected}`]: {
@@ -99,7 +99,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           },
         },
         '&:focus': {
-          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
+          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['crayon-26']}`,
           outlineOffset: FOCUS_RING.offset,
           backgroundColor: 'transparent',
           [`&.${yearCalendarClasses.selected}`]: {
@@ -132,7 +132,7 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           },
         },
         '&:focus': {
-          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
+          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['crayon-26']}`,
           outlineOffset: FOCUS_RING.offset,
           backgroundColor: 'transparent',
           [`&.${pickerDayClasses.selected}`]: {

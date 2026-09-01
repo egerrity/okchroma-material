@@ -29,7 +29,7 @@ export const navigationCustomizations: Components<Theme> = {
             backgroundColor: theme.vars!.palette.action.selected,
           },
           '&:hover': {
-            backgroundColor: theme.vars!.palette.neutral['wash-85'],
+            backgroundColor: theme.vars!.palette.neutral['highlighter-15'],
           },
         },
       }),
@@ -68,14 +68,14 @@ export const navigationCustomizations: Components<Theme> = {
       root: ({ theme }) => ({
         borderRadius: (theme.vars || theme).shape.borderRadius,
         border: '1px solid',
-        // the border law (owner C1): input borders are wax-74, all states
-        borderColor: theme.vars!.palette.neutral['wax-74'],
+        // the border law (owner C1): input borders are crayon-26, all states
+        borderColor: theme.vars!.palette.neutral['crayon-26'],
         backgroundColor: theme.vars!.palette.background.paper,
         '&:hover': {
           backgroundColor: theme.vars!.palette.background.paper,
         },
         [`&.${selectClasses.focused}`]: {
-          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['wax-74']}`,
+          outline: `${FOCUS_RING.width} solid ${theme.vars!.palette.neutral['crayon-26']}`,
           outlineOffset: FOCUS_RING.offset,
         },
         '&:before, &:after': {
@@ -98,7 +98,7 @@ export const navigationCustomizations: Components<Theme> = {
   MuiPaginationItem: {
     styleOverrides: {
       root: ({ theme }) => ({
-        // selected = the neutral register's emphasis fill; ink-42/paper-100
+        // selected = the neutral register's emphasis fill; pen-58/paper-0
         // self-reverse, so one reference serves both modes
         '&.Mui-selected': {
           color: theme.vars!.palette.neutral.contrastText,
@@ -111,7 +111,7 @@ export const navigationCustomizations: Components<Theme> = {
     styleOverrides: {
       root: { minHeight: 'fit-content' },
       indicator: ({ theme }) => ({
-        backgroundColor: theme.vars!.palette.neutral['ink-30'],
+        backgroundColor: theme.vars!.palette.neutral['pen-70'],
       }),
     },
   },
@@ -129,11 +129,11 @@ export const navigationCustomizations: Components<Theme> = {
         borderColor: 'transparent',
         ':hover': {
           color: theme.vars!.palette.text.primary,
-          backgroundColor: theme.vars!.palette.neutral['wash-92'],
-          borderColor: theme.vars!.palette.neutral['wash-80'],
+          backgroundColor: theme.vars!.palette.neutral['highlighter-8'],
+          borderColor: theme.vars!.palette.neutral['highlighter-20'],
         },
         [`&.${tabClasses.selected}`]: {
-          color: theme.vars!.palette.neutral['ink-0'],
+          color: theme.vars!.palette.neutral['pen-100'],
         },
       }),
     },
@@ -152,7 +152,7 @@ export const navigationCustomizations: Components<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         color: 'transparent',
-        border: `1px solid ${theme.vars!.palette.neutral['wash-80']}`,
+        border: `1px solid ${theme.vars!.palette.neutral['highlighter-20']}`,
         width: 12,
         height: 12,
         borderRadius: '50%',

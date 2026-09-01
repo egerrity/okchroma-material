@@ -193,25 +193,25 @@ export default function GapsGrid() {
           <Card variant="outlined" sx={{ height: '100%' }}>
             <CardContent>
               <Typography variant="subtitle2" sx={{ mb: 1 }}>
-                Inverted panel — buttons on the ink-30 ground
+                Inverted panel — buttons on the pen-70 ground
               </Typography>
               <Box
                 sx={(theme) => ({
                   p: 2.5,
                   borderRadius: 2,
-                  backgroundColor: theme.vars!.palette.neutral['ink-30'],
+                  backgroundColor: theme.vars!.palette.neutral['pen-70'],
                 })}
               >
                 <Typography
                   variant="subtitle2"
-                  sx={(theme) => ({ color: theme.vars!.palette.neutral['paper-100'] })}
+                  sx={(theme) => ({ color: theme.vars!.palette.neutral['paper-0'] })}
                 >
                   You&apos;re offline
                 </Typography>
                 <Typography
                   variant="caption"
                   sx={(theme) => ({
-                    color: theme.vars!.palette.neutral['paper-95'],
+                    color: theme.vars!.palette.neutral['paper-5'],
                     display: 'block',
                     mb: 1.5,
                   })}
@@ -258,7 +258,7 @@ export default function GapsGrid() {
                       borderRadius: 1,
                       fontSize: 12,
                       backgroundColor: theme.vars!.palette.inverseOffset.ground,
-                      color: theme.vars!.palette.neutral['paper-100'],
+                      color: theme.vars!.palette.neutral['paper-0'],
                     })}
                   >
                     3 queued
@@ -269,7 +269,7 @@ export default function GapsGrid() {
                 LANDED, whole card: text = the paper tiers (main / the soft
                 light), constant across states; hover/pressed grounds + the
                 &quot;queued&quot; chip ride the inverse offset ladder — hover
-                the buttons to see it. Both text pairings are swept vs ink-30.
+                the buttons to see it. Both text pairings are swept vs pen-70.
               </Typography>
             </CardContent>
           </Card>
@@ -390,7 +390,7 @@ export default function GapsGrid() {
                 with okchroma 0.1.2; the disabled opacity is the engine&apos;s
                 DISABLED_OPACITY = {DISABLED_OPACITY} since 0.1.4 (colors stay
                 enabled, the component dims); the state-tint alpha item is
-                cancelled by ruling — the opaque wash stops are the permanent
+                cancelled by ruling — the opaque highlighter stops are the permanent
                 state-tint answer.
               </Typography>
             </CardContent>
@@ -431,7 +431,7 @@ export default function GapsGrid() {
               <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
                 The Unify anatomy (md + sm): contained-pill switch, soft-square
                 checkbox, white-core radio. Colors ride F1 — checked = main +
-                contrastText, borders/track = wax-74, never stamp. Hover,
+                contrastText, borders/track = crayon-26, never stamp. Hover,
                 click, and tab through in both modes.
               </Typography>
             </CardContent>

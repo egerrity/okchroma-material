@@ -10,9 +10,9 @@ export default function PageViewsBarChart() {
   const theme = useTheme();
   // Data viz doctrine: brand never in a chart — series ride the info tiers.
   const colorPalette = [
-    theme.vars!.palette.info['ink-30'],
-    theme.vars!.palette.info['lead-53'],
-    theme.vars!.palette.info['wax-74'],
+    theme.vars!.palette.info['pen-70'],
+    theme.vars!.palette.info['pencil-47'],
+    theme.vars!.palette.info['crayon-26'],
   ];
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>

@@ -1,6 +1,6 @@
 // Feedback — template structure only. Alert severity colors come from the
-// map's palette.Alert.* rows (standard = family wash ground + ink text, icon
-// on the wax band; filled = the stamp register — a sanctioned use). The
+// map's palette.Alert.* rows (standard = family highlighter ground + pen text, icon
+// on the crayon band; filled = the stamp register — a sanctioned use). The
 // template's all-alerts-are-orange treatment is gone: severity is the family.
 import type { Theme, Components } from '@mui/material/styles';
 
@@ -13,7 +13,7 @@ export const feedbackCustomizations: Components<Theme> = {
         const fam = vars.palette[ownerState.color ?? ownerState.severity ?? 'success'];
         return {
           borderRadius: 10,
-          border: `1px solid ${fam['wash-80']}`,
+          border: `1px solid ${fam['highlighter-20']}`,
         };
       },
     },
@@ -32,7 +32,7 @@ export const feedbackCustomizations: Components<Theme> = {
   MuiLinearProgress: {
     styleOverrides: {
       // the track color is the map's palette.LinearProgress.<color>Bg row
-      // (family wash-85) — MUI reads it itself under cssVariables
+      // (family highlighter-15) — MUI reads it itself under cssVariables
       root: {
         height: 8,
         borderRadius: 8,

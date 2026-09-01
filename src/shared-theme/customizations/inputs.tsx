@@ -38,20 +38,20 @@ export const inputsCustomizations: Components<Theme> = {
         letterSpacing: 0,
         color: theme.vars!.palette.text.primary,
         border: '1px solid ',
-        borderColor: theme.vars!.palette.neutral['wash-80'],
+        borderColor: theme.vars!.palette.neutral['highlighter-20'],
         '&:hover': {
-          backgroundColor: theme.vars!.palette.neutral['wash-92'],
-          borderColor: theme.vars!.palette.neutral['wash-80'],
+          backgroundColor: theme.vars!.palette.neutral['highlighter-8'],
+          borderColor: theme.vars!.palette.neutral['highlighter-20'],
         },
         '&:active': {
-          backgroundColor: theme.vars!.palette.neutral['wash-85'],
+          backgroundColor: theme.vars!.palette.neutral['highlighter-15'],
         },
         // the disabled law: colors STAY the enabled ones (opacity comes from
         // the ButtonBase law). Neutralizes MUI's swap to action.disabled —
         // the read the sentinel exposed on the pagination arrows.
         '&.Mui-disabled': {
           color: theme.vars!.palette.text.primary,
-          borderColor: theme.vars!.palette.neutral['wash-80'],
+          borderColor: theme.vars!.palette.neutral['highlighter-20'],
         },
         variants: [
           {
@@ -82,15 +82,15 @@ export const inputsCustomizations: Components<Theme> = {
         textTransform: 'none',
         borderRadius: '10px',
         fontWeight: 500,
-        color: theme.vars!.palette.neutral['lead-53'],
+        color: theme.vars!.palette.neutral['pencil-47'],
         '&:hover': {
           backgroundColor: theme.vars!.palette.action.hover,
         },
         [`&.${toggleButtonClasses.selected}`]: {
-          color: theme.vars!.palette.neutral['ink-30'],
+          color: theme.vars!.palette.neutral['pen-70'],
           backgroundColor: theme.vars!.palette.action.selected,
           '&:hover': {
-            backgroundColor: theme.vars!.palette.neutral['wash-85'],
+            backgroundColor: theme.vars!.palette.neutral['highlighter-15'],
           },
         },
       }),
@@ -98,8 +98,8 @@ export const inputsCustomizations: Components<Theme> = {
   },
   // The Unify selection-control anatomy (Figma "Unify re-alias" § Selection
   // controls, pulled 2026-08-29), under the F1 law: selection controls never
-  // take stamp — checked fill is main (ink-42), the glyph is contrastText
-  // (the ratio-symmetry pairing), the unselected border is the 3:1 wax stop
+  // take stamp — checked fill is main (pen-58), the glyph is contrastText
+  // (the ratio-symmetry pairing), the unselected border is the 3:1 crayon stop
   // (Unify's stroke-secondary register, same job). Geometry: md control 20px
   // (sm 16px), 2px border, checkbox radius 4, radio full-round with a 2px
   // contrastText ring glyph when checked. The 24px row height Unify keeps is
@@ -129,11 +129,11 @@ export const inputsCustomizations: Components<Theme> = {
           width: 20,
           borderRadius: 4,
           border: '2px solid ',
-          borderColor: vars.palette.neutral['wax-74'],
-          backgroundColor: vars.palette.neutral['paper-100'],
+          borderColor: vars.palette.neutral['crayon-26'],
+          backgroundColor: vars.palette.neutral['paper-0'],
           transition: 'border-color, background-color, 120ms ease-in',
           '&:hover': {
-            backgroundColor: vars.palette.neutral['wash-92'],
+            backgroundColor: vars.palette.neutral['highlighter-8'],
           },
           // indeterminate is its OWN class, not .Mui-checked — Unify fills
           // both identically (white dash on the main fill)
@@ -149,8 +149,8 @@ export const inputsCustomizations: Components<Theme> = {
           // the disabled law: colors stay enabled (opacity from the ButtonBase
           // law); neutralizes MUI's swap of the glyph to action.disabled
           '&.Mui-disabled': {
-            borderColor: vars.palette.neutral['wax-74'],
-            backgroundColor: vars.palette.neutral['paper-100'],
+            borderColor: vars.palette.neutral['crayon-26'],
+            backgroundColor: vars.palette.neutral['paper-0'],
             '&.Mui-checked, &.MuiCheckbox-indeterminate': {
               color: fam.contrastText,
               backgroundColor: fam.main,
@@ -167,7 +167,7 @@ export const inputsCustomizations: Components<Theme> = {
       },
     },
   },
-  // Radio — same law, the Unify ring anatomy: unselected = 2px wax circle on
+  // Radio — same law, the Unify ring anatomy: unselected = 2px crayon circle on
   // the paper ground; checked = a main-filled disc with a 2px contrastText
   // ring glyph (the donut). The stock SVG pair is hidden; the root IS the
   // control (the checkbox pattern).
@@ -186,8 +186,8 @@ export const inputsCustomizations: Components<Theme> = {
           width: 20,
           borderRadius: 999,
           border: '2px solid ',
-          borderColor: vars.palette.neutral['wax-74'],
-          backgroundColor: vars.palette.neutral['paper-100'],
+          borderColor: vars.palette.neutral['crayon-26'],
+          backgroundColor: vars.palette.neutral['paper-0'],
           transition: 'border-color, background-color, 120ms ease-in',
           '& svg': { display: 'none' },
           // the glyph is a SOLID contrastText disc (the Unify asset is a white
@@ -206,7 +206,7 @@ export const inputsCustomizations: Components<Theme> = {
             backgroundColor: 'transparent',
           },
           '&:hover': {
-            backgroundColor: vars.palette.neutral['wash-92'],
+            backgroundColor: vars.palette.neutral['highlighter-8'],
           },
           '&.Mui-checked': {
             backgroundColor: fam.main,
@@ -218,8 +218,8 @@ export const inputsCustomizations: Components<Theme> = {
             },
           },
           '&.Mui-disabled': {
-            borderColor: vars.palette.neutral['wax-74'],
-            backgroundColor: vars.palette.neutral['paper-100'],
+            borderColor: vars.palette.neutral['crayon-26'],
+            backgroundColor: vars.palette.neutral['paper-0'],
             '&.Mui-checked': {
               backgroundColor: fam.main,
               borderColor: fam.main,
@@ -244,7 +244,7 @@ export const inputsCustomizations: Components<Theme> = {
   // Switch — the Unify contained pill: the track IS the control and the thumb
   // never overhangs (stock MUI's 58×38 overhang silhouette is the giveaway).
   // md 32×20 / sm 28×16; thumb 16/12 at a 2px inset; 12px travel both sizes.
-  // COLORS live in the laws (F1: unchecked track wax-74, checked track main,
+  // COLORS live in the laws (F1: unchecked track crayon-26, checked track main,
   // thumb contrastText) — mergeComponents arrays compose the two layers.
   MuiSwitch: {
     styleOverrides: {
@@ -298,8 +298,8 @@ export const inputsCustomizations: Components<Theme> = {
         gap: 8,
         color: theme.vars!.palette.text.primary,
         borderRadius: (theme.vars || theme).shape.borderRadius,
-        // the border law (owner C1): resting input borders are wax-74
-        border: `1px solid ${theme.vars!.palette.neutral['wax-74']}`,
+        // the border law (owner C1): resting input borders are crayon-26
+        border: `1px solid ${theme.vars!.palette.neutral['crayon-26']}`,
         backgroundColor: theme.vars!.palette.background.default,
         transition: 'border 120ms ease-in',
         variants: [

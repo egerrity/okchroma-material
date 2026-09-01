@@ -12,7 +12,7 @@
 //                  theme.palette.* color reads (light-scheme trap).
 //   5. DERIVATION  no alpha/darken/lighten/getContrastText imports in our code.
 //   6. SEED SWEEP  the wired pairings hold the engine's bars (4.5 text, 3.0
-//                  wax) across agnostic + adversarial seeds.
+//                  crayon) across agnostic + adversarial seeds.
 //
 // Run: npm run check:map
 import * as fs from 'node:fs'
@@ -178,7 +178,7 @@ console.log('6. seed sweep (wired pairings vs engine bars)')
       for (const ground of [p.background.default, p.background.paper, p.surface.dim, p.surface.low]) {
         pair(p.text.primary, ground, TEXT_BAR, 'text.primary on ground')
         pair(p.text.secondary, ground, TEXT_BAR, 'text.secondary on ground')
-        pair(p.action.active, ground, WAX_BAR, 'action.active (wax) on ground')
+        pair(p.action.active, ground, WAX_BAR, 'action.active (crayon) on ground')
       }
       for (const fam of ['primary', 'secondary', 'error', 'warning', 'info', 'success', 'neutral']) {
         const f = p[fam]
@@ -190,7 +190,7 @@ console.log('6. seed sweep (wired pairings vs engine bars)')
         // the engine (the quiet register's soft on-color included) — the
         // engine owns its guarantee; this sweep verifies only pairings the
         // ADAPTER creates (round-1 wiring-check doctrine).
-        pair(f['wax-74'], p.background.default, WAX_BAR, `${fam} wax-74 on page`)
+        pair(f['crayon-26'], p.background.default, WAX_BAR, `${fam} crayon-26 on page`)
       }
       for (const sev of ['error', 'info', 'success', 'warning']) {
         pair(p.Alert[`${sev}Color`], p.Alert[`${sev}StandardBg`], TEXT_BAR, `Alert ${sev} standard`)

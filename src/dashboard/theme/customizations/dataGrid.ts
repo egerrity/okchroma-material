@@ -1,5 +1,5 @@
 // DataGrid — MAP addresses only: grounds are planes, state grounds are the
-// wash law (action rows), dark blocks gone.
+// highlighter law (action rows), dark blocks gone.
 import { paperClasses } from '@mui/material/Paper';
 import type { Theme } from '@mui/material/styles';
 import type { DataGridComponents } from '@mui/x-data-grid/themeAugmentation';
@@ -74,8 +74,8 @@ export const dataGridCustomizations: DataGridComponents<Theme> = {
         '&.Mui-selected': {
           background: theme.vars!.palette.action.selected,
           '&:hover': {
-            // selected + hover, per the wash law
-            backgroundColor: theme.vars!.palette.neutral['wash-85'],
+            // selected + hover, per the highlighter law
+            backgroundColor: theme.vars!.palette.neutral['highlighter-15'],
           },
         },
       }),
@@ -87,7 +87,7 @@ export const dataGridCustomizations: DataGridComponents<Theme> = {
             backgroundColor: theme.vars!.palette.action.hover,
           },
           '&:active': {
-            backgroundColor: theme.vars!.palette.neutral['wash-85'],
+            backgroundColor: theme.vars!.palette.neutral['highlighter-15'],
           },
         },
       }),
@@ -98,7 +98,7 @@ export const dataGridCustomizations: DataGridComponents<Theme> = {
           backgroundColor: theme.vars!.palette.action.hover,
         },
         '&:active': {
-          backgroundColor: theme.vars!.palette.neutral['wash-85'],
+          backgroundColor: theme.vars!.palette.neutral['highlighter-15'],
         },
       }),
       filterForm: ({ theme }) => ({

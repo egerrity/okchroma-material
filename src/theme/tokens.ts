@@ -57,9 +57,9 @@ export interface SignalValues {
   fill: string
   on: string
   /** soft container ground (alert background tier) */
-  wash: string
+  highlighter: string
   /** text on the soft container */
-  ink: string
+  pen: string
 }
 
 export interface LaneTokens {
@@ -81,22 +81,22 @@ export interface LaneTokens {
   /** Elevation planes, the owner-shipped per-mode exception (tokens/semantic.css):
    *  the same paper stops serve in reversed order per mode; high/dim take the pole. */
   planes: { dim: string; low: string; mid: string; high: string }
-  /** the offset alpha law: ink-or-white at a constant alpha, color flips per lane */
+  /** the offset alpha law: pen-or-white at a constant alpha, color flips per lane */
   alpha: (rung: keyof typeof OFFSET_ALPHAS) => string
 }
 
 // Engine-vocabulary names for the slots the adapters consume, resolved from the
-// name table by ladder position (paper band tops the table, ink band ends it).
+// name table by ladder position (paper band tops the table, pen band ends it).
 const NAME = {
   paperTop: stopTokenName(1), // page tier
   paper2: stopTokenName(2),
   paper3: stopTokenName(3),
   wash4: stopTokenName(4), // container tier
-  washBorder: stopTokenName(7), // quiet border (wash-80)
-  wax: stopTokenName(8), // the 3:1-clamped ring/border stop (wax-74)
-  lead: stopTokenName(9), // first text stop (lead-53)
-  inkMid: stopTokenName(10), // between state (ink-42)
-  inkStrong: stopTokenName(11), // strong text (ink-30)
+  washBorder: stopTokenName(7), // quiet border (highlighter-20)
+  crayon: stopTokenName(8), // the 3:1-clamped ring/border stop (crayon-26)
+  pencil: stopTokenName(9), // first text stop (pencil-47)
+  inkMid: stopTokenName(10), // between state (pen-58)
+  textStrong: stopTokenName(11), // strong text (pen-70)
 }
 export { NAME }
 
@@ -135,8 +135,8 @@ function signalValues(scale: GeneratedScale, lane: Lane): SignalValues {
   return {
     fill: s.fill,
     on: s.on,
-    wash: stopFor(scale, lane, NAME.paper2),
-    ink: stopFor(scale, lane, NAME.inkStrong),
+    highlighter: stopFor(scale, lane, NAME.paper2),
+    pen: stopFor(scale, lane, NAME.textStrong),
   }
 }
 
@@ -145,8 +145,8 @@ export function laneTokens(seed: Seed, lane: Lane): LaneTokens {
   const secondaryScale = seed.theme.secondary?.scale ?? null
   const n = seed.neutral
 
-  // Plane law from tokens/semantic.css: light dim/low/mid/high = paper-95/97/99/pole-white,
-  // dark = pole-black/paper-99/97/95 — same stops, order reversed, poles at the extremes.
+  // Plane law from tokens/semantic.css: light dim/low/mid/high = paper-5/97/99/pole-white,
+  // dark = pole-black/paper-1/97/95 — same stops, order reversed, poles at the extremes.
   const planes =
     lane === 'light'
       ? {

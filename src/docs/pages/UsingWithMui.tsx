@@ -1,6 +1,6 @@
-// The engineering explainer: how the okchroma npm package attaches to MUI in
-// this repo. Reference register — what calls what, what shape the data is, and
-// what fails when. Design rulings live on the component pages, not here.
+// The integration page: how the okchroma npm package colors Material UI in
+// this repo. Reference register — what calls what, what shape the data is,
+// what fails when. Component rulings live on the component pages.
 import type { ReactNode } from 'react';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
@@ -19,12 +19,21 @@ const Body = ({ children }: { children: ReactNode }) => (
   </Typography>
 );
 
-const FLOW = `src/seed.ts           resolveTheme + generateNeutralScale + signalScalesFor + resolveLinkTrio
-src/theme/map.ts      every MUI palette slot -> one engine token path
-src/theme/interpret.ts  resolves each path against the themeToFigma() emit
-AppTheme.tsx          createTheme({ colorSchemes, components })`;
+const Bullets = ({ children }: { children: ReactNode }) => (
+  <Box component="ul" sx={{ pl: 3, fontSize: 14, lineHeight: 1.9, mb: 2 }}>
+    {children}
+  </Box>
+);
 
-const MAP_EXCERPT = `// src/theme/map.ts — pure data, no logic, no engine import
+const DEPS = `okchroma        ^0.2.0    the color engine
+@mui/material   ^9        as published`;
+
+const FLOW = `src/seed.ts             resolveTheme + generateNeutralScale + signalScalesFor + resolveLinkTrio
+src/theme/map.ts        every MUI palette slot -> one engine token path
+src/theme/interpret.ts  resolves each path against the themeToFigma() emit
+AppTheme.tsx            createTheme({ colorSchemes, components })`;
+
+const MAP_EXCERPT = `// src/theme/map.ts — pure data
 export const CORE = {
   text: {
     primary: 'neutral/pen-70',
@@ -50,35 +59,42 @@ createTheme({
   components: mergeComponents(lawCustomizations, inputsCustomizations, /* ...areas */),
 });`;
 
-export default function HowItWorks() {
+export default function UsingWithMui() {
   return (
     <>
-      <PageTitle>How this works</PageTitle>
+      <PageTitle>Using okchroma with Material UI</PageTitle>
       <Lede>
-        How the okchroma npm package attaches to Material UI in this repo: the modules
-        involved, the integration points used, and the checks that gate a build.
+        What to install, how a brand hex becomes a themed component, which MUI APIs carry
+        it, and what CI proves.
       </Lede>
 
-      <SectionTitle>Data flow</SectionTitle>
+      <SectionTitle>Dependencies</SectionTitle>
+      <Snippet code={DEPS} />
       <Body>
-        okchroma is a plain npm dependency, pinned at <code>^0.2.0</code>. It has no
-        runtime dependencies and is pure computation — no DOM, no Node APIs — shipped as
-        ESM and CJS with bundled types. Nothing here builds against the engine's source,
-        and the engine repository is neither linked nor vendored.
+        okchroma has no runtime dependencies and is pure computation — no DOM, no Node
+        APIs — shipped as ESM and CJS with bundled types. Nothing here builds against the
+        engine's source, and the engine repository is neither linked nor vendored. There
+        is no MUI fork and no patched internals.
       </Body>
+      <Body>
+        The engine API this repo calls: <code>resolveTheme</code>,{' '}
+        <code>generateNeutralScale</code>, <code>signalScalesFor</code>,{' '}
+        <code>resolveLinkTrio</code>, <code>themeToFigma</code>, and the{' '}
+        <code>DISABLED_OPACITY</code> constant.
+      </Body>
+
+      <SectionTitle>Data flow</SectionTitle>
       <Snippet code={FLOW} />
       <Body>
         <FileRef path="src/seed.ts" /> is the only module that calls the resolver, with{' '}
-        <code>contrastProfile: 'wcag'</code> throughout; everything downstream consumes
-        its result. One resolve runs per seed, memoized on the hex, so changing the brand
-        color rebuilds the theme without touching component code.
+        <code>contrastProfile: 'wcag'</code> throughout. One resolve runs per seed,
+        memoized on the hex, so changing the brand color rebuilds the theme without
+        touching component code.
       </Body>
-
-      <SectionTitle>The map</SectionTitle>
       <Body>
-        <FileRef path="src/theme/map.ts" /> is data only — no logic, no conditionals, no
-        engine import. Each slot holds one of two values: an engine token leaf path, or a{' '}
-        <code>GAP(reason)</code> for a slot with no honest answer from the engine.
+        <FileRef path="src/theme/map.ts" /> is data. Each slot holds an engine token leaf
+        path or a <code>GAP(reason)</code> for a slot with no honest answer from the
+        engine.
       </Body>
       <Snippet code={MAP_EXCERPT} />
       <Body>
@@ -86,26 +102,18 @@ export default function HowItWorks() {
         surface planes, the whole neutral ladder — reverse inside the engine, so the map
         names them once and both schemes read the same row.
       </Body>
-
-      <SectionTitle>The interpreter</SectionTitle>
       <Body>
         <FileRef path="src/theme/interpret.ts" /> looks up each leaf path in the emit from{' '}
         <code>themeToFigma()</code> and writes the value into MUI{' '}
-        <code>colorSchemes</code>. It makes no color decisions.
-      </Body>
-      <Body>
-        A path that fails to resolve throws, so an engine rename fails the build at the
-        lookup instead of silently mis-mapping a slot. <code>GAP</code> rows resolve to a
-        magenta sentinel and are listed on the <Link href="#/gaps">Gap gallery</Link>,
-        which derives its rows from the map rather than a hand-maintained list — a gap
-        that closes drops off the page by itself.
+        <code>colorSchemes</code>. A path that fails to resolve throws, so an engine
+        rename fails the build at the lookup instead of silently mis-mapping a slot.{' '}
+        <code>GAP</code> rows resolve to a magenta sentinel and are listed on the{' '}
+        <Link href="#/gaps">gap gallery</Link>, which derives its rows from the map — a
+        gap that closes drops off the page by itself.
       </Body>
 
-      <SectionTitle>MUI integration points</SectionTitle>
-      <Body>
-        Three, all public API. There is no MUI fork and no patched internals; the
-        dependency is <code>@mui/material ^9</code> as published.
-      </Body>
+      <SectionTitle>Integration points</SectionTitle>
+      <Body>Three, all public API.</Body>
       <Snippet code={THEME_EXCERPT} />
       <Box component="ol" sx={{ pl: 3, fontSize: 14, lineHeight: 1.9, mb: 2 }}>
         <li>
@@ -129,9 +137,44 @@ export default function HowItWorks() {
         Override layers compose through <FileRef path="src/theme/mergeComponents.ts" />{' '}
         rather than object spread. A flat spread lets an area file replace a slot the laws
         file already set; this merges slot-wise and concatenates{' '}
-        <code>styleOverrides</code> entries into arrays, so every layer stays in the
-        cascade and later layers extend earlier ones.
+        <code>styleOverrides</code> entries into arrays, so later layers extend earlier
+        ones.
       </Body>
+
+      <SectionTitle>Using it correctly</SectionTitle>
+      <Body>
+        In product code, express meaning through props — <code>variant</code>,{' '}
+        <code>color</code>, <code>disabled</code>. Layout via <code>sx</code> is fine;
+        color, state and shape are not.
+      </Body>
+      <Body>In the theme layer, the rules the checkers hold you to:</Body>
+      <Bullets>
+        <li>
+          No hex, <code>hsl()</code> or <code>rgb()</code> literals anywhere in the theme {/* map-check:allow */}
+          or the customizations.
+        </li>
+        <li>
+          No <code>alpha</code>, <code>darken</code>, <code>lighten</code> or{' '}
+          <code>getContrastText</code>. The engine emits every stop a state needs; a
+          derived color has no contrast guarantee.
+        </li>
+        <li>
+          Read <code>theme.vars.palette.*</code>, never <code>theme.palette.*</code> — the {/* map-check:allow */}
+          latter returns the light scheme whatever the mode.
+        </li>
+        <li>
+          No <code>applyStyles('dark')</code> blocks and no template ramps. {/* map-check:allow */}
+          One reference is correct in both modes; the engine moves the value underneath.
+        </li>
+        <li>
+          Add component overrides through <code>mergeComponents</code> so they extend the
+          laws in <FileRef path="src/theme/laws.tsx" /> instead of replacing them.
+        </li>
+        <li>
+          A slot the engine cannot answer gets a <code>GAP(reason)</code>, not an invented
+          value.
+        </li>
+      </Bullets>
 
       <SectionTitle>Enforcement</SectionTitle>
       <Body>
@@ -141,7 +184,7 @@ export default function HowItWorks() {
       <Body>
         <code>npm run check:map</code> runs six checks:
       </Body>
-      <Box component="ul" sx={{ pl: 3, fontSize: 14, lineHeight: 1.9, mb: 2 }}>
+      <Bullets>
         <li>
           <strong>Totality</strong> — every color-bearing slot a stock{' '}
           <code>createTheme()</code> carries has a value: a map row or a declared gap.
@@ -166,24 +209,23 @@ export default function HowItWorks() {
         <li>
           <strong>Seed sweep</strong> — nine seeds, including {SWEEP_SEEDS}.
         </li>
-      </Box>
+      </Bullets>
       <Body>
         <code>npm run check:wiring</code> walks the pairings the mapping creates — which
-        on-color lands on which fill, which text on which plane — and asserts 4.5:1 for
-        text and 3.0:1 for non-text. The values come from the same tokens the app renders,
-        so a failure here is a failure a user would see.
+        on-color lands on which fill, which text on which plane — and holds them to the
+        guaranteed minimums: 4.5:1 for text, 3:1 for non-text. The values come from the
+        same tokens the app renders, so a failure here is a failure a user would see.
       </Body>
 
-      <SectionTitle>The Base UI track</SectionTitle>
+      <SectionTitle>The other track</SectionTitle>
       <Body>
         A second proof of concept consumes the same package version against{' '}
         <Link href="https://base-ui.com" target="_blank" rel="noreferrer">
           Base UI
         </Link>{' '}
-        headless primitives, in the opposite integration shape. Rather than walking
-        resolved values into a theme object, it mounts the engine's own CSS emission from{' '}
-        <code>brandCss()</code> as custom properties and styles hand-built components with{' '}
-        <code>var()</code> — no theme object and no provider.
+        headless primitives, in the opposite integration shape: it mounts the engine's own
+        CSS emission from <code>brandCss()</code> as custom properties and styles
+        hand-built components with <code>var()</code> — no theme object, no provider.
       </Body>
       <Body>
         <Link href={BASE_DEMO} target="_blank" rel="noreferrer">

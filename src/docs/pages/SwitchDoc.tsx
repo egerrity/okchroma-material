@@ -11,7 +11,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { PageTitle, Lede, SectionTitle, Demo, Snippet } from './shared';
+import { PageTitle, Lede, SectionTitle, Demo, Snippet, Rulings, FileRef } from './shared';
 
 const Caption = ({ children }: { children: React.ReactNode }) => (
   <Typography sx={{ fontSize: 14, mb: 1, mt: 2 }} color="text.secondary">
@@ -69,6 +69,25 @@ import FormControlLabel from '@mui/material/FormControlLabel';
       </Demo>
       <Snippet code={`<Switch />               // medium — the default
 <Switch size="small" />  // dense rows, table cells`} />
+
+      <SectionTitle>What we styled</SectionTitle>
+      <Caption>
+        Geometry in <FileRef path="src/shared-theme/customizations/inputs.tsx" />, color in{' '}
+        <FileRef path="src/theme/laws.tsx" />. Both target{' '}
+        <code>components.MuiSwitch</code> and compose through{' '}
+        <FileRef path="src/theme/mergeComponents.ts" />.
+      </Caption>
+      <Rulings>
+        <li>The track is the control and the thumb never overhangs it.</li>
+        <li>
+          The unchecked track rides the same neutral stroke stop as the other controls'
+          borders; checked it is the family's main stop.
+        </li>
+        <li>The thumb is the paper pole in both states, and in both modes.</li>
+        <li>
+          Disabled keeps the enabled colors and drops the opacity, track included.
+        </li>
+      </Rulings>
 
       <SectionTitle>Props</SectionTitle>
       <Table size="small" sx={{ mb: 3, maxWidth: 720 }}>

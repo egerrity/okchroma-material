@@ -75,6 +75,13 @@ export const Snippet = ({ code }: { code: string }) => (
   </Box>
 );
 
+/** "What we styled" — the rulings a component carries and where they live. */
+export const Rulings = ({ children }: { children: ReactNode }) => (
+  <Box component="ul" sx={{ pl: 3, fontSize: 14, lineHeight: 1.9, mb: 3 }}>
+    {children}
+  </Box>
+);
+
 export const FileRef = ({ path }: { path: string }) => (
   <Typography
     component="span"

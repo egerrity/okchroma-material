@@ -13,7 +13,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { PageTitle, Lede, SectionTitle, Demo, Snippet } from './shared';
+import { PageTitle, Lede, SectionTitle, Demo, Snippet, Rulings, FileRef } from './shared';
 
 const Caption = ({ children }: { children: React.ReactNode }) => (
   <Typography sx={{ fontSize: 14, mb: 1, mt: 2 }} color="text.secondary">
@@ -67,6 +67,26 @@ import FormControlLabel from '@mui/material/FormControlLabel';
       </Demo>
       <Snippet code={`<Radio />               // medium — the default
 <Radio size="small" />  // dense rows`} />
+
+      <SectionTitle>What we styled</SectionTitle>
+      <Caption>
+        <code>components.MuiRadio</code> in{' '}
+        <FileRef path="src/shared-theme/customizations/inputs.tsx" />, under the same law
+        as the checkbox.
+      </Caption>
+      <Rulings>
+        <li>No stamp. Checked is a main-filled disc; unchecked is a 2px neutral circle
+          on the paper ground.</li>
+        <li>
+          The glyph is a solid 10px disc on the 20px fill, so the main reads as a thick
+          outer ring. A ring glyph reads bullseye-backwards.
+        </li>
+        <li>
+          The stock SVG pair is hidden and the root is the control, drawn with{' '}
+          <code>::after</code> — the checkbox pattern.
+        </li>
+        <li>Focus, ripple and disabled follow the same cross-component laws.</li>
+      </Rulings>
 
       <SectionTitle>Props</SectionTitle>
       <Table size="small" sx={{ mb: 3, maxWidth: 720 }}>

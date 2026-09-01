@@ -5,6 +5,11 @@ import type { Theme } from '@mui/material/styles';
 import type { PickerComponents } from '@mui/x-date-pickers/themeAugmentation';
 import { menuItemClasses } from '@mui/material/MenuItem';
 import { pickerDayClasses, yearCalendarClasses } from '@mui/x-date-pickers';
+import {
+  pickersInputBaseClasses,
+  pickersOutlinedInputClasses,
+} from '@mui/x-date-pickers/PickersTextField';
+import { DISABLED_OPACITY } from 'okchroma';
 import { FOCUS_RING } from '../../../theme/map';
 
 /* eslint-disable import/prefer-default-export */
@@ -138,6 +143,49 @@ export const datePickersCustomizations: PickerComponents<Theme> = {
           [`&.${pickerDayClasses.selected}`]: {
             backgroundColor: theme.vars!.palette.secondary.stampFill,
           },
+        },
+      }),
+    },
+  },
+
+  // MUI X ships its OWN field family (MuiPickersOutlinedInput /
+  // MuiPickersInputBase) instead of reusing MuiOutlinedInput, so neither the
+  // border law nor the disabled law reached it: the package derives its
+  // resting outline from an rgba literal, reads text.primary on hover, and
+  // reads action.disabled when disabled — a declared GAP, so the field
+  // rendered the sentinel (caught building the docs page, 2026-09-01). The
+  // existing rulings, pinned onto the X slots.
+  MuiPickersOutlinedInput: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        [`& .${pickersOutlinedInputClasses.notchedOutline}`]: {
+          borderColor: theme.vars!.palette.neutral['crayon-26'],
+        },
+        [`&:hover .${pickersOutlinedInputClasses.notchedOutline}`]: {
+          borderColor: theme.vars!.palette.neutral['crayon-26'],
+        },
+        [`&.${pickersOutlinedInputClasses.focused} .${pickersOutlinedInputClasses.notchedOutline}`]:
+          {
+            borderColor: theme.vars!.palette.primary.main,
+          },
+        [`&.${pickersOutlinedInputClasses.error} .${pickersOutlinedInputClasses.notchedOutline}`]: {
+          borderColor: theme.vars!.palette.error.main,
+        },
+        [`&.${pickersOutlinedInputClasses.disabled}`]: {
+          opacity: DISABLED_OPACITY,
+          [`& .${pickersOutlinedInputClasses.notchedOutline}`]: {
+            borderColor: theme.vars!.palette.neutral['crayon-26'],
+          },
+        },
+      }),
+    },
+  },
+  MuiPickersInputBase: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        [`&.${pickersInputBaseClasses.disabled}`]: {
+          color: theme.vars!.palette.text.primary,
+          WebkitTextFillColor: theme.vars!.palette.text.primary,
         },
       }),
     },

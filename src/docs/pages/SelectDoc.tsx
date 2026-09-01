@@ -11,7 +11,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { PageTitle, Lede, SectionTitle, Demo, Snippet } from './shared';
+import { PageTitle, Lede, SectionTitle, Demo, Snippet, Rulings, FileRef } from './shared';
 
 const Caption = ({ children }: { children: React.ReactNode }) => (
   <Typography sx={{ fontSize: 14, mb: 1, mt: 2 }} color="text.secondary">
@@ -87,6 +87,30 @@ import MenuItem from '@mui/material/MenuItem';
         Error borders and the disabled dim are the field rules — pair error with a
         FormHelperText notice like any field.
       </Caption>
+
+      <SectionTitle>What we styled</SectionTitle>
+      <Caption>
+        The trigger inherits the field chrome from{' '}
+        <FileRef path="src/shared-theme/customizations/inputs.tsx" />; the popup is{' '}
+        <code>MuiMenu</code> and <code>MuiMenuItem</code> in{' '}
+        <FileRef path="src/shared-theme/customizations/navigation.tsx" />.
+      </Caption>
+      <Rulings>
+        <li>The trigger is a text field: same border law, same focus border, same sizes.</li>
+        <li>
+          The popup sits on the raised surface plane with the divider-register border and
+          the engine's shadow row. It sets no background of its own.
+        </li>
+        <li>
+          Items ride the action rows — hover, selected, and selected-hover each their own
+          wash. Never an alpha laid over a color.
+        </li>
+        <li>Menu items are soft: 8px radius. Only buttons are round.</li>
+        <li>
+          The chevron rides the secondary text register and does not swap when disabled;
+          the control's opacity carries that.
+        </li>
+      </Rulings>
 
       <SectionTitle>Props</SectionTitle>
       <Table size="small" sx={{ mb: 3, maxWidth: 720 }}>

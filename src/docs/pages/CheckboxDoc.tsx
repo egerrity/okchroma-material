@@ -11,7 +11,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { PageTitle, Lede, SectionTitle, Demo, Snippet } from './shared';
+import { PageTitle, Lede, SectionTitle, Demo, Snippet, Rulings, FileRef } from './shared';
 
 const Caption = ({ children }: { children: React.ReactNode }) => (
   <Typography sx={{ fontSize: 14, mb: 1, mt: 2 }} color="text.secondary">
@@ -83,6 +83,36 @@ import FormControlLabel from '@mui/material/FormControlLabel';
       </Demo>
       <Snippet code={`<Checkbox />               // medium — the default
 <Checkbox size="small" />  // dense tables, compact rows`} />
+
+      <SectionTitle>What we styled</SectionTitle>
+      <Caption>
+        <code>components.MuiCheckbox</code> in{' '}
+        <FileRef path="src/shared-theme/customizations/inputs.tsx" />; the focus and
+        disabled laws come from <FileRef path="src/theme/laws.tsx" />.
+      </Caption>
+      <Rulings>
+        <li>
+          Selection controls never take the stamp: a stamp has no contrast guarantee
+          against the page, and the engine may solve one bright. The checked fill is the
+          family's main stop and the glyph is the pole the engine pairs to it.
+        </li>
+        <li>
+          A 20px box (16px small), radius 4, with a 2px neutral border on the paper
+          ground.
+        </li>
+        <li>
+          Indeterminate is its own class, not a checked variant, and fills identically.
+        </li>
+        <li>
+          The root is the control and its padding is zero. MUI's default 9px padding
+          plus the 2px borders leaves a negative content box at 20px and the glyph
+          collapses.
+        </li>
+        <li>
+          Disabled pins the enabled colors against MUI's swap to{' '}
+          <code>action.disabled</code>; the opacity carries the read.
+        </li>
+      </Rulings>
 
       <SectionTitle>Props</SectionTitle>
       <Table size="small" sx={{ mb: 3, maxWidth: 720 }}>

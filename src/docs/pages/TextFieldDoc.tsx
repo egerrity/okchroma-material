@@ -16,7 +16,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Search as SearchIcon } from 'lucide-react';
-import { PageTitle, Lede, SectionTitle, Demo, Snippet } from './shared';
+import { PageTitle, Lede, SectionTitle, Demo, Snippet, Rulings, FileRef } from './shared';
 
 const Caption = ({ children }: { children: React.ReactNode }) => (
   <Typography sx={{ fontSize: 14, mb: 1, mt: 2 }} color="text.secondary">
@@ -125,6 +125,45 @@ import OutlinedInput from '@mui/material/OutlinedInput';
   }
 />`}
       />
+
+      <SectionTitle>What we styled</SectionTitle>
+      <Caption>
+        <code>MuiOutlinedInput</code>, <code>MuiInputBase</code> and{' '}
+        <code>MuiFormLabel</code>, split between{' '}
+        <FileRef path="src/shared-theme/customizations/inputs.tsx" /> (chrome) and{' '}
+        <FileRef path="src/theme/laws.tsx" /> (states).
+      </Caption>
+      <Rulings>
+        <li>
+          The label sits above the field. MUI's floating label is off and the notched
+          outline is set to no border — the root carries the visible border instead.
+        </li>
+        <li>
+          Labels never state-shift. The field carries focus and error; moving the label
+          too would double the signal.
+        </li>
+        <li>
+          The resting border is the 3:1 neutral stop — WCAG 1.4.11 lives on that border.
+          Radius 8, 12px side padding, 40px small and 48px medium.
+        </li>
+        <li>
+          Focus is a 2px brand border on the field itself: the one deliberate exception
+          to the neutral focus ring, which stays the law for buttons and controls. The
+          horizontal padding drops by 1px so the text does not move.
+        </li>
+        <li>
+          Error is the critical family's main stop, 2px while focused. The notice sits
+          flush left below the field.
+        </li>
+        <li>
+          The placeholder is the secondary text color at full strength — no opacity
+          multiplier on top of a color that already carries its guarantee.
+        </li>
+        <li>
+          Disabled pins the enabled text color against MUI's{' '}
+          <code>-webkit-text-fill-color</code> swap; the opacity carries the read.
+        </li>
+      </Rulings>
 
       <SectionTitle>Props</SectionTitle>
       <Table size="small" sx={{ mb: 3, maxWidth: 720 }}>

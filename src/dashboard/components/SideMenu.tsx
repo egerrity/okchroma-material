@@ -9,6 +9,7 @@ import SelectContent from './SelectContent';
 import MenuContent from './MenuContent';
 import CardAlert from './CardAlert';
 import OptionsMenu from './OptionsMenu';
+import { NAV_HEIGHT } from '../../shell/GlobalNav';
 
 const drawerWidth = 240;
 
@@ -31,6 +32,9 @@ export default function SideMenu() {
         display: { xs: 'none', md: 'block' },
         [`& .${drawerClasses.paper}`]: {
           backgroundColor: 'background.paper',
+          // the paper is position:fixed — it starts below the global nav
+          top: NAV_HEIGHT,
+          height: `calc(100% - ${NAV_HEIGHT}px)`,
         },
       }}
     >

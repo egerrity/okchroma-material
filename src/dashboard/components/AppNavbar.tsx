@@ -10,7 +10,7 @@ import { Menu as MenuRoundedIcon } from 'lucide-react';
 import { LayoutDashboard as DashboardRoundedIcon } from 'lucide-react';
 import SideMenuMobile from './SideMenuMobile';
 import MenuButton from './MenuButton';
-import ColorModeToggle from '../../shared-theme/ColorModeToggle';
+import { NAV_HEIGHT } from '../../shell/GlobalNav';
 
 const Toolbar = styled(MuiToolbar)({
   width: '100%',
@@ -45,7 +45,7 @@ export default function AppNavbar() {
         backgroundImage: 'none',
         borderBottom: '1px solid',
         borderColor: 'divider',
-        top: 'var(--template-frame-height, 0px)',
+        top: `calc(var(--template-frame-height, 0px) + ${NAV_HEIGHT}px)`,
       }}
     >
       <Toolbar variant="regular">
@@ -68,7 +68,6 @@ export default function AppNavbar() {
               Dashboard
             </Typography>
           </Stack>
-          <ColorModeToggle />
           <MenuButton aria-label="menu" onClick={toggleDrawer(true)}>
             <MenuRoundedIcon />
           </MenuButton>

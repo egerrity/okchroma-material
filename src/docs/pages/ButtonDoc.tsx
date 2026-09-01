@@ -11,7 +11,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Plus as AddIcon, ChevronRight as ChevronRightIcon } from 'lucide-react';
-import { PageTitle, Lede, SectionTitle, Demo, Snippet } from './shared';
+import { PageTitle, Lede, SectionTitle, Demo, Snippet, Rulings, FileRef } from './shared';
 
 const Caption = ({ children }: { children: React.ReactNode }) => (
   <Typography sx={{ fontSize: 14, mb: 1, mt: 2 }} color="text.secondary">
@@ -95,6 +95,34 @@ export default function ButtonDoc() {
 // icon-only: always pass aria-label
 <IconButton size="small" aria-label="add"><AddIcon size={16} /></IconButton>`}
       />
+
+      <SectionTitle>What we styled</SectionTitle>
+      <Caption>
+        Geometry in <FileRef path="src/shared-theme/customizations/inputs.tsx" />, color in{' '}
+        <FileRef path="src/theme/laws.tsx" /> — both through{' '}
+        <code>components.MuiButton.styleOverrides.root</code>.
+      </Caption>
+      <Rulings>
+        <li>Buttons are round: 999px radius, 36px small and 40px medium.</li>
+        <li>
+          Contained rides the engine's stamp register — fill, fill-hover, fill-pressed,
+          with the on-color the engine pairs to it. The stamp edge is always rendered,
+          usually transparent, so layout never shifts when it turns visible.
+        </li>
+        <li>
+          Outlined always wears the neutral outline. The label carries the family; the
+          border never does.
+        </li>
+        <li>
+          Outlined and text labels step with their own ground — rest on the page, hover
+          and pressed on the wash below them. A constant label on a stepping ground
+          leaves the contrast guarantee behind.
+        </li>
+        <li>
+          Focus is one 2px neutral ring at 1px offset, and the ripple is off everywhere.
+        </li>
+        <li>Disabled is component-level opacity; the colors stay the enabled ones.</li>
+      </Rulings>
 
       <SectionTitle>Props</SectionTitle>
       <Table size="small" sx={{ mb: 3, maxWidth: 720 }}>

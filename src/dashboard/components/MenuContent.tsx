@@ -11,18 +11,17 @@ import { ClipboardList as AssignmentRoundedIcon } from 'lucide-react';
 import { Settings as SettingsRoundedIcon } from 'lucide-react';
 import { Info as InfoRoundedIcon } from 'lucide-react';
 import { CircleHelp as HelpRoundedIcon } from 'lucide-react';
-import { Palette as PaletteRoundedIcon } from 'lucide-react';
 
 const mainListItems = [
-  { text: 'Home', icon: <HomeRoundedIcon />, href: '#/' },
+  { text: 'Home', icon: <HomeRoundedIcon /> },
   { text: 'Analytics', icon: <AnalyticsRoundedIcon /> },
   { text: 'Clients', icon: <PeopleRoundedIcon /> },
   { text: 'Tasks', icon: <AssignmentRoundedIcon /> },
 ];
 
+// Product furniture, like the rows above it: page navigation is the global
+// nav's job (src/shell/GlobalNav.tsx).
 const secondaryListItems = [
-  { text: 'Docs', icon: <InfoRoundedIcon />, href: '#/docs' },
-  { text: 'Gap gallery', icon: <PaletteRoundedIcon />, href: '#/gaps' },
   { text: 'Settings', icon: <SettingsRoundedIcon /> },
   { text: 'About', icon: <InfoRoundedIcon /> },
   { text: 'Feedback', icon: <HelpRoundedIcon /> },
@@ -34,10 +33,7 @@ export default function MenuContent() {
       <List dense>
         {mainListItems.map((item, index) => (
           <ListItem key={index} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              selected={index === 0}
-              onClick={() => { if ('href' in item && item.href) window.location.hash = item.href; }}
-            >
+            <ListItemButton selected={index === 0}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
@@ -47,7 +43,7 @@ export default function MenuContent() {
       <List dense>
         {secondaryListItems.map((item, index) => (
           <ListItem key={index} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton onClick={() => { if ('href' in item && item.href) window.location.hash = item.href; }}>
+            <ListItemButton>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>

@@ -61,7 +61,7 @@ export default function HowItWorks() {
 
       <SectionTitle>Data flow</SectionTitle>
       <Body>
-        okchroma is a plain npm dependency, pinned at <code>^0.1.7</code>. It has no
+        okchroma is a plain npm dependency, pinned at <code>^0.2.0</code>. It has no
         runtime dependencies and is pure computation — no DOM, no Node APIs — shipped as
         ESM and CJS with bundled types. Nothing here builds against the engine's source,
         and the engine repository is neither linked nor vendored.

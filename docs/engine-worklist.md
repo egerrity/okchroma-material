@@ -86,8 +86,23 @@ fixture decides backdrop/profile vs blending-basis before any re-emission).
     2026-08-29): the opaque wash stops are the PERMANENT state-tint answer, not
     an interim; the parked alpha-paper twins stay parked. Off the books.
 
-**THE WORKLIST IS COMPLETE** (2026-08-29): A1 + B2–B7 + C8 + C9 + C11 landed
-across okchroma 0.1.1–0.1.4; C10 resolved without engine work (one parked
+13. **T13 — the pen and paper guarantees hold in the neutral's direction** (owner-caught
+    2026-09-01; LANDED in okchroma 0.2.2 the same day). The pen guarantee is symmetric —
+    own family OR neutral, both directions — but the resolver and `guarantee-audit` bound
+    it one way: chromatic pens cleared the neutral's highlighter-20, nothing made the
+    neutral's pens clear the chromatics' (`neutral/pen-58` light: 4.16 on
+    `info/highlighter-20`, 4.24 on violet brands). The paper claims had the same gap
+    (neutral crayon-26 2.987, pencil-47 4.484 on a violet brand's paper-5). Fix:
+    `CHROMATIC_W80_WORST_SHIP_Y` + `CHROMATIC_P3_WORST_SHIP_Y` floors on the neutral's
+    stops 8–11, each judged at its band's bar; only the neutral's light crayon-26,
+    pencil-47 and pen-58 move (≤0.02 L), everything else byte-identical. The full-chroma
+    checkbox was removed from both plugins and the demo (owner). PoC: `check-wiring`
+    asserts the reverse direction (neutral pens + crayon/pencil on every chromatic
+    family's grounds, both lanes); `okchroma` bumped to ^0.2.2. Spec + record:
+    `~/okchroma/scratch/handoffs/2026-09-01-neutral-pen-bound-handoff.md`.
+
+**Status (2026-09-01): everything landed; C13 closed with okchroma 0.2.2.** A1 + B2–B7 + C8 + C9 + C11 landed
+across okchroma 0.1.1–0.1.4, C13 in 0.2.2; C10 resolved without engine work (one parked
 remnant: `poleWhite.stampEdge`, waiting on a white button existing in Unify);
 C12 cancelled. The color part of the PoC is done — next lanes are the Unify
 component styling (Switch, inputs) and round 3 packaging.

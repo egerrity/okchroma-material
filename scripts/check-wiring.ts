@@ -7,6 +7,7 @@
 // Run: npm run check:wiring
 // Hexes come from the same LaneTokens the app renders — a failure here is a
 // failure the user would see.
+import { stopTokenName } from 'okchroma'
 import { resolveSeed } from '../src/seed'
 import { laneTokens, NAME, type LaneTokens } from '../src/theme/tokens'
 
@@ -67,6 +68,28 @@ function checkLane(seed: string, t: LaneTokens) {
     // the link trio renders on the same planes
     assertPair(seed, lane, `link / plane-${plane}`, t.link.default, bg, TEXT_BAR)
   }
+
+  // the neutral pens on every chromatic family's papers and highlighters, both lanes:
+  // the pen guarantee is symmetric (engine T13, okchroma 0.2.1 — the direction the
+  // engine's own audit did not measure before), so a regressed engine fails here
+  const grounds = [1, 2, 3, 4, 5, 6, 7].map(stopTokenName)
+  const families: Array<[string, (name: string) => string]> = [
+    ['brand', t.brand],
+    ...(t.secondary ? ([['secondary', t.secondary]] as Array<[string, (name: string) => string]>) : []),
+    ...(['critical', 'warning', 'positive', 'info'] as const).map(
+      (r) => [r, (n: string) => t.signalStop(r, n)] as [string, (name: string) => string],
+    ),
+  ]
+  for (const [fam, stop] of families)
+    for (const g of grounds)
+      for (const pen of [NAME.inkMid, NAME.textStrong])
+        assertPair(seed, lane, `neutral ${pen} / ${fam} ${g}`, t.neutral(pen), stop(g), TEXT_BAR)
+  // and the neutral's paper-only stops on every chromatic family's papers (same rule, every band)
+  for (const [fam, stop] of families)
+    for (const g of grounds.slice(0, 3)) {
+      assertPair(seed, lane, `neutral ${NAME.pencil} / ${fam} ${g}`, t.neutral(NAME.pencil), stop(g), TEXT_BAR)
+      assertPair(seed, lane, `neutral ${NAME.crayon} / ${fam} ${g}`, t.neutral(NAME.crayon), stop(g), WAX_BAR)
+    }
 
   // outline vs the surface the engine's law gates it on (crayon-26 is clamped vs
   // the paper-5 tier — plane-dim in light, plane-high in dark; asserting it

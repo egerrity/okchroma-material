@@ -25,7 +25,7 @@ const Bullets = ({ children }: { children: ReactNode }) => (
   </Box>
 );
 
-const DEPS = `okchroma        ^0.2.0    the color engine
+const DEPS = `okchroma        ^0.2.2    the color engine
 @mui/material   ^9        as published`;
 
 const FLOW = `src/seed.ts             resolveTheme + generateNeutralScale + signalScalesFor + resolveLinkTrio

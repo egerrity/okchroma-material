@@ -99,3 +99,22 @@ Adopting Material costs okchroma **no new color design**. The integration bill i
 Everything else — 112 palette slots, ~90 neutralized derivation sites, both modes,
 any seed — is transcription, proven by `npm run check:map` (totality, resolvability,
 no literals, no primitives, no derivations, 9-seed contrast sweep).
+
+## Open, recorded for later (not worked)
+
+Findings caught after the round-2 record above. Kept here so they survive; none has
+been surveyed or costed.
+
+### MUI X ships its own field family (2026-09-01)
+
+Building the Date picker docs page exposed that MUI X uses `MuiPickersOutlinedInput` /
+`MuiPickersInputBase` rather than reusing `MuiOutlinedInput`. Neither the border law nor
+the disabled law reached it: the package derives its resting outline from an rgba
+literal, reads `text.primary` on hover, and reads `action.disabled` when disabled, which
+is a declared GAP, so the field rendered the magenta sentinel.
+
+The existing rulings are pinned onto the X slots in
+[datePickers.ts](../src/dashboard/theme/customizations/datePickers.ts), so the field is
+correct today. What is NOT done: no survey of which other MUI X families duplicate core
+slots the same way, and no rule that would catch the next one. `npm run check:map` does
+not see it, because the gap is a component reading a GAP row, not a missing map row.

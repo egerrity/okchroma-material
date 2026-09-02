@@ -102,8 +102,8 @@ import MenuItem from '@mui/material/MenuItem';
           the engine's shadow row. It sets no background of its own.
         </li>
         <li>
-          Items ride the action rows: hover, selected, and selected-hover each their own
-          wash. Never an alpha laid over a color.
+          Items ride the action rows: hover, selected, and selected-hover each on their own
+          highlighter stop. Never an alpha laid over a color.
         </li>
         <li>Menu items are soft: 8px radius. Only buttons are round.</li>
         <li>

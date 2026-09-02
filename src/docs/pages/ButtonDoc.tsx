@@ -115,7 +115,7 @@ export default function ButtonDoc() {
         </li>
         <li>
           Outlined and text labels step with their own ground: rest on the page, hover
-          and pressed on the wash below them. A constant label on a stepping ground
+          and pressed on the highlighter stop below them. A constant label on a stepping ground
           leaves the contrast guarantee behind.
         </li>
         <li>

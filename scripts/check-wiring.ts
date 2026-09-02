@@ -70,7 +70,7 @@ function checkLane(seed: string, t: LaneTokens) {
   }
 
   // the neutral pens on every chromatic family's papers and highlighters, both lanes:
-  // the pen guarantee is symmetric (engine T13, okchroma 0.2.1 — the direction the
+  // the pen guarantee is symmetric (engine T13, okchroma 0.2.2 — the direction the
   // engine's own audit did not measure before), so a regressed engine fails here
   const grounds = [1, 2, 3, 4, 5, 6, 7].map(stopTokenName)
   const families: Array<[string, (name: string) => string]> = [

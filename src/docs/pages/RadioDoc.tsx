@@ -26,7 +26,7 @@ export default function RadioDoc() {
     <>
       <PageTitle>Radio</PageTitle>
       <Lede>
-        The standard MUI Radio, pre-themed. Radios always live in a RadioGroup —
+        The standard MUI Radio, pre-themed. Radios always live in a RadioGroup:
         the group owns the value and the name; each radio just declares what it
         stands for. Checked fill, dark mode, and disabled are handled by the theme
         for every brand.
@@ -65,7 +65,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
           <Radio value="b" size="small" aria-label="small" />
         </RadioGroup>
       </Demo>
-      <Snippet code={`<Radio />               // medium — the default
+      <Snippet code={`<Radio />               // medium, the default
 <Radio size="small" />  // dense rows`} />
 
       <SectionTitle>What we styled</SectionTitle>
@@ -83,7 +83,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
         </li>
         <li>
           The stock SVG pair is hidden and the root is the control, drawn with{' '}
-          <code>::after</code> — the checkbox pattern.
+          <code>::after</code>, the checkbox pattern.
         </li>
         <li>Focus, ripple and disabled follow the same cross-component laws.</li>
       </Rulings>
@@ -102,7 +102,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
           <TableRow>
             <TableCell>value</TableCell>
             <TableCell>any</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>none</TableCell>
             <TableCell>what this option stands for; the group compares against it</TableCell>
           </TableRow>
           <TableRow>
@@ -121,7 +121,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
             <TableCell>disabled</TableCell>
             <TableCell>boolean</TableCell>
             <TableCell>false</TableCell>
-            <TableCell>fully handled — no styling needed</TableCell>
+            <TableCell>fully handled, no styling needed</TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -135,7 +135,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 <Radio sx={{ color: 'primary.main' }} />   // reaching into the palette
 <Radio checkedIcon={<MyDot />} />           // replacing the anatomy
 
-// RIGHT — express meaning through props; the theme does the rest
+// RIGHT: express meaning through props; the theme does the rest
 <Radio value="pro" color="success" />`}
       />
     </>

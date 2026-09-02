@@ -25,7 +25,7 @@ export default function SwitchDoc() {
       <PageTitle>Switch</PageTitle>
       <Lede>
         The standard MUI Switch, pre-themed. A switch is for a setting that takes
-        effect immediately — use a Checkbox when the choice is submitted with a form.
+        effect immediately. Use a Checkbox when the choice is submitted with a form.
         The pill, thumb, states, dark mode, and disabled are handled by the theme
         for every brand.
       </Lede>
@@ -67,7 +67,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
         <Switch defaultChecked aria-label="medium" />
         <Switch size="small" defaultChecked aria-label="small" />
       </Demo>
-      <Snippet code={`<Switch />               // medium — the default
+      <Snippet code={`<Switch />               // medium, the default
 <Switch size="small" />  // dense rows, table cells`} />
 
       <SectionTitle>What we styled</SectionTitle>
@@ -103,7 +103,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
           <TableRow>
             <TableCell>checked / onChange</TableCell>
             <TableCell>boolean / handler</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>none</TableCell>
             <TableCell>controlled usage; defaultChecked for uncontrolled</TableCell>
           </TableRow>
           <TableRow>
@@ -122,7 +122,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
             <TableCell>disabled</TableCell>
             <TableCell>boolean</TableCell>
             <TableCell>false</TableCell>
-            <TableCell>fully handled — no styling needed</TableCell>
+            <TableCell>fully handled, no styling needed</TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -133,7 +133,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 <Switch sx={{ '& .MuiSwitch-track': { bgcolor: 'grey.400' } }} />  // reaching into the anatomy
 <Switch sx={{ opacity: 0.5 }} />                                    // hand-rolled disabled
 
-// RIGHT — express meaning through props; the theme does the rest
+// RIGHT: express meaning through props; the theme does the rest
 <Switch color="success" checked={enabled} onChange={toggle} />`}
       />
     </>

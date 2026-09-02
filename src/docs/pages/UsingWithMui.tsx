@@ -25,7 +25,7 @@ const Bullets = ({ children }: { children: ReactNode }) => (
   </Box>
 );
 
-const DEPS = `okchroma        ^0.2.2    the color engine
+const DEPS = `okchroma        ^0.3.1    the color engine
 @mui/material   ^9        as published`;
 
 const FLOW = `src/seed.ts             resolveTheme + generateNeutralScale + signalScalesFor + resolveLinkTrio
@@ -33,7 +33,7 @@ src/theme/map.ts        every MUI palette slot -> one engine token path
 src/theme/interpret.ts  resolves each path against the themeToFigma() emit
 AppTheme.tsx            createTheme({ colorSchemes, components })`;
 
-const MAP_EXCERPT = `// src/theme/map.ts — pure data
+const MAP_EXCERPT = `// src/theme/map.ts, pure data
 export const CORE = {
   text: {
     primary: 'neutral/pen-70',
@@ -71,8 +71,8 @@ export default function UsingWithMui() {
       <SectionTitle>Dependencies</SectionTitle>
       <Snippet code={DEPS} />
       <Body>
-        okchroma has no runtime dependencies and is pure computation — no DOM, no Node
-        APIs — shipped as ESM and CJS with bundled types. Nothing here builds against the
+        okchroma has no runtime dependencies and is pure computation (no DOM, no Node
+        APIs), shipped as ESM and CJS with bundled types. Nothing here builds against the
         engine's source, and the engine repository is neither linked nor vendored. There
         is no MUI fork and no patched internals.
       </Body>
@@ -98,8 +98,8 @@ export default function UsingWithMui() {
       </Body>
       <Snippet code={MAP_EXCERPT} />
       <Body>
-        Rows have no per-mode shape. Tokens that reverse between light and dark — the
-        surface planes, the whole neutral ladder — reverse inside the engine, so the map
+        Rows have no per-mode shape. Tokens that reverse between light and dark (the
+        surface planes, the whole neutral ladder) reverse inside the engine, so the map
         names them once and both schemes read the same row.
       </Body>
       <Body>
@@ -108,7 +108,7 @@ export default function UsingWithMui() {
         <code>colorSchemes</code>. A path that fails to resolve throws, so an engine
         rename fails the build at the lookup instead of silently mis-mapping a slot.{' '}
         <code>GAP</code> rows resolve to a magenta sentinel and are listed on the{' '}
-        <Link href="#/gaps">gap gallery</Link>, which derives its rows from the map — a
+        <Link href="#/gaps">gap gallery</Link>, which derives its rows from the map, so a
         gap that closes drops off the page by itself.
       </Body>
 
@@ -118,16 +118,16 @@ export default function UsingWithMui() {
       <Box component="ol" sx={{ pl: 3, fontSize: 14, lineHeight: 1.9, mb: 2 }}>
         <li>
           <code>createTheme</code> with <code>cssVariables</code> and{' '}
-          <code>colorSchemes</code> — the palette arrives as CSS custom properties under
+          <code>colorSchemes</code>: the palette arrives as CSS custom properties under
           the <code>template</code> prefix, with the scheme selected by the{' '}
           <code>data-mui-color-scheme</code> attribute.
         </li>
         <li>
-          <code>components[X].styleOverrides</code> — component styling, spending palette
+          <code>components[X].styleOverrides</code>: component styling, spending palette
           addresses only.
         </li>
         <li>
-          Module augmentation on <code>PaletteColor</code> — the engine carries a stamp
+          Module augmentation on <code>PaletteColor</code>: the engine carries a stamp
           register (fill, fill-hover, fill-pressed, on, edge) and a full named ladder that
           MUI's palette type has no slot for. Declaring them on <code>PaletteColor</code>{' '}
           puts them at one address, correct for every family.
@@ -143,7 +143,7 @@ export default function UsingWithMui() {
 
       <SectionTitle>Using it correctly</SectionTitle>
       <Body>
-        In product code, express meaning through props — <code>variant</code>,{' '}
+        In product code, express meaning through props: <code>variant</code>,{' '}
         <code>color</code>, <code>disabled</code>. Layout via <code>sx</code> is fine;
         color, state and shape are not.
       </Body>
@@ -159,7 +159,7 @@ export default function UsingWithMui() {
           derived color has no contrast guarantee.
         </li>
         <li>
-          Read <code>theme.vars.palette.*</code>, never <code>theme.palette.*</code> — the {/* map-check:allow */}
+          Read <code>theme.vars.palette.*</code>, never <code>theme.palette.*</code>: the {/* map-check:allow */}
           latter returns the light scheme whatever the mode.
         </li>
         <li>
@@ -178,41 +178,43 @@ export default function UsingWithMui() {
 
       <SectionTitle>Enforcement</SectionTitle>
       <Body>
-        Two scripts, both run in CI ahead of the Pages build. Neither tests the engine —
-        the engine owns its contrast guarantees; these prove the adapter.
+        Three scripts run in CI ahead of the Pages build: <code>npm run docs:lint</code>, the
+        documentation rules shared with the engine repository, and the two adapter checks
+        below. Neither check tests the engine: the engine owns its contrast guarantees;
+        these prove the adapter.
       </Body>
       <Body>
         <code>npm run check:map</code> runs six checks:
       </Body>
       <Bullets>
         <li>
-          <strong>Totality</strong> — every color-bearing slot a stock{' '}
+          <strong>Totality</strong>: every color-bearing slot a stock{' '}
           <code>createTheme()</code> carries has a value: a map row or a declared gap.
         </li>
         <li>
-          <strong>Resolve</strong> — every leaf path resolves against the engine emit, for
+          <strong>Resolve</strong>: every leaf path resolves against the engine emit, for
           every seed.
         </li>
         <li>
-          <strong>Literals</strong> — no hex, hsl, or rgb in the theme layer or the
+          <strong>Literals</strong>: no hex, hsl, or rgb in the theme layer or the
           customizations.
         </li>
         <li>
-          <strong>Primitives</strong> — no template ramps, no{' '}
+          <strong>Primitives</strong>: no template ramps, no{' '}
           <code>applyStyles</code> dark-layer calls, no <code>theme.palette</code> color
           reads.
         </li>
         <li>
-          <strong>Derivation</strong> — no <code>alpha</code>, <code>darken</code>,{' '}
+          <strong>Derivation</strong>: no <code>alpha</code>, <code>darken</code>,{' '}
           <code>lighten</code>, or <code>getContrastText</code> imports.
         </li>
         <li>
-          <strong>Seed sweep</strong> — nine seeds, including {SWEEP_SEEDS}.
+          <strong>Seed sweep</strong>: nine seeds, including {SWEEP_SEEDS}.
         </li>
       </Bullets>
       <Body>
-        <code>npm run check:wiring</code> walks the pairings the mapping creates — which
-        on-color lands on which fill, which text on which plane — and holds them to the
+        <code>npm run check:wiring</code> walks the pairings the mapping creates (which
+        on-color lands on which fill, which text on which plane) and holds them to the
         guaranteed minimums: 4.5:1 for text, 3:1 for non-text. The values come from the
         same tokens the app renders, so a failure here is a failure a user would see.
       </Body>
@@ -225,7 +227,7 @@ export default function UsingWithMui() {
         </Link>{' '}
         headless primitives, in the opposite integration shape: it mounts the engine's own
         CSS emission from <code>brandCss()</code> as custom properties and styles
-        hand-built components with <code>var()</code> — no theme object, no provider.
+        hand-built components with <code>var()</code>: no theme object, no provider.
       </Body>
       <Body>
         <Link href={BASE_DEMO} target="_blank" rel="noreferrer">

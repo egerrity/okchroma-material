@@ -34,13 +34,13 @@ The derivation is the no-cssVariables fallback; under `cssVariables` these read 
 |---|---|---|
 | Alert.js:105 (filled bg+text) | `Alert.{c}FilledBg/Color` | `{F}/stamp/fill` + `{F}/stamp/on` — filled banner is a sanctioned stamp use |
 | AppBar.js:121,124 | `text.primary` | trio row |
-| LinearProgress.js:117 (track) | `LinearProgress.{c}Bg` | `{F}/wash-85` |
-| Slider.js:235–241 (inverted track) | `Slider.{c}Track` | `{F}/wash-80` |
+| LinearProgress.js:117 (track) | `LinearProgress.{c}Bg` | `{F}/highlighter-15` |
+| Slider.js:235–241 (inverted track) | `Slider.{c}Track` | `{F}/highlighter-20` |
 | Switch.js:191 (disabled thumb) | `Switch.{c}DisabledColor` | GAP — disabled law (opacity, not color) |
-| Skeleton.js:100 | `Skeleton.bg` | `neutral/wash-92` |
-| SnackbarContent.js:43 | `SnackbarContent.color/bg` | inverted surface: `neutral/ink-30` ground, `neutral/paper-100` text |
-| Tooltip.js:124,199 | `Tooltip.bg` | `neutral/ink-30` (solid — rule 5 bars the 0.92 alpha) |
-| TableCell.js:54 | `TableCell.border` | `neutral/wash-89` (the divider law) |
+| Skeleton.js:100 | `Skeleton.bg` | `neutral/highlighter-8` |
+| SnackbarContent.js:43 | `SnackbarContent.color/bg` | inverted surface: `neutral/pen-70` ground, `neutral/paper-0` text |
+| Tooltip.js:124,199 | `Tooltip.bg` | `neutral/pen-70` (solid — rule 5 bars the 0.92 alpha) |
+| TableCell.js:54 | `TableCell.border` | `neutral/highlighter-11` (the divider law) |
 
 `getContrastText` is fully accounted for here: all 4 call sites are in this cluster.
 
@@ -57,11 +57,11 @@ family, `neutral` where the stock input was `text.primary`/`action.*`):
 
 | state | ground |
 |---|---|
-| hover | `{F}/wash-92` |
-| selected | `{F}/wash-89` |
-| selected + hover | `{F}/wash-85` |
-| pressed / activated | `{F}/wash-85` |
-| focus ground | **dies** — focus is the ring (2px `neutral/wax-74`, 1px offset), never a wash |
+| hover | `{F}/highlighter-8` |
+| selected | `{F}/highlighter-11` |
+| selected + hover | `{F}/highlighter-15` |
+| pressed / activated | `{F}/highlighter-15` |
+| focus ground | **dies** — focus is the ring (2px `neutral/crayon-26`, 1px offset), never a wash |
 
 This is the wash band's documented job ("subtle interactive states") applied
 mechanically. Overrides land per component; the zeroed multipliers are the backstop.
@@ -78,12 +78,12 @@ PaginationItem 189/242 · OutlinedInput 60/131.
 **The border law:**
 
 - Colored outlined variants (Button, Chip, Pagination, ButtonGroup by family):
-  `{F}/wax-74` — the 3:1-guaranteed UI stop, solid.
+  `{F}/crayon-26` — the 3:1-guaranteed UI stop, solid.
 - Neutral enclosure/separator borders (default Pagination outline, ButtonGroup
-  separators): `neutral/wash-80` — quiet decorative border.
-- Input borders (OutlinedInput enabled): `neutral/wax-74`.
-  **C1 — RESOLVED (owner, 2026-08-29): input borders are wax-74.**
-- Chip.js:314 (`alpha(main, 0.7)` as outlined-chip icon/avatar color): `{F}/ink-42` —
+  separators): `neutral/highlighter-20` — quiet decorative border.
+- Input borders (OutlinedInput enabled): `neutral/crayon-26`.
+  **C1 — RESOLVED (owner, 2026-08-29): input borders are crayon-26.**
+- Chip.js:314 (`alpha(main, 0.7)` as outlined-chip icon/avatar color): `{F}/pen-58` —
   chip doctrine, ink register on wash ground.
 
 ## Cluster D — LIVE: link underlines (4 sites)
@@ -99,7 +99,7 @@ link color, no 40% mix.
 ## Cluster E — LIVE: Slider halo (3 sites)
 
 `alpha(main, 0.16)` 8px/14px box-shadow halos on hover/focus/active — Slider
-333/340/347. **Dies under the focus law**: one ring, 2px `neutral/wax-74`, 1px
+333/340/347. **Dies under the focus law**: one ring, 2px `neutral/crayon-26`, 1px
 offset; no hover halo (same doctrine that kills the ripple). Thumb hover feedback, if
 any, comes from the wash law.
 
@@ -109,17 +109,17 @@ Switch 149/152/199/202/205/229 — track fills from `alpha(onBackground | main, 
 
 | part | token |
 |---|---|
-| unchecked track | `neutral/wash-80` |
-| checked track | `{F}/wax-74` (3:1 UI element against the papers) |
-| unchecked thumb | `neutral/paper-100` (map row `Switch.defaultColor`) |
-| checked thumb | `{F}/main` (= `ink-42`) |
+| unchecked track | `neutral/highlighter-20` |
+| checked track | `{F}/crayon-26` (3:1 UI element against the papers) |
+| unchecked thumb | `neutral/paper-0` (map row `Switch.defaultColor`) |
+| checked thumb | `{F}/main` (= `pen-58`) |
 | disabled (152/202/205) | the disabled law: colors stay, component opacity |
 
 **F1 — RESOLVED (owner, 2026-08-29): selection controls never accept stamp.** The
 stamp carries no contrast guarantee against the page — its guarantee lives in its
 paired `on`/`edge`, i.e. it needs its text on top; a stamp-filled checkbox or switch
 could legitimately solve to bright yellow or light pink. So checked fills ride
-`main` (`ink-42`) with the check glyph in `contrastText` (`paper-100`) — the pairing
+`main` (`pen-58`) with the check glyph in `contrastText` (`paper-0`) — the pairing
 warranted by ratio symmetry. Applies to Checkbox, Radio, and Switch alike.
 
 ## Cluster G — LIVE: Chip disabled + delete icon (3 sites)
@@ -128,13 +128,13 @@ Chip 117/122 (`alpha(text.primary, 0.26/0.4)` disabled colors): **die under the
 disabled law** — colors stay enabled, opacity at component level.
 Chip 178 (`alpha(contrastText, 0.7)` filled-chip delete icon): chips are NOT
 stamp-accepting (owner list: badge-with-text, avatar variant, contained button,
-filled banners, data viz) — a filled chip is `{F}/wash-92` ground with `{F}/ink-30`
-label, so the delete icon is `{F}/ink-42`, hover `{F}/ink-30`. Solid, no 0.7.
+filled banners, data viz) — a filled chip is `{F}/highlighter-8` ground with `{F}/pen-70`
+label, so the delete icon is `{F}/pen-58`, hover `{F}/pen-70`. Solid, no 0.7.
 
 ## Cluster H — LIVE: input underlines (2 sites)
 
 FilledInput 117, Input 58 — `alpha(common.onBackground, opacity.inputUnderline)`.
-Rest underline `neutral/wax-74` (input borders are wax-74, per C1); hover unchanged
+Rest underline `neutral/crayon-26` (input borders are crayon-26, per C1); hover unchanged
 (the wash law covers the field ground instead); focus = the ring law, with MUI's 2px
 `primary.main` underline animation removed.
 **H1 — RESOLVED (owner, 2026-08-29): implement as above and flag for visual
@@ -145,7 +145,7 @@ re-litigated in the map.
 a third live multiplier, missed by the alpha/darken grep because InputBase applies it
 as a bare `opacity` on the placeholder text. Same shape as the disabled value: a
 multiplier over an honest ink. Treatment: multiplier pinned to 1, placeholder color
-pinned to `text.secondary` (`lead-53`) by the InputBase override.
+pinned to `text.secondary` (`pencil-47`) by the InputBase override.
 
 ---
 

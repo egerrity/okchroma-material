@@ -37,8 +37,8 @@ export default function TextFieldDoc() {
       <PageTitle>Text field</PageTitle>
       <Lede>
         Fields are built from FormControl + FormLabel + OutlinedInput (or TextField
-        without a floating label). The chrome — borders, focus, error, sizes, dark
-        mode, disabled — is theme-supplied. One structural rule: the label sits
+        without a floating label). The chrome (borders, focus, error, sizes, dark
+        mode, disabled) is theme-supplied. One structural rule: the label sits
         above the field; floating labels are not part of this system.
       </Lede>
       <Snippet
@@ -54,16 +54,16 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 
       <SectionTitle>Sizes</SectionTitle>
       <Demo>
-        <Field label="Medium — the default" id="tf-md">
+        <Field label="Medium, the default" id="tf-md">
           <OutlinedInput id="tf-md" placeholder="Placeholder" />
         </Field>
-        <Field label="Small — dense layouts" id="tf-sm">
+        <Field label="Small, dense layouts" id="tf-sm">
           <OutlinedInput id="tf-sm" size="small" placeholder="Placeholder" />
         </Field>
       </Demo>
       <Caption>
         Click into a field to see the focus treatment: the border itself thickens in
-        the brand register — fields do not take the offset focus ring buttons use.
+        the brand register. Fields do not take the offset focus ring buttons use.
       </Caption>
 
       <SectionTitle>Error</SectionTitle>
@@ -83,7 +83,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
         code={`<TextField error helperText="This is an error alert notice" />`}
       />
       <Caption>
-        Pass error + helperText together — the border and the notice both come from
+        Pass error + helperText together. The border and the notice both come from
         the theme. Never color a field by hand to signal a problem.
       </Caption>
 
@@ -93,7 +93,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
           <OutlinedInput id="tf-dis" disabled defaultValue="acme-corp.unify.app" size="small" />
         </Field>
       </Demo>
-      <Caption>Disabled keeps the enabled colors and dims the control — the law, everywhere.</Caption>
+      <Caption>Disabled keeps the enabled colors and dims the control, the law everywhere.</Caption>
 
       <SectionTitle>Textarea</SectionTitle>
       <Demo>
@@ -136,14 +136,15 @@ import OutlinedInput from '@mui/material/OutlinedInput';
       <Rulings>
         <li>
           The label sits above the field. MUI's floating label is off and the notched
-          outline is set to no border — the root carries the visible border instead.
+          outline is set to no border. The root carries the visible border instead.
         </li>
         <li>
           Labels never state-shift. The field carries focus and error; moving the label
           too would double the signal.
         </li>
         <li>
-          The resting border is the 3:1 neutral stop — WCAG 1.4.11 lives on that border.
+          The resting border is the 3:1 neutral stop, so the non-text contrast requirement is
+          met by the border itself.
           Radius 8, 12px side padding, 40px small and 48px medium.
         </li>
         <li>
@@ -156,7 +157,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
           flush left below the field.
         </li>
         <li>
-          The placeholder is the secondary text color at full strength — no opacity
+          The placeholder is the secondary text color at full strength, with no opacity
           multiplier on top of a color that already carries its guarantee.
         </li>
         <li>
@@ -192,24 +193,24 @@ import OutlinedInput from '@mui/material/OutlinedInput';
             <TableCell>disabled</TableCell>
             <TableCell>boolean</TableCell>
             <TableCell>false</TableCell>
-            <TableCell>fully handled — no styling needed</TableCell>
+            <TableCell>fully handled, no styling needed</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>multiline / minRows</TableCell>
             <TableCell>boolean / number</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>none</TableCell>
             <TableCell>textarea; height follows content</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>startAdornment / endAdornment</TableCell>
             <TableCell>InputAdornment</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>none</TableCell>
             <TableCell>lucide icons at size 16</TableCell>
           </TableRow>
         </TableBody>
       </Table>
       <Caption>
-        Do not pass label to TextField — the floating label is not part of this
+        Do not pass label to TextField. The floating label is not part of this
         system. Put a FormLabel above the field instead.
       </Caption>
 
@@ -220,7 +221,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 <TextField label="Email" />                               // floating label
 <OutlinedInput sx={{ height: 44 }} />                     // off-scale size
 
-// RIGHT — express meaning through props; the theme does the rest
+// RIGHT: express meaning through props; the theme does the rest
 <TextField error={!valid} helperText={message} size="small" />`}
       />
       <Box sx={{ height: 24 }} />

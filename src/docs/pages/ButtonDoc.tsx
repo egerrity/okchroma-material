@@ -24,7 +24,7 @@ export default function ButtonDoc() {
     <>
       <PageTitle>Button</PageTitle>
       <Lede>
-        The standard MUI Button, pre-themed. Import from @mui/material and use it —
+        The standard MUI Button, pre-themed. Import from @mui/material and use it:
         colors, hover/pressed states, focus, dark mode, and accessibility are handled
         by the theme for every brand. There is nothing extra to import and nothing to
         style.
@@ -99,13 +99,13 @@ export default function ButtonDoc() {
       <SectionTitle>What we styled</SectionTitle>
       <Caption>
         Geometry in <FileRef path="src/shared-theme/customizations/inputs.tsx" />, color in{' '}
-        <FileRef path="src/theme/laws.tsx" /> — both through{' '}
+        <FileRef path="src/theme/laws.tsx" />, both through{' '}
         <code>components.MuiButton.styleOverrides.root</code>.
       </Caption>
       <Rulings>
         <li>Buttons are round: 999px radius, 36px small and 40px medium.</li>
         <li>
-          Contained rides the engine's stamp register — fill, fill-hover, fill-pressed,
+          Contained rides the engine's stamp register: fill, fill-hover, fill-pressed,
           with the on-color the engine pairs to it. The stamp edge is always rendered,
           usually transparent, so layout never shifts when it turns visible.
         </li>
@@ -114,7 +114,7 @@ export default function ButtonDoc() {
           border never does.
         </li>
         <li>
-          Outlined and text labels step with their own ground — rest on the page, hover
+          Outlined and text labels step with their own ground: rest on the page, hover
           and pressed on the wash below them. A constant label on a stepping ground
           leaves the contrast guarantee behind.
         </li>
@@ -145,7 +145,7 @@ export default function ButtonDoc() {
             <TableCell>color</TableCell>
             <TableCell>primary</TableCell>
             <TableCell>primary</TableCell>
-            <TableCell>buttons do not color-fork — leave it unset</TableCell>
+            <TableCell>buttons do not color-fork, so leave it unset</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>size</TableCell>
@@ -157,12 +157,12 @@ export default function ButtonDoc() {
             <TableCell>disabled</TableCell>
             <TableCell>boolean</TableCell>
             <TableCell>false</TableCell>
-            <TableCell>fully handled — no styling needed</TableCell>
+            <TableCell>fully handled, no styling needed</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>startIcon / endIcon</TableCell>
             <TableCell>ReactNode</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>none</TableCell>
             <TableCell>lucide icons at size 16</TableCell>
           </TableRow>
           <TableRow>
@@ -185,17 +185,17 @@ export default function ButtonDoc() {
       </Caption>
       <Snippet
         code={`// WRONG
-<Button sx={{ backgroundColor: '#1D5AF0' }}>…</Button>        // hardcoded color (map-check:allow — anti-example)
+<Button sx={{ backgroundColor: '#1D5AF0' }}>…</Button>        // hardcoded color (map-check:allow, anti-example)
 <Button sx={{ bgcolor: 'primary.light' }}>…</Button>           // reaching into the palette
 <Button sx={{ opacity: 0.5 }}>…</Button>                       // hand-rolled disabled
 <Button sx={{ '&:hover': { bgcolor: 'grey.200' } }}>…</Button> // hand-rolled hover
 
-// RIGHT — express meaning through props; the theme does the rest
+// RIGHT: express meaning through props; the theme does the rest
 <Button variant="contained" color="error" disabled={busy}>Delete</Button>`}
       />
       <Caption>
         Layout via sx is fine (margins, width, alignment). Color, state, and shape
-        are not — if a design seems to need one, that is a design-system request,
+        are not. If a design seems to need one, that is a design-system request,
         not an sx override.
       </Caption>
     </>

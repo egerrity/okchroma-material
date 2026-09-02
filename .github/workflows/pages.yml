@@ -29,6 +29,10 @@ jobs:
 
       - run: npm ci
 
+      # The documentation rules shared with the engine repo: no em dashes, no retired
+      # token vocabulary, no WCAG criteria cited by number alone.
+      - run: npm run docs:lint
+
       # The adapter's own proofs. check:wiring walks the pairings the mapping
       # creates against the engine's bars; check:map proves totality against a
       # stock createTheme() walk and resolvability against the engine emit.

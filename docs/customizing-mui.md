@@ -91,15 +91,18 @@ code has the matching token.
 
 In this repo the layering is:
 
-- okchroma engine seed resolves to `colorSchemes` palettes and the template
-  ramps ([themePrimitives.ts](../src/shared-theme/themePrimitives.ts)), the
-  token layer.
-- State pinning (hover/pressed to real engine values instead of MUI's
-  `darken()` derivation) and the demo Clean treatment live in
-  [cleanCustomizations.ts](../src/theme/cleanCustomizations.ts), the branded
-  component layer. The Unify restyle extends this same layer.
+- The token layer: `src/theme/map.ts` names every MUI palette slot as one engine
+  token path (or a declared `GAP`), and `src/theme/interpret.ts` resolves each
+  path against the `themeToFigma()` emit into `colorSchemes`. No other file
+  holds a color; `src/shared-theme/themePrimitives.ts` carries typography,
+  shape and the shadows array only.
+- The branded component layer: the cross-component laws (the focus ring, the
+  disabled opacity, the state washes, the border law) in
+  [laws.tsx](../src/theme/laws.tsx), loaded first; the per-area files under
+  `src/shared-theme/customizations/` extend them through
+  `src/theme/mergeComponents.ts`, the array-merge pattern above.
 
-## Color rules from the owner
+## Color rules
 
 - **The brand family never appears in a graph or chart.** Data visualization
   rides the info family tiers, the neutral ladder, and the signal families

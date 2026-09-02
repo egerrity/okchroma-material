@@ -9,6 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "check:wiring": "esbuild scripts/check-wiring.ts --bundle --platform=node --outfile=node_modules/.cache/check-wiring.js && node node_modules/.cache/check-wiring.js",
+    "docs:lint": "esbuild scripts/docs-lint.ts --bundle --platform=node --outfile=node_modules/.cache/docs-lint.js --log-level=error && node node_modules/.cache/docs-lint.js",
     "check:map": "esbuild scripts/check-map.ts --bundle --platform=node --outfile=node_modules/.cache/check-map.js --log-level=error && node node_modules/.cache/check-map.js"
   },
   "dependencies": {

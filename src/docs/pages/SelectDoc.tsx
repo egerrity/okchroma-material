@@ -32,7 +32,7 @@ export default function SelectDoc() {
       <PageTitle>Select</PageTitle>
       <Lede>
         The standard MUI Select, built like every field: FormControl + FormLabel
-        above, no floating label. The field chrome and the menu are theme-supplied —
+        above, no floating label. The field chrome and the menu are theme-supplied:
         focus, error, sizes, dark mode, disabled all come free.
       </Lede>
       <Snippet
@@ -52,14 +52,14 @@ import MenuItem from '@mui/material/MenuItem';
 
       <SectionTitle>Sizes</SectionTitle>
       <Demo>
-        <Field label="Medium — the default" id="sel-md">
+        <Field label="Medium, the default" id="sel-md">
           <Select id="sel-md" defaultValue="editor">
             <MenuItem value="viewer">Viewer</MenuItem>
             <MenuItem value="editor">Editor</MenuItem>
             <MenuItem value="admin">Admin</MenuItem>
           </Select>
         </Field>
-        <Field label="Small — dense layouts" id="sel-sm">
+        <Field label="Small, dense layouts" id="sel-sm">
           <Select id="sel-sm" size="small" defaultValue="editor">
             <MenuItem value="viewer">Viewer</MenuItem>
             <MenuItem value="editor">Editor</MenuItem>
@@ -84,7 +84,7 @@ import MenuItem from '@mui/material/MenuItem';
         </Field>
       </Demo>
       <Caption>
-        Error borders and the disabled dim are the field rules — pair error with a
+        Error borders and the disabled dim are the field rules. Pair error with a
         FormHelperText notice like any field.
       </Caption>
 
@@ -102,7 +102,7 @@ import MenuItem from '@mui/material/MenuItem';
           the engine's shadow row. It sets no background of its own.
         </li>
         <li>
-          Items ride the action rows — hover, selected, and selected-hover each their own
+          Items ride the action rows: hover, selected, and selected-hover each their own
           wash. Never an alpha laid over a color.
         </li>
         <li>Menu items are soft: 8px radius. Only buttons are round.</li>
@@ -126,14 +126,14 @@ import MenuItem from '@mui/material/MenuItem';
           <TableRow>
             <TableCell>value / onChange</TableCell>
             <TableCell>any / handler</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>none</TableCell>
             <TableCell>controlled usage; defaultValue for uncontrolled</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>size</TableCell>
             <TableCell>small · medium</TableCell>
             <TableCell>medium</TableCell>
-            <TableCell>40px / 48px tall — the field scale</TableCell>
+            <TableCell>40px / 48px tall, the field scale</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>error</TableCell>
@@ -145,7 +145,7 @@ import MenuItem from '@mui/material/MenuItem';
             <TableCell>disabled</TableCell>
             <TableCell>boolean</TableCell>
             <TableCell>false</TableCell>
-            <TableCell>fully handled — no styling needed</TableCell>
+            <TableCell>fully handled, no styling needed</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>multiple</TableCell>
@@ -160,9 +160,9 @@ import MenuItem from '@mui/material/MenuItem';
       <Snippet
         code={`// WRONG
 <Select sx={{ borderColor: 'success.main' }} />   // hand-rolled state
-<Select label="Role" />                            // floating label — not in this system
+<Select label="Role" />                            // floating label, not in this system
 
-// RIGHT — express meaning through props; the theme does the rest
+// RIGHT: express meaning through props; the theme does the rest
 <Select value={role} onChange={handleChange} error={!role} size="small" />`}
       />
     </>

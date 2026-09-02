@@ -24,7 +24,7 @@ export default function CheckboxDoc() {
     <>
       <PageTitle>Checkbox</PageTitle>
       <Lede>
-        The standard MUI Checkbox, pre-themed. Import from @mui/material and use it —
+        The standard MUI Checkbox, pre-themed. Import from @mui/material and use it:
         the checked fill, glyph, dark mode, and the disabled treatment are handled by
         the theme for every brand. There is nothing extra to import and nothing to
         style.
@@ -47,12 +47,12 @@ import FormControlLabel from '@mui/material/FormControlLabel';
       <Snippet
         code={`<Checkbox />
 <Checkbox defaultChecked />
-<Checkbox indeterminate />   // "some of the children" — set from your data
+<Checkbox indeterminate />   // "some of the children", set from your data
 <Checkbox disabled />
 <Checkbox disabled defaultChecked />`}
       />
       <Caption>
-        Disabled keeps the enabled colors and dims the whole control — never restyle
+        Disabled keeps the enabled colors and dims the whole control. Never restyle
         it by hand.
       </Caption>
 
@@ -81,7 +81,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
         <Checkbox defaultChecked aria-label="medium" />
         <Checkbox size="small" defaultChecked aria-label="small" />
       </Demo>
-      <Snippet code={`<Checkbox />               // medium — the default
+      <Snippet code={`<Checkbox />               // medium, the default
 <Checkbox size="small" />  // dense tables, compact rows`} />
 
       <SectionTitle>What we styled</SectionTitle>
@@ -128,14 +128,14 @@ import FormControlLabel from '@mui/material/FormControlLabel';
           <TableRow>
             <TableCell>checked / onChange</TableCell>
             <TableCell>boolean / handler</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>none</TableCell>
             <TableCell>controlled usage; defaultChecked for uncontrolled</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>indeterminate</TableCell>
             <TableCell>boolean</TableCell>
             <TableCell>false</TableCell>
-            <TableCell>visual only — set it from your data</TableCell>
+            <TableCell>visual only, set it from your data</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>color</TableCell>
@@ -153,7 +153,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
             <TableCell>disabled</TableCell>
             <TableCell>boolean</TableCell>
             <TableCell>false</TableCell>
-            <TableCell>fully handled — no styling needed</TableCell>
+            <TableCell>fully handled, no styling needed</TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -169,7 +169,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 <Checkbox sx={{ opacity: 0.5 }} />                    // hand-rolled disabled
 <Checkbox icon={<MyIcon />} />                        // replacing the anatomy
 
-// RIGHT — express meaning through props; the theme does the rest
+// RIGHT: express meaning through props; the theme does the rest
 <Checkbox color="success" disabled={locked} />`}
       />
     </>

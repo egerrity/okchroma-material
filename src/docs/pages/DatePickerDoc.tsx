@@ -37,7 +37,7 @@ export default function DatePickerDoc() {
     <>
       <PageTitle>Date picker</PageTitle>
       <Lede>
-        The MUI X DatePicker, pre-themed. Import from @mui/x-date-pickers and use it —
+        The MUI X DatePicker, pre-themed. Import from @mui/x-date-pickers and use it:
         the calendar chrome, the selected cell, focus, dark mode, and the disabled
         treatment come from the theme for every brand.
       </Lede>
@@ -98,7 +98,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
       <SectionTitle>What we styled</SectionTitle>
       <Caption>
-        <FileRef path="src/dashboard/theme/customizations/datePickers.ts" /> — the picker
+        <FileRef path="src/dashboard/theme/customizations/datePickers.ts" />: the picker
         popper, the day grid, the month and year views, and the field.
       </Caption>
       <Rulings>
@@ -121,7 +121,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
           action-hover wash. The header arrows ride the same register.
         </li>
         <li>
-          Selected cells are buttons, so they take the secondary family's stamp trio —
+          Selected cells are buttons, so they take the secondary family's stamp trio:
           fill, its paired on-color, and the edge, always rendered so layout never
           shifts. Hover moves to the stamp's hover fill.
         </li>
@@ -146,13 +146,13 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
           <TableRow>
             <TableCell>value / onChange</TableCell>
             <TableCell>Dayjs | null</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>none</TableCell>
             <TableCell>controlled; the adapter is dayjs</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>slotProps.textField</TableCell>
             <TableCell>TextField props</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>none</TableCell>
             <TableCell>size, error, helperText, required</TableCell>
           </TableRow>
           <TableRow>
@@ -165,12 +165,12 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
             <TableCell>disabled</TableCell>
             <TableCell>boolean</TableCell>
             <TableCell>false</TableCell>
-            <TableCell>fully handled — no styling needed</TableCell>
+            <TableCell>fully handled, no styling needed</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>minDate / maxDate</TableCell>
             <TableCell>Dayjs</TableCell>
-            <TableCell>—</TableCell>
+            <TableCell>none</TableCell>
             <TableCell>out-of-range cells use the disabled law</TableCell>
           </TableRow>
         </TableBody>
@@ -190,11 +190,11 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 <DatePicker slotProps={{ day: { sx: { bgcolor: 'primary.light' } } }} />  // reaching into the palette
 <DatePicker sx={{ '& .MuiPickersDay-root.Mui-selected': { opacity: 0.6 } }} />  // hand-rolled state
 
-// RIGHT — express meaning through props; the theme does the rest
+// RIGHT: express meaning through props; the theme does the rest
 <DatePicker value={value} onChange={setValue} disabled={busy} minDate={today} />`}
       />
       <Caption>
-        Layout via sx is fine (width, margins). Color, state and shape are not — if a
+        Layout via sx is fine (width, margins). Color, state and shape are not. If a
         design seems to need one, that is a design-system request, not an sx override.
       </Caption>
     </>
